@@ -1,0 +1,140 @@
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Windows.Forms;
+using Infragistics.Win.UltraWinGrid;
+namespace cenBase.BaseForms
+{
+    public partial class frmBaseDanhMucChiTiet : Form
+    {
+        public DataSet dsData = null, dsValid = null;
+        public BindingSource bsDanhMuc = null;
+        protected BindingSource bsDanhMucChiTiet = null;
+        protected UltraGrid ugDanhMucChiTiet = null;
+        protected String tableNameDanhMucChiTiet = String.Empty;
+        protected Boolean bContinue = true;
+        public frmBaseDanhMucChiTiet()
+        {
+            InitializeComponent();
+        }
+
+        private void frmQuanLy_Load(object sender, EventArgs e)
+        {
+            List();
+            txtFilterBox.ValueChanged +=new EventHandler(txtfilterBox_ValueChanged);
+        }
+
+        private void UltraToolbarsManager1_ToolClick(object sender, Infragistics.Win.UltraWinToolbars.ToolClickEventArgs e)
+        {
+            switch (e.Tool.Key.ToString().ToUpper())
+            {
+                case "BTXOA":
+                    DeleteDanhMuc();
+                    break;
+                case "BTTHEM":
+                    InsertDanhMuc();
+                    break;
+                case "BTCOPY":
+                    CopyDanhMuc();
+                    break;
+                case "BTSUA":
+                    UpdateDanhMuc();
+                    break;
+                case "BTTAILAI":
+                    List();
+                    break;
+                case "BTEXCEL":
+                    cenCommon.cenCommon.ExportGrid2Excel(ug);
+                    break;
+            }
+        }
+        private void txtfilterBox_ValueChanged(object sender, EventArgs e)
+        {
+            cenCommon.cenCommon.filterGrid(ug, txtFilterBox.Text);
+        }
+
+        private void frmDanhMuc_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            this.Dispose();
+        }
+
+        protected virtual void List()
+        {
+        }
+        protected virtual void InsertDanhMuc()
+        {
+            bContinue = (bsDanhMuc != null);
+        }
+        protected virtual void CopyDanhMuc()
+        {
+            bContinue = (bsDanhMuc != null && bsDanhMuc.Current != null && ug.ActiveRow != null);
+        }
+        protected virtual void UpdateDanhMuc()
+        {
+            bContinue = (bsDanhMuc != null && bsDanhMuc.Current != null && ug.ActiveRow != null);
+        }
+        protected virtual void DeleteDanhMuc()
+        {
+            bContinue = (bsDanhMuc != null && bsDanhMuc.Current != null && ug.ActiveRow != null && cenCommon.cenCommon.QuestionMessage("Bạn có chắc chắn muốn xóa mục dữ liệu này?", 0) != DialogResult.No);
+        }
+        protected virtual void InsertDanhMucChiTiet()
+        {
+            bContinue = (bsDanhMuc != null && bsDanhMuc.Current != null && ug.ActiveRow != null);
+        }
+        protected virtual void UpdateDanhMucChiTiet()
+        {
+            bContinue = (bsDanhMucChiTiet != null && bsDanhMucChiTiet.Current != null && ugDanhMucChiTiet.ActiveRow != null);
+        }
+        protected virtual void DeleteDanhMucChiTiet()
+        {
+            bContinue = (bsDanhMucChiTiet != null && bsDanhMucChiTiet.Current != null && ugDanhMucChiTiet.ActiveRow != null && cenCommon.cenCommon.QuestionMessage("Bạn có chắc chắn muốn xóa mục dữ liệu này?", 0) != DialogResult.No);
+        }
+        private void frmBaseDanhMuc_KeyDown(object sender, KeyEventArgs e)
+        {
+            //Chi tiết danh mục
+            if (e.Control)
+            {
+                switch (e.KeyCode)
+                {
+                    case Keys.Insert:
+                        InsertDanhMucChiTiet();
+                        break;
+                    case Keys.Enter:
+                        UpdateDanhMucChiTiet();
+                        break;
+                    case Keys.Delete:
+                        DeleteDanhMucChiTiet();
+                        break;
+                }
+            }
+        }
+
+        private void ug_DoubleClickRow(object sender, DoubleClickRowEventArgs e)
+        {
+            UpdateDanhMuc();
+        }
+
+        private void txtChiTietfilterBox_EditorButtonClick(object sender, Infragistics.Win.UltraWinEditors.EditorButtonEventArgs e)
+        {
+            switch (e.Button.Key.ToUpper())
+            {
+                case "BTTHEMCHITIET":
+                    InsertDanhMucChiTiet();
+                    break;
+                case "BTSUACHITIET":
+                    UpdateDanhMucChiTiet();
+                    break;
+                case "BTXOACHITIET":
+                    DeleteDanhMucChiTiet();
+                    break;
+            }
+        }
+
+        
+        
+    }
+}

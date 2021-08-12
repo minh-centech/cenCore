@@ -1,0 +1,296 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet type="text/xsl" href="c:\program files (x86)\microsoft visual studio\2017\community\team tools\static analysis tools\fxcop\Xml\CodeAnalysisReport.xsl"?>
+<FxCopReport Version="15.0">
+ <Targets>
+  <Target Name="E:\cenTANDAIDUONG\cenDAO\bin\Debug\cenDAO.dll">
+   <Modules>
+    <Module Name="cendao.dll">
+     <Namespaces>
+      <Namespace Name="cenDAO">
+       <Types>
+        <Type Name="ChungTuDAO" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Members>
+          <Member Name="#Delete(System.Data.DataRow,System.String)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="Do not dispose objects multiple times" Category="Microsoft.Usage" CheckId="CA2202" Status="Active" Created="2020-02-05 16:46:13Z" FixCategory="DependsOnFix">
+             <Issue Certainty="75" Level="Warning" Path="E:\cenTANDAIDUONG\cenDAO" File="ChungTuDAO.cs" Line="787">Object 'connection' can be disposed more than once in method 'ChungTuDAO.Delete(DataRow, string)'. To avoid generating a System.ObjectDisposedException you should not call Dispose more than one time on an object.: Lines: 787</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#Insert(System.Object&amp;,System.String&amp;,System.String,System.String,System.String,System.Data.DataRow,System.Data.DataTable,System.Data.DataTable)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="Do not dispose objects multiple times" Category="Microsoft.Usage" CheckId="CA2202" Status="Active" Created="2020-02-05 16:46:13Z" FixCategory="DependsOnFix">
+             <Issue Certainty="75" Level="Warning" Path="E:\cenTANDAIDUONG\cenDAO" File="ChungTuDAO.cs" Line="384">Object 'connection' can be disposed more than once in method 'ChungTuDAO.Insert(out object, out string, string, string, string, DataRow, DataTable, DataTable)'. To avoid generating a System.ObjectDisposedException you should not call Dispose more than one time on an object.: Lines: 384</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#Insert(System.Object&amp;,System.String&amp;,System.String,System.String,System.String,System.Data.DataTable,System.Data.DataTable,System.Data.DataTable)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="Do not dispose objects multiple times" Category="Microsoft.Usage" CheckId="CA2202" Status="Active" Created="2020-02-05 16:46:13Z" FixCategory="DependsOnFix">
+             <Issue Certainty="75" Level="Warning" Path="E:\cenTANDAIDUONG\cenDAO" File="ChungTuDAO.cs" Line="258">Object 'connection' can be disposed more than once in method 'ChungTuDAO.Insert(out object, out string, string, string, string, DataTable, DataTable, DataTable)'. To avoid generating a System.ObjectDisposedException you should not call Dispose more than one time on an object.: Lines: 258</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#Update(System.Object,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.Data.DataRow,System.Data.DataTable,System.Data.DataTable)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="Do not dispose objects multiple times" Category="Microsoft.Usage" CheckId="CA2202" Status="Active" Created="2020-02-05 16:46:13Z" FixCategory="DependsOnFix">
+             <Issue Certainty="75" Level="Warning" Path="E:\cenTANDAIDUONG\cenDAO" File="ChungTuDAO.cs" Line="735">Object 'connection' can be disposed more than once in method 'ChungTuDAO.Update(object, string, string, string, string, string, string, string, DataRow, DataTable, DataTable)'. To avoid generating a System.ObjectDisposedException you should not call Dispose more than one time on an object.: Lines: 735</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#Update(System.Object,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.Data.DataTable,System.Data.DataTable,System.Data.DataTable)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="Do not dispose objects multiple times" Category="Microsoft.Usage" CheckId="CA2202" Status="Active" Created="2020-02-05 16:46:13Z" FixCategory="DependsOnFix">
+             <Issue Certainty="75" Level="Warning" Path="E:\cenTANDAIDUONG\cenDAO" File="ChungTuDAO.cs" Line="553">Object 'connection' can be disposed more than once in method 'ChungTuDAO.Update(object, string, string, string, string, string, string, string, DataTable, DataTable, DataTable)'. To avoid generating a System.ObjectDisposedException you should not call Dispose more than one time on an object.: Lines: 553</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+        <Type Name="commonDAO" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Members>
+          <Member Name="#DeleteRowServer(System.String,System.Data.SqlClient.SqlConnection,System.Data.SqlClient.SqlTransaction,System.Data.DataRow)" Kind="Method" Static="True" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="Review SQL queries for security vulnerabilities" Category="Microsoft.Security" CheckId="CA2100" Status="Active" Created="2020-02-05 16:46:13Z" FixCategory="DependsOnFix">
+             <Issue Name="WithNonLiterals" Certainty="75" Level="Warning" Path="E:\cenTANDAIDUONG\cenDAO" File="commonDAO.cs" Line="193">The query string passed to 'SqlCommand.CommandText.set(string)' in 'commonDAO.DeleteRowServer(string, SqlConnection, SqlTransaction, DataRow)' could contain the following variables 'spName'. If any of these variables could come from user input, consider using a stored procedure or a parameterized SQL query instead of building the query with string concatenations.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#ExecNonQueryStoredProcedure(System.String,System.Collections.Generic.List`1&lt;System.Data.SqlClient.SqlParameter&gt;)" Kind="Method" Static="True" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="Do not dispose objects multiple times" Category="Microsoft.Usage" CheckId="CA2202" Status="Active" Created="2020-02-05 16:46:13Z" FixCategory="DependsOnFix">
+             <Issue Certainty="75" Level="Warning" Path="E:\cenTANDAIDUONG\cenDAO" File="commonDAO.cs" Line="98">Object 'connection' can be disposed more than once in method 'commonDAO.ExecNonQueryStoredProcedure(string, List&lt;SqlParameter&gt;)'. To avoid generating a System.ObjectDisposedException you should not call Dispose more than one time on an object.: Lines: 98</Issue>
+            </Message>
+            <Message TypeName="Review SQL queries for security vulnerabilities" Category="Microsoft.Security" CheckId="CA2100" Status="Active" Created="2020-02-05 16:46:13Z" FixCategory="DependsOnFix">
+             <Issue Name="WithNonLiterals" Certainty="75" Level="Warning" Path="E:\cenTANDAIDUONG\cenDAO" File="commonDAO.cs" Line="43">The query string passed to 'SqlCommand.CommandText.set(string)' in 'commonDAO.ExecNonQueryStoredProcedure(string, List&lt;SqlParameter&gt;)' could contain the following variables 'spName'. If any of these variables could come from user input, consider using a stored procedure or a parameterized SQL query instead of building the query with string concatenations.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#ExecQueryStoredProcedure(System.String,System.Collections.Generic.List`1&lt;System.Data.SqlClient.SqlParameter&gt;)" Kind="Method" Static="True" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="Do not dispose objects multiple times" Category="Microsoft.Usage" CheckId="CA2202" Status="Active" Created="2020-02-05 16:46:13Z" FixCategory="DependsOnFix">
+             <Issue Certainty="75" Level="Warning" Path="E:\cenTANDAIDUONG\cenDAO" File="commonDAO.cs" Line="147">Object 'connection' can be disposed more than once in method 'commonDAO.ExecQueryStoredProcedure(string, List&lt;SqlParameter&gt;)'. To avoid generating a System.ObjectDisposedException you should not call Dispose more than one time on an object.: Lines: 147</Issue>
+            </Message>
+            <Message TypeName="Review SQL queries for security vulnerabilities" Category="Microsoft.Security" CheckId="CA2100" Status="Active" Created="2020-02-05 16:46:13Z" FixCategory="DependsOnFix">
+             <Issue Name="WithNonLiterals" Certainty="75" Level="Warning" Path="E:\cenTANDAIDUONG\cenDAO" File="commonDAO.cs" Line="106">The query string passed to 'SqlCommand.SqlCommand(string, SqlConnection)' in 'commonDAO.ExecQueryStoredProcedure(string, List&lt;SqlParameter&gt;)' could contain the following variables 'spName'. If any of these variables could come from user input, consider using a stored procedure or a parameterized SQL query instead of building the query with string concatenations.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#UpdateRow2Server(System.Data.DataRow,System.String,System.Data.SqlClient.SqlConnection,System.Data.SqlClient.SqlTransaction,System.Object&amp;,System.Boolean)" Kind="Method" Static="True" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="Review SQL queries for security vulnerabilities" Category="Microsoft.Security" CheckId="CA2100" Status="Active" Created="2020-02-05 16:46:13Z" FixCategory="DependsOnFix">
+             <Issue Name="WithNonLiterals" Certainty="75" Level="Warning" Path="E:\cenTANDAIDUONG\cenDAO" File="commonDAO.cs" Line="157">The query string passed to 'SqlCommand.CommandText.set(string)' in 'commonDAO.UpdateRow2Server(DataRow, string, SqlConnection, SqlTransaction, out object, bool)' could contain the following variables 'spName'. If any of these variables could come from user input, consider using a stored procedure or a parameterized SQL query instead of building the query with string concatenations.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+        <Type Name="ConnectionDAO" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Members>
+          <Member Name="#dsList(System.Data.SqlClient.SqlParameter[],System.String)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="Review SQL queries for security vulnerabilities" Category="Microsoft.Security" CheckId="CA2100" Status="Active" Created="2020-02-05 16:46:13Z" FixCategory="DependsOnFix">
+             <Issue Name="WithNonLiterals" Certainty="75" Level="Warning" Path="E:\cenTANDAIDUONG\cenDAO" File="ConnectionDAO.cs" Line="49">The query string passed to 'SqlCommand.CommandText.set(string)' in 'ConnectionDAO.dsList(SqlParameter[], string)' could contain the following variables 'procName'. If any of these variables could come from user input, consider using a stored procedure or a parameterized SQL query instead of building the query with string concatenations.</Issue>
+             <Issue Name="WithNonLiterals" Certainty="75" Level="Warning" Path="E:\cenTANDAIDUONG\cenDAO" File="ConnectionDAO.cs" Line="49">The query string passed to 'SqlCommand.SqlCommand(string, SqlConnection)' in 'ConnectionDAO.dsList(SqlParameter[], string)' could contain the following variables 'procName'. If any of these variables could come from user input, consider using a stored procedure or a parameterized SQL query instead of building the query with string concatenations.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#ExecNonQuery(System.Data.SqlClient.SqlParameter[],System.String)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="Do not dispose objects multiple times" Category="Microsoft.Usage" CheckId="CA2202" Status="Active" Created="2020-02-05 16:46:13Z" FixCategory="DependsOnFix">
+             <Issue Certainty="75" Level="Warning" Path="E:\cenTANDAIDUONG\cenDAO" File="ConnectionDAO.cs" Line="152">Object 'conn' can be disposed more than once in method 'ConnectionDAO.ExecNonQuery(SqlParameter[], string)'. To avoid generating a System.ObjectDisposedException you should not call Dispose more than one time on an object.: Lines: 152</Issue>
+            </Message>
+            <Message TypeName="Review SQL queries for security vulnerabilities" Category="Microsoft.Security" CheckId="CA2100" Status="Active" Created="2020-02-05 16:46:13Z" FixCategory="DependsOnFix">
+             <Issue Name="WithNonLiterals" Certainty="75" Level="Warning" Path="E:\cenTANDAIDUONG\cenDAO" File="ConnectionDAO.cs" Line="131">The query string passed to 'SqlCommand.SqlCommand(string, SqlConnection)' in 'ConnectionDAO.ExecNonQuery(SqlParameter[], string)' could contain the following variables 'procName'. If any of these variables could come from user input, consider using a stored procedure or a parameterized SQL query instead of building the query with string concatenations.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#ExecScalar(System.Data.SqlClient.SqlParameter[],System.String)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="Do not dispose objects multiple times" Category="Microsoft.Usage" CheckId="CA2202" Status="Active" Created="2020-02-05 16:46:13Z" FixCategory="DependsOnFix">
+             <Issue Certainty="75" Level="Warning" Path="E:\cenTANDAIDUONG\cenDAO" File="ConnectionDAO.cs" Line="187">Object 'conn' can be disposed more than once in method 'ConnectionDAO.ExecScalar(SqlParameter[], string)'. To avoid generating a System.ObjectDisposedException you should not call Dispose more than one time on an object.: Lines: 187</Issue>
+            </Message>
+            <Message TypeName="Review SQL queries for security vulnerabilities" Category="Microsoft.Security" CheckId="CA2100" Status="Active" Created="2020-02-05 16:46:13Z" FixCategory="DependsOnFix">
+             <Issue Name="WithNonLiterals" Certainty="75" Level="Warning" Path="E:\cenTANDAIDUONG\cenDAO" File="ConnectionDAO.cs" Line="166">The query string passed to 'SqlCommand.SqlCommand(string, SqlConnection)' in 'ConnectionDAO.ExecScalar(SqlParameter[], string)' could contain the following variables 'procName'. If any of these variables could come from user input, consider using a stored procedure or a parameterized SQL query instead of building the query with string concatenations.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#InlineSql_Execute(System.String,System.Data.SqlClient.SqlParameter[])" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="Do not dispose objects multiple times" Category="Microsoft.Usage" CheckId="CA2202" Status="Active" Created="2020-02-05 16:46:13Z" FixCategory="DependsOnFix">
+             <Issue Certainty="75" Level="Warning" Path="E:\cenTANDAIDUONG\cenDAO" File="ConnectionDAO.cs" Line="233">Object 'sqlConnection' can be disposed more than once in method 'ConnectionDAO.InlineSql_Execute(string, SqlParameter[])'. To avoid generating a System.ObjectDisposedException you should not call Dispose more than one time on an object.: Lines: 233</Issue>
+            </Message>
+            <Message TypeName="Review SQL queries for security vulnerabilities" Category="Microsoft.Security" CheckId="CA2100" Status="Active" Created="2020-02-05 16:46:13Z" FixCategory="DependsOnFix">
+             <Issue Name="WithNonLiterals" Certainty="75" Level="Warning" Path="E:\cenTANDAIDUONG\cenDAO" File="ConnectionDAO.cs" Line="208">The query string passed to 'SqlCommand.CommandText.set(string)' in 'ConnectionDAO.InlineSql_Execute(string, SqlParameter[])' could contain the following variables 'sqlString'. If any of these variables could come from user input, consider using a stored procedure or a parameterized SQL query instead of building the query with string concatenations.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#InlineSql_ExecuteNonQuery(System.String,System.Data.SqlClient.SqlParameter[])" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="Do not dispose objects multiple times" Category="Microsoft.Usage" CheckId="CA2202" Status="Active" Created="2020-02-05 16:46:13Z" FixCategory="DependsOnFix">
+             <Issue Certainty="75" Level="Warning" Path="E:\cenTANDAIDUONG\cenDAO" File="ConnectionDAO.cs" Line="301">Object 'sqlConnection' can be disposed more than once in method 'ConnectionDAO.InlineSql_ExecuteNonQuery(string, SqlParameter[])'. To avoid generating a System.ObjectDisposedException you should not call Dispose more than one time on an object.: Lines: 301</Issue>
+            </Message>
+            <Message TypeName="Review SQL queries for security vulnerabilities" Category="Microsoft.Security" CheckId="CA2100" Status="Active" Created="2020-02-05 16:46:13Z" FixCategory="DependsOnFix">
+             <Issue Name="WithNonLiterals" Certainty="75" Level="Warning" Path="E:\cenTANDAIDUONG\cenDAO" File="ConnectionDAO.cs" Line="277">The query string passed to 'SqlCommand.CommandText.set(string)' in 'ConnectionDAO.InlineSql_ExecuteNonQuery(string, SqlParameter[])' could contain the following variables 'sqlString'. If any of these variables could come from user input, consider using a stored procedure or a parameterized SQL query instead of building the query with string concatenations.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#InlineSql_ExecuteRDT(System.String,System.Data.SqlClient.SqlParameter[])" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="Do not dispose objects multiple times" Category="Microsoft.Usage" CheckId="CA2202" Status="Active" Created="2020-02-05 16:46:13Z" FixCategory="DependsOnFix">
+             <Issue Certainty="75" Level="Warning" Path="E:\cenTANDAIDUONG\cenDAO" File="ConnectionDAO.cs" Line="269">Object 'sqlConnection' can be disposed more than once in method 'ConnectionDAO.InlineSql_ExecuteRDT(string, SqlParameter[])'. To avoid generating a System.ObjectDisposedException you should not call Dispose more than one time on an object.: Lines: 269</Issue>
+            </Message>
+            <Message TypeName="Review SQL queries for security vulnerabilities" Category="Microsoft.Security" CheckId="CA2100" Status="Active" Created="2020-02-05 16:46:13Z" FixCategory="DependsOnFix">
+             <Issue Name="WithNonLiterals" Certainty="75" Level="Warning" Path="E:\cenTANDAIDUONG\cenDAO" File="ConnectionDAO.cs" Line="243">The query string passed to 'SqlCommand.CommandText.set(string)' in 'ConnectionDAO.InlineSql_ExecuteRDT(string, SqlParameter[])' could contain the following variables 'sqlString'. If any of these variables could come from user input, consider using a stored procedure or a parameterized SQL query instead of building the query with string concatenations.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#tableList(System.Data.SqlClient.SqlParameter[],System.String,System.String)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="Review SQL queries for security vulnerabilities" Category="Microsoft.Security" CheckId="CA2100" Status="Active" Created="2020-02-05 16:46:13Z" FixCategory="DependsOnFix">
+             <Issue Name="WithNonLiterals" Certainty="75" Level="Warning" Path="E:\cenTANDAIDUONG\cenDAO" File="ConnectionDAO.cs" Line="92">The query string passed to 'SqlCommand.CommandText.set(string)' in 'ConnectionDAO.tableList(SqlParameter[], string, string)' could contain the following variables 'procName'. If any of these variables could come from user input, consider using a stored procedure or a parameterized SQL query instead of building the query with string concatenations.</Issue>
+             <Issue Name="WithNonLiterals" Certainty="75" Level="Warning" Path="E:\cenTANDAIDUONG\cenDAO" File="ConnectionDAO.cs" Line="92">The query string passed to 'SqlCommand.SqlCommand(string, SqlConnection)' in 'ConnectionDAO.tableList(SqlParameter[], string, string)' could contain the following variables 'procName'. If any of these variables could come from user input, consider using a stored procedure or a parameterized SQL query instead of building the query with string concatenations.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+        <Type Name="webConnectionDAO" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Members>
+          <Member Name="#dsList(System.Data.SqlClient.SqlParameter[],System.String)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="Review SQL queries for security vulnerabilities" Category="Microsoft.Security" CheckId="CA2100" Status="Active" Created="2020-02-05 16:46:13Z" FixCategory="DependsOnFix">
+             <Issue Name="WithNonLiterals" Certainty="75" Level="Warning" Path="E:\cenTANDAIDUONG\cenDAO" File="webConnectionDAO.cs" Line="49">The query string passed to 'SqlCommand.CommandText.set(string)' in 'webConnectionDAO.dsList(SqlParameter[], string)' could contain the following variables 'procName'. If any of these variables could come from user input, consider using a stored procedure or a parameterized SQL query instead of building the query with string concatenations.</Issue>
+             <Issue Name="WithNonLiterals" Certainty="75" Level="Warning" Path="E:\cenTANDAIDUONG\cenDAO" File="webConnectionDAO.cs" Line="49">The query string passed to 'SqlCommand.SqlCommand(string, SqlConnection)' in 'webConnectionDAO.dsList(SqlParameter[], string)' could contain the following variables 'procName'. If any of these variables could come from user input, consider using a stored procedure or a parameterized SQL query instead of building the query with string concatenations.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#ExecNonQuery(System.Data.SqlClient.SqlParameter[],System.String)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="Do not dispose objects multiple times" Category="Microsoft.Usage" CheckId="CA2202" Status="Active" Created="2020-02-05 16:46:13Z" FixCategory="DependsOnFix">
+             <Issue Certainty="75" Level="Warning" Path="E:\cenTANDAIDUONG\cenDAO" File="webConnectionDAO.cs" Line="152">Object 'conn' can be disposed more than once in method 'webConnectionDAO.ExecNonQuery(SqlParameter[], string)'. To avoid generating a System.ObjectDisposedException you should not call Dispose more than one time on an object.: Lines: 152</Issue>
+            </Message>
+            <Message TypeName="Review SQL queries for security vulnerabilities" Category="Microsoft.Security" CheckId="CA2100" Status="Active" Created="2020-02-05 16:46:13Z" FixCategory="DependsOnFix">
+             <Issue Name="WithNonLiterals" Certainty="75" Level="Warning" Path="E:\cenTANDAIDUONG\cenDAO" File="webConnectionDAO.cs" Line="131">The query string passed to 'SqlCommand.SqlCommand(string, SqlConnection)' in 'webConnectionDAO.ExecNonQuery(SqlParameter[], string)' could contain the following variables 'procName'. If any of these variables could come from user input, consider using a stored procedure or a parameterized SQL query instead of building the query with string concatenations.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#ExecScalar(System.Data.SqlClient.SqlParameter[],System.String)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="Do not dispose objects multiple times" Category="Microsoft.Usage" CheckId="CA2202" Status="Active" Created="2020-02-05 16:46:13Z" FixCategory="DependsOnFix">
+             <Issue Certainty="75" Level="Warning" Path="E:\cenTANDAIDUONG\cenDAO" File="webConnectionDAO.cs" Line="187">Object 'conn' can be disposed more than once in method 'webConnectionDAO.ExecScalar(SqlParameter[], string)'. To avoid generating a System.ObjectDisposedException you should not call Dispose more than one time on an object.: Lines: 187</Issue>
+            </Message>
+            <Message TypeName="Review SQL queries for security vulnerabilities" Category="Microsoft.Security" CheckId="CA2100" Status="Active" Created="2020-02-05 16:46:13Z" FixCategory="DependsOnFix">
+             <Issue Name="WithNonLiterals" Certainty="75" Level="Warning" Path="E:\cenTANDAIDUONG\cenDAO" File="webConnectionDAO.cs" Line="166">The query string passed to 'SqlCommand.SqlCommand(string, SqlConnection)' in 'webConnectionDAO.ExecScalar(SqlParameter[], string)' could contain the following variables 'procName'. If any of these variables could come from user input, consider using a stored procedure or a parameterized SQL query instead of building the query with string concatenations.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#InlineSql_Execute(System.String,System.Data.SqlClient.SqlParameter[])" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="Do not dispose objects multiple times" Category="Microsoft.Usage" CheckId="CA2202" Status="Active" Created="2020-02-05 16:46:13Z" FixCategory="DependsOnFix">
+             <Issue Certainty="75" Level="Warning" Path="E:\cenTANDAIDUONG\cenDAO" File="webConnectionDAO.cs" Line="233">Object 'sqlConnection' can be disposed more than once in method 'webConnectionDAO.InlineSql_Execute(string, SqlParameter[])'. To avoid generating a System.ObjectDisposedException you should not call Dispose more than one time on an object.: Lines: 233</Issue>
+            </Message>
+            <Message TypeName="Review SQL queries for security vulnerabilities" Category="Microsoft.Security" CheckId="CA2100" Status="Active" Created="2020-02-05 16:46:13Z" FixCategory="DependsOnFix">
+             <Issue Name="WithNonLiterals" Certainty="75" Level="Warning" Path="E:\cenTANDAIDUONG\cenDAO" File="webConnectionDAO.cs" Line="208">The query string passed to 'SqlCommand.CommandText.set(string)' in 'webConnectionDAO.InlineSql_Execute(string, SqlParameter[])' could contain the following variables 'sqlString'. If any of these variables could come from user input, consider using a stored procedure or a parameterized SQL query instead of building the query with string concatenations.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#InlineSql_ExecuteNonQuery(System.String,System.Data.SqlClient.SqlParameter[])" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="Do not dispose objects multiple times" Category="Microsoft.Usage" CheckId="CA2202" Status="Active" Created="2020-02-05 16:46:13Z" FixCategory="DependsOnFix">
+             <Issue Certainty="75" Level="Warning" Path="E:\cenTANDAIDUONG\cenDAO" File="webConnectionDAO.cs" Line="301">Object 'sqlConnection' can be disposed more than once in method 'webConnectionDAO.InlineSql_ExecuteNonQuery(string, SqlParameter[])'. To avoid generating a System.ObjectDisposedException you should not call Dispose more than one time on an object.: Lines: 301</Issue>
+            </Message>
+            <Message TypeName="Review SQL queries for security vulnerabilities" Category="Microsoft.Security" CheckId="CA2100" Status="Active" Created="2020-02-05 16:46:13Z" FixCategory="DependsOnFix">
+             <Issue Name="WithNonLiterals" Certainty="75" Level="Warning" Path="E:\cenTANDAIDUONG\cenDAO" File="webConnectionDAO.cs" Line="277">The query string passed to 'SqlCommand.CommandText.set(string)' in 'webConnectionDAO.InlineSql_ExecuteNonQuery(string, SqlParameter[])' could contain the following variables 'sqlString'. If any of these variables could come from user input, consider using a stored procedure or a parameterized SQL query instead of building the query with string concatenations.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#InlineSql_ExecuteRDT(System.String,System.Data.SqlClient.SqlParameter[])" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="Do not dispose objects multiple times" Category="Microsoft.Usage" CheckId="CA2202" Status="Active" Created="2020-02-05 16:46:13Z" FixCategory="DependsOnFix">
+             <Issue Certainty="75" Level="Warning" Path="E:\cenTANDAIDUONG\cenDAO" File="webConnectionDAO.cs" Line="269">Object 'sqlConnection' can be disposed more than once in method 'webConnectionDAO.InlineSql_ExecuteRDT(string, SqlParameter[])'. To avoid generating a System.ObjectDisposedException you should not call Dispose more than one time on an object.: Lines: 269</Issue>
+            </Message>
+            <Message TypeName="Review SQL queries for security vulnerabilities" Category="Microsoft.Security" CheckId="CA2100" Status="Active" Created="2020-02-05 16:46:13Z" FixCategory="DependsOnFix">
+             <Issue Name="WithNonLiterals" Certainty="75" Level="Warning" Path="E:\cenTANDAIDUONG\cenDAO" File="webConnectionDAO.cs" Line="243">The query string passed to 'SqlCommand.CommandText.set(string)' in 'webConnectionDAO.InlineSql_ExecuteRDT(string, SqlParameter[])' could contain the following variables 'sqlString'. If any of these variables could come from user input, consider using a stored procedure or a parameterized SQL query instead of building the query with string concatenations.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#tableList(System.Data.SqlClient.SqlParameter[],System.String,System.String)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="Review SQL queries for security vulnerabilities" Category="Microsoft.Security" CheckId="CA2100" Status="Active" Created="2020-02-05 16:46:13Z" FixCategory="DependsOnFix">
+             <Issue Name="WithNonLiterals" Certainty="75" Level="Warning" Path="E:\cenTANDAIDUONG\cenDAO" File="webConnectionDAO.cs" Line="92">The query string passed to 'SqlCommand.CommandText.set(string)' in 'webConnectionDAO.tableList(SqlParameter[], string, string)' could contain the following variables 'procName'. If any of these variables could come from user input, consider using a stored procedure or a parameterized SQL query instead of building the query with string concatenations.</Issue>
+             <Issue Name="WithNonLiterals" Certainty="75" Level="Warning" Path="E:\cenTANDAIDUONG\cenDAO" File="webConnectionDAO.cs" Line="92">The query string passed to 'SqlCommand.SqlCommand(string, SqlConnection)' in 'webConnectionDAO.tableList(SqlParameter[], string, string)' could contain the following variables 'procName'. If any of these variables could come from user input, consider using a stored procedure or a parameterized SQL query instead of building the query with string concatenations.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+       </Types>
+      </Namespace>
+      <Namespace Name="cenDAO.QuanLyBaiTanDaiDuong">
+       <Types>
+        <Type Name="ctXacNhanDichVuDAO" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Members>
+          <Member Name="#Insert(cenDTO.QuanLyBaiTanDaiDuong.ctXacNhanDichVu&amp;)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="Do not dispose objects multiple times" Category="Microsoft.Usage" CheckId="CA2202" Status="Active" Created="2020-02-05 16:46:13Z" FixCategory="DependsOnFix">
+             <Issue Certainty="75" Level="Warning" Path="E:\cenTANDAIDUONG\cenDAO\QuanLyXeTanDaiDuong" File="ctXacNhanDichVuDAO.cs" Line="121">Object 'connection' can be disposed more than once in method 'ctXacNhanDichVuDAO.Insert(ref ctXacNhanDichVu)'. To avoid generating a System.ObjectDisposedException you should not call Dispose more than one time on an object.: Lines: 121</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+       </Types>
+      </Namespace>
+     </Namespaces>
+    </Module>
+   </Modules>
+  </Target>
+ </Targets>
+ <Rules>
+  <Rule TypeName="Do not dispose objects multiple times" Category="Microsoft.Usage" CheckId="CA2202">
+   <Name>Do not dispose objects multiple times</Name>
+   <Description>A correctly implemented Dispose method can be called multiple times without throwing an exception. However, this is not guaranteed and to avoid generating a System.ObjectDisposedException you should not call Dispose more than one time on an object.</Description>
+   <Resolution Name="Default">Object {0} can be disposed more than once in method {1}. To avoid generating a System.ObjectDisposedException you should not call Dispose more than one time on an object.: Lines: 121</Resolution>
+   <Owner>RuleOwner</Owner>
+   <Url>http://msdn.microsoft.com/library/ms182334.aspx</Url>
+   <Email />
+   <MessageLevel Certainty="75">Warning</MessageLevel>
+   <File Name="dataflowrules.dll" Version="15.0.0.0" />
+  </Rule>
+  <Rule TypeName="Review SQL queries for security vulnerabilities" Category="Microsoft.Security" CheckId="CA2100">
+   <Name>Review SQL queries for security vulnerabilities</Name>
+   <Description>A SQL command string built from user input is vulnerable to SQL injection attacks. Microsoft SQL Server and other database servers support stored procedures and parameterized SQL queries, which reduce the risk of injection attacks.</Description>
+   <Resolution Name="WithNonLiterals">The query string passed to {0} in {1} could contain the following variables {2}. If any of these variables could come from user input, consider using a stored procedure or a parameterized SQL query instead of building the query with string concatenations.</Resolution>
+   <Owner>RuleOwner</Owner>
+   <Url>http://msdn.microsoft.com/library/ms182310.aspx</Url>
+   <Email />
+   <MessageLevel Certainty="75">Warning</MessageLevel>
+   <File Name="dataflowrules.dll" Version="15.0.0.0" />
+  </Rule>
+ </Rules>
+ <Localized>
+  <String Key="Category">Category</String>
+  <String Key="Certainty">Certainty</String>
+  <String Key="CollapseAll">Collapse All</String>
+  <String Key="CheckId">Check Id</String>
+  <String Key="Error">Error</String>
+  <String Key="Errors">error(s)</String>
+  <String Key="ExpandAll">Expand All</String>
+  <String Key="Help">Help</String>
+  <String Key="Line">Line</String>
+  <String Key="Messages">message(s)</String>
+  <String Key="LocationNotStoredInPdb">[Location not stored in Pdb]</String>
+  <String Key="Project">Project</String>
+  <String Key="Resolution">Resolution</String>
+  <String Key="Rule">Rule</String>
+  <String Key="RuleFile">Rule File</String>
+  <String Key="RuleDescription">Rule Description</String>
+  <String Key="Source">Source</String>
+  <String Key="Status">Status</String>
+  <String Key="Target">Target</String>
+  <String Key="Warning">Warning</String>
+  <String Key="Warnings">warning(s)</String>
+  <String Key="ReportTitle">Code Analysis Report</String>
+ </Localized>
+</FxCopReport>

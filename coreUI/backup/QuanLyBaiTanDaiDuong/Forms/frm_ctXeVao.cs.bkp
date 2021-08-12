@@ -1,0 +1,155 @@
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Data.SqlClient;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Windows.Forms;
+using cenBUS.DatabaseCore;
+using cenBUS.QuanLyBaiTanDaiDuong;
+using cenDTO.QuanLyBaiTanDaiDuong;
+using Infragistics.Win.UltraWinGrid;
+namespace cenCommonUIapps.QuanLyBaiTanDaiDuong.Forms
+{
+    public partial class frm_ctXeVao : cenBase.BaseForms.frmBaseChungTuSingleList
+    {
+        
+        public frm_ctXeVao()
+        {
+            InitializeComponent();
+        }
+        protected override void List()
+        {
+            DanhMucPhanQuyenBUS.GetPhanQuyenChungTu(cenCommon.GlobalVariables.IDDanhMucPhanQuyen, IDDanhMucChungTu, out bool Xem, out bool Them, out bool Sua, out bool Xoa);
+            if (!cenCommon.GlobalVariables.isAdmin && !Xem)
+            {
+                cenCommon.cenCommon.ErrorMessageOkOnly("Bạn không có quyền xem dữ liệu chứng từ này!");
+                return;
+            }
+            ctXeVaoBUS _BUS = new ctXeVaoBUS();
+            dtData = _BUS.List(cenCommon.GlobalVariables.IDDonVi, IDDanhMucChungTu, null, null, null, null, null);
+            tableName = ctXeVao.tableName;
+            dtData.TableName = tableName;
+
+            bsData = new BindingSource
+            {
+                DataSource = dtData
+            };
+            ug.FixedColumnsList = "[So][NgayLap][MaDanhMucXe][XeRa][NgayVao][GioVao]";
+            ug.AddfilterColumn = true;
+            ug.DataSource = bsData;
+            ug.DisplayLayout.Bands[0].Columns["MaDanhMucPhiVaoBai"].Hidden = true;
+            ug.DisplayLayout.Bands[0].Columns["TenDanhMucPhiVaoBai"].Hidden = true;
+            ug.DisplayLayout.Bands[0].Columns["MaDanhMucPhiLuuBai"].Hidden = true;
+            ug.DisplayLayout.Bands[0].Columns["TenDanhMucPhiLuuBai"].Hidden = true;
+        }
+        protected override void InsertDanhMuc()
+        {
+            DanhMucPhanQuyenBUS.GetPhanQuyenChungTu(cenCommon.GlobalVariables.IDDanhMucPhanQuyen, IDDanhMucChungTu, out bool Xem, out bool Them, out bool Sua, out bool Xoa);
+            if (!cenCommon.GlobalVariables.isAdmin && !Them)
+            {
+                cenCommon.cenCommon.ErrorMessageOkOnly("Bạn không có quyền thêm mới dữ liệu chứng từ này!");
+                return;
+            }
+            base.InsertDanhMuc();
+            if (!bContinue) return;
+            frm_ctXeVaoUpdate frmUpdate = new frm_ctXeVaoUpdate
+            {
+                CapNhat = 1,
+                dataTable = dtData,
+                IDDanhMucChungTu = IDDanhMucChungTu
+            };
+            frmUpdate.ShowDialog();
+        }
+        protected override void CopyDanhMuc()
+        {
+            DanhMucPhanQuyenBUS.GetPhanQuyenChungTu(cenCommon.GlobalVariables.IDDanhMucPhanQuyen, IDDanhMucChungTu, out bool Xem, out bool Them, out bool Sua, out bool Xoa);
+            if (!cenCommon.GlobalVariables.isAdmin && !Them)
+            {
+                cenCommon.cenCommon.ErrorMessageOkOnly("Bạn không có quyền thêm mới dữ liệu chứng từ này!");
+                return;
+            }
+            base.CopyDanhMuc();
+            if (!bContinue) return;
+            frm_ctXeVaoUpdate frmUpdate = new frm_ctXeVaoUpdate
+            {
+                CapNhat = 3,
+                dataTable = dtData,
+                dataRow = ((DataRowView)bsData.Current).Row,
+                IDDanhMucChungTu = IDDanhMucChungTu
+            };
+            frmUpdate.ShowDialog();
+        }
+        protected override void UpdateDanhMuc()
+        {
+            DanhMucPhanQuyenBUS.GetPhanQuyenChungTu(cenCommon.GlobalVariables.IDDanhMucPhanQuyen, IDDanhMucChungTu, out bool Xem, out bool Them, out bool Sua, out bool Xoa);
+            if (!cenCommon.GlobalVariables.isAdmin && !Sua)
+            {
+                cenCommon.cenCommon.ErrorMessageOkOnly("Bạn không có quyền sửa dữ liệu chứng từ này!");
+                return;
+            }
+            if (ug.ActiveRow.Cells["Huy"].Value.ToString() == "True" || ug.ActiveRow.Cells["XeRa"].Value.ToString() == "True")
+            {
+                cenCommon.cenCommon.ErrorMessageOkOnly("Phiếu đã bị hủy hoặc xe đã ra khỏi bãi, không sửa được!");
+                return;
+            }
+            base.UpdateDanhMuc();
+            if (!bContinue) return;
+            frm_ctXeVaoUpdate frmUpdate = new frm_ctXeVaoUpdate
+            {
+                CapNhat = 2,
+                dataTable = dtData,
+                dataRow = ((DataRowView)bsData.Current).Row,
+                IDDanhMucChungTu = IDDanhMucChungTu
+            };
+            frmUpdate.ShowDialog();
+        }
+        protected override void DeleteDanhMuc()
+        {
+            DanhMucPhanQuyenBUS.GetPhanQuyenChungTu(cenCommon.GlobalVariables.IDDanhMucPhanQuyen, IDDanhMucChungTu, out bool Xem, out bool Them, out bool Sua, out bool Xoa);
+            if (!cenCommon.GlobalVariables.isAdmin && !Them)
+            {
+                cenCommon.cenCommon.ErrorMessageOkOnly("Bạn không có quyền xóa dữ liệu chứng từ này!");
+                return;
+            }
+            if (ug.ActiveRow.Cells["Huy"].Value.ToString() == "True" || ug.ActiveRow.Cells["XeRa"].Value.ToString() == "True")
+            {
+                cenCommon.cenCommon.ErrorMessageOkOnly("Phiếu đã bị hủy hoặc xe đã ra khỏi bãi, không hủy được!");
+                return;
+            }
+            if (!bContinue) return;
+            frm_ctXeVaoUpdate frmUpdate = new frm_ctXeVaoUpdate
+            {
+                CapNhat = 4,
+                dataTable = dtData,
+                dataRow = ((DataRowView)bsData.Current).Row,
+                IDDanhMucChungTu = IDDanhMucChungTu
+            };
+            frmUpdate.ShowDialog();
+            if (ug.ActiveRow.Cells["Huy"].Value.ToString() == "True")
+            {
+                ug.ActiveRow.Appearance.ForeColor = Color.Red;
+            }
+        }
+
+        private void txtfilterBox_ValueChanged(object sender, EventArgs e)
+        {
+            cenCommon.cenCommon.filterGrid(ug, txtFilterBox.Text);
+        }
+
+        private void ug_InitializeRow(object sender, InitializeRowEventArgs e)
+        {
+            if (e.Row.Cells["Huy"].Value.ToString() == "True")
+            {
+                e.Row.Appearance.ForeColor = Color.Red;           
+            }
+        }
+
+        private void frm_ctXeVao_Load(object sender, EventArgs e)
+        {
+            
+        }
+    }
+}

@@ -1,0 +1,94 @@
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Data.SqlClient;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Windows.Forms;
+using cenBUS.DatabaseCore;
+using cenDTO.DatabaseCore;
+using Infragistics.Win.UltraWinGrid;
+namespace cenCommonUIapps.DatabaseCore.Forms
+{
+    public partial class frmDanhMucDonVi : cenBase.BaseForms.frmBaseDanhMuc
+    {
+        public frmDanhMucDonVi()
+        {
+            InitializeComponent();
+        }
+        protected override void List()
+        {
+            
+            DanhMucDonViBUS _BUS = new DanhMucDonViBUS();
+            dtData = _BUS.List();
+            tableName = DanhMucDonVi.tableName;
+            dtData.TableName = tableName;
+
+            bsDanhMuc = new BindingSource
+            {
+                DataSource = dtData
+            };
+            ug.AddfilterColumn = true;
+            ug.DataSource = bsDanhMuc;
+
+        }
+        protected override void InsertDanhMuc()
+        {
+            base.InsertDanhMuc();
+            if (!bContinue) return;
+            frmDanhMucDonViUpdate frmUpdate = new frmDanhMucDonViUpdate
+            {
+                CapNhat = 1,
+                dataTable = dtData
+            };
+            frmUpdate.ShowDialog();
+        }
+        protected override void CopyDanhMuc()
+        {
+            base.CopyDanhMuc();
+            if (!bContinue) return;
+            frmDanhMucDonViUpdate frmUpdate = new frmDanhMucDonViUpdate
+            {
+                CapNhat = 3,
+                dataTable = dtData,
+                dataRow = ((DataRowView)bsDanhMuc.Current).Row
+            };
+            frmUpdate.ShowDialog();
+        }
+        protected override void UpdateDanhMuc()
+        {
+            base.UpdateDanhMuc();
+            if (!bContinue) return;
+            frmDanhMucDonViUpdate frmUpdate = new frmDanhMucDonViUpdate
+            {
+                CapNhat = 2,
+                dataTable = dtData,
+                dataRow = ((DataRowView)bsDanhMuc.Current).Row
+            };
+            frmUpdate.ShowDialog();
+        }
+        protected override void DeleteDanhMuc()
+        {
+            base.DeleteDanhMuc();
+            if (!bContinue) return;
+            DataRow dataRow = ((DataRowView)bsDanhMuc.Current).Row;
+            DanhMucDonVi obj = new DanhMucDonVi()
+            {
+                ID = dataRow["ID"]
+            };
+            DanhMucDonViBUS bus = new DanhMucDonViBUS();
+            if (bus.Delete(obj)) bsDanhMuc.RemoveCurrent();
+            if (bsDanhMuc.Position < bsDanhMuc.Count - 1)
+                bsDanhMuc.MoveNext();
+            else
+                bsDanhMuc.MoveLast();
+        }
+
+        private void txtfilterBox_ValueChanged(object sender, EventArgs e)
+        {
+            cenCommon.cenCommon.filterGrid(ug, txtFilterBox.Text);
+        }
+    }
+}

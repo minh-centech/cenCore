@@ -1,0 +1,178 @@
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Data.SqlClient;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Windows.Forms;
+using Infragistics.Win.UltraWinGrid;
+using cenControls;
+using cenCommon;
+using cenBUS;
+using cenDTO;
+using cenBase.Classes;
+namespace cenBase.Forms
+{
+    public partial class frmDanhMucBaoCao : Form
+    {
+        public DataSet dsBaoCao;
+        public String LoaiDanhMuc = "DANHMUCBAOCAO";
+        //Binding Source
+        BindingSource bsBaoCao;
+        BindingSource bsBaoCaoCot;
+        public frmDanhMucBaoCao()
+        {
+            InitializeComponent();
+        }
+        private void frmMenu_Load(object sender, EventArgs e)
+        {
+            LoadData();
+            ugBaoCao.DisplayLayout.Override.FilterUIType = Infragistics.Win.UltraWinGrid.FilterUIType.FilterRow; //Biểu tượng lọc đặt trên tiêu đề cột
+            ugBaoCaoCot.DisplayLayout.Override.FilterUIType = Infragistics.Win.UltraWinGrid.FilterUIType.FilterRow; //Biểu tượng lọc đặt trên tiêu đề cột
+            //CommonUI.SetDisplayLanguage(this);
+        }
+        private void LoadData()
+        {
+            DanhMucBUS clsDanhMuc = new DanhMucBUS();
+            DataTable dtDanhMucBaoCao = null, dtDanhMucBaoCaoCot = null;
+            
+            if (!clsDanhMuc.List(ref dtDanhMucBaoCao, DanhMucBaoCao.TableName))
+            {
+                cenCommon.cenCommon.ErrorMessageOkOnly("Lỗi lấy dữ liệu danh mục báo cáo!");
+                return;
+            }
+            if (!clsDanhMuc.List(ref dtDanhMucBaoCaoCot, DanhMucBaoCaoCot.TableName))
+            {
+                cenCommon.cenCommon.ErrorMessageOkOnly("Lỗi lấy dữ liệu danh mục báo cáo cột!");
+                return;
+            }
+
+            dtDanhMucBaoCao.Columns.Add(new DataColumn("IDDanhMucBaoCaoCopy", typeof(String)));
+
+            dsBaoCao = new DataSet();
+            dsBaoCao.Tables.Add(dtDanhMucBaoCao);
+            dsBaoCao.Tables.Add(dtDanhMucBaoCaoCot);
+
+            dsBaoCao.Relations.Add(cenCommon.cenCommon.prefix_DataRelation + DanhMucBaoCaoCot.TableName, dtDanhMucBaoCao.Columns["ID"], dtDanhMucBaoCaoCot.Columns["IDDanhMucBaoCao"]);
+            
+            bsBaoCao = new BindingSource();
+            bsBaoCaoCot = new BindingSource();
+            //Load danh mục báo cáo
+            bsBaoCao.DataSource = dsBaoCao;
+            bsBaoCao.DataMember = DanhMucBaoCao.TableName;
+            bsBaoCaoCot.DataSource = bsBaoCao;
+            bsBaoCaoCot.DataMember = cenCommon.cenCommon.prefix_DataRelation +  DanhMucBaoCaoCot.TableName;
+            
+            ugBaoCao.DataSource = bsBaoCao;
+            ugBaoCaoCot.DataSource = bsBaoCaoCot;
+        }
+
+        private void UltraToolbarsManager1_ToolClick(object sender, Infragistics.Win.UltraWinToolbars.ToolClickEventArgs e)
+        {
+            cenBase.Classes.DanhMuc DanhMucUI;
+            switch (e.Tool.Key.ToString().ToUpper())
+            {
+                case "BTXOA":
+                    DanhMucUI = new cenBase.Classes.DanhMuc();
+                    DanhMucUI.IDDanhMucLoaiDoiTuong = null;
+                    DanhMucUI.LoaiDanhMuc = DanhMucBaoCao.TableName;
+                    DanhMucUI.XoaDanhMuc(bsBaoCao);
+                    break;
+                case "BTTHEM":
+                    DanhMucUI = new cenBase.Classes.DanhMuc();
+                    DanhMucUI.IDDanhMucLoaiDoiTuong = null;
+                    DanhMucUI.LoaiDanhMuc = DanhMucBaoCao.TableName;
+                    DanhMucUI.ThemDanhMuc(bsBaoCao);
+                    break;
+                case "BTSUA":
+                    if (bsBaoCao.Current != null)
+                    {
+                        DanhMucUI = new cenBase.Classes.DanhMuc();
+                        DanhMucUI.IDDanhMucLoaiDoiTuong = null;
+                        DanhMucUI.LoaiDanhMuc = DanhMucBaoCao.TableName;
+                        DanhMucUI.SuaDanhMuc(bsBaoCao);
+                    }
+                    break;
+                case "BTTAILAI":
+                    LoadData();
+                    break;
+            }
+        }
+        private void ug_DoubleClickRow(object sender, Infragistics.Win.UltraWinGrid.DoubleClickRowEventArgs e)
+        {
+            if (bsBaoCao.Current != null)
+            {
+                cenBase.Classes.DanhMuc DanhMucUI = new cenBase.Classes.DanhMuc();
+                DanhMucUI.IDDanhMucLoaiDoiTuong = null;
+                DanhMucUI.LoaiDanhMuc = DanhMucBaoCao.TableName;
+                DanhMucUI.SuaDanhMuc(bsBaoCao);
+            }
+        }
+
+        private void ThemChiTiet()
+        {
+            cenBase.Classes.DanhMuc DanhMucUI = new cenBase.Classes.DanhMuc();
+            DanhMucUI.IDDanhMucLoaiDoiTuong = null;
+            DanhMucUI.LoaiDanhMuc = "DANHMUCBAOCAOCOT";
+            DanhMucUI.ThemDanhMuc(bsBaoCaoCot);
+        }
+        private void SuaChiTiet()
+        {
+            cenBase.Classes.DanhMuc DanhMucUI = new cenBase.Classes.DanhMuc();
+            DanhMucUI.IDDanhMucLoaiDoiTuong = null;
+            DanhMucUI.LoaiDanhMuc = "DANHMUCBAOCAOCOT";
+            DanhMucUI.SuaDanhMuc(bsBaoCaoCot);
+        }
+        private void XoaChiTiet()
+        {
+            cenBase.Classes.DanhMuc DanhMucUI = new cenBase.Classes.DanhMuc();
+            DanhMucUI.IDDanhMucLoaiDoiTuong = null;
+            DanhMucUI.LoaiDanhMuc = "DANHMUCBAOCAOCOT";
+            DanhMucUI.XoaDanhMuc(bsBaoCaoCot);
+        }
+
+        private void btThemChiTiet_Click(object sender, EventArgs e)
+        {
+            ThemChiTiet();
+        }
+
+        private void btSuaChiTiet_Click(object sender, EventArgs e)
+        {
+            SuaChiTiet();
+        }
+
+        private void btXoaChiTiet_Click(object sender, EventArgs e)
+        {
+            XoaChiTiet();
+        }
+
+        private void frmDanhMucBaoCao_KeyDown(object sender, KeyEventArgs e)
+        {
+            switch (e.KeyCode)
+            {
+                case Keys.F9:
+                    ThemChiTiet();
+                    break;
+                case Keys.F11:
+                    SuaChiTiet();
+                    break;
+                case Keys.F12:
+                    XoaChiTiet();
+                    break;
+            }
+        }
+
+        private void ugMenuChiTiet_DoubleClickRow(object sender, DoubleClickRowEventArgs e)
+        {
+            SuaChiTiet();
+        }
+
+        private void frmDanhMucBaoCao_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            this.Dispose();
+        }
+
+    }
+}

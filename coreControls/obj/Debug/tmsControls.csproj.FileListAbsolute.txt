@@ -1,0 +1,148 @@
+D:\S3-CFS 2018\Runtimes\tmsControls.dll
+D:\S3-CFS 2018\Runtimes\tmsControls.pdb
+D:\S3-CFS 2018\Projects\s3Controls\obj\Debug\tmsControls.csprojResolveAssemblyReference.cache
+D:\S3-CFS 2018\Projects\s3Controls\obj\Debug\tmsControls.csproj.GenerateResource.Cache
+D:\S3-CFS 2018\Projects\s3Controls\obj\Debug\tmsControls.dll.licenses
+D:\S3-CFS 2018\Projects\s3Controls\obj\Debug\tmsControls.dll
+D:\S3-CFS 2018\Projects\s3Controls\obj\Debug\tmsControls.pdb
+D:\S3-CFS 2018\Projects\s3Controls\obj\Debug\tmsControls.saCheckBox.resources
+D:\S3-CFS 2018\Projects\s3Controls\obj\Debug\tmsControls.saDateTimeBox.resources
+D:\S3-CFS 2018\Projects\s3Controls\obj\Debug\tmsControls.saNonUpdateGrid.resources
+D:\S3-CFS 2018\Projects\s3Controls\obj\Debug\tmsControls.saNumericBox.resources
+D:\S3-CFS 2018\Projects\s3Controls\obj\Debug\tmsControls.saTextBox.resources
+D:\S3-CFS 2018\Projects\s3Controls\obj\Debug\tmsControls.saUpdateGrid.resources
+D:\S3-CFS 2018\Projects\tmsControls\obj\Debug\tmsControls.csprojResolveAssemblyReference.cache
+D:\S3-CFS 2018\Projects\tmsControls\obj\Debug\tmsControls.saCheckBox.resources
+D:\S3-CFS 2018\Projects\tmsControls\obj\Debug\tmsControls.saDateTimeBox.resources
+D:\S3-CFS 2018\Projects\tmsControls\obj\Debug\tmsControls.saNonUpdateGrid.resources
+D:\S3-CFS 2018\Projects\tmsControls\obj\Debug\tmsControls.saNumericBox.resources
+D:\S3-CFS 2018\Projects\tmsControls\obj\Debug\tmsControls.saTextBox.resources
+D:\S3-CFS 2018\Projects\tmsControls\obj\Debug\tmsControls.saUpdateGrid.resources
+D:\S3-CFS 2018\Projects\tmsControls\obj\Debug\tmsControls.csproj.GenerateResource.Cache
+D:\S3-CFS 2018\Projects\tmsControls\obj\Debug\tmsControls.dll.licenses
+D:\S3-CFS 2018\Projects\tmsControls\obj\Debug\tmsControls.dll
+D:\S3-CFS 2018\Projects\tmsControls\obj\Debug\tmsControls.pdb
+E:\tmsCFS 2018\Runtimes\tmsControls.dll
+E:\tmsCFS 2018\Runtimes\tmsControls.pdb
+E:\tmsCFS 2018\Projects\tmsControls\obj\Debug\tmsControls.csprojResolveAssemblyReference.cache
+E:\tmsCFS 2018\Projects\tmsControls\obj\Debug\tmsControls.saCheckBox.resources
+E:\tmsCFS 2018\Projects\tmsControls\obj\Debug\tmsControls.saDateTimeBox.resources
+E:\tmsCFS 2018\Projects\tmsControls\obj\Debug\tmsControls.saNonUpdateGrid.resources
+E:\tmsCFS 2018\Projects\tmsControls\obj\Debug\tmsControls.saNumericBox.resources
+E:\tmsCFS 2018\Projects\tmsControls\obj\Debug\tmsControls.saTextBox.resources
+E:\tmsCFS 2018\Projects\tmsControls\obj\Debug\tmsControls.saUpdateGrid.resources
+E:\tmsCFS 2018\Projects\tmsControls\obj\Debug\tmsControls.csproj.GenerateResource.Cache
+E:\tmsCFS 2018\Projects\tmsControls\obj\Debug\tmsControls.dll.licenses
+E:\tmsCFS 2018\Projects\tmsControls\obj\Debug\tmsControls.dll
+E:\tmsCFS 2018\Projects\tmsControls\obj\Debug\tmsControls.pdb
+F:\tmsCFS 2018\Runtimes\tmsControls.dll
+F:\tmsCFS 2018\Runtimes\tmsControls.pdb
+F:\tmsCFS 2018\Projects\tmsControls\obj\Debug\tmsControls.saCheckBox.resources
+F:\tmsCFS 2018\Projects\tmsControls\obj\Debug\tmsControls.saDateTimeBox.resources
+F:\tmsCFS 2018\Projects\tmsControls\obj\Debug\tmsControls.saNonUpdateGrid.resources
+F:\tmsCFS 2018\Projects\tmsControls\obj\Debug\tmsControls.saNumericBox.resources
+F:\tmsCFS 2018\Projects\tmsControls\obj\Debug\tmsControls.saTextBox.resources
+F:\tmsCFS 2018\Projects\tmsControls\obj\Debug\tmsControls.saUpdateGrid.resources
+F:\tmsCFS 2018\Projects\tmsControls\obj\Debug\tmsControls.dll.licenses
+F:\tmsCFS 2018\Projects\tmsControls\obj\Debug\tmsControls.dll
+F:\tmsCFS 2018\Projects\tmsControls\obj\Debug\tmsControls.pdb
+G:\tmsCFS 2018\Runtimes\tmsControls.dll
+G:\tmsCFS 2018\Runtimes\tmsControls.pdb
+G:\tmsCFS 2018\Projects\tmsControls\obj\Debug\tmsControls.saCheckBox.resources
+G:\tmsCFS 2018\Projects\tmsControls\obj\Debug\tmsControls.saDateTimeBox.resources
+G:\tmsCFS 2018\Projects\tmsControls\obj\Debug\tmsControls.saNonUpdateGrid.resources
+G:\tmsCFS 2018\Projects\tmsControls\obj\Debug\tmsControls.saNumericBox.resources
+G:\tmsCFS 2018\Projects\tmsControls\obj\Debug\tmsControls.saTextBox.resources
+G:\tmsCFS 2018\Projects\tmsControls\obj\Debug\tmsControls.saUpdateGrid.resources
+G:\tmsCFS 2018\Projects\tmsControls\obj\Debug\tmsControls.dll.licenses
+G:\tmsCFS 2018\Projects\tmsControls\obj\Debug\tmsControls.dll
+G:\tmsCFS 2018\Projects\tmsControls\obj\Debug\tmsControls.pdb
+G:\tmsCFS 2018\Projects\tmsControls\obj\Debug\ResolveAssemblyReference.cache
+G:\tmsCFS 2018\Projects\tmsControls\obj\Debug\GenerateResource.read.1.tlog
+G:\tmsCFS 2018\Projects\tmsControls\obj\Debug\GenerateResource.write.1.tlog
+H:\tmsCFS 2018\Runtimes\tmsControls.dll
+H:\tmsCFS 2018\Runtimes\tmsControls.pdb
+H:\tmsCFS 2018\Projects\tmsControls\obj\Debug\tmsControls.csprojResolveAssemblyReference.cache
+H:\tmsCFS 2018\Projects\tmsControls\obj\Debug\tmsControls.saCheckBox.resources
+H:\tmsCFS 2018\Projects\tmsControls\obj\Debug\tmsControls.saDateTimeBox.resources
+H:\tmsCFS 2018\Projects\tmsControls\obj\Debug\tmsControls.saNonUpdateGrid.resources
+H:\tmsCFS 2018\Projects\tmsControls\obj\Debug\tmsControls.saNumericBox.resources
+H:\tmsCFS 2018\Projects\tmsControls\obj\Debug\tmsControls.saTextBox.resources
+H:\tmsCFS 2018\Projects\tmsControls\obj\Debug\tmsControls.saUpdateGrid.resources
+H:\tmsCFS 2018\Projects\tmsControls\obj\Debug\tmsControls.csproj.GenerateResource.Cache
+H:\tmsCFS 2018\Projects\tmsControls\obj\Debug\tmsControls.dll.licenses
+H:\tmsCFS 2018\Projects\tmsControls\obj\Debug\tmsControls.dll
+H:\tmsCFS 2018\Projects\tmsControls\obj\Debug\tmsControls.pdb
+F:\tmsCFS 2018\Projects\tmsControls\obj\Debug\ResolveAssemblyReference.cache
+F:\tmsCFS 2018\Projects\tmsControls\obj\Debug\GenerateResource.read.1.tlog
+F:\tmsCFS 2018\Projects\tmsControls\obj\Debug\GenerateResource.write.1.tlog
+E:\Minh\tmsCFS 2018\Runtimes\tmsControls.dll
+E:\Minh\tmsCFS 2018\Runtimes\tmsControls.pdb
+E:\Minh\tmsCFS 2018\Projects\tmsControls\obj\Debug\tmsControls.csprojResolveAssemblyReference.cache
+E:\Minh\tmsCFS 2018\Projects\tmsControls\obj\Debug\tmsControls.saCheckBox.resources
+E:\Minh\tmsCFS 2018\Projects\tmsControls\obj\Debug\tmsControls.saDateTimeBox.resources
+E:\Minh\tmsCFS 2018\Projects\tmsControls\obj\Debug\tmsControls.saNonUpdateGrid.resources
+E:\Minh\tmsCFS 2018\Projects\tmsControls\obj\Debug\tmsControls.saNumericBox.resources
+E:\Minh\tmsCFS 2018\Projects\tmsControls\obj\Debug\tmsControls.saTextBox.resources
+E:\Minh\tmsCFS 2018\Projects\tmsControls\obj\Debug\tmsControls.saUpdateGrid.resources
+E:\Minh\tmsCFS 2018\Projects\tmsControls\obj\Debug\tmsControls.csproj.GenerateResource.Cache
+E:\Minh\tmsCFS 2018\Projects\tmsControls\obj\Debug\tmsControls.dll.licenses
+E:\Minh\tmsCFS 2018\Projects\tmsControls\obj\Debug\tmsControls.dll
+E:\Minh\tmsCFS 2018\Projects\tmsControls\obj\Debug\tmsControls.pdb
+D:\tmsCFS 2018\Runtimes\tmsControls.dll
+D:\tmsCFS 2018\Runtimes\tmsControls.pdb
+D:\tmsCFS 2018\Projects\tmsControls\obj\Debug\tmsControls.csprojResolveAssemblyReference.cache
+D:\tmsCFS 2018\Projects\tmsControls\obj\Debug\tmsControls.saCheckBox.resources
+D:\tmsCFS 2018\Projects\tmsControls\obj\Debug\tmsControls.saDateTimeBox.resources
+D:\tmsCFS 2018\Projects\tmsControls\obj\Debug\tmsControls.saNonUpdateGrid.resources
+D:\tmsCFS 2018\Projects\tmsControls\obj\Debug\tmsControls.saNumericBox.resources
+D:\tmsCFS 2018\Projects\tmsControls\obj\Debug\tmsControls.saTextBox.resources
+D:\tmsCFS 2018\Projects\tmsControls\obj\Debug\tmsControls.saUpdateGrid.resources
+D:\tmsCFS 2018\Projects\tmsControls\obj\Debug\tmsControls.csproj.GenerateResource.Cache
+D:\tmsCFS 2018\Projects\tmsControls\obj\Debug\tmsControls.dll.licenses
+D:\tmsCFS 2018\Projects\tmsControls\obj\Debug\tmsControls.dll
+D:\tmsCFS 2018\Projects\tmsControls\obj\Debug\tmsControls.pdb
+F:\tmsCFS 2018 - HAAL\Runtimes\tmsControls.dll
+F:\tmsCFS 2018 - HAAL\Runtimes\tmsControls.pdb
+F:\tmsCFS 2018 - HAAL\Projects\tmsControls\obj\Debug\ResolveAssemblyReference.cache
+F:\tmsCFS 2018 - HAAL\Projects\tmsControls\obj\Debug\tmsControls.saCheckBox.resources
+F:\tmsCFS 2018 - HAAL\Projects\tmsControls\obj\Debug\tmsControls.saDateTimeBox.resources
+F:\tmsCFS 2018 - HAAL\Projects\tmsControls\obj\Debug\tmsControls.saNonUpdateGrid.resources
+F:\tmsCFS 2018 - HAAL\Projects\tmsControls\obj\Debug\tmsControls.saNumericBox.resources
+F:\tmsCFS 2018 - HAAL\Projects\tmsControls\obj\Debug\tmsControls.saTextBox.resources
+F:\tmsCFS 2018 - HAAL\Projects\tmsControls\obj\Debug\tmsControls.saUpdateGrid.resources
+F:\tmsCFS 2018 - HAAL\Projects\tmsControls\obj\Debug\GenerateResource.read.1.tlog
+F:\tmsCFS 2018 - HAAL\Projects\tmsControls\obj\Debug\GenerateResource.write.1.tlog
+F:\tmsCFS 2018 - HAAL\Projects\tmsControls\obj\Debug\tmsControls.dll.licenses
+F:\tmsCFS 2018 - HAAL\Projects\tmsControls\obj\Debug\tmsControls.dll
+F:\tmsCFS 2018 - HAAL\Projects\tmsControls\obj\Debug\tmsControls.pdb
+D:\tmsCFS 2018 - HAAL\Runtimes\tmsControls.dll
+D:\tmsCFS 2018 - HAAL\Runtimes\tmsControls.pdb
+D:\tmsCFS 2018 - HAAL\Projects\tmsControls\obj\Debug\tmsControls.csprojAssemblyReference.cache
+D:\tmsCFS 2018 - HAAL\Projects\tmsControls\obj\Debug\tmsControls.saCheckBox.resources
+D:\tmsCFS 2018 - HAAL\Projects\tmsControls\obj\Debug\tmsControls.saDateTimeBox.resources
+D:\tmsCFS 2018 - HAAL\Projects\tmsControls\obj\Debug\tmsControls.saNonUpdateGrid.resources
+D:\tmsCFS 2018 - HAAL\Projects\tmsControls\obj\Debug\tmsControls.saNumericBox.resources
+D:\tmsCFS 2018 - HAAL\Projects\tmsControls\obj\Debug\tmsControls.saTextBox.resources
+D:\tmsCFS 2018 - HAAL\Projects\tmsControls\obj\Debug\tmsControls.saUpdateGrid.resources
+D:\tmsCFS 2018 - HAAL\Projects\tmsControls\obj\Debug\tmsControls.csproj.GenerateResource.cache
+D:\tmsCFS 2018 - HAAL\Projects\tmsControls\obj\Debug\tmsControls.dll.licenses
+D:\tmsCFS 2018 - HAAL\Projects\tmsControls\obj\Debug\tmsControls.csproj.CoreCompileInputs.cache
+D:\tmsCFS 2018 - HAAL\Projects\tmsControls\obj\Debug\tmsControls.csproj.CopyComplete
+D:\tmsCFS 2018 - HAAL\Projects\tmsControls\obj\Debug\tmsControls.dll
+D:\tmsCFS 2018 - HAAL\Projects\tmsControls\obj\Debug\tmsControls.pdb
+D:\Minh\tmsCFS 2018 - HAAL\Runtimes\tmsControls.dll
+D:\Minh\tmsCFS 2018 - HAAL\Runtimes\tmsControls.pdb
+D:\Minh\tmsCFS 2018 - HAAL\Projects\tmsControls\obj\Debug\tmsControls.csprojAssemblyReference.cache
+D:\Minh\tmsCFS 2018 - HAAL\Projects\tmsControls\obj\Debug\tmsControls.saCheckBox.resources
+D:\Minh\tmsCFS 2018 - HAAL\Projects\tmsControls\obj\Debug\tmsControls.saDateTimeBox.resources
+D:\Minh\tmsCFS 2018 - HAAL\Projects\tmsControls\obj\Debug\tmsControls.saNonUpdateGrid.resources
+D:\Minh\tmsCFS 2018 - HAAL\Projects\tmsControls\obj\Debug\tmsControls.saNumericBox.resources
+D:\Minh\tmsCFS 2018 - HAAL\Projects\tmsControls\obj\Debug\tmsControls.saTextBox.resources
+D:\Minh\tmsCFS 2018 - HAAL\Projects\tmsControls\obj\Debug\tmsControls.saUpdateGrid.resources
+D:\Minh\tmsCFS 2018 - HAAL\Projects\tmsControls\obj\Debug\tmsControls.csproj.GenerateResource.cache
+D:\Minh\tmsCFS 2018 - HAAL\Projects\tmsControls\obj\Debug\tmsControls.dll.licenses
+D:\Minh\tmsCFS 2018 - HAAL\Projects\tmsControls\obj\Debug\tmsControls.csproj.CoreCompileInputs.cache
+D:\Minh\tmsCFS 2018 - HAAL\Projects\tmsControls\obj\Debug\tmsControls.csproj.CopyComplete
+D:\Minh\tmsCFS 2018 - HAAL\Projects\tmsControls\obj\Debug\tmsControls.dll
+D:\Minh\tmsCFS 2018 - HAAL\Projects\tmsControls\obj\Debug\tmsControls.pdb

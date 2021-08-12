@@ -1,0 +1,798 @@
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Data.SqlClient;
+using System.Drawing;
+using System.Globalization;
+using System.Linq;
+using System.Text;
+using System.Windows.Forms;
+using Infragistics.Win;
+using Infragistics.Win.Misc;
+using Infragistics.Win.UltraWinGrid;
+using Infragistics.Win.UltraWinCalcManager;
+using Infragistics.Win.UltraWinToolbars;
+using cenControls;
+using cenCommon;
+using cenDTO;
+using cenDAO;
+using cenBUS;
+namespace cenBase.BaseForms
+{
+    public partial class frmBaseChungTu : Form
+    {
+        public short UpdateMode = 0; //Chế độ cập nhật: 0: Chỉ đọc, 1: Thêm mới, 2: Sửa chứng từ
+        //Loại chứng từ
+        public Object IDDanhMucChungTu;
+        public Object MaDanhMucChungTu;
+        public Object LoaiManHinh;
+        public Boolean SinhSoTuDong = true;
+        public Boolean SinhKyHieuTuDong = true;
+        public Byte DetailLevel = 1; //Mức chi tiết
+        public Int16 MaxDetailRow = 0;
+        public DataSet dsChungTuLienQuan; //Table 0 chứa chứng từ in, Table 1 chứa chứng từ liên quan
+
+        protected String ReportFileName = "", TenMayIn = "", spName = "";
+        protected Int16 SoLien = 1;
+        
+        //
+        public Boolean CallFromMain = true; //Gọi từ mainForm
+        public Object GiaTriChuyenChungTuSau = null; //Giá trị truyển tới chứng từ tiếp theo
+        //ID chứng từ tham chiếu
+        public Object IDChungTuThamChieu = null;
+        public Object IDChungTuThamChieuChiTiet = null;
+        //Tên table
+        protected String TableName = "";
+        protected String TableNameDetail = "";
+        protected String TableNameDetail2 = "";
+        //Tên store insert/update/delete
+        protected String InsertProcName = "";
+        protected String InsertChiTietProcName = "";
+        protected String InsertChiTiet2ProcName = "";
+        protected String UpdateProcName = "";
+        protected String UpdateChiTietProcName = "";
+        protected String UpdateChiTiet2ProcName = "";
+        protected String DeleteProcName = "";
+        protected String DeleteChiTietProcName = "";
+        protected String DeleteChiTiet2ProcName = "";
+        //DataSet
+        public DataSet dsChungTu = new DataSet(); //Chứa chứng từ
+        protected DataSet dsChungTuUpdate; //Chứa chứng từ đang cập nhật
+        public DataSet dsValid = new DataSet(); //Chứa các bảng dữ liệu valid
+        //DataTable lưu dữ liệu tạm
+        protected DataRow drChungTu;
+        protected DataTable dtChungTu;
+        protected DataTable dtChungTuChiTiet;
+        protected DataTable dtChungTuChiTiet2;
+        public Boolean LoadEmpty = true; //Nạp chứng từ trắng
+        //BindingSource
+        public BindingSource bsChungTu = null; //Header chứng từ
+        public BindingSource bsChungTuChiTiet = null; //Chi tiết chứng từ
+        public BindingSource bsChungTuChiTiet2 = null; //Chi tiết chứng từ 2
+        //Chứng từ
+        public object IDChungTu = null;
+        int ChungTuPosition;
+        protected Boolean drChungTuAdded = false;
+        protected Boolean drChungTuDeleted = false;
+        //
+        protected Boolean GridValidation = true;//Có valid trên lưới chi tiết chứng từ hay không
+        
+        public frmBaseChungTu()
+        {
+            InitializeComponent();
+            txtKyHieu.Enabled = !SinhKyHieuTuDong;
+            txtSo.Enabled = !SinhSoTuDong;
+            ugChiTiet.ConfirmDelete = false;
+            toolBar.Toolbars[0].Tools["btThemDong"].SharedProps.Visible = false;
+            toolBar.Toolbars[0].Tools["btXoaDong"].SharedProps.Visible = false;
+        }
+        #region Methods
+        //Lấy dữ liệu danh mục valid
+        protected virtual void loadValidDataSet()
+        {
+            DataTable dtValid;
+            //Lấy trạng thái chứng từ
+            dtValid = new DataTable();
+            DanhMucTrangThaiChungTuBUS DanhMucTrangThaiChungTuBUS = new DanhMucTrangThaiChungTuBUS();
+            if (!DanhMucTrangThaiChungTuBUS.List(ref dtValid, IDDanhMucChungTu, null))
+            {
+                cenCommon.cenCommon.ErrorMessageOkOnly("Lỗi: Không lấy được trạng thái chứng từ!");
+                return;
+            }
+            dtValid.TableName = DanhMucTrangThaiChungTu.TableName;
+            if (dsValid.Tables.Contains(DanhMucTrangThaiChungTu.TableName))
+            {
+                dsValid.Tables.Remove(DanhMucTrangThaiChungTu.TableName);
+            }
+            dsValid.Tables.Add(dtValid);
+            //add Trạng thái chứng từ
+            cboIDDanhMucTrangThaiChungTu.DataSource = dsValid;
+            cboIDDanhMucTrangThaiChungTu.DataMember = DanhMucTrangThaiChungTu.TableName;
+            cboIDDanhMucTrangThaiChungTu.ValueMember = "ID";
+            cboIDDanhMucTrangThaiChungTu.DisplayMember = "Ten";
+        }
+        //Lấy dữ liệu vào dataset
+        protected virtual void loadData()
+        {
+            //Load dsChungTu
+            ChungTuDAO _DAO = new ChungTuDAO();
+            if (IDChungTu == null)
+            {
+                dsChungTu = _DAO.LoadEmpty(IDDanhMucChungTu, DetailLevel, TableName, TableNameDetail, TableNameDetail2);
+            }
+            else
+            {
+                dsChungTu = _DAO.LoadByID(IDChungTu, IDDanhMucChungTu, DetailLevel, TableName, TableNameDetail, TableNameDetail2);
+            }
+            //Load dsValid
+        }
+        //Kết nối dataset với control
+        protected virtual void setDataBindings()
+        {
+            if (dsChungTu == null) return;
+            bsChungTu = new BindingSource
+            {
+                DataSource = (UpdateMode == 0) ? dsChungTu : dsChungTuUpdate,
+                DataMember = TableName
+            };
+            bsChungTuChiTiet = new BindingSource
+            {
+                DataSource = bsChungTu,
+                DataMember = cenCommon.cenCommon.prefix_DataRelation + TableNameDetail
+            };
+            //set master databindings
+            //1. Base master databindings
+            txtKyHieu.SetDataBinding(bsChungTu, "KyHieu", false, DataSourceUpdateMode.OnPropertyChanged);
+            txtSo.SetDataBinding(bsChungTu, "So", false, DataSourceUpdateMode.OnPropertyChanged);
+            txtNgayLap.SetDataBinding(bsChungTu, "NgayLap", false, DataSourceUpdateMode.OnPropertyChanged);
+            txtNgayHachToan.SetDataBinding(bsChungTu, "NgayHachToan", false, DataSourceUpdateMode.OnPropertyChanged);
+            cboIDDanhMucTrangThaiChungTu.DataBindings.Clear();
+            cboIDDanhMucTrangThaiChungTu.DataBindings.Add("Value", bsChungTu, "IDDanhMucTrangThaiChungTu", false, DataSourceUpdateMode.OnPropertyChanged);
+            //Set databinding for ListChungTu grid
+            ugListChungTu.DataSource = bsChungTu;
+            foreach (UltraGridColumn ugc in ugListChungTu.DisplayLayout.Bands[0].Columns)
+            {
+                if (ugc.Key.ToUpper() != "SO" && ugc.Key.ToUpper() != "NGAYHACHTOAN")
+                {
+                    ugc.Hidden = true;
+                }
+            }
+            ugListChungTu.DisplayLayout.Override.FilterUIType = Infragistics.Win.UltraWinGrid.FilterUIType.Default; //Biểu tượng lọc đặt trên tiêu đề cột
+            ugListChungTu.DisplayLayout.Bands[0].Columns["NgayLap"].MaskInput = "dd/mm";
+            ugListChungTu.DisplayLayout.Bands[0].Columns["NgayHachToan"].MaskInput = "dd/mm";
+            ugListChungTu.DisplayLayout.AutoFitStyle = AutoFitStyle.ResizeAllColumns;
+            //set detail databindings
+            ugChiTiet.DataSource = bsChungTuChiTiet;
+            this.tabChiTiet.Tabs[0].Text = TableNameDetail + " (Ctrl+Insert: Thêm dòng; Ctrl+Delete: Xóa dòng)";
+            if (DetailLevel == 2)
+            {
+                bsChungTuChiTiet2 = new BindingSource
+                {
+                    DataSource = bsChungTuChiTiet,
+                    DataMember = cenCommon.cenCommon.prefix_DataRelation + TableNameDetail2
+                };
+                ugChiTiet2.DataSource = bsChungTuChiTiet2;
+                this.tabChiTiet2.Tabs[0].Text = TableNameDetail2 + " (Ctrl+2: Mở)";
+            }
+            //2. Customs master databingdings
+            setCustomsDataBindings();
+            showHideListChungTu();
+        }
+        //Thêm chứng từ
+        protected virtual void themChungTu()
+        {
+            if (!CommonBUS.CheckRight("Them", "ChungTu", IDDanhMucChungTu.ToString())) return;
+            txtfilterDetail.Text = "";
+            UpdateMode = 1;
+            copy2TempDataSet();
+            drChungTuAdded = false;
+            //
+            IDChungTuThamChieu = null;
+            IDChungTuThamChieuChiTiet = null;
+            //Set data binding
+            setDataBindings();
+            //
+            if (bsChungTu == null) return;
+            GridValidation = false;
+            bsChungTu.AddNew();
+            drChungTu = ((DataRowView)bsChungTu.Current).Row;
+            drChungTu["ID"] = dsChungTuUpdate.Tables[TableName].Rows.Count.ToString();
+            drChungTu["IDDanhMucChungTu"] = IDDanhMucChungTu;
+            dsChungTuUpdate.Tables[TableName].Rows.Add(drChungTu);
+            if (bsChungTu.Current == null) return;
+
+            if (LoaiManHinh.ToString() != cenCommon.LoaiManHinh.ManHinh_knqContainerPhieuGiaoNhan 
+                && LoaiManHinh.ToString() != cenCommon.LoaiManHinh.ManHinh_knqContainerCamDien
+                && LoaiManHinh.ToString() != cenCommon.LoaiManHinh.ManHinh_knqHangKienXuatKho
+                && LoaiManHinh.ToString() != cenCommon.LoaiManHinh.ManHinh_knqHangKienPhiLuuKho
+                && LoaiManHinh.ToString() != cenCommon.LoaiManHinh.ManHinh_knqContainerPhiLuuBai
+                &&  bsChungTuChiTiet != null)
+            {
+                bsChungTuChiTiet.AddNew();
+                ugChiTiet.Rows[0].Activate();
+                ugChiTiet.ActiveRow.Cells["ID"].Value = dsChungTuUpdate.Tables[TableNameDetail].Rows.Count;
+            }
+            
+            
+            //
+            enableControl();
+            //
+            GridValidation = true;
+            //Đặt giá trị mặc định
+            txtNgayLap.Value = cenCommon.cenCommon.NgayHachToan();
+            txtNgayHachToan.Value = cenCommon.cenCommon.NgayHachToan();
+            if (cboIDDanhMucTrangThaiChungTu.Items.Count > 0)
+                cboIDDanhMucTrangThaiChungTu.SelectedItem = cboIDDanhMucTrangThaiChungTu.Items[0];
+            //
+        }
+        //Thêm chứng từ chi tiết
+        protected virtual void themChungTuChiTiet()
+        {
+            if (!CommonBUS.CheckRight("Sua", "ChungTu", IDDanhMucChungTu.ToString())) return;
+            
+            GridValidation = false;
+            bsChungTuChiTiet.AddNew();
+            ugChiTiet.Focus();
+            ugChiTiet.DisplayLayout.Rows[ugChiTiet.DisplayLayout.Rows.Count - 1].Activate();
+            ugChiTiet.ActiveRow.Cells["ID"].Value = cenBase.Classes.ChungTu.MaxTempID(dsChungTuUpdate.Tables[TableNameDetail]);
+
+            foreach (UltraGridColumn ugCol in ugChiTiet.DisplayLayout.Bands[0].Columns)
+            {
+                if (!ugCol.Hidden)
+                {
+                    ugChiTiet.ActiveCell = ugChiTiet.ActiveRow.Cells[ugCol.Key];
+                    ugChiTiet.ActiveCell.Activate();
+                    break;
+                }
+            }
+            GridValidation = true;
+        }
+        //Sửa chứng từ
+        protected virtual void suaChungTu()
+        {
+            if (!CommonBUS.CheckRight("Sua", "ChungTu", IDDanhMucChungTu.ToString())) { cenCommon.cenCommon.ErrorMessageOkOnly("Người sử dụng không có quyền sửa chứng từ!"); return; }
+            txtfilterDetail.Text = "";
+            if (bsChungTu.Current == null) return;
+
+            drChungTu = ((DataRowView)bsChungTu.Current).Row;
+            //Kiểm tra xem chứng từ này có cột hủy hay không
+            if (drChungTu.Table.Columns.Contains("Huy") && drChungTu["Huy"] != DBNull.Value && Convert.ToBoolean(drChungTu["Huy"].ToString()) == true)
+            {
+                cenCommon.cenCommon.ErrorMessageOkOnly("Không sửa được chứng từ đã bị hủy!");
+                return;
+            }
+            IDChungTu = drChungTu["ID"];
+            drChungTuAdded = true;
+            //
+            ChungTuPosition = bsChungTu.Position;
+            UpdateMode = 2;
+            copy2TempDataSet();
+            GridValidation = false;
+            //Set data binding
+            //drChungTu = ((DataRowView)bsChungTu.Current).Row;
+            setDataBindings();
+            //
+            updateCustomsData();
+            //
+            UpdateMode = 2;
+            enableControl();
+            //
+            GridValidation = true;
+        }
+        //Xóa chứng từ
+        protected virtual void xoaChungTu()
+        {
+            drChungTuDeleted = false;
+            if (!CommonBUS.CheckRight("Xoa", "ChungTu", IDDanhMucChungTu.ToString())) { cenCommon.cenCommon.ErrorMessageOkOnly("Người sử dụng không có quyền xóa chứng từ!"); return; }
+            if (bsChungTu.Current == null) return;
+            DataRow drChungTuDelete = ((DataRowView)bsChungTu.Current).Row;
+            Boolean bHuy = false;
+            //Kiểm tra xem chứng từ này có cột hủy hay không
+            if (drChungTuDelete.Table.Columns.Contains("Huy"))
+            {
+                bHuy = true;
+            }
+            if (drChungTuDelete.Table.Columns.Contains("Huy") && drChungTuDelete["Huy"] != DBNull.Value && Convert.ToBoolean(drChungTuDelete["Huy"].ToString()) == true)
+            {
+                cenCommon.cenCommon.ErrorMessageOkOnly("Không xóa được chứng từ đã bị hủy!");
+                return;
+            }
+            if (cenCommon.cenCommon.QuestionMessage("Bạn chắc chắn muốn xóa chứng từ này?", 0) != System.Windows.Forms.DialogResult.Yes) return;
+            ChungTuDAO DAO = new ChungTuDAO();
+            if (DAO.Delete(drChungTuDelete, DeleteProcName))
+            {
+                if (!bHuy)
+                {
+                    bsChungTu.RemoveCurrent();
+                    bsChungTu.EndEdit();
+                }
+                else
+                    drChungTuDelete["Huy"] = true;
+                dsChungTu.AcceptChanges();
+                drChungTuDeleted = true;
+            }
+
+        }
+        protected virtual void xoaChungTuChiTiet()
+        {
+            if (!CommonBUS.CheckRight("Xoa", "ChungTu", IDDanhMucChungTu.ToString())) return;
+            if (ugChiTiet.ActiveRow == null) return;
+            ugChiTiet.ActiveRow.Delete();
+        }
+        //Lưu chứng từ
+        protected virtual void luuChungTu()
+        {
+            ugChiTiet.UpdateData();
+            if (DetailLevel == 2) ugChiTiet2.UpdateData();
+            if (UpdateMode == 0) return;
+            if (drChungTu == null) return;
+            if (dsChungTuUpdate == null || dsChungTuUpdate.Tables.Count < 2) return;
+
+            ugChiTiet.UpdateData();
+            if (DetailLevel == 2) ugChiTiet2.UpdateData();
+
+            saveCustomsData();
+
+            if (UpdateMode == 1)
+            {
+                drChungTu["IDDonVi"] = cenCommon.cenCommon.IDDonVi;
+                drChungTu["IDDanhMucChungTu"] = IDDanhMucChungTu;
+                drChungTu["KyHieu"] = MaDanhMucChungTu;
+            }
+            bsChungTu.EndEdit();
+            foreach (DataRow drChungTuCapNhatChiTiet in dsChungTuUpdate.Tables[TableNameDetail].Rows)
+            {
+
+                if (drChungTuCapNhatChiTiet.RowState != DataRowState.Deleted && drChungTuCapNhatChiTiet["IDDanhMucChungTu"] == DBNull.Value)
+                {
+                    drChungTuCapNhatChiTiet["IDDanhMucChungTu"] = IDDanhMucChungTu;
+                    drChungTuCapNhatChiTiet["IDChungTu"] = drChungTu["ID"];
+                    drChungTuCapNhatChiTiet["IDDonVi"] = cenCommon.cenCommon.IDDonVi;
+                }
+            }
+            bsChungTuChiTiet.EndEdit();
+            if (DetailLevel == 2)
+            {
+                foreach (DataRow drChungTuCapNhatChiTiet2 in dsChungTuUpdate.Tables[TableNameDetail2].Rows)
+                {
+
+                    if (drChungTuCapNhatChiTiet2.RowState != DataRowState.Deleted && drChungTuCapNhatChiTiet2["IDDanhMucChungTu"] == DBNull.Value)
+                    {
+                        drChungTuCapNhatChiTiet2["IDChungTu"] = drChungTu["ID"];
+                        drChungTuCapNhatChiTiet2["IDDanhMucChungTu"] = IDDanhMucChungTu;
+                        drChungTuCapNhatChiTiet2["IDDonVi"] = cenCommon.cenCommon.IDDonVi;
+                    }
+                }
+                bsChungTuChiTiet2.EndEdit();
+            }
+            String So = "";
+            ChungTuDAO DAO = new ChungTuDAO();
+            if (UpdateMode == 1)
+            {
+                if (DAO.Insert(out IDChungTu, out So, InsertProcName, InsertChiTietProcName, InsertChiTiet2ProcName, dsChungTuUpdate.Tables[TableName], dsChungTuUpdate.Tables[TableNameDetail], dsChungTuUpdate.Tables[TableNameDetail2]))
+                {
+                    txtfilterDetail.Text = "";
+                    //Merge data
+                    dsChungTu.Tables[TableName].Merge(dtChungTu);
+                    dsChungTu.Tables[TableNameDetail].Merge(dtChungTuChiTiet);
+                    if (DetailLevel == 2)
+                        dsChungTu.Tables[TableNameDetail2].Merge(dtChungTuChiTiet2);
+                    drChungTu["So"] = So;
+                    dsChungTu.AcceptChanges();
+                    UpdateMode = 0;
+                    setDataBindings();
+                    bsChungTu.MoveLast();
+                    enableControl();
+                    //
+                    if (LoaiManHinh.ToString() == cenCommon.LoaiManHinh.ManHinh_knqContainerPhieuGiaoNhan) cenCommon.cenCommon.checkContainerKeHoachHoanThanh = true;
+                }
+            }
+            else
+            {
+                if (DAO.Update(IDChungTu, UpdateProcName, InsertChiTietProcName, InsertChiTiet2ProcName, UpdateChiTietProcName, UpdateChiTiet2ProcName, DeleteChiTietProcName, DeleteChiTiet2ProcName, dsChungTuUpdate.Tables[TableName], dsChungTuUpdate.Tables[TableNameDetail], dsChungTuUpdate.Tables[TableNameDetail2]))
+                {
+                    txtfilterDetail.Text = "";
+                    //Merge data
+                    drChungTu.ItemArray = dtChungTu.Rows[0].ItemArray;
+                    dsChungTu.Tables[TableNameDetail].Merge(dtChungTuChiTiet);
+                    if (DetailLevel == 2)
+                        dsChungTu.Tables[TableNameDetail2].Merge(dtChungTuChiTiet2);
+                    dsChungTu.AcceptChanges();
+                    UpdateMode = 0;
+                    setDataBindings();
+                    bsChungTu.Position = ChungTuPosition;
+                    enableControl();
+                    //
+                    if (LoaiManHinh.ToString() == cenCommon.LoaiManHinh.ManHinh_knqContainerPhieuGiaoNhan) cenCommon.cenCommon.checkContainerKeHoachHoanThanh = true;
+                }
+            }
+            if (ugListChungTu.ActiveRow != null) ugListChungTu.ActiveRowScrollRegion.ScrollRowIntoView(ugListChungTu.ActiveRow);
+        }
+        //In chứng từ
+        protected virtual void inChungTu()
+        {
+            if (UpdateMode != 0)
+            {
+                luuChungTu();
+            }
+            if (bsChungTu.Current == null) return;
+            DataRow drChungTuIn = ((DataRowView)bsChungTu.Current).Row;
+            //Kiểm tra xem chứng từ này có cột hủy hay không
+            if (drChungTuIn.Table.Columns.Contains("Huy") && drChungTuIn["Huy"] != DBNull.Value && Convert.ToBoolean(drChungTuIn["Huy"].ToString()) == true)
+            {
+                cenCommon.cenCommon.ErrorMessageOkOnly("Không in được chứng từ đã bị hủy!");
+                return;
+            }
+        }
+        //Ngừng cập nhật dữ liệu
+        protected virtual void ngungCapNhat()
+        {
+            if (UpdateMode != 0)
+            {
+                DialogResult dlr = cenCommon.cenCommon.QuestionMessage("Bạn chắc chắn muốn ngừng cập nhật dữ liệu?", 0);
+                if (dlr == DialogResult.Yes)
+                {
+                    if (DetailLevel == 2) bsChungTuChiTiet2.CancelEdit();
+                    bsChungTuChiTiet.CancelEdit();
+                    bsChungTu.CancelEdit();
+                    dsChungTuUpdate.RejectChanges();
+                    if (UpdateMode == 2)
+                    {
+                        drChungTu.ItemArray = dtChungTu.Rows[0].ItemArray;
+                        dsChungTu.Tables[TableNameDetail].Merge(dtChungTuChiTiet);
+                        if (DetailLevel == 2)
+                            dsChungTu.Tables[TableNameDetail2].Merge(dtChungTuChiTiet2);
+                        dsChungTu.AcceptChanges();
+                    }
+                    dsChungTuUpdate.Dispose();
+
+                    //
+                    txtfilterDetail.Text = "";
+                    UpdateMode = 0;
+                    setDataBindings();
+                    enableControl();
+                    showHideListChungTu();
+                    //
+                }
+            }
+        }
+        //Tìm kiếm chứng từ
+        protected virtual void filter()
+        {
+        
+        }
+        //Ẩn lưới danh sách chứng từ nếu ở chế độ cập nhật hoặc không có chứng từ nào
+        protected virtual void showHideListChungTu()
+        {
+            uSplit.Visible = ((UpdateMode == 0) && bsChungTu.Count > 1) ? true : false;
+            uSplit.Collapsed = ((UpdateMode == 0) && bsChungTu.Count > 1) ? false : true;
+            uSplit.Enabled = !this.uSplit.Collapsed;
+        }
+        //Kết nối dataset với control mở rộng
+        protected virtual void setCustomsDataBindings()
+        {
+        }
+        //Cho phép tương tác với controls
+        protected virtual void enableControl()
+        {
+            Boolean ReadOnly = (UpdateMode == 0);
+            //Toolbar
+            toolBar.Toolbars[0].Tools["btThem"].SharedProps.Enabled = ReadOnly;
+            toolBar.Toolbars[0].Tools["btSua"].SharedProps.Enabled = ReadOnly;
+            toolBar.Toolbars[0].Tools["btXoa"].SharedProps.Enabled = ReadOnly;
+            toolBar.Toolbars[0].Tools["btimport"].SharedProps.Enabled = !ReadOnly;
+            toolBar.Toolbars[0].Tools["btThemDong"].SharedProps.Enabled = !ReadOnly;
+            toolBar.Toolbars[0].Tools["btXoaDong"].SharedProps.Enabled = !ReadOnly;
+            toolBar.Toolbars[0].Tools["btLuu"].SharedProps.Enabled = !ReadOnly;
+            toolBar.Toolbars[0].Tools["btNgung"].SharedProps.Enabled = !ReadOnly;
+            toolBar.Toolbars[0].Tools["btQuyTrinh"].SharedProps.Enabled = ReadOnly;
+            toolBar.Toolbars[0].Tools["btTimKiem"].SharedProps.Enabled = ReadOnly;
+            toolBar.Toolbars[0].Tools["btIn"].SharedProps.Enabled = true;
+            //Header
+            foreach (Control ctl in groupHeader.Controls)
+            {
+                
+                    if (ctl is saTextBox && (ctl.Name.ToUpper() != "TXTSO" || ctl.Name.ToUpper() != "TXTKYHIEU"))
+                    {
+                        saTextBox txtBox = (saTextBox)ctl;
+                        txtBox.ReadOnly = ReadOnly;
+                    }
+                    if (ctl is saNumericBox)
+                    {
+                        saNumericBox txtBox = (saNumericBox)ctl;
+                        txtBox.ReadOnly = ReadOnly;
+                    }
+                    if (ctl is saDateTimeBox)
+                    {
+                        saDateTimeBox txtBox = (saDateTimeBox)ctl;
+                        txtBox.ReadOnly = ReadOnly;
+                    }
+                    if (ctl is saComboDanhMuc)
+                    {
+                        saComboDanhMuc txtBox = (saComboDanhMuc)ctl;
+                        txtBox.ReadOnly = ReadOnly;
+                    }
+                    if (ctl is saCheckBox)
+                    {
+                        saCheckBox txtBox = (saCheckBox)ctl;
+                        txtBox.Enabled = !ReadOnly;
+                    }
+                
+            }
+            //Grid
+            ugChiTiet.SetEditableState(ReadOnly);
+        }
+        //Copy sang Temp DataSet để insert/update
+        private void copy2TempDataSet()
+        {
+            //Copy data
+            dsChungTuUpdate = new DataSet();
+            
+            dtChungTu = (UpdateMode == 1) ? dsChungTu.Tables[TableName].Clone() : ((dsChungTu.Tables[TableName].Select("ID = '" + IDChungTu + "'").Count() > 0) ? dsChungTu.Tables[TableName].Select("ID = '" + IDChungTu + "'").CopyToDataTable() : dsChungTu.Tables[TableName].Clone());
+            dtChungTuChiTiet = (UpdateMode == 1) ? dsChungTu.Tables[TableNameDetail].Clone() : ((dsChungTu.Tables[TableNameDetail].Select("IDChungTu = '" + IDChungTu + "'").Count() > 0) ? dsChungTu.Tables[TableNameDetail].Select("IDChungTu = '" + IDChungTu + "'").CopyToDataTable() : dsChungTu.Tables[TableNameDetail].Clone());
+
+            if (DetailLevel == 2)
+            {
+                dtChungTuChiTiet2 = (UpdateMode == 1) ? dsChungTu.Tables[TableNameDetail2].Clone() : ((dsChungTu.Tables[TableNameDetail2].Select("IDChungTu = '" + IDChungTu + "'").Count() > 0) ? dsChungTu.Tables[TableNameDetail2].Select("IDChungTu = '" + IDChungTu + "'").CopyToDataTable() : dsChungTu.Tables[TableNameDetail2].Clone());
+                if (UpdateMode == 2)
+                {
+                    //Xóa dòng trong DataSet nguồn
+                    dsChungTu.Tables[TableNameDetail2].Select();
+                    for (Int32 i = 0; i < dsChungTu.Tables[TableNameDetail2].Rows.Count; i++ )
+                    {
+                        if (dsChungTu.Tables[TableNameDetail2].Rows[i]["IDChungTu"] == IDChungTu)
+                        {
+                            dsChungTu.Tables[TableNameDetail2].Rows[i].Delete();
+                        }
+                    }
+                    dsChungTu.AcceptChanges();
+                }
+            }
+            
+            if (UpdateMode == 2)
+            {
+                
+                dsChungTu.Tables[TableName].Select();
+                dsChungTu.Tables[TableNameDetail].Select();
+                //Xóa dòng trong DataSet nguồn
+                for (Int32 i = 0; i < dsChungTu.Tables[TableNameDetail].Rows.Count; i++)
+                {
+                    if (dsChungTu.Tables[TableNameDetail].Rows[i]["IDChungTu"] == IDChungTu)
+                    {
+                        dsChungTu.Tables[TableNameDetail].Rows[i].Delete();
+                    }
+                }
+                dsChungTu.AcceptChanges();
+            }
+
+            
+            dtChungTu.TableName = TableName;
+            dtChungTuChiTiet.TableName = TableNameDetail;
+
+            dsChungTuUpdate.Tables.Add(dtChungTu);
+            dsChungTuUpdate.Tables.Add(dtChungTuChiTiet);
+            
+            dsChungTuUpdate.Tables[TableName].PrimaryKey = new DataColumn[] { dsChungTuUpdate.Tables[TableName].Columns["ID"] };
+            dsChungTuUpdate.Tables[TableNameDetail].PrimaryKey = new DataColumn[] { dsChungTuUpdate.Tables[TableNameDetail].Columns["ID"] };
+            dsChungTuUpdate.Relations.Add(cenCommon.cenCommon.prefix_DataRelation + TableNameDetail, dtChungTu.Columns["ID"], dtChungTuChiTiet.Columns["IDChungTu"]);
+
+            bsChungTu = new BindingSource
+            {
+                DataSource = dsChungTuUpdate,
+                DataMember = TableName
+            };
+            bsChungTuChiTiet = new BindingSource
+            {
+                DataSource = bsChungTu,
+                DataMember = cenCommon.cenCommon.prefix_DataRelation + TableNameDetail
+            };
+            if (DetailLevel == 2)
+            {
+                dtChungTuChiTiet2.TableName = TableNameDetail2;
+                dsChungTuUpdate.Tables.Add(dtChungTuChiTiet2);
+
+                dsChungTuUpdate.Tables[TableNameDetail2].PrimaryKey = new DataColumn[] { dsChungTuUpdate.Tables[TableNameDetail2].Columns["ID"] };
+                dsChungTuUpdate.Relations.Add(cenCommon.cenCommon.prefix_DataRelation + TableNameDetail2, dtChungTuChiTiet.Columns["ID"], dtChungTuChiTiet2.Columns["IDChungTuChiTiet"]);
+
+                bsChungTuChiTiet2 = new BindingSource
+                {
+                    DataSource = bsChungTuChiTiet,
+                    DataMember = cenCommon.cenCommon.prefix_DataRelation + TableNameDetail2
+                };
+            }
+            //if (UpdateMode == 2)
+            //{
+            //    bsChungTu.MoveFirst();
+            //    drChungTu = ((DataRowView)bsChungTu.Current).Row;
+            //}
+        }
+        //Lưu những thông tin mở rộng của chứng từ
+        protected virtual void saveCustomsData()
+        {
+        }
+        protected virtual void updateCustomsData()
+        {
+        }
+        //Nhập dữ liệu từ Excel
+        protected virtual void import()
+        {
+        }
+        //Mở chứng từ ở bước tiếp theo của quy trình
+        protected virtual void runNext(String IDDanhMucChungTu, String MaDanhMucChungTu, String LoaiManHinh, String FormCaption)
+        {
+        }
+        //Mở form chi tiết chứng từ 2
+        protected virtual void openChiTietChungTu2()
+        {
+        }
+        #endregion Methods
+        #region FormEvents
+        private void frmBaseChungTu_Load(object sender, EventArgs e)
+        {
+            uSplit2.Collapsed = (DetailLevel == 1); //Nếu chỉ có 1 mức detail thì ẩn ChiTiet2
+            uSplit2.Visible = (DetailLevel > 1);
+            uSplit2.Enabled = (DetailLevel > 1);
+            tabChiTiet2.Visible = (DetailLevel > 1);
+            tabChiTiet2.Enabled = (DetailLevel > 1);
+            //
+            if (dsChungTuLienQuan != null)
+            {
+                //Add các button là mẫu in chứng từ
+                foreach (DataRow drChungTu in dsChungTuLienQuan.Tables[0].Rows)
+                {
+                    ButtonTool btChungTuIn = new ButtonTool("_rpt_" + drChungTu["FileMauIn"].ToString() + "ID:" + drChungTu["ID"].ToString() + "PRINTER:" + drChungTu["TenMayIn"].ToString() + "SOLIEN:" + drChungTu["SoLien"].ToString() + "SPNAME:" + drChungTu["spName"].ToString());
+                    btChungTuIn.SharedProps.Caption = drChungTu["TenMauIn"].ToString();
+                    toolBar.Tools.Add(btChungTuIn);
+                    ((PopupMenuTool)toolBar.Toolbars[0].Tools["btIn"]).Tools.AddTool(btChungTuIn.Key);
+                    btChungTuIn.SharedProps.Visible = true;
+                }
+                //Add các button là chứng từ liên quan
+                foreach (DataRow drChungTu in dsChungTuLienQuan.Tables[1].Rows)
+                {
+                    ButtonTool btChungTuLienQuan = new ButtonTool("_dct_" + drChungTu["IDDanhMucChungTuLienQuan"].ToString() + "ID:" + drChungTu["ID"].ToString() + "MA:" + drChungTu["MaDanhMucChungTuLienQuan"].ToString() + "LOAIMANHINH:" + drChungTu["LoaiManHinh"].ToString());
+                    btChungTuLienQuan.SharedProps.Caption = drChungTu["TenDanhMucChungTuLienQuan"].ToString();
+                    toolBar.Tools.Add(btChungTuLienQuan);
+                    ((PopupMenuTool)toolBar.Toolbars[0].Tools["btQuyTrinh"]).Tools.AddTool(btChungTuLienQuan.Key);
+                    btChungTuLienQuan.SharedProps.Visible = true;
+                }
+            }
+            //
+            //LoadValidDataSet();
+            //LoadData();
+            ////
+            //setDataBindings();
+            //
+            ugChiTiet.AfterCellUpdate += new Infragistics.Win.UltraWinGrid.CellEventHandler(ugChiTiet_AfterCellUpdate);
+            ugChiTiet.AfterRowInsert += new Infragistics.Win.UltraWinGrid.RowEventHandler(ugChiTiet_AfterRowInsert);
+            ugChiTiet2.AfterCellUpdate += new Infragistics.Win.UltraWinGrid.CellEventHandler(ugChiTiet_AfterCellUpdate);
+            
+            //
+        }
+        private void frmBaseChungTu_KeyDown(object sender, KeyEventArgs e)
+        {
+            //Thêm chi tiết mức 2
+            if (e.Control)
+            {
+                switch (e.KeyCode)
+                {
+                    case Keys.D2:
+                    case Keys.NumPad2:
+                        if (bsChungTuChiTiet.Current == null) return;
+                        if (UpdateMode == 0 || DetailLevel < 2) return;
+                        openChiTietChungTu2();
+                        break;
+                }
+            }
+        }
+        private void frmBaseChungTu_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (UpdateMode != 0)
+            {
+                cenCommon.cenCommon.ErrorMessageOkOnly("Bạn phải kết thúc cập nhật chứng từ trước khi đóng cửa sổ!");
+                e.Cancel = true;
+            }
+            else
+            {
+                if (LoaiManHinh.ToString() == cenCommon.LoaiManHinh.ManHinh_knqContainerPhieuGiaoNhan) cenCommon.cenCommon.checkContainerKeHoachHoanThanh = true;
+            }
+        }
+        private void frmChungTuHangNhap_NhapKho_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            this.Dispose();
+        }
+        #endregion FormEvents
+        private void toolBar_ToolClick(object sender, Infragistics.Win.UltraWinToolbars.ToolClickEventArgs e)
+        {
+            String buttonKey = e.Tool.Key.ToUpper();
+            switch (buttonKey)
+            {
+                case "BTTHEM":
+                    themChungTu();
+                    break;
+                case "BTSUA":
+                    suaChungTu();
+                    break;
+                case "BTLUU":
+                    luuChungTu();
+                    break;
+                case "BTXOA":
+                    xoaChungTu();
+                    break;
+                case "BTNGUNG":
+                    ngungCapNhat();
+                    break;
+                case "BTTIMKIEM":
+                    filter();
+                    break;
+                case "BTXOADONG":
+                    xoaChungTuChiTiet();
+                    break;
+                case "BTTHEMDONG":
+                    themChungTuChiTiet();
+                    break;
+                case "BTIMPORT":
+                    import();
+                    break;
+                default:
+                    String LoaiChucNang = e.Tool.Key.Substring(0, 5).ToUpper(),
+                            TenChucNang = e.Tool.Key.Substring(5).ToUpper();
+                    if (LoaiChucNang != "_DCT_" && LoaiChucNang != "_RPT_") return;
+                    if (LoaiChucNang == "_DCT_")
+                    {
+                        String IDDanhMucChungTuLienQuan = e.Tool.Key.Substring(5, TenChucNang.IndexOf("ID:"));
+                        String MaDanhMucChungTuLienQuan = TenChucNang.Substring(TenChucNang.IndexOf("MA:") + "MA:".Length, TenChucNang.IndexOf("LOAIMANHINH:") - TenChucNang.IndexOf("MA:") - "MA:".Length);
+                        String LoaiManHinhLienQuan = TenChucNang.Substring(TenChucNang.IndexOf("LOAIMANHINH:") + "LOAIMANHINH:".Length, TenChucNang.Length - TenChucNang.IndexOf("LOAIMANHINH:") - "LOAIMANHINH:".Length);
+                        runNext(IDDanhMucChungTuLienQuan, MaDanhMucChungTuLienQuan, LoaiManHinhLienQuan, e.Tool.SharedProps.Caption);
+                    }
+                    if (LoaiChucNang == "_RPT_")
+                    {
+                        ReportFileName = e.Tool.Key.Substring(5, TenChucNang.IndexOf("ID:"));
+                        TenMayIn = e.Tool.Key.Substring(TenChucNang.IndexOf("PRINTER:") + 13, TenChucNang.IndexOf("SOLIEN:") - TenChucNang.IndexOf("PRINTER:") - 8);
+                        SoLien = Convert.ToInt16(e.Tool.Key.Substring(TenChucNang.IndexOf("SOLIEN:") + 12, TenChucNang.IndexOf("SPNAME:") - TenChucNang.IndexOf("SOLIEN:") - 7));
+                        spName = e.Tool.Key.Substring(TenChucNang.IndexOf("SPNAME:") + 12, e.Tool.Key.Length - TenChucNang.IndexOf("SPNAME:") - 12);
+                        //"_rpt_" + drChungTu["FileMauIn"].ToString() + "ID:" + drChungTu["ID"].ToString() + "PRINTER:" + drChungTu["TenMayIn"].ToString() + "SOLIEN:" + drChungTu["SoLien"].ToString() + "SPNAME:" + drChungTu["spName"].ToString()
+                        inChungTu();
+                    }
+                    break;
+            }
+        }
+        #region gridDetail
+        private void ugChiTiet_AfterCellUpdate(object sender, CellEventArgs e)
+        {
+            if (UpdateMode == 0 || !GridValidation) return;
+            if (e.Cell == null) return;
+            gridColumnDataProcess((saUpdateGrid)sender, e.Cell, out GridValidation, true);
+        }
+        private void ugChiTiet_AfterRowInsert(object sender, RowEventArgs e)
+        {
+            e.Row.Cells["ID"].Value = cenBase.Classes.ChungTu.MaxTempID(dsChungTuUpdate.Tables[TableNameDetail]);
+        }
+        private void ugChiTiet_BeforeRowInsert(object sender, BeforeRowInsertEventArgs e)
+        {
+            ugChiTiet.UpdateData();
+            if (MaxDetailRow != 0 && dsChungTuUpdate.Tables[TableNameDetail].Rows.Count == MaxDetailRow)
+            {
+                cenCommon.cenCommon.ErrorMessageOkOnly("Không được phép nhập quá " + MaxDetailRow.ToString() + " dòng chi tiết!");
+                e.Cancel = true;
+            }
+        }
+        private void txtfilterChungTu_ValueChanged(object sender, EventArgs e)
+        {
+            UltraGridBand uBand = ugListChungTu.DisplayLayout.Bands[0];
+            uBand.Columns["So"].AllowRowFiltering = Infragistics.Win.DefaultableBoolean.True;
+            uBand.ColumnFilters["So"].FilterConditions.Clear();
+            uBand.ColumnFilters["So"].FilterConditions.Add(FilterComparisionOperator.Contains, txtfilterChungTu.Text);
+        }
+        private void ugChiTiet_Enter(object sender, EventArgs e)
+        {
+            ugChiTiet2.UpdateData();
+        }
+        #endregion gridDetail
+        //Valid các ô nhập dữ liệu trên lưới
+        protected virtual void gridColumnDataProcess(UltraGrid ug, UltraGridCell uCell, out Boolean GridValidation, Boolean ShowLookUp)
+        {
+            GridValidation = true;
+        }
+    }
+}

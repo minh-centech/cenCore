@@ -1,0 +1,116 @@
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Data.SqlClient;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Windows.Forms;
+using Infragistics.Win.UltraWinGrid;
+using Infragistics.Win.UltraWinEditors;
+using Infragistics.Win.Misc;
+using cenControls;
+using cenCommon;
+namespace cenBase.BaseForms
+{
+    public partial class frmBaseDanhMucUpdate : Form
+    {
+        
+        //Trạng thái cập nhật 1: Thêm mới, 2: Sửa
+        public Int16 CapNhat = 0;
+        public String LoaiDanhMuc;
+        public frmBaseDanhMucUpdate()
+        {
+            InitializeComponent();
+        }
+        private void frm_donvi_capnhat_Load(object sender, EventArgs e)
+        {
+            this.Text = ((CapNhat==0) ? "Thêm " : "Sửa ") + cenCommon.cenCommon.TraTuDien(LoaiDanhMuc);
+            this.CenterToScreen();
+        }
+        /// <summary>
+        /// Button Save-click
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void cmdSave_Click(object sender, EventArgs e)
+        {
+            //SaveData(false);
+            //Save2DataSet();
+            //this.Dispose();
+        }
+        /// <summary>
+        /// Lưu dữ liệu
+        /// </summary>
+        protected virtual void SaveData(Boolean AddNew)
+        {
+        }
+        /// <summary>
+        /// Phím chức năng F6: Lưu dữ liệu, ESC: Thoát
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void FormKeyDown(object sender, KeyEventArgs e)
+        {
+            switch (e.KeyCode)
+            {
+                case (Keys.Escape):
+                    Cancel();
+                    break;
+                case (Keys.Enter):
+                    if (e.Control)
+                    {
+                        SaveData(false);
+                        e.Handled = true;
+                    }
+                    break;
+                case (Keys.F2):
+                    SaveData(true);
+                    break;
+                case (Keys.F6):
+                    SaveData(false);
+                    break;
+            }
+        }
+        /// <summary>
+        /// Ngừng cập nhật
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void cmdCancel_Click(object sender, EventArgs e)
+        {
+            //Cancel();
+        }
+        /// <summary>
+        /// Ngừng
+        /// </summary>
+        private void Cancel()
+        {
+            //OK = false;
+            //dsData.RejectChanges();
+            //this.Dispose();
+        }
+        protected override bool ProcessDialogKey(Keys keyData)
+        {
+            return base.ProcessDialogKey(keyData);
+        }
+        private void cmdSaveAdd_Click(object sender, EventArgs e)
+        {
+            //SaveData(true);
+            //Save2DataSet();
+        }
+        private void Save2DataSet()
+        {
+            //if (OK)
+            //{
+            //    if (CapNhat == 0) dsData.Tables[masterTableName].Rows.Add(drDoiTuong);
+            //    dsData.AcceptChanges();
+            //}
+            //else
+            //{
+            //    dsData.RejectChanges();
+            //}
+        }
+    }
+}

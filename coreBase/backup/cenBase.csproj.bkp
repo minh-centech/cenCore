@@ -1,0 +1,349 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{91947EC4-313B-46AA-9553-09CABE23D6AB}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <RootNamespace>cenBase</RootNamespace>
+    <AssemblyName>cenBase</AssemblyName>
+    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <Deterministic>true</Deterministic>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Infragistics4.Win.v18.1, Version=18.1.20181.88, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL" />
+    <Reference Include="Infragistics4.Win.UltraWinToolbars.v18.1, Version=18.1.20181.88, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL" />
+    <Reference Include="Infragistics4.Win.UltraWinTabControl.v18.1, Version=18.1.20181.88, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL" />
+    <Reference Include="Infragistics4.Win.UltraWinGrid.v18.1, Version=18.1.20181.88, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL" />
+    <Reference Include="Infragistics4.Win.UltraWinEditors.v18.1, Version=18.1.20181.88, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL" />
+    <Reference Include="Infragistics4.Win.UltraWinCalcManager.v18.1, Version=18.1.20181.88, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL" />
+    <Reference Include="Infragistics4.Win.Misc.v18.1, Version=18.1.20181.88, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL" />
+    <Reference Include="Infragistics4.Shared.v18.1, Version=18.1.20181.88, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.CrystalReports.Engine, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.ReportAppServer.ClientDoc, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL">
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="CrystalDecisions.ReportAppServer.Controllers, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL">
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="CrystalDecisions.ReportAppServer.DataDefModel, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL">
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="CrystalDecisions.ReportAppServer.DataSetConversion, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.ReportAppServer.ReportDefModel, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL">
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="CrystalDecisions.ReportSource, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.Shared, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.Windows.Forms, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="BaseForms\frmBaseChungTuMasterDetail.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BaseForms\frmBaseChungTuMasterDetail.designer.cs">
+      <DependentUpon>frmBaseChungTuMasterDetail.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BaseForms\frmBaseChungTuSingleUpdate.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BaseForms\frmBaseChungTuSingleUpdate.Designer.cs">
+      <DependentUpon>frmBaseChungTuSingleUpdate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BaseForms\frmBaseChungTuSingleList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BaseForms\frmBaseChungTuSingleList.Designer.cs">
+      <DependentUpon>frmBaseChungTuSingleList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BaseForms\frmBaseDanhMucChiTiet.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BaseForms\frmBaseDanhMucChiTiet.Designer.cs">
+      <DependentUpon>frmBaseDanhMucChiTiet.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BaseForms\frmBaseDanhMuc.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BaseForms\frmBaseDanhMuc.Designer.cs">
+      <DependentUpon>frmBaseDanhMuc.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BaseForms\frmBaseDanhMucUpdate.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BaseForms\frmBaseDanhMucUpdate.Designer.cs">
+      <DependentUpon>frmBaseDanhMucUpdate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BaseForms\frmBaseGridUpdate.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BaseForms\frmBaseGridUpdate.Designer.cs">
+      <DependentUpon>frmBaseGridUpdate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Classes\ChungTu.cs" />
+    <Compile Include="Classes\DanhMuc.cs" />
+    <Compile Include="Forms\frmChangePassword.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmChangePassword.designer.cs">
+      <DependentUpon>frmChangePassword.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmChungTuFilter.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmChungTuFilter.designer.cs">
+      <DependentUpon>frmChungTuFilter.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmChungTuList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmChungTuList.Designer.cs">
+      <DependentUpon>frmChungTuList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmChungTuPrintPreview.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmChungTuPrintPreview.designer.cs">
+      <DependentUpon>frmChungTuPrintPreview.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmDanhMucValid.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmDanhMucValid.Designer.cs">
+      <DependentUpon>frmDanhMucValid.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmLogin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmLogin.designer.cs">
+      <DependentUpon>frmLogin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmLoginExtended.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmLoginExtended.designer.cs">
+      <DependentUpon>frmLoginExtended.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmSQLConnect.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmSQLConnect.Designer.cs">
+      <DependentUpon>frmSQLConnect.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmSQLConnectUpdate.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmSQLConnectUpdate.designer.cs">
+      <DependentUpon>frmSQLConnectUpdate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="BaseForms\frmBaseChungTuMasterDetail.resx">
+      <DependentUpon>frmBaseChungTuMasterDetail.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BaseForms\frmBaseChungTuSingleUpdate.resx">
+      <DependentUpon>frmBaseChungTuSingleUpdate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BaseForms\frmBaseChungTuSingleList.resx">
+      <DependentUpon>frmBaseChungTuSingleList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BaseForms\frmBaseDanhMucChiTiet.resx">
+      <DependentUpon>frmBaseDanhMucChiTiet.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BaseForms\frmBaseDanhMuc.resx">
+      <DependentUpon>frmBaseDanhMuc.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BaseForms\frmBaseDanhMucUpdate.resx">
+      <DependentUpon>frmBaseDanhMucUpdate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BaseForms\frmBaseGridUpdate.resx">
+      <DependentUpon>frmBaseGridUpdate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmChangePassword.resx">
+      <DependentUpon>frmChangePassword.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmChungTuFilter.resx">
+      <DependentUpon>frmChungTuFilter.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmChungTuList.resx">
+      <DependentUpon>frmChungTuList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmChungTuPrintPreview.resx">
+      <DependentUpon>frmChungTuPrintPreview.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmDanhMucValid.resx">
+      <DependentUpon>frmDanhMucValid.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmLogin.resx">
+      <DependentUpon>frmLogin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmLoginExtended.resx">
+      <DependentUpon>frmLoginExtended.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmSQLConnect.resx">
+      <DependentUpon>frmSQLConnect.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmSQLConnectUpdate.resx">
+      <DependentUpon>frmSQLConnectUpdate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="obj\Debug\cenBase.BaseForms.frmBaseChungTu_eCargo_MasterDetail.resources" />
+    <EmbeddedResource Include="obj\Debug\cenBase.BaseForms.frmBaseChungTu_eCargo_MasterDetail_S.resources" />
+    <EmbeddedResource Include="obj\Debug\cenBase.BaseForms.frmBaseChungTu_eCargo_Single.resources" />
+    <EmbeddedResource Include="obj\Debug\cenBase.BaseForms.frmBaseDanhMuc.resources" />
+    <EmbeddedResource Include="obj\Debug\cenBase.BaseForms.frmBaseDanhMucUpdate.resources" />
+    <EmbeddedResource Include="obj\Debug\cenBase.BaseForms.frmBaseGridUpdate.resources" />
+    <EmbeddedResource Include="obj\Debug\cenBase.Forms.frmChangePassword.resources" />
+    <EmbeddedResource Include="obj\Debug\cenBase.Forms.frmChungTufilter.resources" />
+    <EmbeddedResource Include="obj\Debug\cenBase.Forms.frmChungTuList.resources" />
+    <EmbeddedResource Include="obj\Debug\cenBase.Forms.frmChungTuPrintPreview.resources" />
+    <EmbeddedResource Include="obj\Debug\cenBase.Forms.frmDanhMucValid.resources" />
+    <EmbeddedResource Include="obj\Debug\cenBase.Forms.frmLogin.resources" />
+    <EmbeddedResource Include="obj\Debug\cenBase.Forms.frmLoginExtended.resources" />
+    <EmbeddedResource Include="obj\Debug\cenBase.Forms.frmSQLConnect.resources" />
+    <EmbeddedResource Include="obj\Debug\cenBase.Forms.frmSQLConnectUpdate.resources" />
+    <EmbeddedResource Include="obj\Debug\cenBase.Properties.Resources.resources" />
+    <EmbeddedResource Include="obj\Debug\s3Base.Properties.Resources.resources" />
+    <EmbeddedResource Include="obj\Debug\tmsBase.Properties.Resources.resources" />
+    <EmbeddedResource Include="obj\Debug\tmsFormsBase.Forms.frmBaseChungTu.resources" />
+    <EmbeddedResource Include="obj\Debug\tmsFormsBase.Forms.frmBaseChungTu_eCargo.resources" />
+    <EmbeddedResource Include="obj\Debug\tmsFormsBase.Forms.frmBaseDanhMuc.resources" />
+    <EmbeddedResource Include="obj\Debug\tmsFormsBase.Forms.frmBaseDanhMucUpdate.resources" />
+    <EmbeddedResource Include="obj\Debug\tmsFormsBase.Properties.Resources.resources" />
+    <EmbeddedResource Include="Properties\licenses.licx" />
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <None Include="obj\Debug\cenBase.csproj.CopyComplete" />
+    <None Include="obj\Debug\cenBase.csproj.CoreCompileInputs.cache" />
+    <None Include="obj\Debug\cenBase.csproj.GenerateResource.cache" />
+    <None Include="obj\Debug\cenBase.csprojAssemblyReference.cache" />
+    <None Include="obj\Debug\DesignTimeResolveAssemblyReferences.cache" />
+    <None Include="obj\Debug\DesignTimeResolveAssemblyReferencesInput.cache" />
+    <None Include="obj\Debug\GenerateResource.read.1.tlog" />
+    <None Include="obj\Debug\GenerateResource.write.1.tlog" />
+    <None Include="obj\Debug\ResolveAssemblyReference.cache" />
+    <None Include="obj\Debug\s3Base.csproj.GenerateResource.Cache" />
+    <None Include="obj\Debug\s3Base.csprojResolveAssemblyReference.cache" />
+    <None Include="obj\Debug\tmsBase.csproj.CopyComplete" />
+    <None Include="obj\Debug\tmsBase.csproj.CoreCompileInputs.cache" />
+    <None Include="obj\Debug\tmsBase.csproj.GenerateResource.cache" />
+    <None Include="obj\Debug\tmsBase.csprojAssemblyReference.cache" />
+    <None Include="obj\Debug\tmsBase.csprojResolveAssemblyReference.cache" />
+    <None Include="obj\Debug\tmsFormsBase.csproj.GenerateResource.Cache" />
+    <None Include="obj\Debug\tmsFormsBase.csprojResolveAssemblyReference.cache" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="obj\Debug\cenBase.csproj.FileListAbsolute.txt" />
+    <Content Include="obj\Debug\cenBase.dll" />
+    <Content Include="obj\Debug\cenbase.dll.licenses" />
+    <Content Include="obj\Debug\cenBase.pdb" />
+    <Content Include="obj\Debug\s3Base.csproj.FileListAbsolute.txt" />
+    <Content Include="obj\Debug\s3Base.dll" />
+    <Content Include="obj\Debug\s3base.dll.licenses" />
+    <Content Include="obj\Debug\s3Base.pdb" />
+    <Content Include="obj\Debug\TempPE\Properties.Resources.Designer.cs.dll" />
+    <Content Include="obj\Debug\tmsBase.csproj.FileListAbsolute.txt" />
+    <Content Include="obj\Debug\tmsBase.dll" />
+    <Content Include="obj\Debug\tmsbase.dll.licenses" />
+    <Content Include="obj\Debug\tmsBase.pdb" />
+    <Content Include="obj\Debug\tmsFormsBase.csproj.FileListAbsolute.txt" />
+    <Content Include="obj\Debug\tmsFormsBase.dll" />
+    <Content Include="obj\Debug\tmsformsbase.dll.licenses" />
+    <Content Include="obj\Debug\tmsFormsBase.pdb" />
+    <Content Include="Resources\005_Task_24x24_72.png" />
+    <Content Include="Resources\112_ArrowReturnLeft_Blue_16x16_72.png" />
+    <Content Include="Resources\112_Minus_Blue_16x16_72.png" />
+    <Content Include="Resources\112_Plus_Blue_16x16_72.png" />
+    <Content Include="Resources\baocao.ico" />
+    <Content Include="Resources\baocao1.ico" />
+    <Content Include="Resources\base_checkmark_32.png" />
+    <Content Include="Resources\Copy.ico" />
+    <Content Include="Resources\Dollar.png" />
+    <Content Include="Resources\excel.ico" />
+    <Content Include="Resources\export_inventory.png" />
+    <Content Include="Resources\Filter.png" />
+    <Content Include="Resources\Globe.png" />
+    <Content Include="Resources\in.ico" />
+    <Content Include="Resources\Internet.jpg" />
+    <Content Include="Resources\sua.png" />
+    <Content Include="Resources\tailai.png" />
+    <Content Include="Resources\them.png" />
+    <Content Include="Resources\xoa.png" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\cenBUS\cenBUS.csproj">
+      <Project>{26b83691-e75b-4f7c-bbb7-ec8fe75b0087}</Project>
+      <Name>cenBUS</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\cenCommon\cenCommon.csproj">
+      <Project>{d88a6d1e-8aa4-4809-a4e4-6f7a268498e2}</Project>
+      <Name>cenCommon</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\cenControls\cenControls.csproj">
+      <Project>{43699485-3dd2-4185-9ec4-9116f9f2107e}</Project>
+      <Name>cenControls</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\cenDAO\cenDAO.csproj">
+      <Project>{37a566c4-c102-47da-a372-be6e7ffdafe4}</Project>
+      <Name>cenDAO</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\cenDTO\cenDTO.csproj">
+      <Project>{2efdc8f5-8eb4-46f9-9991-b09cf511c248}</Project>
+      <Name>cenDTO</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

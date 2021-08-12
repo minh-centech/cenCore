@@ -1,0 +1,1069 @@
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Data.SqlClient;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Windows.Forms;
+using Infragistics.Win.UltraWinGrid;
+using Infragistics.Win.UltraWinEditors;
+using Infragistics.Win.Misc;
+using cenBUS;
+using cenControls;
+using cenCommon;
+namespace cenBase.Forms
+{
+    public partial class frmDanhMucUpdate : Form
+    {
+        
+        public Boolean PhanQuyen = false;
+        public Boolean Copy = false;
+        //Trạng thái cập nhật 0: Thêm mới, 1: Sửa
+        public Int16 CapNhat = 0; 
+        public String LoaiDanhMuc = "";
+        public Object IDDanhMucChungTu;
+        public Object IDChungTu;
+        public Object IDChungTuChiTiet;
+        //Trạng thái cập nhật thành công hay thất bại
+        public Boolean OK = false;
+        //ID, Mã của đối tượng được insert, update nếu thành công
+        public String ID = "";
+        public String Ma = "";
+        //Biến chứa đối tượng
+        public object DoiTuong = null;
+        //Binding Source
+        public BindingSource bsDoiTuong;
+        //Dòng chứa đối tượng được insert/update trên grid
+        public DataRow drDoiTuong;
+        //Mảng chứa thông tin về cột và giá trị
+        public Dictionary<string, cenCommon.cenCommon.beParamItem> beParams;
+        //
+        DataSet dsValid = null;
+        public frmDanhMucUpdate()
+        {
+            InitializeComponent();
+        }
+        public Object IDDanhMucLoaiDoiTuong = null;
+
+        private void frm_donvi_capnhat_Load(object sender, EventArgs e)
+        {
+            if (drDoiTuong.Table.Columns.Contains("IDDANHMUCLOAIDOITUONG") && LoaiDanhMuc != "DANHMUCMENULOAIDOITUONG" && LoaiDanhMuc != "DANHMUCMENUCHUNGTU")
+            {
+                DanhMucBUS _BUS = new DanhMucBUS();
+            }
+            if (beParams != null)
+            {
+                //Khởi tạo textbox
+                InitInputControl(false, false, false);
+                if (CapNhat == 1) ID = drDoiTuong["ID"].ToString();
+            }
+            this.Text = ((CapNhat==0) ? "Thêm " : "Sửa ") + cenCommon.cenCommon.TraTuDien(LoaiDanhMuc);
+            this.CenterToScreen();
+        }
+        /// <summary>
+        /// Button Save-click
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void CmdSave_Click(object sender, EventArgs e)
+        {
+            SaveData(false);
+        }
+        /// <summary>
+        /// Tạo các textbox input dữ liệu
+        /// </summary>
+        /// <param name="tlp">Groupbox</param>
+        /// <param name="CapNhatLoaiDoiTuong">Cho phép nhập ID Loại đối tượng hay không</param>
+        /// /// <param name="CapNhatLoaiNhomDoiTuong">Cho phép nhập ID Loại nhóm đối tượng hay không</param>
+        /// <param name="CapNhatDoiTuong">Cho phép nhập ID đối tượng hay không</param>
+        protected void InitInputControl(Boolean CapNhatLoaiDoiTuong, Boolean CapNhatLoaiNhomDoiTuong, Boolean CapNhatDoiTuong)
+        {
+            //Khai báo các biến control
+            saTextBox txtBox = new saTextBox();
+            saLabel lblBox = new saLabel();
+            saCheckBox chkBox = new saCheckBox();
+            saNumericBox numBox = new saNumericBox();
+            saDateTimeBox dateBox = new saDateTimeBox();
+            saPictureBox picBox = new saPictureBox();
+            //Đọc cấu trúc bảng
+            Int32 VerticalSpace = 12; //Toạ độ Y bắt đầu đặt control, 2 lần khoảng cách dọc giữa các control
+            Int32 ctlHeight = 0; 
+            Int32 MaxLabelWidth = 0;
+            
+            foreach (cenCommon.cenCommon.beParamItem beParamItem in beParams.Values)
+            {
+                String prName = beParamItem.paramName.ToUpper();
+                if (
+                    prName != "ID"
+                    & prName != "IDDONVI"
+                    & prName != "IDCHUNGTU"
+                    & prName != "IDCHUNGTUCHITIET"
+                    & prName != "IDDANHMUCNGUOISUDUNGCREATE"
+                    & prName != "IDDANHMUCNGUOISUDUNGEDIT"
+                    & prName != "IDDANHMUCMENU"
+                    & (prName != "IDDANHMUCLOAIDOITUONG" | LoaiDanhMuc=="DANHMUCMENULOAIDOITUONG")
+                    & (prName != "IDDANHMUCCHUNGTU" | LoaiDanhMuc == "DANHMUCMENUCHUNGTU" | LoaiDanhMuc == "DANHMUCTRANGTHAICHUNGTU" | LoaiDanhMuc == "DANHMUCPHANQUYENCHUNGTU" | LoaiDanhMuc == "DANHMUCCHUNGTUIN" | LoaiDanhMuc == "DANHMUCHUNGTULIENQUAN")
+                    & (prName != "IDDANHMUCBAOCAO" | LoaiDanhMuc == "DANHMUCMENUBAOCAO")
+                    & (prName != "IDDANHMUCPHI" | LoaiDanhMuc =="")
+                    & (prName != "IDDANHMUCHANGTAU" | LoaiDanhMuc == "" | LoaiDanhMuc=="DANHMUCPHIHANGTAU")
+                    & (prName != "IDDANHMUCNGUOIGIAMDINH" | LoaiDanhMuc == "")
+                    & prName != "IDCHUNGTUHANGNHAP_NHAPKHOCHITIET"
+                    & prName != "IDCHUNGTUHANGNHAP_LENHGIAOHANGCHITIET"
+                    & prName != "IDCHUNGTUHANGNOIDIA_NHAPKHO"
+                    & prName != "IDCHUNGTUHANGNOIDIA_NHAPKHOCHITIET"
+                    & prName != "IDCHUNGTUHANGXUAT_NHAPKHO"
+                    & prName != "IDCHUNGTUHANGXUAT_NHAPKHOCHITIET"
+                    & (prName != "IDDANHMUCPHANQUYEN" | LoaiDanhMuc == "DANHMUCNGUOISUDUNG")
+                    & (prName != "IDDANHMUCDICHVU" | LoaiDanhMuc == "DANHMUCDICHVUDONGIA" | LoaiDanhMuc == "DANHMUCDICHVUTACNGHIEP")
+                    & prName != "IDDANHMUCLOAIDOITUONGPHANQUYEN"
+                    & prName != "RETURN_VALUE" //Không lấy cột tên là Return_Value
+                    & prName != "CREATEDATE" //Không lấy cột CreateDate
+                    & prName != "EDITDATE" //Không lấy cột EditDate
+                    & prName != "RCOLOR" //Không lấy cột rColor
+                    & prName != "SOLUONGTT" 
+                    & prName != "TIENTT"
+                   ) 
+                {
+                    String prType = beParamItem.paramType; //Kiểu dữ liệu tham số
+                    Int32 prSize = ((Int32)beParamItem.paramSize == -1) ? 512 : (Int32)beParamItem.paramSize; //Số lượng ký tự tối đa được phép nhập, chỉ áp dụng với kiểu nvarchar
+                    Int32 ctlWidth = ((Int32)beParamItem.paramSize != 50) ? 604 : 200; //Độ rộng của control
+                    Boolean HasContent = ((CapNhat == 1 || Copy == true) && drDoiTuong != null && drDoiTuong.Table.Columns.Contains(prName)); //Nếu là chế độ sửa thì có nội dung
+                    Object Content = (HasContent) ? drDoiTuong[prName] : DBNull.Value; //Giá trị của cell chứa nội dung
+                    //Tạo label
+                    lblBox = new saLabel
+                    {
+                        Left = 8
+                    };
+                    if (ctlHeight == 0) ctlHeight = VerticalSpace;
+                    else
+                        ctlHeight = ctlHeight + VerticalSpace / 2;
+                    lblBox.Top = ctlHeight;
+                    lblBox.Name = prName;
+                    lblBox.Tag = prName;
+                    if (prName.StartsWith("ID")) lblBox.Text = prName.Substring(2);
+                    lblBox.Text = (prType.ToUpper() != "BIT") ? cenCommon.cenCommon.TraTuDien(prName) : "";
+                    lblBox.Visible = true;
+                    lblBox.AutoSize = true;
+                    this.groupEditor.Controls.Add(lblBox);
+                    if (lblBox.Width > MaxLabelWidth)
+                        MaxLabelWidth = lblBox.Width;
+                    if (cenCommon.cenCommon.TenCotDropdown.ToUpper().IndexOf("(" + prName + ")")<0) //Nếu không phải cột dropdown thì đặt textbox
+                    {
+                        if (prName.StartsWith("ID") && prName != "IDCHUNGTUCHITIET")
+                        {
+                            //Đặt textbox
+                            txtBox = new saTextBox
+                            {
+                                Left = 100,
+                                Top = ctlHeight,
+                                Name = prName,
+                                Tag = prName,
+                                //Thiết lập độ rộng và vị trí control
+                                Width = 200,
+                                //Thiết lập độ dài chuỗi được phép nhập vào control
+                                MaxLength = ((Int32)beParamItem.paramSize == -1) ? 512 : (Int32)beParamItem.paramSize,
+                                //Đặt ràng buộc IsNull
+                                IsNullable = (Boolean)beParamItem.paramNullable,
+                                Visible = true
+                            };
+                            //Hiển thị nội dung nếu là chế độ sửa
+                            if (Content != DBNull.Value)
+                            {
+                                txtBox.Text = Content.ToString();
+                            }
+                            this.groupEditor.Controls.Add(txtBox);
+                            ctlHeight += txtBox.Height;
+                            txtBox.Editor.ExitEditMode(true, true);
+                            txtBox.IsValid = true;
+                            //Xác định loại đối tượng valid
+                            String LoaiDoiTuong = prName.Substring(2);
+                            if (LoaiDoiTuong.StartsWith("DANHMUCTRANGTHAICHUNGTU"))
+                                LoaiDoiTuong = "DANHMUCTRANGTHAICHUNGTU";
+                            if (LoaiDoiTuong.StartsWith("DANHMUCCHUNGTU"))
+                                LoaiDoiTuong = "DANHMUCCHUNGTU";
+                            if (LoaiDoiTuong.StartsWith("DANHMUCPHANQUYENTHUAKE"))
+                                LoaiDoiTuong = "DANHMUCPHANQUYEN";
+                            if (LoaiDoiTuong.StartsWith("DANHMUCBAOCAOCOPY"))
+                                LoaiDoiTuong = "DANHMUCBAOCAO";
+                            if (LoaiDoiTuong == "DANHMUCCHUHANG" || LoaiDoiTuong == "DANHMUCCHUVO")
+                                LoaiDoiTuong = "DANHMUCKHACHHANG";
+                            LoaddsValid(LoaiDoiTuong);
+                            if (LoaiDoiTuong.StartsWith("DANHMUCDONVITINH") || LoaiDoiTuong.StartsWith("DANHMUCKHO") || LoaiDoiTuong.StartsWith("DANHMUCLOAIDICHVU"))
+                                LoaiDoiTuong = "DANHMUCDOITUONG";
+                            if (dsValid.Tables.Contains(LoaiDoiTuong))
+                                txtBox.dtValid = dsValid.Tables[LoaiDoiTuong];
+                            //Tìm cột chứa mã
+                            String CotMa = "MA" + prName.Substring(2);
+                            if (Content != DBNull.Value && drDoiTuong.Table.Columns.Contains(CotMa))
+                                txtBox.Text = drDoiTuong[CotMa].ToString();
+                            //Nếu có ID thì gán ID
+                            if (Content != DBNull.Value)
+                            {
+                                txtBox.ID = Content.ToString();
+                            }
+                            txtBox.IsModified = false;
+                            //Đặt thêm 01 textbox chứa tên
+                            string TenTxtMa = txtBox.Name;
+                            saTextBox txtName = new saTextBox
+                            {
+                                Left = txtBox.Left + txtBox.Width + 6,
+                                Top = txtBox.Top,
+                                Name = "Ten" + txtBox.Name,
+                                Tag = "Ten" + txtBox.Name,
+                                Width = 398,
+                                MaxLength = 512,
+                                Visible = true,
+                                IsValid = false,
+                                IsNullable = true
+                            };
+                            //Tìm cột chứa tên
+                            String CotTen = prName.Substring(2);
+                            if (Content != DBNull.Value && drDoiTuong.Table.Columns.Contains("Ten" + CotTen))
+                                txtName.Text = drDoiTuong["Ten" + CotTen].ToString();
+                            txtName.IsNullable = (Boolean)beParamItem.paramNullable;
+                            txtName.Enabled = false;
+                            this.groupEditor.Controls.Add(txtName);
+                            txtName.Editor.ExitEditMode(true, true);
+                            txtName.IsModified = false;
+                            //
+                            txtBox.LoaiDanhMuc = LoaiDoiTuong;
+                            txtBox.txtMoRong = new saTextBox[1];
+                            txtBox.txtMoRong[0] = txtName;
+                            txtBox.ReturnedColumnsList = "Ten";
+                            txtBox.Validating += new System.ComponentModel.CancelEventHandler(cenBase.Classes.DanhMuc.txtBox_Validating);
+                        }
+                        else
+                        {
+                            switch (prType.ToUpper())
+                            {
+                                case "NVARCHAR":
+                                    //Đặt textbox
+                                    txtBox = new saTextBox
+                                    {
+                                        Left = 100,
+                                        Top = ctlHeight,
+                                        Name = prName,
+                                        Tag = prName,
+                                        //Thiết lập độ rộng và vị trí control
+                                        Width = ctlWidth,
+                                        //Thiết lập độ dài chuỗi được phép nhập vào control
+                                        MaxLength = ((Int32)beParamItem.paramSize == -1) ? 512 : (Int32)beParamItem.paramSize,
+                                        //Đặt ràng buộc IsNull
+                                        IsNullable = (Boolean)beParamItem.paramNullable,
+                                        Visible = true
+                                    };
+                                    //Hiển thị nội dung nếu là chế độ sửa
+                                    if (Content != DBNull.Value)
+                                    {
+                                        txtBox.Text = Content.ToString();
+                                    }
+                                    //if ((prName == "SOCONT" || prName == "SOVANDONPHU") && !SuaSoContVanDon)
+                                    //    txtBox.ReadOnly = true;
+                                    this.groupEditor.Controls.Add(txtBox);
+                                    ctlHeight += txtBox.Height;
+                                    txtBox.Editor.ExitEditMode(true, true);
+                                    txtBox.IsModified = false;
+                                    break;
+                                case "TINYINT":
+                                case "SMALLINT":
+                                case "INT":
+                                case "BIGINT":
+                                    if (prType.ToUpper() == "BIGINT" && prName == "COLOR")
+                                    {
+                                        //Đặt color box
+                                        UltraColorPicker colorBox = new UltraColorPicker
+                                        {
+                                            Left = 100,
+                                            Top = ctlHeight,
+                                            Name = prName,
+                                            Tag = prName,
+                                            Width = 200,
+                                            Nullable = true,
+                                            Visible = true
+                                        };
+                                        this.groupEditor.Controls.Add(colorBox);
+                                        colorBox.Value = DBNull.Value;
+                                        //Hiển thị nội dung nếu là chế độ sửa
+                                        if (Content != DBNull.Value)
+                                        {
+                                            colorBox.Color = cenCommon.cenCommon.UIntToColor(Convert.ToUInt32(Content));
+                                        }
+                                        ctlHeight += colorBox.Height;
+                                    }
+                                    else
+                                    {
+                                        //Đặt numeric box
+                                        numBox = new saNumericBox
+                                        {
+                                            NumericType = NumericType.Integer,
+                                            Left = 100,
+                                            Top = ctlHeight,
+                                            Name = prName,
+                                            Tag = prName,
+                                            Width = 200,
+                                            Nullable = true,
+                                            Visible = true,
+                                            FormatProvider = cenCommon.cenCommon.ci,
+                                            IsNullable = (Boolean)beParamItem.paramNullable,
+                                            PromptChar = ' ',
+                                            MaskClipMode = Infragistics.Win.UltraWinMaskedEdit.MaskMode.IncludeLiterals,
+                                            MaskDisplayMode = Infragistics.Win.UltraWinMaskedEdit.MaskMode.IncludeLiterals,
+                                            MinValue = 0
+                                        };
+                                        //Định dạng các cột số lượng
+                                        if (cenCommon.cenCommon.TenCotSoLuong.ToUpper().IndexOf("(" + numBox.Name.ToUpper() + ")") >= 0)
+                                        {
+                                            numBox.MaskInput = cenCommon.cenCommon.DinhDangNhapSoLuong;
+                                        }
+                                        //Định dạng các cột trọng lượng
+                                        if (cenCommon.cenCommon.TenCotTrongLuong.ToUpper().IndexOf("(" + numBox.Name.ToUpper() + ")") >= 0)
+                                        {
+                                            numBox.MaskInput = cenCommon.cenCommon.DinhDangNhapTrongLuong;
+                                        }
+                                        //Định dạng các cột khối lượng
+                                        if (cenCommon.cenCommon.TenCotKhoiLuong.ToUpper().IndexOf("(" + numBox.Name.ToUpper() + ")") >= 0)
+                                        {
+                                            numBox.MaskInput = cenCommon.cenCommon.DinhDangNhapKhoiLuong;
+                                        }
+                                        //Định dạng các cột đơn giá
+                                        if (cenCommon.cenCommon.TenCotGia.ToUpper().IndexOf("(" + numBox.Name.ToUpper() + ")") >= 0)
+                                        {
+                                            numBox.MaskInput = cenCommon.cenCommon.DinhDangNhapGia;
+                                        }
+                                        //Định dạng các cột số tiền
+                                        if (cenCommon.cenCommon.TenCotTien.ToUpper().IndexOf("(" + numBox.Name.ToUpper() + ")") >= 0)
+                                        {
+                                            numBox.MaskInput = cenCommon.cenCommon.DinhDangNhapTien;
+                                        }
+                                        this.groupEditor.Controls.Add(numBox);
+                                        numBox.Value = DBNull.Value;
+                                        //Hiển thị nội dung nếu là chế độ sửa
+                                        if (Content != DBNull.Value)
+                                        {
+                                            numBox.Value = Content;
+                                        }
+                                        ctlHeight += numBox.Height;
+                                        numBox.IsModified = false;
+                                    }
+                                    break;
+                                case "DECIMAL":
+                                case "MONEY":
+                                case "REAL":
+                                case "FLOAT":
+                                    //Đặt numeric box
+                                    numBox = new saNumericBox
+                                    {
+                                        NumericType = NumericType.Double,
+                                        Left = 100,
+                                        Top = ctlHeight,
+                                        Name = prName,
+                                        Tag = prName,
+                                        Width = 200,
+                                        Visible = true,
+                                        PromptChar = ' ',
+                                        MaskClipMode = Infragistics.Win.UltraWinMaskedEdit.MaskMode.IncludeLiterals,
+                                        MaskDisplayMode = Infragistics.Win.UltraWinMaskedEdit.MaskMode.IncludeLiterals,
+                                        IsNullable = (Boolean)beParamItem.paramNullable,
+                                        FormatProvider = cenCommon.cenCommon.ci,
+                                        MinValue = 0,
+                                        MaxValue = 999999999999999999,
+                                        Value = DBNull.Value
+                                    };
+                                    this.groupEditor.Controls.Add(numBox);
+                                    //Hiển thị nội dung nếu là chế độ sửa
+                                    if (Content != DBNull.Value)
+                                    {
+                                        numBox.Value = Content;
+                                    }
+                                    //Định dạng các cột số lượng
+                                    if (cenCommon.cenCommon.TenCotSoLuong.ToUpper().IndexOf("(" + numBox.Name.ToUpper() + ")") >= 0)
+                                    {
+                                        numBox.MaskInput = cenCommon.cenCommon.DinhDangNhapSoLuong;
+                                    }
+                                    //Định dạng các cột trọng lượng
+                                    if (cenCommon.cenCommon.TenCotTrongLuong.ToUpper().IndexOf("(" + numBox.Name.ToUpper() + ")") >= 0)
+                                    {
+                                        numBox.MaskInput = cenCommon.cenCommon.DinhDangNhapTrongLuong;
+                                    }
+                                    //Định dạng các cột khối lượng
+                                    if (cenCommon.cenCommon.TenCotKhoiLuong.ToUpper().IndexOf("(" + numBox.Name.ToUpper() + ")") >= 0)
+                                    {
+                                        numBox.MaskInput = cenCommon.cenCommon.DinhDangNhapKhoiLuong;
+                                    }
+                                    //Định dạng các cột đơn giá
+                                    if (cenCommon.cenCommon.TenCotGia.ToUpper().IndexOf("(" + numBox.Name.ToUpper() + ")") >= 0)
+                                    {
+                                        numBox.MaskInput = cenCommon.cenCommon.DinhDangNhapGia;
+                                    }
+                                    //Định dạng các cột số tiền
+                                    if (cenCommon.cenCommon.TenCotTien.ToUpper().IndexOf("(" + numBox.Name.ToUpper() + ")") >= 0)
+                                    {
+                                        numBox.MaskInput = cenCommon.cenCommon.DinhDangNhapTien;
+                                    }
+                                    ctlHeight += numBox.Height;
+                                    numBox.IsModified = false;
+                                    break;
+                                case "DATE":
+                                case "DATETIME":
+                                case "SMALLDATETIME":
+                                    dateBox = new saDateTimeBox
+                                    {
+                                        //txtBox.Multiline = true;
+                                        Left = 100,
+                                        Top = ctlHeight,
+                                        Name = prName,
+                                        Tag = prName,
+                                        Width = 200,
+                                        Visible = true,
+                                        FormatProvider = cenCommon.cenCommon.ci,
+                                        IsNullable = (Boolean)beParamItem.paramNullable
+                                    };
+                                    this.groupEditor.Controls.Add(dateBox);
+                                    //Hiển thị nội dung nếu là chế độ sửa
+                                    if (Content != DBNull.Value)
+                                    {
+                                        dateBox.Value = Content;
+                                    }
+                                    ctlHeight += dateBox.Height;
+                                    dateBox.IsModified = false;
+                                    break;
+                                case "BIT":
+                                    //Đặt check box
+                                    chkBox = new saCheckBox
+                                    {
+                                        Left = 100,
+                                        Top = ctlHeight,
+                                        Name = prName,
+                                        Tag = prName,
+                                        Text = cenCommon.cenCommon.TraTuDien(prName),
+                                        AutoSize = true,
+                                        Visible = true
+                                    };
+                                    this.groupEditor.Controls.Add(chkBox);
+                                    if (Content != DBNull.Value)
+                                    {
+                                        chkBox.Checked = Convert.ToBoolean(Content);
+                                    }
+                                    if (PhanQuyen)
+                                    {
+                                        if (prName=="TOANQUYEN")
+                                            chkBox.CheckedChanged+=new EventHandler(ChkToanQuyen_CheckedChanged);
+                                        else
+                                            chkBox.CheckedChanged += new EventHandler(ChkQuyen_CheckedChanged);
+                                    }
+                                    ctlHeight += chkBox.Height;
+                                    chkBox.IsModified = false;
+                                    break;
+                            }
+                        }
+                    }
+                    else //Nếu không thì đặt combobox
+                    {
+                        //Đặt combo box
+                        saComboDanhMuc cboDanhMuc = new saComboDanhMuc
+                        {
+                            Left = 100,
+                            Top = ctlHeight,
+                            Name = prName,
+                            Tag = prName,
+                            //Thiết lập độ rộng và vị trí control
+                            Width = ctlWidth,
+                            //Thiết lập độ dài chuỗi được phép nhập vào control
+                            Visible = true,
+                            IsNullable = (Boolean)beParamItem.paramNullable
+                        };
+                        this.groupEditor.Controls.Add(cboDanhMuc);
+                        ctlHeight += cboDanhMuc.Height;
+                        switch (prName.ToUpper())
+                        {
+                            default:
+                                cboDanhMuc.loadData(prName.ToUpper());
+                                cboDanhMuc.Width = 604;
+                                cboDanhMuc.IsNullable = false;
+                                break;
+                        }
+                        if (Content != DBNull.Value)
+                            cboDanhMuc.Value = Content;
+                        cboDanhMuc.IsModified = false;
+                    }
+                }
+            }
+            
+            //Đặt lại tọa độ left cho các control
+            foreach (Control ctl in this.groupEditor.Controls)
+            {
+                if (ctl is saTextBox || ctl is saNumericBox || ctl is saDateTimeBox || ctl is saComboDanhMuc || ctl is saCheckBox || ctl is saPictureBox || ctl is UltraColorPicker)
+                {
+                    Int32 oLeft = ctl.Left;
+                    //if ((ctl.Enabled || ctl.Name.StartsWith("MA")) && !ctl.Name.StartsWith("IDDANHMUCDONVITINH"))
+                    if (ctl.Enabled || ctl.Name.StartsWith("MA")) 
+                    {
+                        ctl.Left = MaxLabelWidth + 20;
+                        if (ctl.Width > 100)
+                            ctl.Width = ctl.Width - (ctl.Left - oLeft);
+                    }
+                    //if ((!ctl.Enabled && !ctl.Name.StartsWith("MA")) || ctl.Name.StartsWith("IDDANHMUCDONVITINH"))
+                    if (!ctl.Enabled && !ctl.Name.StartsWith("MA"))
+                    {
+                        //ctl.Left = MaxLabelWidth + 213;
+                        Int32 oWidth = ctl.Width;
+                        ctl.Width = ctl.Width - (ctl.Left - oLeft);
+                        ctl.Left = ctl.Left - (ctl.Width - oWidth);
+                    }
+                }
+            }
+            //Đặt chiều cao, độ rộng form
+            groupEditor.Height = ctlHeight+VerticalSpace;
+            this.Height = groupEditor.Height+76;
+            this.Width = 734;
+        }
+        /// <summary>
+        /// Gán giá trị cho mảng tham số theo các control trên form
+        /// </summary>
+        /// <param name="frmCapnhat">Tên form</param>
+        /// <returns></returns>
+        protected Boolean SetDataValue()
+        {
+            Boolean OK = true; //Biến kiểm tra dữ liệu nhập vào có đầy đủ và hợp lệ hay không
+            //Gán giá trị vào các tham số khác của sp thông qua tag của các control trên form
+            foreach (System.Windows.Forms.Control e in this.groupEditor.Controls)
+            {
+                cenCommon.cenCommon.beParamItem beParamItem;
+                if (e is saTextBox | e is saCheckBox | e is saNumericBox | e is saDateTimeBox | e is saPictureBox | e is UltraColorPicker)
+                //Kiểm tra loại của control, có thể sẽ phải thêm các loại control khác
+                {
+                    beParamItem = new cenCommon.cenCommon.beParamItem();
+                    if (beParams.TryGetValue(e.Tag.ToString(), out beParamItem)) //Nếu control này có trong tham số
+                    {
+                        //Lấy dữ liệu từ textbox
+                        if (e is saTextBox)
+                        {
+                            if (!((saTextBox)e).IsNullable | ((saTextBox)e).Text != "")
+                            {
+                                //Nếu textbox là ID thì gán ID
+                                if (e.Tag.ToString().StartsWith("ID"))
+                                {
+                                    if (((saTextBox)e).Text == "") //Nếu không có mã thì báo lỗi thiếu
+                                    {
+                                        OK = false;
+                                        cenCommon.cenCommon.ErrorMessageOkOnly("Thiếu " + ((saTextBox)e).Tag.ToString() + "! Vui lòng nhập lại!");
+                                        ((saTextBox)e).Focus();
+                                        break;
+                                    }
+                                    else
+                                    {
+                                        //Nếu đã có ID thì gán ID
+                                        if (((saTextBox)e).ID != "")
+                                            beParamItem.paramValue = ((saTextBox)e).ID;
+                                        else
+                                        {   //Nếu chưa có ID thì valid mã
+                                            //ist<DataRow> drDoiTuong = clsDanhMuc.ValidDoiTuong(((saTextBox)e).LoaiDanhMuc, ((saTextBox)e).Text.Trim(), ((saTextBox)e).IDLoaiDoiTuong, true, ((saTextBox)e).IsMultiSelect);
+                                            //clsDanhMuc.txtBox_Validating((saTextBox)e,new CancelEventArgs());
+                                            beParamItem.paramValue = ((saTextBox)e).ID;
+                                            if (((saTextBox)e).ID == "")
+                                            {
+                                                //Nếu valid không thành công thì báo lỗi
+                                                OK = false;
+                                                cenCommon.cenCommon.ErrorMessageOkOnly("Thiếu " + ((saTextBox)e).Tag.ToString() + "! Vui lòng nhập lại!");
+                                                ((saTextBox)e).Focus();
+                                                break;
+                                            }
+                                        }
+                                    }
+                                }
+                                else //Nếu là Text thì gắn Text
+                                {
+                                    if (((saTextBox)e).Text=="")
+                                    {
+                                        OK = false;
+                                        cenCommon.cenCommon.ErrorMessageOkOnly("[" + ((saTextBox)e).Tag + "] thiếu thông tin! Vui lòng nhập lại!");
+                                        ((saTextBox)e).Focus();
+                                        break;
+                                    }
+                                    else
+                                    {
+                                        beParamItem.paramValue = ((saTextBox)e).Text;
+                                    }
+                                }
+                                beParams[e.Tag.ToString()] = beParamItem;
+                            }
+                        } 
+                        //Lấy dữ liệu từ checkbox
+                        if (e is saCheckBox)
+                        {
+                            beParamItem.paramValue = ((saCheckBox)e).Checked.ToString();
+                            beParams[e.Tag.ToString()] = beParamItem;
+                        }
+                        //Lấy dữ liệu từ color box
+                        if (e is UltraColorPicker)
+                        {
+                            beParamItem.paramValue = cenCommon.cenCommon.ColorToUInt(((UltraColorPicker)e).Color);
+                            beParams[e.Tag.ToString()] = beParamItem;
+                        }
+                        //Combo danh mục
+                        if (e is saComboDanhMuc)
+                        {
+                            if (!((saComboDanhMuc)e).IsNullable && ((saComboDanhMuc)e).SelectedItem == null)
+                            {
+                                OK = false;
+                                cenCommon.cenCommon.ErrorMessageOkOnly("[" + ((saComboDanhMuc)e).Tag + "] thiếu thông tin! Vui lòng nhập lại!");
+                                ((saComboDanhMuc)e).Focus();
+                                break;
+                            }
+                            else
+                            {
+                                if (((saComboDanhMuc)e).SelectedItem != null)
+                                {
+                                    beParamItem.paramValue = (((saComboDanhMuc)e).Value == DBNull.Value) ? DBNull.Value.ToString() : ((saComboDanhMuc)e).Value.ToString();
+                                    beParams[e.Tag.ToString()] = beParamItem;
+                                }
+                                //BusinessEntity.BusinessEntity.beParamItem a;
+                                ////Tìm trường tên
+                                //if (beParams.TryGetValue(((saComboDanhMuc)e).Tag.ToString().Substring(2), out a))
+                                //{
+                                //    a.paramValue = ((saComboDanhMuc)e).Text;
+                                //    beParams[((saComboDanhMuc)e).Tag.ToString().Substring(2)] = a;
+                                //}
+                            }
+                        }
+                        //Lấy dữ liệu từ numeric editor dành cho các kiểu số nguyên
+                        if (e is saNumericBox)
+                        {
+                            if (((saNumericBox)e).Value==null & !((saNumericBox)e).IsNullable)
+                            {
+                                OK = false;
+                                cenCommon.cenCommon.ErrorMessageOkOnly("[" + beParamItem.paramName.ToUpper() + "] thiếu thông tin! Vui lòng nhập lại!");
+                                ((saNumericBox)e).Focus();
+                                break;
+                            }
+                            else
+                            {
+                                beParamItem.paramValue = (((saNumericBox)e).Value.Equals(DBNull.Value)) ? DBNull.Value : ((saNumericBox)e).Value;
+                                beParams[e.Tag.ToString()] = beParamItem;
+                            }
+                        }
+                        //Lấy dữ liệu từ datetime editor
+                        if (e is saDateTimeBox)
+                        {
+                            if (((saDateTimeBox)e).Value == null & !((saDateTimeBox)e).IsNullable)
+                            {
+                                OK = false;
+                                cenCommon.cenCommon.ErrorMessageOkOnly("[" + beParamItem.paramName.ToUpper() + "] thiếu thông tin! Vui lòng nhập lại!");
+                                ((saDateTimeBox)e).Focus();
+                                break;
+                            }
+                            else
+                            {
+                                beParamItem.paramValue = ((saDateTimeBox)e).Value?.ToString();
+                                beParams[e.Tag.ToString()] = beParamItem;
+                            }
+                        }
+                        //Lấy dữ liệu từ picture box
+                        //if (e is saPictureBox)
+                        //{
+                        //    beParamItem.paramValue = (((saPictureBox)e).Image == null) ? null : (cenCommon.cenCommon.ImageToByte((Image)((saPictureBox)e).Image));
+                        //    beParams[e.Tag.ToString()] = beParamItem;
+                        //}
+                        //if (!(e.Tag.ToString().StartsWith("Ma") & e.Tag.ToString().Length > 2) & !(e.Tag.ToString().StartsWith("Tk") & e.Tag.ToString().Length > 2)) //Nếu là ô chứa FK hoặc Mã cấp trên thì không gán lại nữa
+                        //    beParams[e.Tag.ToString()] = beParamItem;
+                    }
+                }
+            }
+            return OK;
+        }
+        /// <summary>
+        /// Map lại dữ liệu giữa các control trên form và DataRow
+        /// </summary>
+        protected void SaveToGrid()
+        {
+            
+            //Lưu dữ liệu vào dòng trên grid
+            //if (CapNhat == 0)
+            //{
+            //    if (ugDoiTuong != null && ugDoiTuong.ActiveRow != null) ugDoiTuong.ActiveRow.Selected = false;
+            //    if (ugDoiTuong != null) drDoiTuong = ugDoiTuong.DisplayLayout.Bands[0].AddNew();
+            //}
+            if (drDoiTuong != null)
+            {
+                //Gán 1 số giá trị mặc định
+                if (drDoiTuong.Table.Columns.Contains("IDDANHMUCLOAIDOITUONG") && LoaiDanhMuc != "DANHMUCMENULOAIDOITUONG")
+                    drDoiTuong["IDDanhMucLoaiDoiTuong"] = IDDanhMucLoaiDoiTuong;
+                if (drDoiTuong.Table.Columns.Contains("IDDANHMUCCHUNGTU"))
+                    drDoiTuong["IDDanhMucChungTu"] = IDDanhMucChungTu;
+                if (drDoiTuong.Table.Columns.Contains("IDCHUNGTU"))
+                    drDoiTuong["IDChungTu"] = IDChungTu;
+                if (drDoiTuong.Table.Columns.Contains("IDCHUNGTUCHITIET"))
+                    drDoiTuong["IDChungTuChiTiet"] = IDChungTuChiTiet;
+                //Gán giá trị trên textbox cho các cột
+                foreach (System.Windows.Forms.Control e in this.groupEditor.Controls)
+                {
+                    if (e is saTextBox)
+                    {
+                        String GiaTriID = "";
+                        String GiaTriText = "";
+                        String CellNameKey="";
+                        GiaTriText = ((saTextBox)e).Text;
+                        GiaTriID = ((saTextBox)e).ID;
+                        if (((saTextBox)e).Tag.ToString().StartsWith("ID"))
+                        {
+                            GiaTriID = ((saTextBox)e).ID;
+                            CellNameKey = ((saTextBox)e).Tag.ToString().Substring(2);
+                            if (!CellNameKey.StartsWith("MA") && !CellNameKey.StartsWith("TK")) CellNameKey = "MA" + CellNameKey;
+                            if (drDoiTuong.Table.Columns.Contains(((saTextBox)e).Tag.ToString()))
+                                drDoiTuong[((saTextBox)e).Tag.ToString()] = GiaTriID;
+                            if (drDoiTuong.Table.Columns.Contains(CellNameKey))
+                                drDoiTuong[CellNameKey] = GiaTriText;
+                        }
+                        if (((saTextBox)e).Tag.ToString().StartsWith("TenID"))
+                        {
+                            CellNameKey = "Ten" + ((saTextBox)e).Tag.ToString().Substring(5);
+                            if (drDoiTuong.Table.Columns.Contains(((saTextBox)e).Tag.ToString()))
+                                drDoiTuong[((saTextBox)e).Tag.ToString()] = GiaTriID;
+                            if (drDoiTuong.Table.Columns.Contains(CellNameKey))
+                                drDoiTuong[CellNameKey] = GiaTriText;
+                        }
+                        if (!((saTextBox)e).Tag.ToString().StartsWith("ID") && !((saTextBox)e).Tag.ToString().StartsWith("TenID"))
+                        {
+                            if (drDoiTuong.Table.Columns.Contains(((saTextBox)e).Tag.ToString()))
+                                drDoiTuong[((saTextBox)e).Tag.ToString()] = GiaTriText;
+                            if (drDoiTuong.Table.Columns.Contains(CellNameKey))
+                                drDoiTuong[CellNameKey] = GiaTriText;
+                        }
+                    }
+                    if (e is saCheckBox)
+                    {
+                        if (drDoiTuong.Table.Columns.Contains(((saCheckBox)e).Tag.ToString()))
+                            drDoiTuong[((saCheckBox)e).Tag.ToString()] = ((saCheckBox)e).Checked;
+                    }
+                    if (e is UltraColorPicker)
+                    {
+                        if (drDoiTuong.Table.Columns.Contains(((UltraColorPicker)e).Tag.ToString()))
+                            drDoiTuong[((UltraColorPicker)e).Tag.ToString()] = cenCommon.cenCommon.ColorToUInt(((UltraColorPicker)e).Color);
+                    }
+                    if (e is saDateTimeBox)
+                    {
+                        if (drDoiTuong.Table.Columns.Contains(((saDateTimeBox)e).Tag.ToString()))
+                            drDoiTuong[((saDateTimeBox)e).Tag.ToString()] = ((saDateTimeBox)e).Value ?? DBNull.Value;
+                    }
+                    if (e is saNumericBox)
+                    {
+                        if (drDoiTuong.Table.Columns.Contains(((saNumericBox)e).Tag.ToString()))
+                            drDoiTuong[((saNumericBox)e).Tag.ToString()] = ((saNumericBox)e).Value;
+                    }
+                    if (e is saComboDanhMuc )
+                    {
+                        Object GiaTriID = "";
+                        Object GiaTriText = "";
+                        String CellNameKey = "";
+                        if (((saComboDanhMuc)e).Tag.ToString().StartsWith("ID"))
+                        {
+                            CellNameKey = "Ten" + ((saComboDanhMuc)e).Tag.ToString().Substring(2);
+                        }
+                        GiaTriText = ((saComboDanhMuc)e).Text;
+                        GiaTriID = ((saComboDanhMuc)e).Value;
+                        if (drDoiTuong.Table.Columns.Contains(((saComboDanhMuc)e).Tag.ToString()))
+                            drDoiTuong[((saComboDanhMuc)e).Tag.ToString()] = GiaTriID;
+                        if (drDoiTuong.Table.Columns.Contains(CellNameKey))
+                            drDoiTuong[CellNameKey] = (GiaTriText.ToString() == "") ? DBNull.Value : GiaTriText;
+                        
+                    }
+                    //if (e is saPictureBox)
+                    //{
+                    //    if (drDoiTuong.Table.Columns.Contains(((saPictureBox)e).Tag.ToString()))
+                    //        drDoiTuong[((saPictureBox)e).Tag.ToString()] = cenCommon.cenCommon.ImageToByte((Image)((saPictureBox)e).Image);
+                    //}
+                }
+                //drDoiTuong.AcceptChanges();
+            }
+        }
+        /// <summary>
+        /// Xóa hết nội dung các control trên form
+        /// </summary>
+        protected void ClearForm()
+        {
+            Boolean Focused = false;
+            //Gán giá trị trên textbox cho các cột
+            foreach (System.Windows.Forms.Control e in this.groupEditor.Controls)
+            {
+                if (e is saTextBox)
+                {
+                    ((saTextBox)e).Text = "";
+                    ((saTextBox)e).ID = "";
+                    ((saTextBox)e).IsModified = false;
+                    if (!Focused)
+                    {
+                        e.Focus();
+                        Focused = true;
+                    }
+                }
+                if (e is saCheckBox)
+                {
+                    ((saCheckBox)e).Checked = false;
+                    ((saCheckBox)e).IsModified = false;
+                    if (!Focused)
+                    {
+                        e.Focus();
+                        Focused = true;
+                    }
+                }
+                if (e is saDateTimeBox)
+                {
+                    ((saDateTimeBox)e).Value = null;
+                    ((saDateTimeBox)e).IsModified = false;
+                    if (!Focused)
+                    {
+                        e.Focus();
+                        Focused = true;
+                    }
+                }
+                if (e is saNumericBox)
+                {
+                    ((saNumericBox)e).Value = DBNull.Value;
+                    ((saNumericBox)e).IsModified = false;
+                    if (!Focused)
+                    {
+                        e.Focus();
+                        Focused = true;
+                    }
+                }
+                if (e is saComboDanhMuc)
+                {
+                    ((saComboDanhMuc)e).Text = "";
+                    ((saComboDanhMuc)e).Value = null;
+                    ((saComboDanhMuc)e).IsModified = false;
+                    if (!Focused)
+                    {
+                        e.Focus();
+                        Focused = true;
+                    }
+                }
+                //if (e is saPictureBox)
+                //{
+                //    if (drDoiTuong.Table.Columns.Contains(((saPictureBox)e).Tag.ToString()))
+                //        drDoiTuong[((saPictureBox)e).Tag.ToString()] = cenCommon.cenCommon.ImageToByte((Image)((saPictureBox)e).Image);
+                //}
+                
+            }
+        }
+        /// <summary>
+        /// Lưu dữ liệu
+        /// </summary>
+        protected void SaveData(Boolean AddNew)
+        {
+            OK = false;
+            String IDCapNhat = (CapNhat==0) ? "" : ID;
+            //Gán ID Tạm thời = 0
+            if (CapNhat == 0 && drDoiTuong.Table.Columns.Contains("ID")) drDoiTuong["ID"] = "";
+            bsDoiTuong.EndEdit();
+            OK = SetDataValue();
+            if (OK)
+            {
+                SaveToGrid();
+                if (OK)
+                {
+                    DanhMucBUS _DanhMucBUS = new DanhMucBUS();
+                    LoaiDanhMuc = IDDanhMucLoaiDoiTuong == null ? LoaiDanhMuc : _DanhMucBUS.GetTenBangDuLieu(IDDanhMucLoaiDoiTuong);
+                    OK = (CapNhat == 0) ? _DanhMucBUS.ThemDanhMuc(LoaiDanhMuc, drDoiTuong) : _DanhMucBUS.SuaDanhMuc(LoaiDanhMuc, drDoiTuong);
+                    if (OK)
+                    {
+                        IDCapNhat = drDoiTuong["ID"].ToString();
+                        //DataRow drDoiTuongCapNhat = clsDanhMuc.ListDanhMucByID(LoaiDanhMuc, IDCapNhat);
+                        //cenCommon.cenCommon.Copy2DataRows(drDoiTuongCapNhat, drDoiTuong);
+                        bsDoiTuong.EndEdit();
+                    }
+                    if (OK)
+                    {
+                        if (AddNew)
+                        {
+                            ClearForm();
+                            bsDoiTuong.AddNew();
+                            if (bsDoiTuong.Current != null)
+                            {
+                                drDoiTuong = ((DataRowView)bsDoiTuong.Current).Row;
+                            }
+                            else
+                            {
+                                cenCommon.cenCommon.ErrorMessageOkOnly("Không thêm được dữ liệu mới!");
+                                Close();
+                            }
+                        }
+                        else
+                            Close();
+                    }
+                }
+            }
+        }
+        /// <summary>
+        /// Phím chức năng F6: Lưu dữ liệu, ESC: Thoát
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void FormKeyDown(object sender, KeyEventArgs e)
+        {
+            switch (e.KeyCode)
+            {
+                case (Keys.Escape):
+                    Cancel();
+                    break;
+                case (Keys.Enter):
+                    if (e.Control)
+                    {
+                        SaveData(false);
+                        e.Handled = true;
+                    }
+                    break;
+                case (Keys.F2):
+                    SaveData(true);
+                    break;
+                case (Keys.F6):
+                    SaveData(false);
+                    break;
+            }
+        }
+        /// <summary>
+        /// Ngừng cập nhật
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void CmdCancel_Click(object sender, EventArgs e)
+        {
+            Cancel();
+        }
+        /// <summary>
+        /// Ngừng
+        /// </summary>
+        private void Cancel()
+        {
+            //Kiểm tra xem dữ liệu có sự thay đổi hay chưa?
+            Boolean isModified = false;
+            foreach (System.Windows.Forms.Control e in groupEditor.Controls)
+            {
+                if (e.Enabled && e is saTextBox)
+                {
+                    isModified = ((saTextBox)e).IsModified;
+                    if (isModified) 
+                        break;
+                }
+                if (e.Enabled && e is saCheckBox)
+                {
+                    isModified = ((saCheckBox)e).IsModified;
+                    if (isModified) 
+                        break;
+                }
+                if (e.Enabled && e is saDateTimeBox)
+                {
+                    isModified = ((saDateTimeBox)e).IsModified;
+                    if (isModified) 
+                        break;
+                }
+                if (e.Enabled && e is saNumericBox)
+                {
+                    isModified = ((saNumericBox)e).IsModified;
+                    if (isModified) 
+                        break;
+                }
+            }
+            if (isModified)
+            {
+                DialogResult DgR = cenCommon.cenCommon.QuestionMessage("Dữ liệu đã có sự thay đổi, bạn có muốn lưu lại hay không?", 1);
+                if (DgR == DialogResult.Yes)
+                    SaveData(false);
+                if (DgR == DialogResult.No)
+                {
+                    if (CapNhat == 0 && bsDoiTuong.Current !=null) bsDoiTuong.RemoveCurrent();
+                    bsDoiTuong.CancelEdit();
+                    Close();
+                }
+            }
+            else
+            {
+                if (CapNhat == 0 && bsDoiTuong.Current != null) bsDoiTuong.RemoveCurrent();
+                bsDoiTuong.CancelEdit();
+                Close();
+            }
+             
+        }
+        protected override bool ProcessDialogKey(Keys keyData)
+        {
+            return base.ProcessDialogKey(keyData);
+        }
+        private void CmdSaveAdd_Click(object sender, EventArgs e)
+        {
+            SaveData(true);
+        }
+        private void ChkToanQuyen_CheckedChanged(object sender, EventArgs e)
+        {
+            saCheckBox chkXem = null;
+            saCheckBox chkThem = null;
+            saCheckBox chkSua = null;
+            saCheckBox chkXoa = null;
+
+            Boolean ToanQuyen = ((saCheckBox)sender).Checked;
+
+            foreach (Control ctl in this.groupEditor.Controls)
+            {
+                if (ctl is saCheckBox && ctl.Name == "XEM")
+                {
+                    chkXem = (saCheckBox)ctl;
+                }
+                if (ctl is saCheckBox && ctl.Name == "THEM")
+                {
+                    chkThem = (saCheckBox)ctl;
+                }
+                if (ctl is saCheckBox && ctl.Name == "SUA")
+                {
+                    chkSua = (saCheckBox)ctl;
+                }
+                if (ctl is saCheckBox && ctl.Name == "XOA")
+                {
+                    chkXoa = (saCheckBox)ctl;
+                }
+            }
+            if (ToanQuyen)
+            {
+                if (chkXem != null) chkXem.Checked = true;
+                if (chkThem != null) chkThem.Checked = true;
+                if (chkSua != null) chkSua.Checked = true;
+                if (chkXoa != null) chkXoa.Checked = true;
+            }
+
+        }
+        private void ChkQuyen_CheckedChanged(object sender, EventArgs e)
+        {
+            saCheckBox chkToanQuyen = null;
+
+            Boolean Quyen = ((saCheckBox)sender).Checked;
+
+            foreach (Control ctl in this.groupEditor.Controls)
+            {
+                if (ctl is saCheckBox && ctl.Name == "TOANQUYEN")
+                {
+                    chkToanQuyen = (saCheckBox)ctl;
+                    break;
+                }
+            }
+            if (!Quyen && chkToanQuyen != null)
+            {
+                chkToanQuyen.Checked = false;
+            }
+
+        }
+        //Load danh mục valid
+        private void LoaddsValid(String LoaiDanhMuc)
+        {
+            if (dsValid == null) dsValid = new DataSet();
+            if (dsValid.Tables.Contains(LoaiDanhMuc)) dsValid.Tables.Remove(LoaiDanhMuc);
+            DanhMucBUS _BUS = new DanhMucBUS();
+            String IDDanhMucLoaiDoiTuongValid = _BUS.GetIDLoaiDoiTuong(LoaiDanhMuc);
+            DataTable dt = null;
+            if (!_BUS.List(ref dt, LoaiDanhMuc))
+            {
+                cenCommon.cenCommon.ErrorMessageOkOnly("Lỗi tải danh mục " + LoaiDanhMuc);
+                return;
+            }
+            dsValid.Tables.Add(dt);
+        }
+    }
+}

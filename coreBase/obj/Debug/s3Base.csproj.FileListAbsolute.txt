@@ -1,0 +1,88 @@
+D:\S3-TASA\Projects\s3Base\bin\Debug\s3Base.dll
+D:\S3-TASA\Projects\s3Base\bin\Debug\s3Base.pdb
+D:\S3-TASA\Projects\s3Base\bin\Debug\Common.dll
+D:\S3-TASA\Projects\s3Base\bin\Debug\CustomControls.dll
+D:\S3-TASA\Projects\s3Base\bin\Debug\s3BUS.dll
+D:\S3-TASA\Projects\s3Base\bin\Debug\s3DAL.dll
+D:\S3-TASA\Projects\s3Base\bin\Debug\s3DAO.dll
+D:\S3-TASA\Projects\s3Base\bin\Debug\s3DTO.dll
+D:\S3-TASA\Projects\s3Base\bin\Debug\s3BUS.pdb
+D:\S3-TASA\Projects\s3Base\bin\Debug\Common.pdb
+D:\S3-TASA\Projects\s3Base\bin\Debug\CustomControls.pdb
+D:\S3-TASA\Projects\s3Base\bin\Debug\s3DAL.pdb
+D:\S3-TASA\Projects\s3Base\bin\Debug\s3DAO.pdb
+D:\S3-TASA\Projects\s3Base\bin\Debug\s3DTO.pdb
+E:\S3-TASA\Projects\s3Base\bin\Debug\s3Base.dll
+E:\S3-TASA\Projects\s3Base\bin\Debug\s3Base.pdb
+E:\S3-TASA\Projects\s3Base\bin\Debug\Common.dll
+E:\S3-TASA\Projects\s3Base\bin\Debug\CustomControls.dll
+E:\S3-TASA\Projects\s3Base\bin\Debug\s3BUS.dll
+E:\S3-TASA\Projects\s3Base\bin\Debug\s3DAL.dll
+E:\S3-TASA\Projects\s3Base\bin\Debug\s3DAO.dll
+E:\S3-TASA\Projects\s3Base\bin\Debug\s3DTO.dll
+E:\S3-TASA\Projects\s3Base\bin\Debug\s3BUS.pdb
+E:\S3-TASA\Projects\s3Base\bin\Debug\Common.pdb
+E:\S3-TASA\Projects\s3Base\bin\Debug\CustomControls.pdb
+E:\S3-TASA\Projects\s3Base\bin\Debug\s3DAL.pdb
+E:\S3-TASA\Projects\s3Base\bin\Debug\s3DAO.pdb
+E:\S3-TASA\Projects\s3Base\bin\Debug\s3DTO.pdb
+E:\S3-TASA\Runtimes\s3Base.dll
+E:\S3-TASA\Runtimes\s3Base.pdb
+E:\S3-TASA\Projects\s3Base\obj\Debug\s3Base.Forms.frmBaseChungTu.resources
+E:\S3-TASA\Projects\s3Base\obj\Debug\s3Base.Forms.frmBaseDanhMuc.resources
+E:\S3-TASA\Projects\s3Base\obj\Debug\s3Base.Forms.frmBaseDanhMucUpdate.resources
+E:\S3-TASA\Projects\s3Base\obj\Debug\s3Base.Properties.Resources.resources
+E:\S3-TASA\Projects\s3Base\obj\Debug\s3Base.dll.licenses
+E:\S3-TASA\Projects\s3Base\obj\Debug\s3Base.dll
+E:\S3-TASA\Projects\s3Base\obj\Debug\s3Base.pdb
+F:\New folder\S3-TASA\Runtimes\s3Base.dll
+F:\New folder\S3-TASA\Runtimes\s3Base.pdb
+F:\New folder\S3-TASA\Projects\s3Base\obj\Debug\ResolveAssemblyReference.cache
+F:\New folder\S3-TASA\Projects\s3Base\obj\Debug\s3Base.Forms.frmBaseChungTu.resources
+F:\New folder\S3-TASA\Projects\s3Base\obj\Debug\s3Base.Forms.frmBaseDanhMuc.resources
+F:\New folder\S3-TASA\Projects\s3Base\obj\Debug\s3Base.Forms.frmBaseDanhMucUpdate.resources
+F:\New folder\S3-TASA\Projects\s3Base\obj\Debug\s3Base.Properties.Resources.resources
+F:\New folder\S3-TASA\Projects\s3Base\obj\Debug\GenerateResource.read.1.tlog
+F:\New folder\S3-TASA\Projects\s3Base\obj\Debug\GenerateResource.write.1.tlog
+F:\New folder\S3-TASA\Projects\s3Base\obj\Debug\s3Base.dll.licenses
+F:\New folder\S3-TASA\Projects\s3Base\obj\Debug\s3Base.dll
+F:\New folder\S3-TASA\Projects\s3Base\obj\Debug\s3Base.pdb
+E:\S3-TASA\Projects\s3Base\obj\Debug\ResolveAssemblyReference.cache
+E:\S3-TASA\Projects\s3Base\obj\Debug\GenerateResource.read.1.tlog
+E:\S3-TASA\Projects\s3Base\obj\Debug\GenerateResource.write.1.tlog
+D:\S3-TASA\Runtimes\s3Base.dll
+D:\S3-TASA\Runtimes\s3Base.pdb
+D:\S3-TASA\Projects\s3Base\obj\Debug\s3Base.csprojResolveAssemblyReference.cache
+D:\S3-TASA\Projects\s3Base\obj\Debug\s3Base.Forms.frmBaseChungTu.resources
+D:\S3-TASA\Projects\s3Base\obj\Debug\s3Base.Forms.frmBaseDanhMuc.resources
+D:\S3-TASA\Projects\s3Base\obj\Debug\s3Base.Forms.frmBaseDanhMucUpdate.resources
+D:\S3-TASA\Projects\s3Base\obj\Debug\s3Base.Properties.Resources.resources
+D:\S3-TASA\Projects\s3Base\obj\Debug\s3Base.csproj.GenerateResource.Cache
+D:\S3-TASA\Projects\s3Base\obj\Debug\s3Base.dll.licenses
+D:\S3-TASA\Projects\s3Base\obj\Debug\s3Base.dll
+D:\S3-TASA\Projects\s3Base\obj\Debug\s3Base.pdb
+G:\S3-CFS 2018\Runtimes\s3Base.dll
+G:\S3-CFS 2018\Runtimes\s3Base.pdb
+G:\S3-CFS 2018\Projects\s3Base\obj\Debug\ResolveAssemblyReference.cache
+G:\S3-CFS 2018\Projects\s3Base\obj\Debug\s3Base.Forms.frmBaseChungTu.resources
+G:\S3-CFS 2018\Projects\s3Base\obj\Debug\s3Base.Forms.frmBaseChungTu_eCargo.resources
+G:\S3-CFS 2018\Projects\s3Base\obj\Debug\s3Base.Forms.frmBaseDanhMuc.resources
+G:\S3-CFS 2018\Projects\s3Base\obj\Debug\s3Base.Forms.frmBaseDanhMucUpdate.resources
+G:\S3-CFS 2018\Projects\s3Base\obj\Debug\s3Base.Properties.Resources.resources
+G:\S3-CFS 2018\Projects\s3Base\obj\Debug\GenerateResource.read.1.tlog
+G:\S3-CFS 2018\Projects\s3Base\obj\Debug\GenerateResource.write.1.tlog
+G:\S3-CFS 2018\Projects\s3Base\obj\Debug\s3Base.dll.licenses
+G:\S3-CFS 2018\Projects\s3Base\obj\Debug\s3Base.dll
+G:\S3-CFS 2018\Projects\s3Base\obj\Debug\s3Base.pdb
+D:\S3-CFS 2018\Runtimes\s3Base.dll
+D:\S3-CFS 2018\Runtimes\s3Base.pdb
+D:\S3-CFS 2018\Projects\s3Base\obj\Debug\s3Base.csprojResolveAssemblyReference.cache
+D:\S3-CFS 2018\Projects\s3Base\obj\Debug\s3Base.Forms.frmBaseChungTu.resources
+D:\S3-CFS 2018\Projects\s3Base\obj\Debug\s3Base.Forms.frmBaseChungTu_eCargo.resources
+D:\S3-CFS 2018\Projects\s3Base\obj\Debug\s3Base.Forms.frmBaseDanhMuc.resources
+D:\S3-CFS 2018\Projects\s3Base\obj\Debug\s3Base.Forms.frmBaseDanhMucUpdate.resources
+D:\S3-CFS 2018\Projects\s3Base\obj\Debug\s3Base.Properties.Resources.resources
+D:\S3-CFS 2018\Projects\s3Base\obj\Debug\s3Base.csproj.GenerateResource.Cache
+D:\S3-CFS 2018\Projects\s3Base\obj\Debug\s3Base.dll.licenses
+D:\S3-CFS 2018\Projects\s3Base\obj\Debug\s3Base.dll
+D:\S3-CFS 2018\Projects\s3Base\obj\Debug\s3Base.pdb

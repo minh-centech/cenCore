@@ -1,0 +1,245 @@
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Data.SqlClient;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Windows.Forms;
+using Infragistics.Win.UltraWinGrid;
+using cenControls;
+using cenCommon;
+using cenBUS;
+using cenDTO;
+namespace cenBase.Forms
+{
+    public partial class frmDanhMucChungTu : Form
+    {
+        public DataSet dsChungTu;
+        public String LoaiDanhMuc = "DANHMUCCHUNGTU";
+        //Binding Source
+        BindingSource bsChungTu;
+        BindingSource bsChungTuIn;
+        BindingSource bsChungTuLienQuan;
+        public frmDanhMucChungTu()
+        {
+            InitializeComponent();
+        }
+        private void frmMenu_Load(object sender, EventArgs e)
+        {
+            LoadData();
+            ugChungTu.DisplayLayout.Override.FilterUIType = Infragistics.Win.UltraWinGrid.FilterUIType.FilterRow; //Biểu tượng lọc đặt trên tiêu đề cột
+            ugChungTuIn.DisplayLayout.Override.FilterUIType = Infragistics.Win.UltraWinGrid.FilterUIType.FilterRow; //Biểu tượng lọc đặt trên tiêu đề cột
+            ugChungTuLienQuan.DisplayLayout.Override.FilterUIType = Infragistics.Win.UltraWinGrid.FilterUIType.FilterRow; //Biểu tượng lọc đặt trên tiêu đề cột
+            //CommonUI.SetDisplayLanguage(this);
+        }
+        private void LoadData()
+        {
+            DanhMucBUS clsDanhMuc = new DanhMucBUS();
+            DataTable dtDanhMucChungTu = null, dtDanhMucChungTuIn = null, dtDanhMucChungTuLienQuan = null;
+            
+            if (!clsDanhMuc.List(ref dtDanhMucChungTu, DanhMucChungTu.TableName))
+            {
+                cenCommon.cenCommon.ErrorMessageOkOnly("Lỗi lấy dữ liệu danh mục chứng từ!");
+                return;
+            }
+            if (!clsDanhMuc.List(ref dtDanhMucChungTuIn, DanhMucChungTuIn.TableName))
+            {
+                cenCommon.cenCommon.ErrorMessageOkOnly("Lỗi lấy dữ liệu danh mục mẫu inchứng từ!");
+                return;
+            }
+            if (!clsDanhMuc.List(ref dtDanhMucChungTuLienQuan, DanhMucChungTuLienQuan.TableName))
+            {
+                cenCommon.cenCommon.ErrorMessageOkOnly("Lỗi lấy dữ liệu danh mục chứng từ liên quan!");
+                return;
+            }
+            dsChungTu = new DataSet();
+            dsChungTu.Tables.Add(dtDanhMucChungTu);
+            dsChungTu.Tables.Add(dtDanhMucChungTuIn);
+            dsChungTu.Tables.Add(dtDanhMucChungTuLienQuan);
+
+            dsChungTu.Relations.Add(cenCommon.cenCommon.prefix_DataRelation + DanhMucChungTuIn.TableName, dtDanhMucChungTu.Columns["ID"], dtDanhMucChungTuIn.Columns["IDDanhMucChungTu"]);
+            dsChungTu.Relations.Add(cenCommon.cenCommon.prefix_DataRelation + DanhMucChungTuLienQuan.TableName, dtDanhMucChungTu.Columns["ID"], dtDanhMucChungTuLienQuan.Columns["IDDanhMucChungTu"]);
+            
+            bsChungTu = new BindingSource();
+            bsChungTuIn = new BindingSource();
+            bsChungTuLienQuan = new BindingSource();
+            //Load chung tu
+            bsChungTu.DataSource = dsChungTu;
+            bsChungTu.DataMember = DanhMucChungTu.TableName;
+            bsChungTuIn.DataSource = bsChungTu;
+            bsChungTuIn.DataMember = cenCommon.cenCommon.prefix_DataRelation +  DanhMucChungTuIn.TableName;
+            bsChungTuLienQuan.DataSource = bsChungTu;
+            bsChungTuLienQuan.DataMember = cenCommon.cenCommon.prefix_DataRelation + DanhMucChungTuLienQuan.TableName;
+            
+            ugChungTu.DataSource = bsChungTu;
+            ugChungTuIn.DataSource = bsChungTuIn;
+            ugChungTuLienQuan.DataSource = bsChungTuLienQuan;
+        }
+
+        private void UltraToolbarsManager1_ToolClick(object sender, Infragistics.Win.UltraWinToolbars.ToolClickEventArgs e)
+        {
+            cenBase.Classes.DanhMuc DanhMucUI;
+            switch (e.Tool.Key.ToString().ToUpper())
+            {
+                case "BTXOA":
+                    DanhMucUI = new cenBase.Classes.DanhMuc();
+                    DanhMucUI.IDDanhMucLoaiDoiTuong = null;
+                    DanhMucUI.LoaiDanhMuc = DanhMucChungTu.TableName;
+                    DanhMucUI.XoaDanhMuc(bsChungTu);
+                    break;
+                case "BTTHEM":
+                    DanhMucUI = new cenBase.Classes.DanhMuc();
+                    DanhMucUI.IDDanhMucLoaiDoiTuong = null;
+                    DanhMucUI.LoaiDanhMuc = DanhMucChungTu.TableName;
+                    DanhMucUI.ThemDanhMuc(bsChungTu);
+                    break;
+                case "BTSUA":
+                    if (bsChungTu.Current != null)
+                    {
+                        DanhMucUI = new cenBase.Classes.DanhMuc();
+                        DanhMucUI.IDDanhMucLoaiDoiTuong = null;
+                        DanhMucUI.LoaiDanhMuc = DanhMucChungTu.TableName;
+                        DanhMucUI.SuaDanhMuc(bsChungTu);
+                    }
+                    break;
+                case "BTTAILAI":
+                    LoadData();
+                    break;
+            }
+        }
+        private void ug_DoubleClickRow(object sender, Infragistics.Win.UltraWinGrid.DoubleClickRowEventArgs e)
+        {
+            if (bsChungTu.Current != null)
+            {
+                cenBase.Classes.DanhMuc DanhMucUI = new cenBase.Classes.DanhMuc();
+                DanhMucUI.IDDanhMucLoaiDoiTuong = null;
+                DanhMucUI.LoaiDanhMuc = DanhMucChungTu.TableName;
+                DanhMucUI.SuaDanhMuc(bsChungTu);
+            }
+        }
+
+        private void ThemChiTiet()
+        {
+            String LoaiDanhMucChiTiet = "";
+            BindingSource bsChiTiet = null;
+            if (ultraTabControl1.SelectedTab != null)
+            {
+                switch (ultraTabControl1.SelectedTab.Key.ToUpper())
+                {
+                    case "CHUNGTUIN":
+                        LoaiDanhMucChiTiet = DanhMucChungTuIn.TableName;
+                        bsChiTiet = bsChungTuIn;
+                        break;
+                    case "CHUNGTULIENQUAN":
+                        LoaiDanhMucChiTiet = DanhMucChungTuLienQuan.TableName;
+                        bsChiTiet = bsChungTuLienQuan;
+                        break;
+                    
+                }
+            }
+            if (LoaiDanhMucChiTiet != "" && bsChiTiet != null)
+            {
+                cenBase.Classes.DanhMuc DanhMucUI = new cenBase.Classes.DanhMuc();
+                DanhMucUI.IDDanhMucLoaiDoiTuong = null;
+                DanhMucUI.LoaiDanhMuc = LoaiDanhMucChiTiet.ToUpper();
+                DanhMucUI.ThemDanhMuc(bsChiTiet);
+            }
+        }
+        private void SuaChiTiet()
+        {
+            String LoaiDanhMucChiTiet = "";
+            BindingSource bsChiTiet = null;
+            if (ultraTabControl1.SelectedTab != null)
+            {
+                switch (ultraTabControl1.SelectedTab.Key.ToUpper())
+                {
+                    case "CHUNGTUIN":
+                        LoaiDanhMucChiTiet = DanhMucChungTuIn.TableName;
+                        bsChiTiet = bsChungTuIn;
+                        break;
+                    case "CHUNGTULIENQUAN":
+                        LoaiDanhMucChiTiet = DanhMucChungTuLienQuan.TableName;
+                        bsChiTiet = bsChungTuLienQuan;
+                        break;
+                }
+            }
+            if (LoaiDanhMucChiTiet != "" && bsChiTiet != null && bsChiTiet.Current != null)
+            {
+                cenBase.Classes.DanhMuc DanhMucUI = new cenBase.Classes.DanhMuc();
+                DanhMucUI.IDDanhMucLoaiDoiTuong = null;
+                DanhMucUI.LoaiDanhMuc = LoaiDanhMucChiTiet.ToUpper();
+                DanhMucUI.SuaDanhMuc(bsChiTiet);
+            }
+        }
+        private void XoaChiTiet()
+        {
+            String LoaiDanhMucChiTiet = "";
+            BindingSource bsChiTiet = null;
+            if (ultraTabControl1.SelectedTab != null)
+            {
+                switch (ultraTabControl1.SelectedTab.Key.ToUpper())
+                {
+                    case "CHUNGTUIN":
+                        LoaiDanhMucChiTiet = DanhMucChungTuIn.TableName;
+                        bsChiTiet = bsChungTuIn;
+                        break;
+                    case "CHUNGTULIENQUAN":
+                        LoaiDanhMucChiTiet = DanhMucChungTuLienQuan.TableName;
+                        bsChiTiet = bsChungTuLienQuan;
+                        break;
+                }
+            }
+            if (LoaiDanhMucChiTiet != "" && bsChiTiet != null && bsChiTiet.Current != null)
+            {
+                cenBase.Classes.DanhMuc DanhMucUI = new cenBase.Classes.DanhMuc();
+                DanhMucUI.IDDanhMucLoaiDoiTuong = null;
+                DanhMucUI.LoaiDanhMuc = LoaiDanhMucChiTiet;
+                DanhMucUI.XoaDanhMuc(bsChiTiet);
+            }
+        }
+
+        private void btThemChiTiet_Click(object sender, EventArgs e)
+        {
+            ThemChiTiet();
+        }
+
+        private void btSuaChiTiet_Click(object sender, EventArgs e)
+        {
+            SuaChiTiet();
+        }
+
+        private void btXoaChiTiet_Click(object sender, EventArgs e)
+        {
+            XoaChiTiet();
+        }
+
+        private void frmDanhMucChungTu_KeyDown(object sender, KeyEventArgs e)
+        {
+            switch (e.KeyCode)
+            {
+                case Keys.F9:
+                    ThemChiTiet();
+                    break;
+                case Keys.F11:
+                    SuaChiTiet();
+                    break;
+                case Keys.F12:
+                    XoaChiTiet();
+                    break;
+            }
+        }
+
+        private void ugMenuChiTiet_DoubleClickRow(object sender, DoubleClickRowEventArgs e)
+        {
+            SuaChiTiet();
+        }
+
+        private void frmDanhMucChungTu_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            this.Dispose();
+        }
+
+    }
+}

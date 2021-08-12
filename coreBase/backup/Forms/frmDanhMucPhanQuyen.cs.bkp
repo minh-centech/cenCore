@@ -1,0 +1,202 @@
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Data.SqlClient;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Windows.Forms;
+using Infragistics.Win.UltraWinGrid;
+using cenControls;
+using cenCommon;
+using cenDTO;
+using cenBUS;
+namespace cenBase.Forms
+{
+    public partial class frmDanhMucPhanQuyen : Form
+    {
+        public DataSet dsPhanQuyen;
+        //Binding Source
+        BindingSource bsPhanQuyen;
+        BindingSource bsPhanQuyenDonVi;
+        BindingSource bsPhanQuyenDanhMuc;
+        BindingSource bsPhanQuyenChungTu;
+        BindingSource bsPhanQuyenBaoCao;
+        public frmDanhMucPhanQuyen()
+        {
+            InitializeComponent();
+        }
+        private void frmPhanQuyen_Load(object sender, EventArgs e)
+        {
+            LoadData();
+            //ugPhanQuyen.DisplayLayout.Override.FilterUIType = Infragistics.Win.UltraWinGrid.FilterUIType.Default; //Biểu tượng lọc đặt trên tiêu đề cột
+            //ugPhanQuyenDonVi.DisplayLayout.Override.FilterUIType = Infragistics.Win.UltraWinGrid.FilterUIType.Default; //Biểu tượng lọc đặt trên tiêu đề cột
+            //ugPhanQuyenChungTu.DisplayLayout.Override.FilterUIType = Infragistics.Win.UltraWinGrid.FilterUIType.Default; //Biểu tượng lọc đặt trên tiêu đề cột
+            //ugPhanQuyenDanhMuc.DisplayLayout.Override.FilterUIType = Infragistics.Win.UltraWinGrid.FilterUIType.Default; //Biểu tượng lọc đặt trên tiêu đề cột
+            //ugPhanQuyenBaoCao.DisplayLayout.Override.FilterUIType = Infragistics.Win.UltraWinGrid.FilterUIType.Default; //Biểu tượng lọc đặt trên tiêu đề cột
+            //CommonUI.SetDisplayLanguage(this);
+        }
+        private void LoadData()
+        {
+            DanhMucBUS clsDanhMuc = new DanhMucBUS();
+            DataTable dtDanhMucPhanQuyen = null, dtDanhMucPhanQuyenDonVi = null, dtDanhMucPhanQuyenBaoCao = null, dtDanhMucPhanQuyenLoaiDoiTuong = null, dtDanhMucPhanQuyenChungTu = null;
+            if (!clsDanhMuc.List(ref dtDanhMucPhanQuyen, DanhMucPhanQuyen.TableName))
+            {
+                cenCommon.cenCommon.ErrorMessageOkOnly("Lỗi lấy dữ liệu phân quyền");
+                return;
+            }
+            if (!clsDanhMuc.List(ref dtDanhMucPhanQuyenDonVi, DanhMucPhanQuyenDonVi.TableName))
+            {
+                cenCommon.cenCommon.ErrorMessageOkOnly("Lỗi lấy dữ liệu phân quyền đơn vị");
+                return;
+            }
+
+            if (!clsDanhMuc.List(ref dtDanhMucPhanQuyenChungTu, DanhMucPhanQuyenChungTu.TableName))
+            {
+                cenCommon.cenCommon.ErrorMessageOkOnly("Lỗi lấy dữ liệu phân quyền chứng từ");
+                return;
+            }
+            if (!clsDanhMuc.List(ref dtDanhMucPhanQuyenBaoCao, DanhMucPhanQuyenBaoCao.TableName))
+            {
+                cenCommon.cenCommon.ErrorMessageOkOnly("Lỗi lấy dữ liệu phân quyền báo cáo");
+                return;
+            }
+            if (!clsDanhMuc.List(ref dtDanhMucPhanQuyenLoaiDoiTuong, DanhMucPhanQuyenLoaiDoiTuong.TableName))
+            {
+                cenCommon.cenCommon.ErrorMessageOkOnly("Lỗi lấy dữ liệu phân quyền loại đối tượng");
+                return;
+            }
+            
+
+            dsPhanQuyen = new DataSet();
+            dsPhanQuyen.Tables.Add(dtDanhMucPhanQuyen);
+            dsPhanQuyen.Tables.Add(dtDanhMucPhanQuyenDonVi);
+            dsPhanQuyen.Tables.Add(dtDanhMucPhanQuyenChungTu);
+            dsPhanQuyen.Tables.Add(dtDanhMucPhanQuyenLoaiDoiTuong);
+            dsPhanQuyen.Tables.Add(dtDanhMucPhanQuyenBaoCao);
+            dsPhanQuyen.Relations.Add(cenCommon.cenCommon.prefix_DataRelation + DanhMucPhanQuyenDonVi.TableName, dtDanhMucPhanQuyen.Columns["ID"], dtDanhMucPhanQuyenDonVi.Columns["IDDanhMucPhanQuyen"]);
+            dsPhanQuyen.Relations.Add(cenCommon.cenCommon.prefix_DataRelation + DanhMucPhanQuyenChungTu.TableName, dtDanhMucPhanQuyen.Columns["ID"], dtDanhMucPhanQuyenChungTu.Columns["IDDanhMucPhanQuyen"]);
+            dsPhanQuyen.Relations.Add(cenCommon.cenCommon.prefix_DataRelation + DanhMucPhanQuyenLoaiDoiTuong.TableName, dtDanhMucPhanQuyen.Columns["ID"], dtDanhMucPhanQuyenLoaiDoiTuong.Columns["IDDanhMucPhanQuyen"]);
+            dsPhanQuyen.Relations.Add(cenCommon.cenCommon.prefix_DataRelation + DanhMucPhanQuyenBaoCao.TableName, dtDanhMucPhanQuyen.Columns["ID"], dtDanhMucPhanQuyenBaoCao.Columns["IDDanhMucPhanQuyen"]);
+            
+            
+            bsPhanQuyen = new BindingSource();
+            bsPhanQuyenDonVi = new BindingSource();
+            bsPhanQuyenDanhMuc = new BindingSource();
+            bsPhanQuyenChungTu = new BindingSource();
+            bsPhanQuyenBaoCao = new BindingSource();
+            //Load PhanQuyen
+            bsPhanQuyen.DataSource = dsPhanQuyen;
+            bsPhanQuyen.DataMember = DanhMucPhanQuyen.TableName;
+            bsPhanQuyenDonVi.DataSource = bsPhanQuyen;
+            bsPhanQuyenDonVi.DataMember = cenCommon.cenCommon.prefix_DataRelation + DanhMucPhanQuyenDonVi.TableName;
+            bsPhanQuyenDanhMuc.DataSource = bsPhanQuyen;
+            bsPhanQuyenDanhMuc.DataMember = cenCommon.cenCommon.prefix_DataRelation + DanhMucPhanQuyenLoaiDoiTuong.TableName;
+            bsPhanQuyenChungTu.DataSource = bsPhanQuyen;
+            bsPhanQuyenChungTu.DataMember = cenCommon.cenCommon.prefix_DataRelation + DanhMucPhanQuyenChungTu.TableName;
+            bsPhanQuyenBaoCao.DataSource = bsPhanQuyen;
+            bsPhanQuyenBaoCao.DataMember = cenCommon.cenCommon.prefix_DataRelation + DanhMucPhanQuyenBaoCao.TableName;
+            ugPhanQuyen.DataSource = bsPhanQuyen;
+            ugPhanQuyenDonVi.DataSource = bsPhanQuyenDonVi;
+            ugPhanQuyenDanhMuc.DataSource = bsPhanQuyenDanhMuc;
+            ugPhanQuyenChungTu.DataSource = bsPhanQuyenChungTu;
+            ugPhanQuyenBaoCao.DataSource = bsPhanQuyenBaoCao;
+            //
+            foreach (UltraGridColumn ugc in ugPhanQuyen.DisplayLayout.Bands[0].Columns)
+            {
+                if (ugc.Key.ToUpper() != "MA" && ugc.Key.ToUpper() != "TEN")
+                    ugc.Hidden = true;
+            }
+            ugPhanQuyen.DisplayLayout.AutoFitStyle = AutoFitStyle.ResizeAllColumns;
+        }
+
+        private void UltraToolbarsManager1_ToolClick(object sender, Infragistics.Win.UltraWinToolbars.ToolClickEventArgs e)
+        {
+            cenBase.Classes.DanhMuc DanhMucUI;
+            switch (e.Tool.Key.ToString().ToUpper())
+            {
+                case "BTXOA":
+                    DanhMucUI = new cenBase.Classes.DanhMuc();
+                    DanhMucUI.PhanQuyen = true;
+                    DanhMucUI.LoaiDanhMuc = DanhMucPhanQuyenDonVi.TableName;
+                    DanhMucUI.XoaDanhMuc(bsPhanQuyenDonVi);
+                    break;
+                case "BTTHEM":
+                    DanhMucUI = new cenBase.Classes.DanhMuc();
+                    DanhMucUI.PhanQuyen = true;
+                    DanhMucUI.LoaiDanhMuc = DanhMucPhanQuyenDonVi.TableName;
+                    DanhMucUI.ThemDanhMuc(bsPhanQuyenDonVi);
+                    break;
+                case "BTSUA":
+                    SuaChiTiet();
+                    break;
+                case "BTTAILAI":
+                    LoadData();        
+                    break;
+            }
+        }
+        
+        private void SuaChiTiet()
+        {
+            String LoaiDanhMucChiTiet = "";
+            BindingSource bsChiTiet = null;
+            if (ultraTabControl1.SelectedTab != null)
+            {
+                switch (ultraTabControl1.SelectedTab.Key.ToUpper())
+                {
+                    case "DONVI":
+                        LoaiDanhMucChiTiet = DanhMucPhanQuyenDonVi.TableName;
+                        bsChiTiet = bsPhanQuyenDonVi;
+                        break;
+                    case "DANHMUC":
+                        LoaiDanhMucChiTiet = DanhMucPhanQuyenLoaiDoiTuong.TableName;
+                        bsChiTiet = bsPhanQuyenDanhMuc;
+                        break;
+                    case "CHUNGTU":
+                        LoaiDanhMucChiTiet = DanhMucPhanQuyenChungTu.TableName;
+                        bsChiTiet = bsPhanQuyenChungTu;
+                        break;
+                    case "BAOCAO":
+                        LoaiDanhMucChiTiet = DanhMucPhanQuyenBaoCao.TableName;
+                        bsChiTiet = bsPhanQuyenBaoCao;
+                        break;
+                }
+            }
+            if (LoaiDanhMucChiTiet != "" && bsChiTiet != null && bsChiTiet.Current != null)
+            {
+                cenBase.Classes.DanhMuc DanhMucUI = new cenBase.Classes.DanhMuc();
+                DanhMucUI.PhanQuyen = true;
+                DanhMucUI.LoaiDanhMuc = LoaiDanhMucChiTiet.ToUpper();
+                DanhMucUI.SuaDanhMuc(bsChiTiet);
+            }
+        }
+
+
+        private void ugPhanQuyenChiTiet_DoubleClickRow(object sender, DoubleClickRowEventArgs e)
+        {
+            SuaChiTiet();
+        }
+
+        private void ultraTabControl1_SelectedTabChanged(object sender, Infragistics.Win.UltraWinTabControl.SelectedTabChangedEventArgs e)
+        {
+            switch (ultraTabControl1.SelectedTab.Key.ToUpper())
+            {
+                case "DONVI":
+                    UltraToolbarsManager1.Toolbars[0].Tools["btThem"].SharedProps.Enabled = true;
+                    UltraToolbarsManager1.Toolbars[0].Tools["btXoa"].SharedProps.Enabled = true;
+                    break;
+                default:
+                    UltraToolbarsManager1.Toolbars[0].Tools["btThem"].SharedProps.Enabled = false;
+                    UltraToolbarsManager1.Toolbars[0].Tools["btXoa"].SharedProps.Enabled = false;
+                    break;
+            }
+        }
+
+        private void frmDanhMucPhanQuyen_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            this.Dispose();
+        }
+
+    }
+}

@@ -1,0 +1,68 @@
+E:\S3-TASA\Runtimes\CustomControls.dll
+E:\S3-TASA\Runtimes\CustomControls.pdb
+E:\S3-TASA\Projects\s3Controls\obj\Debug\s3Controls.saCheckBox.resources
+E:\S3-TASA\Projects\s3Controls\obj\Debug\s3Controls.saDateTimeBox.resources
+E:\S3-TASA\Projects\s3Controls\obj\Debug\s3Controls.saNonUpdateGrid.resources
+E:\S3-TASA\Projects\s3Controls\obj\Debug\s3Controls.saNumericBox.resources
+E:\S3-TASA\Projects\s3Controls\obj\Debug\s3Controls.saTextBox.resources
+E:\S3-TASA\Projects\s3Controls\obj\Debug\s3Controls.saUpdateGrid.resources
+E:\S3-TASA\Projects\s3Controls\obj\Debug\CustomControls.dll.licenses
+E:\S3-TASA\Projects\s3Controls\obj\Debug\CustomControls.dll
+E:\S3-TASA\Projects\s3Controls\obj\Debug\CustomControls.pdb
+F:\New folder\S3-TASA\Runtimes\CustomControls.dll
+F:\New folder\S3-TASA\Runtimes\CustomControls.pdb
+F:\New folder\S3-TASA\Projects\s3Controls\obj\Debug\ResolveAssemblyReference.cache
+F:\New folder\S3-TASA\Projects\s3Controls\obj\Debug\s3Controls.saCheckBox.resources
+F:\New folder\S3-TASA\Projects\s3Controls\obj\Debug\s3Controls.saDateTimeBox.resources
+F:\New folder\S3-TASA\Projects\s3Controls\obj\Debug\s3Controls.saNonUpdateGrid.resources
+F:\New folder\S3-TASA\Projects\s3Controls\obj\Debug\s3Controls.saNumericBox.resources
+F:\New folder\S3-TASA\Projects\s3Controls\obj\Debug\s3Controls.saTextBox.resources
+F:\New folder\S3-TASA\Projects\s3Controls\obj\Debug\s3Controls.saUpdateGrid.resources
+F:\New folder\S3-TASA\Projects\s3Controls\obj\Debug\GenerateResource.read.1.tlog
+F:\New folder\S3-TASA\Projects\s3Controls\obj\Debug\GenerateResource.write.1.tlog
+F:\New folder\S3-TASA\Projects\s3Controls\obj\Debug\CustomControls.dll.licenses
+F:\New folder\S3-TASA\Projects\s3Controls\obj\Debug\CustomControls.dll
+F:\New folder\S3-TASA\Projects\s3Controls\obj\Debug\CustomControls.pdb
+E:\S3-TASA\Projects\s3Controls\obj\Debug\ResolveAssemblyReference.cache
+E:\S3-TASA\Projects\s3Controls\obj\Debug\GenerateResource.read.1.tlog
+E:\S3-TASA\Projects\s3Controls\obj\Debug\GenerateResource.write.1.tlog
+D:\S3-TASA\Runtimes\CustomControls.dll
+D:\S3-TASA\Runtimes\CustomControls.pdb
+D:\S3-TASA\Projects\s3Controls\obj\Debug\s3Controls.csprojResolveAssemblyReference.cache
+D:\S3-TASA\Projects\s3Controls\obj\Debug\s3Controls.saCheckBox.resources
+D:\S3-TASA\Projects\s3Controls\obj\Debug\s3Controls.saDateTimeBox.resources
+D:\S3-TASA\Projects\s3Controls\obj\Debug\s3Controls.saNonUpdateGrid.resources
+D:\S3-TASA\Projects\s3Controls\obj\Debug\s3Controls.saNumericBox.resources
+D:\S3-TASA\Projects\s3Controls\obj\Debug\s3Controls.saTextBox.resources
+D:\S3-TASA\Projects\s3Controls\obj\Debug\s3Controls.saUpdateGrid.resources
+D:\S3-TASA\Projects\s3Controls\obj\Debug\s3Controls.csproj.GenerateResource.Cache
+D:\S3-TASA\Projects\s3Controls\obj\Debug\CustomControls.dll.licenses
+D:\S3-TASA\Projects\s3Controls\obj\Debug\CustomControls.dll
+D:\S3-TASA\Projects\s3Controls\obj\Debug\CustomControls.pdb
+G:\S3-CFS 2018\Runtimes\CustomControls.dll
+G:\S3-CFS 2018\Runtimes\CustomControls.pdb
+G:\S3-CFS 2018\Projects\s3Controls\obj\Debug\ResolveAssemblyReference.cache
+G:\S3-CFS 2018\Projects\s3Controls\obj\Debug\s3Controls.saCheckBox.resources
+G:\S3-CFS 2018\Projects\s3Controls\obj\Debug\s3Controls.saDateTimeBox.resources
+G:\S3-CFS 2018\Projects\s3Controls\obj\Debug\s3Controls.saNonUpdateGrid.resources
+G:\S3-CFS 2018\Projects\s3Controls\obj\Debug\s3Controls.saNumericBox.resources
+G:\S3-CFS 2018\Projects\s3Controls\obj\Debug\s3Controls.saTextBox.resources
+G:\S3-CFS 2018\Projects\s3Controls\obj\Debug\s3Controls.saUpdateGrid.resources
+G:\S3-CFS 2018\Projects\s3Controls\obj\Debug\GenerateResource.read.1.tlog
+G:\S3-CFS 2018\Projects\s3Controls\obj\Debug\GenerateResource.write.1.tlog
+G:\S3-CFS 2018\Projects\s3Controls\obj\Debug\CustomControls.dll.licenses
+G:\S3-CFS 2018\Projects\s3Controls\obj\Debug\CustomControls.dll
+G:\S3-CFS 2018\Projects\s3Controls\obj\Debug\CustomControls.pdb
+D:\S3-CFS 2018\Runtimes\CustomControls.dll
+D:\S3-CFS 2018\Runtimes\CustomControls.pdb
+D:\S3-CFS 2018\Projects\s3Controls\obj\Debug\s3Controls.csprojResolveAssemblyReference.cache
+D:\S3-CFS 2018\Projects\s3Controls\obj\Debug\s3Controls.saCheckBox.resources
+D:\S3-CFS 2018\Projects\s3Controls\obj\Debug\s3Controls.saDateTimeBox.resources
+D:\S3-CFS 2018\Projects\s3Controls\obj\Debug\s3Controls.saNonUpdateGrid.resources
+D:\S3-CFS 2018\Projects\s3Controls\obj\Debug\s3Controls.saNumericBox.resources
+D:\S3-CFS 2018\Projects\s3Controls\obj\Debug\s3Controls.saTextBox.resources
+D:\S3-CFS 2018\Projects\s3Controls\obj\Debug\s3Controls.saUpdateGrid.resources
+D:\S3-CFS 2018\Projects\s3Controls\obj\Debug\s3Controls.csproj.GenerateResource.Cache
+D:\S3-CFS 2018\Projects\s3Controls\obj\Debug\CustomControls.dll.licenses
+D:\S3-CFS 2018\Projects\s3Controls\obj\Debug\CustomControls.dll
+D:\S3-CFS 2018\Projects\s3Controls\obj\Debug\CustomControls.pdb

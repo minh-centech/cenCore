@@ -1,0 +1,129 @@
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Data.SqlClient;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Windows.Forms;
+using cenBUS.DatabaseCore;
+using cenBUS.QuanLyBaiTanDaiDuong;
+using cenDTO.QuanLyBaiTanDaiDuong;
+using Infragistics.Win.UltraWinGrid;
+namespace cenCommonUIapps.QuanLyBaiTanDaiDuong.Forms
+{
+    public partial class frmDanhMucDichVu : cenBase.BaseForms.frmBaseDanhMuc
+    {
+        public object IDDanhMucLoaiDoiTuong = null;
+        public frmDanhMucDichVu()
+        {
+            InitializeComponent();
+        }
+        protected override void List()
+        {
+            DanhMucPhanQuyenBUS.GetPhanQuyenLoaiDoiTuong(cenCommon.GlobalVariables.IDDanhMucPhanQuyen, IDDanhMucLoaiDoiTuong, out bool Xem, out bool Them, out bool Sua, out bool Xoa);
+            if (!cenCommon.GlobalVariables.isAdmin && !Xem)
+            {
+                cenCommon.cenCommon.ErrorMessageOkOnly("Bạn không có quyền xem dữ liệu danh mục này!");
+                return;
+            }
+            DanhMucDichVuBUS _BUS = new DanhMucDichVuBUS();
+            dtData = _BUS.List(cenCommon.GlobalVariables.IDDonVi, IDDanhMucLoaiDoiTuong);
+            tableName = DanhMucDichVu.tableName;
+            dtData.TableName = tableName;
+
+            bsDanhMuc = new BindingSource
+            {
+                DataSource = dtData
+            };
+            ug.FixedColumnsList = "[Ma][Ten]";
+            ug.AddfilterColumn = true;
+            ug.DataSource = bsDanhMuc;
+            
+        }
+        protected override void InsertDanhMuc()
+        {
+            DanhMucPhanQuyenBUS.GetPhanQuyenLoaiDoiTuong(cenCommon.GlobalVariables.IDDanhMucPhanQuyen, IDDanhMucLoaiDoiTuong, out bool Xem, out bool Them, out bool Sua, out bool Xoa);
+            if (!cenCommon.GlobalVariables.isAdmin && !Them)
+            {
+                cenCommon.cenCommon.ErrorMessageOkOnly("Bạn không có quyền thêm mới dữ liệu danh mục này!");
+                return;
+            }
+            base.InsertDanhMuc();
+            if (!bContinue) return;
+            frmDanhMucDichVuUpdate frmUpdate = new frmDanhMucDichVuUpdate
+            {
+                CapNhat = 1,
+                dataTable = dtData,
+                IDDanhMucLoaiDoiTuong = IDDanhMucLoaiDoiTuong
+            };
+            frmUpdate.ShowDialog();
+        }
+        protected override void CopyDanhMuc()
+        {
+            DanhMucPhanQuyenBUS.GetPhanQuyenLoaiDoiTuong(cenCommon.GlobalVariables.IDDanhMucPhanQuyen, IDDanhMucLoaiDoiTuong, out bool Xem, out bool Them, out bool Sua, out bool Xoa);
+            if (!cenCommon.GlobalVariables.isAdmin && !Them)
+            {
+                cenCommon.cenCommon.ErrorMessageOkOnly("Bạn không có quyền thêm mới dữ liệu danh mục này!");
+                return;
+            }
+            base.CopyDanhMuc();
+            if (!bContinue) return;
+            frmDanhMucDichVuUpdate frmUpdate = new frmDanhMucDichVuUpdate
+            {
+                CapNhat = 3,
+                dataTable = dtData,
+                dataRow = ((DataRowView)bsDanhMuc.Current).Row,
+                IDDanhMucLoaiDoiTuong = IDDanhMucLoaiDoiTuong
+            };
+            frmUpdate.ShowDialog();
+        }
+        protected override void UpdateDanhMuc()
+        {
+            DanhMucPhanQuyenBUS.GetPhanQuyenLoaiDoiTuong(cenCommon.GlobalVariables.IDDanhMucPhanQuyen, IDDanhMucLoaiDoiTuong, out bool Xem, out bool Them, out bool Sua, out bool Xoa);
+            if (!cenCommon.GlobalVariables.isAdmin && !Sua)
+            {
+                cenCommon.cenCommon.ErrorMessageOkOnly("Bạn không có quyền sửa dữ liệu danh mục này!");
+                return;
+            }
+            base.UpdateDanhMuc();
+            if (!bContinue) return;
+            frmDanhMucDichVuUpdate frmUpdate = new frmDanhMucDichVuUpdate
+            {
+                CapNhat = 2,
+                dataTable = dtData,
+                dataRow = ((DataRowView)bsDanhMuc.Current).Row,
+                IDDanhMucLoaiDoiTuong = IDDanhMucLoaiDoiTuong
+            };
+            frmUpdate.ShowDialog();
+        }
+        protected override void DeleteDanhMuc()
+        {
+            DanhMucPhanQuyenBUS.GetPhanQuyenLoaiDoiTuong(cenCommon.GlobalVariables.IDDanhMucPhanQuyen, IDDanhMucLoaiDoiTuong, out bool Xem, out bool Them, out bool Sua, out bool Xoa);
+            if (!cenCommon.GlobalVariables.isAdmin && !Them)
+            {
+                cenCommon.cenCommon.ErrorMessageOkOnly("Bạn không có quyền xóa dữ liệu danh mục này");
+                return;
+            }
+            base.DeleteDanhMuc();
+            if (!bContinue) return;
+            DataRow dataRow = ((DataRowView)bsDanhMuc.Current).Row;
+            DanhMucDichVu obj = new DanhMucDichVu()
+            {
+                ID = dataRow["ID"]
+            };
+            DanhMucDichVuBUS bus = new DanhMucDichVuBUS();
+            if (bus.Delete(obj)) bsDanhMuc.RemoveCurrent();
+            if (bsDanhMuc.Position < bsDanhMuc.Count - 1)
+                bsDanhMuc.MoveNext();
+            else
+                bsDanhMuc.MoveLast();
+        }
+
+        private void txtfilterBox_ValueChanged(object sender, EventArgs e)
+        {
+            cenCommon.cenCommon.filterGrid(ug, txtFilterBox.Text);
+        }
+    }
+}

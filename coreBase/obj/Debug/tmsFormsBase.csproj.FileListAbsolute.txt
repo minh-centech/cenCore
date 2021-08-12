@@ -1,0 +1,12 @@
+D:\S3-CFS 2018\Projects\s3Base\obj\Debug\tmsFormsBase.csprojResolveAssemblyReference.cache
+D:\S3-CFS 2018\Projects\s3Base\obj\Debug\tmsFormsBase.Properties.Resources.resources
+D:\S3-CFS 2018\Projects\s3Base\obj\Debug\tmsFormsBase.csproj.GenerateResource.Cache
+D:\S3-CFS 2018\Projects\s3Base\obj\Debug\tmsFormsBase.dll.licenses
+D:\S3-CFS 2018\Runtimes\tmsFormsBase.dll
+D:\S3-CFS 2018\Runtimes\tmsFormsBase.pdb
+D:\S3-CFS 2018\Projects\s3Base\obj\Debug\tmsFormsBase.dll
+D:\S3-CFS 2018\Projects\s3Base\obj\Debug\tmsFormsBase.pdb
+D:\S3-CFS 2018\Projects\s3Base\obj\Debug\tmsFormsBase.Forms.frmBaseChungTu.resources
+D:\S3-CFS 2018\Projects\s3Base\obj\Debug\tmsFormsBase.Forms.frmBaseChungTu_eCargo.resources
+D:\S3-CFS 2018\Projects\s3Base\obj\Debug\tmsFormsBase.Forms.frmBaseDanhMuc.resources
+D:\S3-CFS 2018\Projects\s3Base\obj\Debug\tmsFormsBase.Forms.frmBaseDanhMucUpdate.resources

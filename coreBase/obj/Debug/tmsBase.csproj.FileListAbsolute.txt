@@ -1,0 +1,307 @@
+D:\S3-CFS 2018\Projects\s3Base\obj\Debug\tmsBase.csprojResolveAssemblyReference.cache
+D:\S3-CFS 2018\Projects\s3Base\obj\Debug\tmsBase.BaseForms.frmBaseChungTu.resources
+D:\S3-CFS 2018\Projects\s3Base\obj\Debug\tmsBase.BaseForms.frmBaseChungTu_eCargo.resources
+D:\S3-CFS 2018\Projects\s3Base\obj\Debug\tmsBase.BaseForms.frmBaseDanhMuc.resources
+D:\S3-CFS 2018\Projects\s3Base\obj\Debug\tmsBase.BaseForms.frmBaseDanhMucUpdate.resources
+D:\S3-CFS 2018\Projects\s3Base\obj\Debug\tmsBase.Properties.Resources.resources
+D:\S3-CFS 2018\Projects\s3Base\obj\Debug\tmsBase.csproj.GenerateResource.Cache
+D:\S3-CFS 2018\Projects\s3Base\obj\Debug\tmsBase.dll.licenses
+D:\S3-CFS 2018\Runtimes\tmsBase.dll
+D:\S3-CFS 2018\Runtimes\tmsBase.pdb
+D:\S3-CFS 2018\Projects\s3Base\obj\Debug\tmsBase.dll
+D:\S3-CFS 2018\Projects\s3Base\obj\Debug\tmsBase.pdb
+D:\S3-CFS 2018\Projects\s3Base\obj\Debug\tmsBase.Forms.frmChangePassword.resources
+D:\S3-CFS 2018\Projects\s3Base\obj\Debug\tmsBase.Forms.frmChungTuList.resources
+D:\S3-CFS 2018\Projects\s3Base\obj\Debug\tmsBase.Forms.frmDanhMuc.resources
+D:\S3-CFS 2018\Projects\s3Base\obj\Debug\tmsBase.Forms.frmDanhMucBaoCao.resources
+D:\S3-CFS 2018\Projects\s3Base\obj\Debug\tmsBase.Forms.frmDanhMucChungTu.resources
+D:\S3-CFS 2018\Projects\s3Base\obj\Debug\tmsBase.Forms.frmDanhMucMenu.resources
+D:\S3-CFS 2018\Projects\s3Base\obj\Debug\tmsBase.Forms.frmDanhMucPhanQuyen.resources
+D:\S3-CFS 2018\Projects\s3Base\obj\Debug\tmsBase.Forms.frmDanhMucUpdate.resources
+D:\S3-CFS 2018\Projects\s3Base\obj\Debug\tmsBase.Forms.frmDanhMucValid.resources
+D:\S3-CFS 2018\Projects\s3Base\obj\Debug\tmsBase.Forms.frmLogin.resources
+D:\S3-CFS 2018\Projects\s3Base\obj\Debug\tmsBase.Forms.frmLoginExtended.resources
+D:\S3-CFS 2018\Projects\s3Base\obj\Debug\tmsBase.Forms.frmReportParameters.resources
+D:\S3-CFS 2018\Projects\s3Base\obj\Debug\tmsBase.Forms.frmReportViewer.resources
+D:\S3-CFS 2018\Projects\s3Base\obj\Debug\tmsBase.Forms.frmChungTuFilter.resources
+D:\S3-CFS 2018\Projects\s3Base\obj\Debug\tmsBase.Forms.frmChungTuPrintPreview.resources
+D:\S3-CFS 2018\Projects\tmsBase\obj\Debug\tmsBase.csprojResolveAssemblyReference.cache
+D:\S3-CFS 2018\Projects\tmsBase\obj\Debug\tmsBase.BaseForms.frmBaseChungTu.resources
+D:\S3-CFS 2018\Projects\tmsBase\obj\Debug\tmsBase.BaseForms.frmBaseChungTu_eCargo.resources
+D:\S3-CFS 2018\Projects\tmsBase\obj\Debug\tmsBase.BaseForms.frmBaseDanhMuc.resources
+D:\S3-CFS 2018\Projects\tmsBase\obj\Debug\tmsBase.BaseForms.frmBaseDanhMucUpdate.resources
+D:\S3-CFS 2018\Projects\tmsBase\obj\Debug\tmsBase.Forms.frmChangePassword.resources
+D:\S3-CFS 2018\Projects\tmsBase\obj\Debug\tmsBase.Forms.frmChungTuFilter.resources
+D:\S3-CFS 2018\Projects\tmsBase\obj\Debug\tmsBase.Forms.frmChungTuList.resources
+D:\S3-CFS 2018\Projects\tmsBase\obj\Debug\tmsBase.Forms.frmChungTuPrintPreview.resources
+D:\S3-CFS 2018\Projects\tmsBase\obj\Debug\tmsBase.Forms.frmDanhMuc.resources
+D:\S3-CFS 2018\Projects\tmsBase\obj\Debug\tmsBase.Forms.frmDanhMucBaoCao.resources
+D:\S3-CFS 2018\Projects\tmsBase\obj\Debug\tmsBase.Forms.frmDanhMucChungTu.resources
+D:\S3-CFS 2018\Projects\tmsBase\obj\Debug\tmsBase.Forms.frmDanhMucMenu.resources
+D:\S3-CFS 2018\Projects\tmsBase\obj\Debug\tmsBase.Forms.frmDanhMucPhanQuyen.resources
+D:\S3-CFS 2018\Projects\tmsBase\obj\Debug\tmsBase.Forms.frmDanhMucUpdate.resources
+D:\S3-CFS 2018\Projects\tmsBase\obj\Debug\tmsBase.Forms.frmDanhMucValid.resources
+D:\S3-CFS 2018\Projects\tmsBase\obj\Debug\tmsBase.Forms.frmLogin.resources
+D:\S3-CFS 2018\Projects\tmsBase\obj\Debug\tmsBase.Forms.frmLoginExtended.resources
+D:\S3-CFS 2018\Projects\tmsBase\obj\Debug\tmsBase.Forms.frmReportParameters.resources
+D:\S3-CFS 2018\Projects\tmsBase\obj\Debug\tmsBase.Forms.frmReportViewer.resources
+D:\S3-CFS 2018\Projects\tmsBase\obj\Debug\tmsBase.Properties.Resources.resources
+D:\S3-CFS 2018\Projects\tmsBase\obj\Debug\tmsBase.csproj.GenerateResource.Cache
+D:\S3-CFS 2018\Projects\tmsBase\obj\Debug\tmsBase.dll.licenses
+D:\S3-CFS 2018\Projects\tmsBase\obj\Debug\tmsBase.pdb
+D:\S3-CFS 2018\Projects\tmsBase\obj\Debug\tmsBase.dll
+E:\tmsCFS 2018\Runtimes\tmsBase.dll
+E:\tmsCFS 2018\Runtimes\tmsBase.pdb
+E:\tmsCFS 2018\Projects\tmsBase\obj\Debug\tmsBase.csprojResolveAssemblyReference.cache
+E:\tmsCFS 2018\Projects\tmsBase\obj\Debug\tmsBase.BaseForms.frmBaseChungTu.resources
+E:\tmsCFS 2018\Projects\tmsBase\obj\Debug\tmsBase.BaseForms.frmBaseChungTu_eCargo.resources
+E:\tmsCFS 2018\Projects\tmsBase\obj\Debug\tmsBase.BaseForms.frmBaseDanhMuc.resources
+E:\tmsCFS 2018\Projects\tmsBase\obj\Debug\tmsBase.BaseForms.frmBaseDanhMucUpdate.resources
+E:\tmsCFS 2018\Projects\tmsBase\obj\Debug\tmsBase.Forms.frmChangePassword.resources
+E:\tmsCFS 2018\Projects\tmsBase\obj\Debug\tmsBase.Forms.frmChungTuFilter.resources
+E:\tmsCFS 2018\Projects\tmsBase\obj\Debug\tmsBase.Forms.frmChungTuList.resources
+E:\tmsCFS 2018\Projects\tmsBase\obj\Debug\tmsBase.Forms.frmChungTuPrintPreview.resources
+E:\tmsCFS 2018\Projects\tmsBase\obj\Debug\tmsBase.Forms.frmDanhMuc.resources
+E:\tmsCFS 2018\Projects\tmsBase\obj\Debug\tmsBase.Forms.frmDanhMucBaoCao.resources
+E:\tmsCFS 2018\Projects\tmsBase\obj\Debug\tmsBase.Forms.frmDanhMucChungTu.resources
+E:\tmsCFS 2018\Projects\tmsBase\obj\Debug\tmsBase.Forms.frmDanhMucMenu.resources
+E:\tmsCFS 2018\Projects\tmsBase\obj\Debug\tmsBase.Forms.frmDanhMucPhanQuyen.resources
+E:\tmsCFS 2018\Projects\tmsBase\obj\Debug\tmsBase.Forms.frmDanhMucUpdate.resources
+E:\tmsCFS 2018\Projects\tmsBase\obj\Debug\tmsBase.Forms.frmDanhMucValid.resources
+E:\tmsCFS 2018\Projects\tmsBase\obj\Debug\tmsBase.Forms.frmLogin.resources
+E:\tmsCFS 2018\Projects\tmsBase\obj\Debug\tmsBase.Forms.frmLoginExtended.resources
+E:\tmsCFS 2018\Projects\tmsBase\obj\Debug\tmsBase.Properties.Resources.resources
+E:\tmsCFS 2018\Projects\tmsBase\obj\Debug\tmsBase.csproj.GenerateResource.Cache
+E:\tmsCFS 2018\Projects\tmsBase\obj\Debug\tmsBase.dll.licenses
+E:\tmsCFS 2018\Projects\tmsBase\obj\Debug\tmsBase.dll
+E:\tmsCFS 2018\Projects\tmsBase\obj\Debug\tmsBase.pdb
+E:\tmsCFS 2018\Projects\tmsBase\obj\Debug\tmsBase.BaseForms.frmBaseChungTu_eCargoS.resources
+F:\tmsCFS 2018\Runtimes\tmsBase.dll
+F:\tmsCFS 2018\Runtimes\tmsBase.pdb
+F:\tmsCFS 2018\Projects\tmsBase\obj\Debug\tmsBase.BaseForms.frmBaseChungTu.resources
+F:\tmsCFS 2018\Projects\tmsBase\obj\Debug\tmsBase.BaseForms.frmBaseDanhMuc.resources
+F:\tmsCFS 2018\Projects\tmsBase\obj\Debug\tmsBase.BaseForms.frmBaseDanhMucUpdate.resources
+F:\tmsCFS 2018\Projects\tmsBase\obj\Debug\tmsBase.Forms.frmChangePassword.resources
+F:\tmsCFS 2018\Projects\tmsBase\obj\Debug\tmsBase.Forms.frmChungTuFilter.resources
+F:\tmsCFS 2018\Projects\tmsBase\obj\Debug\tmsBase.Forms.frmChungTuList.resources
+F:\tmsCFS 2018\Projects\tmsBase\obj\Debug\tmsBase.Forms.frmChungTuPrintPreview.resources
+F:\tmsCFS 2018\Projects\tmsBase\obj\Debug\tmsBase.Forms.frmDanhMuc.resources
+F:\tmsCFS 2018\Projects\tmsBase\obj\Debug\tmsBase.Forms.frmDanhMucBaoCao.resources
+F:\tmsCFS 2018\Projects\tmsBase\obj\Debug\tmsBase.Forms.frmDanhMucChungTu.resources
+F:\tmsCFS 2018\Projects\tmsBase\obj\Debug\tmsBase.Forms.frmDanhMucMenu.resources
+F:\tmsCFS 2018\Projects\tmsBase\obj\Debug\tmsBase.Forms.frmDanhMucPhanQuyen.resources
+F:\tmsCFS 2018\Projects\tmsBase\obj\Debug\tmsBase.Forms.frmDanhMucUpdate.resources
+F:\tmsCFS 2018\Projects\tmsBase\obj\Debug\tmsBase.Forms.frmDanhMucValid.resources
+F:\tmsCFS 2018\Projects\tmsBase\obj\Debug\tmsBase.Forms.frmLogin.resources
+F:\tmsCFS 2018\Projects\tmsBase\obj\Debug\tmsBase.Forms.frmLoginExtended.resources
+F:\tmsCFS 2018\Projects\tmsBase\obj\Debug\tmsBase.Properties.Resources.resources
+F:\tmsCFS 2018\Projects\tmsBase\obj\Debug\tmsBase.dll.licenses
+F:\tmsCFS 2018\Projects\tmsBase\obj\Debug\tmsBase.dll
+F:\tmsCFS 2018\Projects\tmsBase\obj\Debug\tmsBase.pdb
+G:\tmsCFS 2018\Runtimes\tmsBase.dll
+G:\tmsCFS 2018\Runtimes\tmsBase.pdb
+G:\tmsCFS 2018\Projects\tmsBase\obj\Debug\tmsBase.BaseForms.frmBaseGridUpdate.resources
+G:\tmsCFS 2018\Projects\tmsBase\obj\Debug\tmsBase.BaseForms.frmBaseChungTu_eCargoS.resources
+G:\tmsCFS 2018\Projects\tmsBase\obj\Debug\tmsBase.BaseForms.frmBaseChungTu.resources
+G:\tmsCFS 2018\Projects\tmsBase\obj\Debug\tmsBase.BaseForms.frmBaseChungTu_eCargo.resources
+G:\tmsCFS 2018\Projects\tmsBase\obj\Debug\tmsBase.BaseForms.frmBaseDanhMuc.resources
+G:\tmsCFS 2018\Projects\tmsBase\obj\Debug\tmsBase.BaseForms.frmBaseDanhMucUpdate.resources
+G:\tmsCFS 2018\Projects\tmsBase\obj\Debug\tmsBase.Forms.frmChangePassword.resources
+G:\tmsCFS 2018\Projects\tmsBase\obj\Debug\tmsBase.Forms.frmChungTuFilter.resources
+G:\tmsCFS 2018\Projects\tmsBase\obj\Debug\tmsBase.Forms.frmChungTuList.resources
+G:\tmsCFS 2018\Projects\tmsBase\obj\Debug\tmsBase.Forms.frmChungTuPrintPreview.resources
+G:\tmsCFS 2018\Projects\tmsBase\obj\Debug\tmsBase.Forms.frmDanhMuc.resources
+G:\tmsCFS 2018\Projects\tmsBase\obj\Debug\tmsBase.Forms.frmDanhMucBaoCao.resources
+G:\tmsCFS 2018\Projects\tmsBase\obj\Debug\tmsBase.Forms.frmDanhMucChungTu.resources
+G:\tmsCFS 2018\Projects\tmsBase\obj\Debug\tmsBase.Forms.frmDanhMucMenu.resources
+G:\tmsCFS 2018\Projects\tmsBase\obj\Debug\tmsBase.Forms.frmDanhMucPhanQuyen.resources
+G:\tmsCFS 2018\Projects\tmsBase\obj\Debug\tmsBase.Forms.frmDanhMucUpdate.resources
+G:\tmsCFS 2018\Projects\tmsBase\obj\Debug\tmsBase.Forms.frmDanhMucValid.resources
+G:\tmsCFS 2018\Projects\tmsBase\obj\Debug\tmsBase.Forms.frmLogin.resources
+G:\tmsCFS 2018\Projects\tmsBase\obj\Debug\tmsBase.Forms.frmLoginExtended.resources
+G:\tmsCFS 2018\Projects\tmsBase\obj\Debug\tmsBase.Properties.Resources.resources
+G:\tmsCFS 2018\Projects\tmsBase\obj\Debug\tmsBase.dll.licenses
+G:\tmsCFS 2018\Projects\tmsBase\obj\Debug\tmsBase.dll
+G:\tmsCFS 2018\Projects\tmsBase\obj\Debug\tmsBase.pdb
+G:\tmsCFS 2018\Projects\tmsBase\obj\Debug\ResolveAssemblyReference.cache
+G:\tmsCFS 2018\Projects\tmsBase\obj\Debug\GenerateResource.read.1.tlog
+G:\tmsCFS 2018\Projects\tmsBase\obj\Debug\GenerateResource.write.1.tlog
+F:\tmsCFS 2018\Projects\tmsBase\obj\Debug\tmsBase.BaseForms.frmBaseGridUpdate.resources
+H:\tmsCFS 2018\Projects\tmsBase\obj\Debug\tmsBase.csprojResolveAssemblyReference.cache
+H:\tmsCFS 2018\Projects\tmsBase\obj\Debug\tmsBase.BaseForms.frmBaseGridUpdate.resources
+H:\tmsCFS 2018\Projects\tmsBase\obj\Debug\tmsBase.BaseForms.frmBaseChungTu_eCargoS.resources
+H:\tmsCFS 2018\Projects\tmsBase\obj\Debug\tmsBase.BaseForms.frmBaseChungTu.resources
+H:\tmsCFS 2018\Projects\tmsBase\obj\Debug\tmsBase.BaseForms.frmBaseChungTu_eCargo.resources
+H:\tmsCFS 2018\Projects\tmsBase\obj\Debug\tmsBase.BaseForms.frmBaseDanhMuc.resources
+H:\tmsCFS 2018\Projects\tmsBase\obj\Debug\tmsBase.BaseForms.frmBaseDanhMucUpdate.resources
+H:\tmsCFS 2018\Projects\tmsBase\obj\Debug\tmsBase.Forms.frmChangePassword.resources
+H:\tmsCFS 2018\Projects\tmsBase\obj\Debug\tmsBase.Forms.frmChungTuFilter.resources
+H:\tmsCFS 2018\Projects\tmsBase\obj\Debug\tmsBase.Forms.frmChungTuList.resources
+H:\tmsCFS 2018\Projects\tmsBase\obj\Debug\tmsBase.Forms.frmChungTuPrintPreview.resources
+H:\tmsCFS 2018\Projects\tmsBase\obj\Debug\tmsBase.Forms.frmDanhMuc.resources
+H:\tmsCFS 2018\Projects\tmsBase\obj\Debug\tmsBase.Forms.frmDanhMucBaoCao.resources
+H:\tmsCFS 2018\Projects\tmsBase\obj\Debug\tmsBase.Forms.frmDanhMucChungTu.resources
+H:\tmsCFS 2018\Projects\tmsBase\obj\Debug\tmsBase.Forms.frmDanhMucMenu.resources
+H:\tmsCFS 2018\Projects\tmsBase\obj\Debug\tmsBase.Forms.frmDanhMucPhanQuyen.resources
+H:\tmsCFS 2018\Projects\tmsBase\obj\Debug\tmsBase.Forms.frmDanhMucUpdate.resources
+H:\tmsCFS 2018\Projects\tmsBase\obj\Debug\tmsBase.Forms.frmDanhMucValid.resources
+H:\tmsCFS 2018\Projects\tmsBase\obj\Debug\tmsBase.Forms.frmLogin.resources
+H:\tmsCFS 2018\Projects\tmsBase\obj\Debug\tmsBase.Forms.frmLoginExtended.resources
+H:\tmsCFS 2018\Projects\tmsBase\obj\Debug\tmsBase.Properties.Resources.resources
+H:\tmsCFS 2018\Projects\tmsBase\obj\Debug\tmsBase.csproj.GenerateResource.Cache
+H:\tmsCFS 2018\Projects\tmsBase\obj\Debug\tmsBase.dll.licenses
+H:\tmsCFS 2018\Projects\tmsBase\obj\Debug\tmsBase.dll
+H:\tmsCFS 2018\Projects\tmsBase\obj\Debug\tmsBase.pdb
+H:\tmsCFS 2018\Runtimes\tmsBase.dll
+H:\tmsCFS 2018\Runtimes\tmsBase.pdb
+F:\tmsCFS 2018\Projects\tmsBase\obj\Debug\ResolveAssemblyReference.cache
+F:\tmsCFS 2018\Projects\tmsBase\obj\Debug\tmsBase.BaseForms.frmBaseChungTu_eCargo_Single.resources
+F:\tmsCFS 2018\Projects\tmsBase\obj\Debug\tmsBase.BaseForms.frmBaseChungTu_eCargo_MasterDetail_S.resources
+F:\tmsCFS 2018\Projects\tmsBase\obj\Debug\tmsBase.BaseForms.frmBaseChungTu_eCargo_MasterDetail.resources
+F:\tmsCFS 2018\Projects\tmsBase\obj\Debug\GenerateResource.read.1.tlog
+F:\tmsCFS 2018\Projects\tmsBase\obj\Debug\GenerateResource.write.1.tlog
+E:\Minh\tmsCFS 2018\Runtimes\tmsBase.dll
+E:\Minh\tmsCFS 2018\Runtimes\tmsBase.pdb
+E:\Minh\tmsCFS 2018\Projects\tmsBase\obj\Debug\tmsBase.csprojResolveAssemblyReference.cache
+E:\Minh\tmsCFS 2018\Projects\tmsBase\obj\Debug\tmsBase.BaseForms.frmBaseChungTu_eCargo_Single.resources
+E:\Minh\tmsCFS 2018\Projects\tmsBase\obj\Debug\tmsBase.BaseForms.frmBaseGridUpdate.resources
+E:\Minh\tmsCFS 2018\Projects\tmsBase\obj\Debug\tmsBase.BaseForms.frmBaseChungTu_eCargo_MasterDetail_S.resources
+E:\Minh\tmsCFS 2018\Projects\tmsBase\obj\Debug\tmsBase.BaseForms.frmBaseChungTu.resources
+E:\Minh\tmsCFS 2018\Projects\tmsBase\obj\Debug\tmsBase.BaseForms.frmBaseChungTu_eCargo_MasterDetail.resources
+E:\Minh\tmsCFS 2018\Projects\tmsBase\obj\Debug\tmsBase.BaseForms.frmBaseDanhMuc.resources
+E:\Minh\tmsCFS 2018\Projects\tmsBase\obj\Debug\tmsBase.BaseForms.frmBaseDanhMucUpdate.resources
+E:\Minh\tmsCFS 2018\Projects\tmsBase\obj\Debug\tmsBase.Forms.frmChangePassword.resources
+E:\Minh\tmsCFS 2018\Projects\tmsBase\obj\Debug\tmsBase.Forms.frmChungTuFilter.resources
+E:\Minh\tmsCFS 2018\Projects\tmsBase\obj\Debug\tmsBase.Forms.frmChungTuList.resources
+E:\Minh\tmsCFS 2018\Projects\tmsBase\obj\Debug\tmsBase.Forms.frmChungTuPrintPreview.resources
+E:\Minh\tmsCFS 2018\Projects\tmsBase\obj\Debug\tmsBase.Forms.frmDanhMuc.resources
+E:\Minh\tmsCFS 2018\Projects\tmsBase\obj\Debug\tmsBase.Forms.frmDanhMucBaoCao.resources
+E:\Minh\tmsCFS 2018\Projects\tmsBase\obj\Debug\tmsBase.Forms.frmDanhMucChungTu.resources
+E:\Minh\tmsCFS 2018\Projects\tmsBase\obj\Debug\tmsBase.Forms.frmDanhMucMenu.resources
+E:\Minh\tmsCFS 2018\Projects\tmsBase\obj\Debug\tmsBase.Forms.frmDanhMucPhanQuyen.resources
+E:\Minh\tmsCFS 2018\Projects\tmsBase\obj\Debug\tmsBase.Forms.frmDanhMucUpdate.resources
+E:\Minh\tmsCFS 2018\Projects\tmsBase\obj\Debug\tmsBase.Forms.frmDanhMucValid.resources
+E:\Minh\tmsCFS 2018\Projects\tmsBase\obj\Debug\tmsBase.Forms.frmLogin.resources
+E:\Minh\tmsCFS 2018\Projects\tmsBase\obj\Debug\tmsBase.Forms.frmLoginExtended.resources
+E:\Minh\tmsCFS 2018\Projects\tmsBase\obj\Debug\tmsBase.Properties.Resources.resources
+E:\Minh\tmsCFS 2018\Projects\tmsBase\obj\Debug\tmsBase.csproj.GenerateResource.Cache
+E:\Minh\tmsCFS 2018\Projects\tmsBase\obj\Debug\tmsBase.dll.licenses
+E:\Minh\tmsCFS 2018\Projects\tmsBase\obj\Debug\tmsBase.dll
+E:\Minh\tmsCFS 2018\Projects\tmsBase\obj\Debug\tmsBase.pdb
+D:\tmsCFS 2018\Runtimes\tmsBase.dll
+D:\tmsCFS 2018\Runtimes\tmsBase.pdb
+D:\tmsCFS 2018\Projects\tmsBase\obj\Debug\tmsBase.csprojResolveAssemblyReference.cache
+D:\tmsCFS 2018\Projects\tmsBase\obj\Debug\tmsBase.BaseForms.frmBaseChungTu_eCargo_Single.resources
+D:\tmsCFS 2018\Projects\tmsBase\obj\Debug\tmsBase.BaseForms.frmBaseGridUpdate.resources
+D:\tmsCFS 2018\Projects\tmsBase\obj\Debug\tmsBase.BaseForms.frmBaseChungTu_eCargo_MasterDetail_S.resources
+D:\tmsCFS 2018\Projects\tmsBase\obj\Debug\tmsBase.BaseForms.frmBaseChungTu.resources
+D:\tmsCFS 2018\Projects\tmsBase\obj\Debug\tmsBase.BaseForms.frmBaseChungTu_eCargo_MasterDetail.resources
+D:\tmsCFS 2018\Projects\tmsBase\obj\Debug\tmsBase.BaseForms.frmBaseDanhMuc.resources
+D:\tmsCFS 2018\Projects\tmsBase\obj\Debug\tmsBase.BaseForms.frmBaseDanhMucUpdate.resources
+D:\tmsCFS 2018\Projects\tmsBase\obj\Debug\tmsBase.Forms.frmChangePassword.resources
+D:\tmsCFS 2018\Projects\tmsBase\obj\Debug\tmsBase.Forms.frmChungTuFilter.resources
+D:\tmsCFS 2018\Projects\tmsBase\obj\Debug\tmsBase.Forms.frmChungTuList.resources
+D:\tmsCFS 2018\Projects\tmsBase\obj\Debug\tmsBase.Forms.frmChungTuPrintPreview.resources
+D:\tmsCFS 2018\Projects\tmsBase\obj\Debug\tmsBase.Forms.frmDanhMuc.resources
+D:\tmsCFS 2018\Projects\tmsBase\obj\Debug\tmsBase.Forms.frmDanhMucBaoCao.resources
+D:\tmsCFS 2018\Projects\tmsBase\obj\Debug\tmsBase.Forms.frmDanhMucChungTu.resources
+D:\tmsCFS 2018\Projects\tmsBase\obj\Debug\tmsBase.Forms.frmDanhMucMenu.resources
+D:\tmsCFS 2018\Projects\tmsBase\obj\Debug\tmsBase.Forms.frmDanhMucPhanQuyen.resources
+D:\tmsCFS 2018\Projects\tmsBase\obj\Debug\tmsBase.Forms.frmDanhMucUpdate.resources
+D:\tmsCFS 2018\Projects\tmsBase\obj\Debug\tmsBase.Forms.frmDanhMucValid.resources
+D:\tmsCFS 2018\Projects\tmsBase\obj\Debug\tmsBase.Forms.frmLogin.resources
+D:\tmsCFS 2018\Projects\tmsBase\obj\Debug\tmsBase.Forms.frmLoginExtended.resources
+D:\tmsCFS 2018\Projects\tmsBase\obj\Debug\tmsBase.Properties.Resources.resources
+D:\tmsCFS 2018\Projects\tmsBase\obj\Debug\tmsBase.csproj.GenerateResource.Cache
+D:\tmsCFS 2018\Projects\tmsBase\obj\Debug\tmsBase.dll.licenses
+D:\tmsCFS 2018\Projects\tmsBase\obj\Debug\tmsBase.dll
+D:\tmsCFS 2018\Projects\tmsBase\obj\Debug\tmsBase.pdb
+F:\tmsCFS 2018 - HAAL\Runtimes\tmsBase.dll
+F:\tmsCFS 2018 - HAAL\Runtimes\tmsBase.pdb
+F:\tmsCFS 2018 - HAAL\Projects\tmsBase\obj\Debug\ResolveAssemblyReference.cache
+F:\tmsCFS 2018 - HAAL\Projects\tmsBase\obj\Debug\tmsBase.BaseForms.frmBaseChungTu_eCargo_Single.resources
+F:\tmsCFS 2018 - HAAL\Projects\tmsBase\obj\Debug\tmsBase.BaseForms.frmBaseGridUpdate.resources
+F:\tmsCFS 2018 - HAAL\Projects\tmsBase\obj\Debug\tmsBase.BaseForms.frmBaseChungTu_eCargo_MasterDetail_S.resources
+F:\tmsCFS 2018 - HAAL\Projects\tmsBase\obj\Debug\tmsBase.BaseForms.frmBaseChungTu.resources
+F:\tmsCFS 2018 - HAAL\Projects\tmsBase\obj\Debug\tmsBase.BaseForms.frmBaseChungTu_eCargo_MasterDetail.resources
+F:\tmsCFS 2018 - HAAL\Projects\tmsBase\obj\Debug\tmsBase.BaseForms.frmBaseDanhMuc.resources
+F:\tmsCFS 2018 - HAAL\Projects\tmsBase\obj\Debug\tmsBase.BaseForms.frmBaseDanhMucUpdate.resources
+F:\tmsCFS 2018 - HAAL\Projects\tmsBase\obj\Debug\tmsBase.Forms.frmChangePassword.resources
+F:\tmsCFS 2018 - HAAL\Projects\tmsBase\obj\Debug\tmsBase.Forms.frmChungTuFilter.resources
+F:\tmsCFS 2018 - HAAL\Projects\tmsBase\obj\Debug\tmsBase.Forms.frmChungTuList.resources
+F:\tmsCFS 2018 - HAAL\Projects\tmsBase\obj\Debug\tmsBase.Forms.frmChungTuPrintPreview.resources
+F:\tmsCFS 2018 - HAAL\Projects\tmsBase\obj\Debug\tmsBase.Forms.frmDanhMuc.resources
+F:\tmsCFS 2018 - HAAL\Projects\tmsBase\obj\Debug\tmsBase.Forms.frmDanhMucBaoCao.resources
+F:\tmsCFS 2018 - HAAL\Projects\tmsBase\obj\Debug\tmsBase.Forms.frmDanhMucChungTu.resources
+F:\tmsCFS 2018 - HAAL\Projects\tmsBase\obj\Debug\tmsBase.Forms.frmDanhMucMenu.resources
+F:\tmsCFS 2018 - HAAL\Projects\tmsBase\obj\Debug\tmsBase.Forms.frmDanhMucPhanQuyen.resources
+F:\tmsCFS 2018 - HAAL\Projects\tmsBase\obj\Debug\tmsBase.Forms.frmDanhMucUpdate.resources
+F:\tmsCFS 2018 - HAAL\Projects\tmsBase\obj\Debug\tmsBase.Forms.frmDanhMucValid.resources
+F:\tmsCFS 2018 - HAAL\Projects\tmsBase\obj\Debug\tmsBase.Forms.frmLogin.resources
+F:\tmsCFS 2018 - HAAL\Projects\tmsBase\obj\Debug\tmsBase.Forms.frmLoginExtended.resources
+F:\tmsCFS 2018 - HAAL\Projects\tmsBase\obj\Debug\tmsBase.Properties.Resources.resources
+F:\tmsCFS 2018 - HAAL\Projects\tmsBase\obj\Debug\GenerateResource.read.1.tlog
+F:\tmsCFS 2018 - HAAL\Projects\tmsBase\obj\Debug\GenerateResource.write.1.tlog
+F:\tmsCFS 2018 - HAAL\Projects\tmsBase\obj\Debug\tmsBase.dll.licenses
+F:\tmsCFS 2018 - HAAL\Projects\tmsBase\obj\Debug\tmsBase.dll
+F:\tmsCFS 2018 - HAAL\Projects\tmsBase\obj\Debug\tmsBase.pdb
+D:\tmsCFS 2018 - HAAL\Runtimes\tmsBase.dll
+D:\tmsCFS 2018 - HAAL\Runtimes\tmsBase.pdb
+D:\tmsCFS 2018 - HAAL\Projects\tmsBase\obj\Debug\tmsBase.csprojAssemblyReference.cache
+D:\tmsCFS 2018 - HAAL\Projects\tmsBase\obj\Debug\tmsBase.BaseForms.frmBaseChungTu_eCargo_Single.resources
+D:\tmsCFS 2018 - HAAL\Projects\tmsBase\obj\Debug\tmsBase.BaseForms.frmBaseGridUpdate.resources
+D:\tmsCFS 2018 - HAAL\Projects\tmsBase\obj\Debug\tmsBase.BaseForms.frmBaseChungTu_eCargo_MasterDetail_S.resources
+D:\tmsCFS 2018 - HAAL\Projects\tmsBase\obj\Debug\tmsBase.BaseForms.frmBaseChungTu.resources
+D:\tmsCFS 2018 - HAAL\Projects\tmsBase\obj\Debug\tmsBase.BaseForms.FRMBaseChungTu_eCargo_MasterDetail.resources
+D:\tmsCFS 2018 - HAAL\Projects\tmsBase\obj\Debug\tmsBase.BaseForms.frmBaseDanhMuc.resources
+D:\tmsCFS 2018 - HAAL\Projects\tmsBase\obj\Debug\tmsBase.BaseForms.frmBaseDanhMucUpdate.resources
+D:\tmsCFS 2018 - HAAL\Projects\tmsBase\obj\Debug\tmsBase.Forms.frmChangePassword.resources
+D:\tmsCFS 2018 - HAAL\Projects\tmsBase\obj\Debug\tmsBase.Forms.frmChungTufilter.resources
+D:\tmsCFS 2018 - HAAL\Projects\tmsBase\obj\Debug\tmsBase.Forms.frmChungTuList.resources
+D:\tmsCFS 2018 - HAAL\Projects\tmsBase\obj\Debug\tmsBase.Forms.frmChungTuPrintPreview.resources
+D:\tmsCFS 2018 - HAAL\Projects\tmsBase\obj\Debug\tmsBase.Forms.frmDanhMuc.resources
+D:\tmsCFS 2018 - HAAL\Projects\tmsBase\obj\Debug\tmsBase.Forms.frmDanhMucBaoCao.resources
+D:\tmsCFS 2018 - HAAL\Projects\tmsBase\obj\Debug\tmsBase.Forms.frmDanhMucChungTu.resources
+D:\tmsCFS 2018 - HAAL\Projects\tmsBase\obj\Debug\tmsBase.Forms.frmDanhMucMenu.resources
+D:\tmsCFS 2018 - HAAL\Projects\tmsBase\obj\Debug\tmsBase.Forms.frmDanhMucPhanQuyen.resources
+D:\tmsCFS 2018 - HAAL\Projects\tmsBase\obj\Debug\tmsBase.Forms.FrmDanhMucUpdate.resources
+D:\tmsCFS 2018 - HAAL\Projects\tmsBase\obj\Debug\tmsBase.Forms.frmDanhMucValid.resources
+D:\tmsCFS 2018 - HAAL\Projects\tmsBase\obj\Debug\tmsBase.Forms.frmLogin.resources
+D:\tmsCFS 2018 - HAAL\Projects\tmsBase\obj\Debug\tmsBase.Forms.frmLoginExtended.resources
+D:\tmsCFS 2018 - HAAL\Projects\tmsBase\obj\Debug\tmsBase.Properties.Resources.resources
+D:\tmsCFS 2018 - HAAL\Projects\tmsBase\obj\Debug\tmsBase.csproj.GenerateResource.cache
+D:\tmsCFS 2018 - HAAL\Projects\tmsBase\obuj\Debug\tmsBase.dll.licenses
+D:\tmsCFS 2018 - HAAL\Projects\tmsBase\obj\Debug\tmsBase.csproj.CoreCompileInputs.cache
+D:\tmsCFS 2018 - HAAL\Projects\tmsBase\obj\Debug\tmsBase.csproj.CopyComplete
+D:\tmsCFS 2018 - HAAL\Projects\tmsBase\obj\Debug\tmsBase.dll
+D:\tmsCFS 2018 - HAAL\Projects\tmsBase\obj\Debug\tmsBase.pdb
+D:\Minh\tmsCFS 2018 - HAAL\Runtimes\tmsBase.dll
+D:\Minh\tmsCFS 2018 - HAAL\Runtimes\tmsBase.pdb
+D:\Minh\tmsCFS 2018 - HAAL\Projects\tmsBase\obj\Debug\tmsBase.csprojAssemblyReference.cache
+D:\Minh\tmsCFS 2018 - HAAL\Projects\tmsBase\obj\Debug\tmsBase.BaseForms.frmBaseChungTu_eCargo_Single.resources
+D:\Minh\tmsCFS 2018 - HAAL\Projects\tmsBase\obj\Debug\tmsBase.BaseForms.frmBaseGridUpdate.resources
+D:\Minh\tmsCFS 2018 - HAAL\Projects\tmsBase\obj\Debug\tmsBase.BaseForms.frmBaseChungTu_eCargo_MasterDetail_S.resources
+D:\Minh\tmsCFS 2018 - HAAL\Projects\tmsBase\obj\Debug\tmsBase.BaseForms.frmBaseChungTu.resources
+D:\Minh\tmsCFS 2018 - HAAL\Projects\tmsBase\obj\Debug\tmsBase.BaseForms.FRMBaseChungTu_eCargo_MasterDetail.resources
+D:\Minh\tmsCFS 2018 - HAAL\Projects\tmsBase\obj\Debug\tmsBase.BaseForms.frmBaseDanhMuc.resources
+D:\Minh\tmsCFS 2018 - HAAL\Projects\tmsBase\obj\Debug\tmsBase.BaseForms.frmBaseDanhMucUpdate.resources
+D:\Minh\tmsCFS 2018 - HAAL\Projects\tmsBase\obj\Debug\tmsBase.Forms.frmChangePassword.resources
+D:\Minh\tmsCFS 2018 - HAAL\Projects\tmsBase\obj\Debug\tmsBase.Forms.frmChungTufilter.resources
+D:\Minh\tmsCFS 2018 - HAAL\Projects\tmsBase\obj\Debug\tmsBase.Forms.frmChungTuList.resources
+D:\Minh\tmsCFS 2018 - HAAL\Projects\tmsBase\obj\Debug\tmsBase.Forms.frmChungTuPrintPreview.resources
+D:\Minh\tmsCFS 2018 - HAAL\Projects\tmsBase\obj\Debug\tmsBase.Forms.frmDanhMuc.resources
+D:\Minh\tmsCFS 2018 - HAAL\Projects\tmsBase\obj\Debug\tmsBase.Forms.frmDanhMucBaoCao.resources
+D:\Minh\tmsCFS 2018 - HAAL\Projects\tmsBase\obj\Debug\tmsBase.Forms.frmDanhMucChungTu.resources
+D:\Minh\tmsCFS 2018 - HAAL\Projects\tmsBase\obj\Debug\tmsBase.Forms.frmDanhMucMenu.resources
+D:\Minh\tmsCFS 2018 - HAAL\Projects\tmsBase\obj\Debug\tmsBase.Forms.frmDanhMucPhanQuyen.resources
+D:\Minh\tmsCFS 2018 - HAAL\Projects\tmsBase\obj\Debug\tmsBase.Forms.FrmDanhMucUpdate.resources
+D:\Minh\tmsCFS 2018 - HAAL\Projects\tmsBase\obj\Debug\tmsBase.Forms.frmDanhMucValid.resources
+D:\Minh\tmsCFS 2018 - HAAL\Projects\tmsBase\obj\Debug\tmsBase.Forms.frmLogin.resources
+D:\Minh\tmsCFS 2018 - HAAL\Projects\tmsBase\obj\Debug\tmsBase.Forms.frmLoginExtended.resources
+D:\Minh\tmsCFS 2018 - HAAL\Projects\tmsBase\obj\Debug\tmsBase.Properties.Resources.resources
+D:\Minh\tmsCFS 2018 - HAAL\Projects\tmsBase\obj\Debug\tmsBase.csproj.GenerateResource.cache
+D:\Minh\tmsCFS 2018 - HAAL\Projects\tmsBase\obj\Debug\tmsBase.dll.licenses
+D:\Minh\tmsCFS 2018 - HAAL\Projects\tmsBase\obj\Debug\tmsBase.csproj.CoreCompileInputs.cache
+D:\Minh\tmsCFS 2018 - HAAL\Projects\tmsBase\obj\Debug\tmsBase.csproj.CopyComplete
+D:\Minh\tmsCFS 2018 - HAAL\Projects\tmsBase\obj\Debug\tmsBase.dll
+D:\Minh\tmsCFS 2018 - HAAL\Projects\tmsBase\obj\Debug\tmsBase.pdb

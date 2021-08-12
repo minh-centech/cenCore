@@ -1,0 +1,75 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{2EFDC8F5-8EB4-46F9-9991-B09CF511C248}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>cenDTO</RootNamespace>
+    <AssemblyName>cenDTO</AssemblyName>
+    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <Deterministic>true</Deterministic>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ctDTO.cs" />
+    <Compile Include="baseDTO.cs" />
+    <Compile Include="DatabaseCore\DanhMucBaoCao.cs" />
+    <Compile Include="DatabaseCore\DanhMucDoiTuong.cs" />
+    <Compile Include="DatabaseCore\DanhMucNguoiSuDung.cs" />
+    <Compile Include="DatabaseCore\DanhMucThamSoHeThong.cs" />
+    <Compile Include="DatabaseCore\DanhMucTuDien.cs" />
+    <Compile Include="DatabaseCore\DanhMucLoaiDoiTuong.cs" />
+    <Compile Include="DatabaseCore\DanhMucDonVi.cs" />
+    <Compile Include="DatabaseCore\DanhMucMenu.cs" />
+    <Compile Include="DatabaseCore\DanhMucPhanQuyen.cs" />
+    <Compile Include="DatabaseCore\DanhMucChungTu.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="QuanLyBaiTanDaiDuong\ctXacNhanDichVu.cs" />
+    <Compile Include="QuanLyBaiTanDaiDuong\ctDichVu.cs" />
+    <Compile Include="QuanLyBaiTanDaiDuong\ctXeRa.cs" />
+    <Compile Include="QuanLyBaiTanDaiDuong\DanhMucKhachHang.cs" />
+    <Compile Include="QuanLyBaiTanDaiDuong\ctXeVao.cs" />
+    <Compile Include="QuanLyBaiTanDaiDuong\DanhMucDichVu.cs" />
+    <Compile Include="QuanLyBaiTanDaiDuong\DanhMucXe.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\cenCommon\cenCommon.csproj">
+      <Project>{d88a6d1e-8aa4-4809-a4e4-6f7a268498e2}</Project>
+      <Name>cenCommon</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

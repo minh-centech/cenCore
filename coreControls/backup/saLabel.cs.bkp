@@ -1,0 +1,21 @@
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Drawing;
+using System.Data;
+using System.Linq;
+using System.Text;
+using System.Windows.Forms;
+using Infragistics.Win;
+namespace cenControls
+{
+    public partial class saLabel : Infragistics.Win.Misc.UltraLabel
+    {
+        public saLabel()
+        {
+            InitializeComponent();
+            base.Appearance.BackColorAlpha = Infragistics.Win.Alpha.Transparent;
+            base.AutoSize = true;
+        }
+    }
+}
