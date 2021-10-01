@@ -29,37 +29,10 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            Infragistics.Win.Appearance appearance1 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance2 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance3 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance4 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance5 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance6 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance7 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance8 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance9 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance10 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance11 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance12 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance13 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance14 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance15 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance16 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance17 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance18 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance19 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance20 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance21 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance22 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance23 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance24 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance25 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance26 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance27 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance28 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance29 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance30 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance31 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance32 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance33 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance34 = new Infragistics.Win.Appearance();
@@ -103,17 +76,39 @@
             Infragistics.Win.UltraWinToolbars.PopupMenuTool popupMenuTool2 = new Infragistics.Win.UltraWinToolbars.PopupMenuTool("btIn");
             Infragistics.Win.Appearance appearance47 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance35 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance1 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance2 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance3 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance4 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance5 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance6 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance7 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance8 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance9 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance10 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance11 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance12 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance13 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance14 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance15 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance16 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance17 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance18 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance19 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance20 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance21 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance22 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance23 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance24 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance27 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance28 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance31 = new Infragistics.Win.Appearance();
             this.ultraTabPageControl1 = new Infragistics.Win.UltraWinTabControl.UltraTabPageControl();
-            this.ugChiTiet = new coreControls.saUpdateGrid();
             this.ultraTabPageControl2 = new Infragistics.Win.UltraWinTabControl.UltraTabPageControl();
-            this.ugChiTiet2 = new coreControls.saNonUpdateGrid();
             this.lblNgayLap = new Infragistics.Win.Misc.UltraLabel();
             this.groupHeader = new Infragistics.Win.Misc.UltraGroupBox();
-            this.cboIDDanhMucTrangThaiChungTu = new coreControls.saComboDanhMuc();
-            this.txtNgayLap = new coreControls.saDateTimeBox();
             this.lblTrangThaiChungTu = new Infragistics.Win.Misc.UltraLabel();
             this.lblSoChungTu = new Infragistics.Win.Misc.UltraLabel();
-            this.txtSo = new coreControls.saTextBox();
             this.lblTenDoiTuong = new Infragistics.Win.Misc.UltraLabel();
             this.ultraGroupBox1 = new Infragistics.Win.Misc.UltraGroupBox();
             this.ultraGroupBox2 = new Infragistics.Win.Misc.UltraGroupBox();
@@ -129,15 +124,15 @@
             this._frm_quanly_nguoisudung_Toolbars_Dock_Area_Left = new Infragistics.Win.UltraWinToolbars.UltraToolbarsDockArea();
             this._frm_quanly_nguoisudung_Toolbars_Dock_Area_Right = new Infragistics.Win.UltraWinToolbars.UltraToolbarsDockArea();
             this.groupFooter = new Infragistics.Win.Misc.UltraGroupBox();
+            this.ugChiTiet = new coreControls.saUpdateGrid();
+            this.ugChiTiet2 = new coreControls.saNonUpdateGrid();
+            this.cboIDDanhMucTrangThaiChungTu = new coreControls.saComboDanhMuc();
+            this.txtNgayLap = new coreControls.saDateTimeBox();
+            this.txtSo = new coreControls.saTextBox();
             this.ultraTabPageControl1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.ugChiTiet)).BeginInit();
             this.ultraTabPageControl2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.ugChiTiet2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupHeader)).BeginInit();
             this.groupHeader.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.cboIDDanhMucTrangThaiChungTu)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtNgayLap)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtSo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ultraGroupBox1)).BeginInit();
             this.ultraGroupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ultraGroupBox2)).BeginInit();
@@ -150,6 +145,11 @@
             this.tabChiTiet2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.toolBar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupFooter)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ugChiTiet)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ugChiTiet2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cboIDDanhMucTrangThaiChungTu)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtNgayLap)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtSo)).BeginInit();
             this.SuspendLayout();
             // 
             // ultraTabPageControl1
@@ -157,144 +157,14 @@
             this.ultraTabPageControl1.Controls.Add(this.ugChiTiet);
             this.ultraTabPageControl1.Location = new System.Drawing.Point(1, 23);
             this.ultraTabPageControl1.Name = "ultraTabPageControl1";
-            this.ultraTabPageControl1.Size = new System.Drawing.Size(937, 43);
-            // 
-            // ugChiTiet
-            // 
-            appearance1.BackColor = System.Drawing.SystemColors.Window;
-            appearance1.BorderColor = System.Drawing.SystemColors.InactiveCaption;
-            this.ugChiTiet.DisplayLayout.Appearance = appearance1;
-            this.ugChiTiet.DisplayLayout.BorderStyle = Infragistics.Win.UIElementBorderStyle.Solid;
-            this.ugChiTiet.DisplayLayout.CaptionVisible = Infragistics.Win.DefaultableBoolean.False;
-            appearance2.BackColor = System.Drawing.SystemColors.ActiveBorder;
-            appearance2.BackColor2 = System.Drawing.SystemColors.ControlDark;
-            appearance2.BackGradientStyle = Infragistics.Win.GradientStyle.Vertical;
-            appearance2.BorderColor = System.Drawing.SystemColors.Window;
-            this.ugChiTiet.DisplayLayout.GroupByBox.Appearance = appearance2;
-            appearance3.ForeColor = System.Drawing.SystemColors.GrayText;
-            this.ugChiTiet.DisplayLayout.GroupByBox.BandLabelAppearance = appearance3;
-            this.ugChiTiet.DisplayLayout.GroupByBox.BorderStyle = Infragistics.Win.UIElementBorderStyle.Solid;
-            appearance4.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            appearance4.BackColor2 = System.Drawing.SystemColors.Control;
-            appearance4.BackGradientStyle = Infragistics.Win.GradientStyle.Horizontal;
-            appearance4.ForeColor = System.Drawing.SystemColors.GrayText;
-            this.ugChiTiet.DisplayLayout.GroupByBox.PromptAppearance = appearance4;
-            this.ugChiTiet.DisplayLayout.MaxColScrollRegions = 1;
-            this.ugChiTiet.DisplayLayout.MaxRowScrollRegions = 1;
-            appearance5.BackColor = System.Drawing.SystemColors.Window;
-            appearance5.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.ugChiTiet.DisplayLayout.Override.ActiveCellAppearance = appearance5;
-            appearance6.BackColor = System.Drawing.SystemColors.Highlight;
-            appearance6.ForeColor = System.Drawing.SystemColors.HighlightText;
-            this.ugChiTiet.DisplayLayout.Override.ActiveRowAppearance = appearance6;
-            this.ugChiTiet.DisplayLayout.Override.BorderStyleCell = Infragistics.Win.UIElementBorderStyle.Dotted;
-            this.ugChiTiet.DisplayLayout.Override.BorderStyleRow = Infragistics.Win.UIElementBorderStyle.Dotted;
-            appearance7.BackColor = System.Drawing.SystemColors.Window;
-            this.ugChiTiet.DisplayLayout.Override.CardAreaAppearance = appearance7;
-            appearance8.BorderColor = System.Drawing.Color.Silver;
-            appearance8.TextTrimming = Infragistics.Win.TextTrimming.EllipsisCharacter;
-            this.ugChiTiet.DisplayLayout.Override.CellAppearance = appearance8;
-            this.ugChiTiet.DisplayLayout.Override.CellClickAction = Infragistics.Win.UltraWinGrid.CellClickAction.EditAndSelectText;
-            this.ugChiTiet.DisplayLayout.Override.CellPadding = 0;
-            appearance9.BackColor = System.Drawing.SystemColors.Control;
-            appearance9.BackColor2 = System.Drawing.SystemColors.ControlDark;
-            appearance9.BackGradientAlignment = Infragistics.Win.GradientAlignment.Element;
-            appearance9.BackGradientStyle = Infragistics.Win.GradientStyle.Horizontal;
-            appearance9.BorderColor = System.Drawing.SystemColors.Window;
-            this.ugChiTiet.DisplayLayout.Override.GroupByRowAppearance = appearance9;
-            appearance10.TextHAlignAsString = "Left";
-            this.ugChiTiet.DisplayLayout.Override.HeaderAppearance = appearance10;
-            this.ugChiTiet.DisplayLayout.Override.HeaderClickAction = Infragistics.Win.UltraWinGrid.HeaderClickAction.SortMulti;
-            this.ugChiTiet.DisplayLayout.Override.HeaderStyle = Infragistics.Win.HeaderStyle.WindowsXPCommand;
-            appearance11.BackColor = System.Drawing.SystemColors.Window;
-            appearance11.BorderColor = System.Drawing.Color.Silver;
-            this.ugChiTiet.DisplayLayout.Override.RowAppearance = appearance11;
-            this.ugChiTiet.DisplayLayout.Override.RowSelectors = Infragistics.Win.DefaultableBoolean.False;
-            appearance12.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.ugChiTiet.DisplayLayout.Override.TemplateAddRowAppearance = appearance12;
-            this.ugChiTiet.DisplayLayout.ScrollBounds = Infragistics.Win.UltraWinGrid.ScrollBounds.ScrollToFill;
-            this.ugChiTiet.DisplayLayout.ScrollStyle = Infragistics.Win.UltraWinGrid.ScrollStyle.Immediate;
-            this.ugChiTiet.DisplayLayout.ViewStyleBand = Infragistics.Win.UltraWinGrid.ViewStyleBand.OutlookGroupBy;
-            this.ugChiTiet.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ugChiTiet.Location = new System.Drawing.Point(0, 0);
-            this.ugChiTiet.Name = "ugChiTiet";
-            this.ugChiTiet.Size = new System.Drawing.Size(937, 43);
-            this.ugChiTiet.TabIndex = 1;
-            this.ugChiTiet.Text = "saUpdateGrid1";
-            this.ugChiTiet.BeforeRowInsert += new Infragistics.Win.UltraWinGrid.BeforeRowInsertEventHandler(this.ugChiTiet_BeforeRowInsert);
-            this.ugChiTiet.Enter += new System.EventHandler(this.ugChiTiet_Enter);
+            this.ultraTabPageControl1.Size = new System.Drawing.Size(937, 50);
             // 
             // ultraTabPageControl2
             // 
             this.ultraTabPageControl2.Controls.Add(this.ugChiTiet2);
             this.ultraTabPageControl2.Location = new System.Drawing.Point(1, 23);
             this.ultraTabPageControl2.Name = "ultraTabPageControl2";
-            this.ultraTabPageControl2.Size = new System.Drawing.Size(937, 305);
-            // 
-            // ugChiTiet2
-            // 
-            appearance13.BackColor = System.Drawing.SystemColors.Window;
-            appearance13.BorderColor = System.Drawing.SystemColors.InactiveCaption;
-            this.ugChiTiet2.DisplayLayout.Appearance = appearance13;
-            this.ugChiTiet2.DisplayLayout.BorderStyle = Infragistics.Win.UIElementBorderStyle.Solid;
-            this.ugChiTiet2.DisplayLayout.CaptionVisible = Infragistics.Win.DefaultableBoolean.False;
-            appearance14.BackColor = System.Drawing.SystemColors.ActiveBorder;
-            appearance14.BackColor2 = System.Drawing.SystemColors.ControlDark;
-            appearance14.BackGradientStyle = Infragistics.Win.GradientStyle.Vertical;
-            appearance14.BorderColor = System.Drawing.SystemColors.Window;
-            this.ugChiTiet2.DisplayLayout.GroupByBox.Appearance = appearance14;
-            appearance15.ForeColor = System.Drawing.SystemColors.GrayText;
-            this.ugChiTiet2.DisplayLayout.GroupByBox.BandLabelAppearance = appearance15;
-            this.ugChiTiet2.DisplayLayout.GroupByBox.BorderStyle = Infragistics.Win.UIElementBorderStyle.Solid;
-            appearance16.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            appearance16.BackColor2 = System.Drawing.SystemColors.Control;
-            appearance16.BackGradientStyle = Infragistics.Win.GradientStyle.Horizontal;
-            appearance16.ForeColor = System.Drawing.SystemColors.GrayText;
-            this.ugChiTiet2.DisplayLayout.GroupByBox.PromptAppearance = appearance16;
-            this.ugChiTiet2.DisplayLayout.LoadStyle = Infragistics.Win.UltraWinGrid.LoadStyle.LoadOnDemand;
-            this.ugChiTiet2.DisplayLayout.MaxColScrollRegions = 1;
-            this.ugChiTiet2.DisplayLayout.MaxRowScrollRegions = 1;
-            appearance17.BackColor = System.Drawing.SystemColors.Window;
-            appearance17.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.ugChiTiet2.DisplayLayout.Override.ActiveCellAppearance = appearance17;
-            appearance18.BackColor = System.Drawing.SystemColors.Highlight;
-            appearance18.ForeColor = System.Drawing.SystemColors.HighlightText;
-            this.ugChiTiet2.DisplayLayout.Override.ActiveRowAppearance = appearance18;
-            this.ugChiTiet2.DisplayLayout.Override.BorderStyleCell = Infragistics.Win.UIElementBorderStyle.Dotted;
-            this.ugChiTiet2.DisplayLayout.Override.BorderStyleRow = Infragistics.Win.UIElementBorderStyle.Dotted;
-            appearance19.BackColor = System.Drawing.SystemColors.Window;
-            this.ugChiTiet2.DisplayLayout.Override.CardAreaAppearance = appearance19;
-            appearance20.BorderColor = System.Drawing.Color.Silver;
-            appearance20.TextTrimming = Infragistics.Win.TextTrimming.EllipsisCharacter;
-            this.ugChiTiet2.DisplayLayout.Override.CellAppearance = appearance20;
-            this.ugChiTiet2.DisplayLayout.Override.CellClickAction = Infragistics.Win.UltraWinGrid.CellClickAction.EditAndSelectText;
-            this.ugChiTiet2.DisplayLayout.Override.CellPadding = 0;
-            appearance21.BackColor = System.Drawing.SystemColors.Control;
-            appearance21.BackColor2 = System.Drawing.SystemColors.ControlDark;
-            appearance21.BackGradientAlignment = Infragistics.Win.GradientAlignment.Element;
-            appearance21.BackGradientStyle = Infragistics.Win.GradientStyle.Horizontal;
-            appearance21.BorderColor = System.Drawing.SystemColors.Window;
-            this.ugChiTiet2.DisplayLayout.Override.GroupByRowAppearance = appearance21;
-            appearance22.TextHAlignAsString = "Left";
-            this.ugChiTiet2.DisplayLayout.Override.HeaderAppearance = appearance22;
-            this.ugChiTiet2.DisplayLayout.Override.HeaderClickAction = Infragistics.Win.UltraWinGrid.HeaderClickAction.SortMulti;
-            this.ugChiTiet2.DisplayLayout.Override.HeaderStyle = Infragistics.Win.HeaderStyle.WindowsXPCommand;
-            appearance23.BackColor = System.Drawing.SystemColors.Window;
-            appearance23.BorderColor = System.Drawing.Color.Silver;
-            this.ugChiTiet2.DisplayLayout.Override.RowAppearance = appearance23;
-            this.ugChiTiet2.DisplayLayout.Override.RowSelectors = Infragistics.Win.DefaultableBoolean.False;
-            appearance24.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.ugChiTiet2.DisplayLayout.Override.TemplateAddRowAppearance = appearance24;
-            this.ugChiTiet2.DisplayLayout.ScrollBounds = Infragistics.Win.UltraWinGrid.ScrollBounds.ScrollToFill;
-            this.ugChiTiet2.DisplayLayout.ScrollStyle = Infragistics.Win.UltraWinGrid.ScrollStyle.Immediate;
-            this.ugChiTiet2.DisplayLayout.TabNavigation = Infragistics.Win.UltraWinGrid.TabNavigation.NextControl;
-            this.ugChiTiet2.DisplayLayout.ViewStyleBand = Infragistics.Win.UltraWinGrid.ViewStyleBand.OutlookGroupBy;
-            this.ugChiTiet2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ugChiTiet2.Location = new System.Drawing.Point(0, 0);
-            this.ugChiTiet2.Name = "ugChiTiet2";
-            this.ugChiTiet2.Size = new System.Drawing.Size(937, 305);
-            this.ugChiTiet2.TabIndex = 3;
-            this.ugChiTiet2.Text = "saNonUpdateGrid1";
+            this.ultraTabPageControl2.Size = new System.Drawing.Size(937, 298);
             // 
             // lblNgayLap
             // 
@@ -325,38 +195,6 @@
             this.groupHeader.TabIndex = 0;
             this.groupHeader.UseAppStyling = false;
             // 
-            // cboIDDanhMucTrangThaiChungTu
-            // 
-            appearance27.ForeColorDisabled = System.Drawing.Color.Black;
-            this.cboIDDanhMucTrangThaiChungTu.Appearance = appearance27;
-            this.cboIDDanhMucTrangThaiChungTu.AutoCompleteMode = Infragistics.Win.AutoCompleteMode.SuggestAppend;
-            this.cboIDDanhMucTrangThaiChungTu.AutoSize = false;
-            this.cboIDDanhMucTrangThaiChungTu.AutoSuggestFilterMode = Infragistics.Win.AutoSuggestFilterMode.StartsWith;
-            this.cboIDDanhMucTrangThaiChungTu.Location = new System.Drawing.Point(83, 60);
-            this.cboIDDanhMucTrangThaiChungTu.Name = "cboIDDanhMucTrangThaiChungTu";
-            this.cboIDDanhMucTrangThaiChungTu.Size = new System.Drawing.Size(114, 21);
-            this.cboIDDanhMucTrangThaiChungTu.TabIndex = 4;
-            // 
-            // txtNgayLap
-            // 
-            appearance28.ForeColorDisabled = System.Drawing.Color.Black;
-            this.txtNgayLap.Appearance = appearance28;
-            this.txtNgayLap.AutoFillDate = Infragistics.Win.UltraWinMaskedEdit.AutoFillDate.Year;
-            this.txtNgayLap.AutoFillTime = Infragistics.Win.UltraWinMaskedEdit.AutoFillTime.CurrentTime;
-            this.txtNgayLap.AutoSize = false;
-            this.txtNgayLap.BorderStyle = Infragistics.Win.UIElementBorderStyle.Solid;
-            this.txtNgayLap.DateTime = new System.DateTime(1753, 1, 1, 0, 0, 0, 0);
-            this.txtNgayLap.Enabled = false;
-            this.txtNgayLap.FormatString = "";
-            this.txtNgayLap.Location = new System.Drawing.Point(83, 33);
-            this.txtNgayLap.MaskInput = "dd/mm/yyyy";
-            this.txtNgayLap.Name = "txtNgayLap";
-            this.txtNgayLap.PromptChar = ' ';
-            this.txtNgayLap.Size = new System.Drawing.Size(114, 21);
-            this.txtNgayLap.TabIndex = 2;
-            this.txtNgayLap.Tag = "NgayLap";
-            this.txtNgayLap.Value = null;
-            // 
             // lblTrangThaiChungTu
             // 
             appearance29.BackColorAlpha = Infragistics.Win.Alpha.Transparent;
@@ -378,18 +216,6 @@
             this.lblSoChungTu.Size = new System.Drawing.Size(64, 14);
             this.lblSoChungTu.TabIndex = 0;
             this.lblSoChungTu.Text = "Số chứng từ";
-            // 
-            // txtSo
-            // 
-            appearance31.ForeColorDisabled = System.Drawing.Color.Black;
-            this.txtSo.Appearance = appearance31;
-            this.txtSo.AutoSize = false;
-            this.txtSo.Enabled = false;
-            this.txtSo.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtSo.Location = new System.Drawing.Point(83, 6);
-            this.txtSo.Name = "txtSo";
-            this.txtSo.Size = new System.Drawing.Size(114, 21);
-            this.txtSo.TabIndex = 1;
             // 
             // lblTenDoiTuong
             // 
@@ -449,7 +275,7 @@
             this.tabChiTiet.Location = new System.Drawing.Point(0, 0);
             this.tabChiTiet.Name = "tabChiTiet";
             this.tabChiTiet.SharedControlsPage = this.ultraTabSharedControlsPage1;
-            this.tabChiTiet.Size = new System.Drawing.Size(941, 69);
+            this.tabChiTiet.Size = new System.Drawing.Size(941, 76);
             this.tabChiTiet.TabIndex = 3;
             ultraTab1.Key = "ChiTiet";
             ultraTab1.TabPage = this.ultraTabPageControl1;
@@ -462,13 +288,13 @@
             // 
             this.ultraTabSharedControlsPage1.Location = new System.Drawing.Point(-10000, -10000);
             this.ultraTabSharedControlsPage1.Name = "ultraTabSharedControlsPage1";
-            this.ultraTabSharedControlsPage1.Size = new System.Drawing.Size(937, 43);
+            this.ultraTabSharedControlsPage1.Size = new System.Drawing.Size(937, 50);
             // 
             // uSplit2
             // 
             this.uSplit2.BackColor = System.Drawing.Color.Transparent;
             this.uSplit2.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.uSplit2.Location = new System.Drawing.Point(0, 69);
+            this.uSplit2.Location = new System.Drawing.Point(0, 76);
             this.uSplit2.Name = "uSplit2";
             this.uSplit2.RestoreExtent = 284;
             this.uSplit2.Size = new System.Drawing.Size(941, 4);
@@ -479,10 +305,10 @@
             this.tabChiTiet2.Controls.Add(this.ultraTabSharedControlsPage2);
             this.tabChiTiet2.Controls.Add(this.ultraTabPageControl2);
             this.tabChiTiet2.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.tabChiTiet2.Location = new System.Drawing.Point(0, 73);
+            this.tabChiTiet2.Location = new System.Drawing.Point(0, 80);
             this.tabChiTiet2.Name = "tabChiTiet2";
             this.tabChiTiet2.SharedControlsPage = this.ultraTabSharedControlsPage2;
-            this.tabChiTiet2.Size = new System.Drawing.Size(941, 331);
+            this.tabChiTiet2.Size = new System.Drawing.Size(941, 324);
             this.tabChiTiet2.TabIndex = 4;
             ultraTab2.Key = "ChiTiet";
             ultraTab2.TabPage = this.ultraTabPageControl2;
@@ -495,7 +321,7 @@
             // 
             this.ultraTabSharedControlsPage2.Location = new System.Drawing.Point(-10000, -10000);
             this.ultraTabSharedControlsPage2.Name = "ultraTabSharedControlsPage2";
-            this.ultraTabSharedControlsPage2.Size = new System.Drawing.Size(937, 305);
+            this.ultraTabSharedControlsPage2.Size = new System.Drawing.Size(937, 298);
             // 
             // _frm_quanly_nguoisudung_Toolbars_Dock_Area_Top
             // 
@@ -656,6 +482,180 @@
             this.groupFooter.TabIndex = 17;
             this.groupFooter.UseAppStyling = false;
             // 
+            // ugChiTiet
+            // 
+            appearance1.BackColor = System.Drawing.SystemColors.Window;
+            appearance1.BorderColor = System.Drawing.SystemColors.InactiveCaption;
+            this.ugChiTiet.DisplayLayout.Appearance = appearance1;
+            this.ugChiTiet.DisplayLayout.BorderStyle = Infragistics.Win.UIElementBorderStyle.Solid;
+            this.ugChiTiet.DisplayLayout.CaptionVisible = Infragistics.Win.DefaultableBoolean.False;
+            appearance2.BackColor = System.Drawing.SystemColors.ActiveBorder;
+            appearance2.BackColor2 = System.Drawing.SystemColors.ControlDark;
+            appearance2.BackGradientStyle = Infragistics.Win.GradientStyle.Vertical;
+            appearance2.BorderColor = System.Drawing.SystemColors.Window;
+            this.ugChiTiet.DisplayLayout.GroupByBox.Appearance = appearance2;
+            appearance3.ForeColor = System.Drawing.SystemColors.GrayText;
+            this.ugChiTiet.DisplayLayout.GroupByBox.BandLabelAppearance = appearance3;
+            this.ugChiTiet.DisplayLayout.GroupByBox.BorderStyle = Infragistics.Win.UIElementBorderStyle.Solid;
+            appearance4.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            appearance4.BackColor2 = System.Drawing.SystemColors.Control;
+            appearance4.BackGradientStyle = Infragistics.Win.GradientStyle.Horizontal;
+            appearance4.ForeColor = System.Drawing.SystemColors.GrayText;
+            this.ugChiTiet.DisplayLayout.GroupByBox.PromptAppearance = appearance4;
+            this.ugChiTiet.DisplayLayout.MaxColScrollRegions = 1;
+            this.ugChiTiet.DisplayLayout.MaxRowScrollRegions = 1;
+            appearance5.BackColor = System.Drawing.SystemColors.Window;
+            appearance5.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.ugChiTiet.DisplayLayout.Override.ActiveCellAppearance = appearance5;
+            appearance6.BackColor = System.Drawing.SystemColors.Highlight;
+            appearance6.ForeColor = System.Drawing.SystemColors.HighlightText;
+            this.ugChiTiet.DisplayLayout.Override.ActiveRowAppearance = appearance6;
+            this.ugChiTiet.DisplayLayout.Override.BorderStyleCell = Infragistics.Win.UIElementBorderStyle.Dotted;
+            this.ugChiTiet.DisplayLayout.Override.BorderStyleRow = Infragistics.Win.UIElementBorderStyle.Dotted;
+            appearance7.BackColor = System.Drawing.SystemColors.Window;
+            this.ugChiTiet.DisplayLayout.Override.CardAreaAppearance = appearance7;
+            appearance8.BorderColor = System.Drawing.Color.Silver;
+            appearance8.TextTrimming = Infragistics.Win.TextTrimming.EllipsisCharacter;
+            this.ugChiTiet.DisplayLayout.Override.CellAppearance = appearance8;
+            this.ugChiTiet.DisplayLayout.Override.CellClickAction = Infragistics.Win.UltraWinGrid.CellClickAction.EditAndSelectText;
+            this.ugChiTiet.DisplayLayout.Override.CellPadding = 0;
+            appearance9.BackColor = System.Drawing.SystemColors.Control;
+            appearance9.BackColor2 = System.Drawing.SystemColors.ControlDark;
+            appearance9.BackGradientAlignment = Infragistics.Win.GradientAlignment.Element;
+            appearance9.BackGradientStyle = Infragistics.Win.GradientStyle.Horizontal;
+            appearance9.BorderColor = System.Drawing.SystemColors.Window;
+            this.ugChiTiet.DisplayLayout.Override.GroupByRowAppearance = appearance9;
+            appearance10.TextHAlignAsString = "Left";
+            this.ugChiTiet.DisplayLayout.Override.HeaderAppearance = appearance10;
+            this.ugChiTiet.DisplayLayout.Override.HeaderClickAction = Infragistics.Win.UltraWinGrid.HeaderClickAction.SortMulti;
+            this.ugChiTiet.DisplayLayout.Override.HeaderStyle = Infragistics.Win.HeaderStyle.WindowsXPCommand;
+            appearance11.BackColor = System.Drawing.SystemColors.Window;
+            appearance11.BorderColor = System.Drawing.Color.Silver;
+            this.ugChiTiet.DisplayLayout.Override.RowAppearance = appearance11;
+            this.ugChiTiet.DisplayLayout.Override.RowSelectors = Infragistics.Win.DefaultableBoolean.False;
+            appearance12.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.ugChiTiet.DisplayLayout.Override.TemplateAddRowAppearance = appearance12;
+            this.ugChiTiet.DisplayLayout.ScrollBounds = Infragistics.Win.UltraWinGrid.ScrollBounds.ScrollToFill;
+            this.ugChiTiet.DisplayLayout.ScrollStyle = Infragistics.Win.UltraWinGrid.ScrollStyle.Immediate;
+            this.ugChiTiet.DisplayLayout.ViewStyleBand = Infragistics.Win.UltraWinGrid.ViewStyleBand.OutlookGroupBy;
+            this.ugChiTiet.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ugChiTiet.Location = new System.Drawing.Point(0, 0);
+            this.ugChiTiet.Name = "ugChiTiet";
+            this.ugChiTiet.Size = new System.Drawing.Size(937, 50);
+            this.ugChiTiet.TabIndex = 1;
+            this.ugChiTiet.Text = "saUpdateGrid1";
+            this.ugChiTiet.BeforeRowInsert += new Infragistics.Win.UltraWinGrid.BeforeRowInsertEventHandler(this.ugChiTiet_BeforeRowInsert);
+            this.ugChiTiet.Enter += new System.EventHandler(this.ugChiTiet_Enter);
+            // 
+            // ugChiTiet2
+            // 
+            appearance13.BackColor = System.Drawing.SystemColors.Window;
+            appearance13.BorderColor = System.Drawing.SystemColors.InactiveCaption;
+            this.ugChiTiet2.DisplayLayout.Appearance = appearance13;
+            this.ugChiTiet2.DisplayLayout.BorderStyle = Infragistics.Win.UIElementBorderStyle.Solid;
+            this.ugChiTiet2.DisplayLayout.CaptionVisible = Infragistics.Win.DefaultableBoolean.False;
+            appearance14.BackColor = System.Drawing.SystemColors.ActiveBorder;
+            appearance14.BackColor2 = System.Drawing.SystemColors.ControlDark;
+            appearance14.BackGradientStyle = Infragistics.Win.GradientStyle.Vertical;
+            appearance14.BorderColor = System.Drawing.SystemColors.Window;
+            this.ugChiTiet2.DisplayLayout.GroupByBox.Appearance = appearance14;
+            appearance15.ForeColor = System.Drawing.SystemColors.GrayText;
+            this.ugChiTiet2.DisplayLayout.GroupByBox.BandLabelAppearance = appearance15;
+            this.ugChiTiet2.DisplayLayout.GroupByBox.BorderStyle = Infragistics.Win.UIElementBorderStyle.Solid;
+            appearance16.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            appearance16.BackColor2 = System.Drawing.SystemColors.Control;
+            appearance16.BackGradientStyle = Infragistics.Win.GradientStyle.Horizontal;
+            appearance16.ForeColor = System.Drawing.SystemColors.GrayText;
+            this.ugChiTiet2.DisplayLayout.GroupByBox.PromptAppearance = appearance16;
+            this.ugChiTiet2.DisplayLayout.LoadStyle = Infragistics.Win.UltraWinGrid.LoadStyle.LoadOnDemand;
+            this.ugChiTiet2.DisplayLayout.MaxColScrollRegions = 1;
+            this.ugChiTiet2.DisplayLayout.MaxRowScrollRegions = 1;
+            appearance17.BackColor = System.Drawing.SystemColors.Window;
+            appearance17.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.ugChiTiet2.DisplayLayout.Override.ActiveCellAppearance = appearance17;
+            appearance18.BackColor = System.Drawing.SystemColors.Highlight;
+            appearance18.ForeColor = System.Drawing.SystemColors.HighlightText;
+            this.ugChiTiet2.DisplayLayout.Override.ActiveRowAppearance = appearance18;
+            this.ugChiTiet2.DisplayLayout.Override.BorderStyleCell = Infragistics.Win.UIElementBorderStyle.Dotted;
+            this.ugChiTiet2.DisplayLayout.Override.BorderStyleRow = Infragistics.Win.UIElementBorderStyle.Dotted;
+            appearance19.BackColor = System.Drawing.SystemColors.Window;
+            this.ugChiTiet2.DisplayLayout.Override.CardAreaAppearance = appearance19;
+            appearance20.BorderColor = System.Drawing.Color.Silver;
+            appearance20.TextTrimming = Infragistics.Win.TextTrimming.EllipsisCharacter;
+            this.ugChiTiet2.DisplayLayout.Override.CellAppearance = appearance20;
+            this.ugChiTiet2.DisplayLayout.Override.CellClickAction = Infragistics.Win.UltraWinGrid.CellClickAction.EditAndSelectText;
+            this.ugChiTiet2.DisplayLayout.Override.CellPadding = 0;
+            appearance21.BackColor = System.Drawing.SystemColors.Control;
+            appearance21.BackColor2 = System.Drawing.SystemColors.ControlDark;
+            appearance21.BackGradientAlignment = Infragistics.Win.GradientAlignment.Element;
+            appearance21.BackGradientStyle = Infragistics.Win.GradientStyle.Horizontal;
+            appearance21.BorderColor = System.Drawing.SystemColors.Window;
+            this.ugChiTiet2.DisplayLayout.Override.GroupByRowAppearance = appearance21;
+            appearance22.TextHAlignAsString = "Left";
+            this.ugChiTiet2.DisplayLayout.Override.HeaderAppearance = appearance22;
+            this.ugChiTiet2.DisplayLayout.Override.HeaderClickAction = Infragistics.Win.UltraWinGrid.HeaderClickAction.SortMulti;
+            this.ugChiTiet2.DisplayLayout.Override.HeaderStyle = Infragistics.Win.HeaderStyle.WindowsXPCommand;
+            appearance23.BackColor = System.Drawing.SystemColors.Window;
+            appearance23.BorderColor = System.Drawing.Color.Silver;
+            this.ugChiTiet2.DisplayLayout.Override.RowAppearance = appearance23;
+            this.ugChiTiet2.DisplayLayout.Override.RowSelectors = Infragistics.Win.DefaultableBoolean.False;
+            appearance24.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.ugChiTiet2.DisplayLayout.Override.TemplateAddRowAppearance = appearance24;
+            this.ugChiTiet2.DisplayLayout.ScrollBounds = Infragistics.Win.UltraWinGrid.ScrollBounds.ScrollToFill;
+            this.ugChiTiet2.DisplayLayout.ScrollStyle = Infragistics.Win.UltraWinGrid.ScrollStyle.Immediate;
+            this.ugChiTiet2.DisplayLayout.TabNavigation = Infragistics.Win.UltraWinGrid.TabNavigation.NextControl;
+            this.ugChiTiet2.DisplayLayout.ViewStyleBand = Infragistics.Win.UltraWinGrid.ViewStyleBand.OutlookGroupBy;
+            this.ugChiTiet2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ugChiTiet2.Location = new System.Drawing.Point(0, 0);
+            this.ugChiTiet2.Name = "ugChiTiet2";
+            this.ugChiTiet2.Size = new System.Drawing.Size(937, 298);
+            this.ugChiTiet2.TabIndex = 3;
+            this.ugChiTiet2.Text = "saNonUpdateGrid1";
+            // 
+            // cboIDDanhMucTrangThaiChungTu
+            // 
+            appearance27.ForeColorDisabled = System.Drawing.Color.Black;
+            this.cboIDDanhMucTrangThaiChungTu.Appearance = appearance27;
+            this.cboIDDanhMucTrangThaiChungTu.AutoCompleteMode = Infragistics.Win.AutoCompleteMode.SuggestAppend;
+            this.cboIDDanhMucTrangThaiChungTu.AutoSize = false;
+            this.cboIDDanhMucTrangThaiChungTu.AutoSuggestFilterMode = Infragistics.Win.AutoSuggestFilterMode.StartsWith;
+            this.cboIDDanhMucTrangThaiChungTu.Location = new System.Drawing.Point(83, 60);
+            this.cboIDDanhMucTrangThaiChungTu.Name = "cboIDDanhMucTrangThaiChungTu";
+            this.cboIDDanhMucTrangThaiChungTu.Size = new System.Drawing.Size(114, 21);
+            this.cboIDDanhMucTrangThaiChungTu.TabIndex = 4;
+            // 
+            // txtNgayLap
+            // 
+            appearance28.ForeColorDisabled = System.Drawing.Color.Black;
+            this.txtNgayLap.Appearance = appearance28;
+            this.txtNgayLap.AutoFillDate = Infragistics.Win.UltraWinMaskedEdit.AutoFillDate.Year;
+            this.txtNgayLap.AutoFillTime = Infragistics.Win.UltraWinMaskedEdit.AutoFillTime.CurrentTime;
+            this.txtNgayLap.AutoSize = false;
+            this.txtNgayLap.BorderStyle = Infragistics.Win.UIElementBorderStyle.Solid;
+            this.txtNgayLap.DateTime = new System.DateTime(1753, 1, 1, 0, 0, 0, 0);
+            this.txtNgayLap.Enabled = false;
+            this.txtNgayLap.FormatString = "";
+            this.txtNgayLap.Location = new System.Drawing.Point(83, 33);
+            this.txtNgayLap.MaskInput = "dd/mm/yyyy";
+            this.txtNgayLap.Name = "txtNgayLap";
+            this.txtNgayLap.PromptChar = ' ';
+            this.txtNgayLap.Size = new System.Drawing.Size(114, 21);
+            this.txtNgayLap.TabIndex = 2;
+            this.txtNgayLap.Tag = "NgayLap";
+            this.txtNgayLap.Value = null;
+            // 
+            // txtSo
+            // 
+            appearance31.ForeColorDisabled = System.Drawing.Color.Black;
+            this.txtSo.Appearance = appearance31;
+            this.txtSo.AutoSize = false;
+            this.txtSo.Enabled = false;
+            this.txtSo.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtSo.Location = new System.Drawing.Point(83, 6);
+            this.txtSo.Name = "txtSo";
+            this.txtSo.Size = new System.Drawing.Size(114, 21);
+            this.txtSo.TabIndex = 1;
+            // 
             // frmBaseChungTuMasterDetail2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -676,15 +676,10 @@
             this.Load += new System.EventHandler(this.frmBaseChungTu_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.frmBaseChungTu_KeyDown);
             this.ultraTabPageControl1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.ugChiTiet)).EndInit();
             this.ultraTabPageControl2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.ugChiTiet2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupHeader)).EndInit();
             this.groupHeader.ResumeLayout(false);
             this.groupHeader.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.cboIDDanhMucTrangThaiChungTu)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtNgayLap)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtSo)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ultraGroupBox1)).EndInit();
             this.ultraGroupBox1.ResumeLayout(false);
             this.ultraGroupBox1.PerformLayout();
@@ -698,6 +693,11 @@
             this.tabChiTiet2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.toolBar)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupFooter)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ugChiTiet)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ugChiTiet2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cboIDDanhMucTrangThaiChungTu)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtNgayLap)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtSo)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -725,10 +725,10 @@
         private Infragistics.Win.UltraWinTabControl.UltraTabSharedControlsPage ultraTabSharedControlsPage1;
         private Infragistics.Win.UltraWinTabControl.UltraTabPageControl ultraTabPageControl1;
         public coreControls.saUpdateGrid ugChiTiet;
-        private Infragistics.Win.Misc.UltraSplitter uSplit2;
         public coreControls.saNonUpdateGrid ugChiTiet2;
         public Infragistics.Win.UltraWinTabControl.UltraTabControl tabChiTiet2;
         public Infragistics.Win.UltraWinTabControl.UltraTabControl tabChiTiet;
         public Infragistics.Win.Misc.UltraGroupBox groupFooter;
+        public Infragistics.Win.Misc.UltraSplitter uSplit2;
     }
 }

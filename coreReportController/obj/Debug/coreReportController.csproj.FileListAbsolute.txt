@@ -40,3 +40,15 @@ E:\cenCORE\coreReportController\obj\Debug\coreReportController.csproj.CoreCompil
 E:\cenCORE\coreReportController\obj\Debug\coreReportController.csproj.CopyComplete
 E:\cenCORE\coreReportController\obj\Debug\coreReportController.dll
 E:\cenCORE\coreReportController\obj\Debug\coreReportController.pdb
+D:\cenCORE\Outputs\coreReportController.dll
+D:\cenCORE\Outputs\coreReportController.pdb
+D:\cenCORE\coreReportController\obj\Debug\coreReportController.csproj.AssemblyReference.cache
+D:\cenCORE\coreReportController\obj\Debug\coreReportController.frmReportParameters.resources
+D:\cenCORE\coreReportController\obj\Debug\coreReportController.frmReportViewer.resources
+D:\cenCORE\coreReportController\obj\Debug\coreReportController.Properties.Resources.resources
+D:\cenCORE\coreReportController\obj\Debug\coreReportController.csproj.GenerateResource.cache
+D:\cenCORE\coreReportController\obj\Debug\coreReportController.dll.licenses
+D:\cenCORE\coreReportController\obj\Debug\coreReportController.csproj.CoreCompileInputs.cache
+D:\cenCORE\coreReportController\obj\Debug\coreReportController.csproj.CopyComplete
+D:\cenCORE\coreReportController\obj\Debug\coreReportController.dll
+D:\cenCORE\coreReportController\obj\Debug\coreReportController.pdb

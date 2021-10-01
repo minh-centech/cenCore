@@ -34,3 +34,10 @@ E:\cenCORE\coreBUS\obj\Debug\coreBUS.csproj.CoreCompileInputs.cache
 E:\cenCORE\coreBUS\obj\Debug\coreBUS.csproj.CopyComplete
 E:\cenCORE\coreBUS\obj\Debug\coreBUS.dll
 E:\cenCORE\coreBUS\obj\Debug\coreBUS.pdb
+D:\cenCORE\Outputs\coreBUS.dll
+D:\cenCORE\Outputs\coreBUS.pdb
+D:\cenCORE\coreBUS\obj\Debug\coreBUS.csproj.AssemblyReference.cache
+D:\cenCORE\coreBUS\obj\Debug\coreBUS.csproj.CoreCompileInputs.cache
+D:\cenCORE\coreBUS\obj\Debug\coreBUS.csproj.CopyComplete
+D:\cenCORE\coreBUS\obj\Debug\coreBUS.dll
+D:\cenCORE\coreBUS\obj\Debug\coreBUS.pdb

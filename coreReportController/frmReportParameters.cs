@@ -48,6 +48,8 @@ namespace coreReportController
                         }    
                     }    
                 }
+                else
+                    row.Cells["GiaTriThamSo"].Value = row.Cells["GiaTri"].Value;
                 ChuoiThamSoHienThiGrid += row.Cells["DienGiaiThamSo"].Value.ToString() + ": " + row.Cells["GiaTri"].Value.ToString() + "; ";
             }    
             OK = true;
@@ -68,8 +70,9 @@ namespace coreReportController
 
         private void frmReportParameters_Load(object sender, EventArgs e)
         {
-            ug.HiddenColumnsList = "[TenThamSo][KieuDuLieu][GiaTriThamSo]";
+            ug.HiddenColumnsList = "[TenThamSo][GiaTriThamSo]";
             ug.FixedColumnsList = "[DienGiaiThamSo]";
+            ug.ReadOnlyColumnsList = "[KieuDuLieu]";
             ug.DataSource = dtParameters;
             ug.DisplayLayout.Override.FilterUIType = Infragistics.Win.UltraWinGrid.FilterUIType.Default;
             ug.DisplayLayout.Bands[0].Override.AllowAddNew = Infragistics.Win.UltraWinGrid.AllowAddNew.No;
