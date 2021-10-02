@@ -48,9 +48,10 @@ namespace coreReportController
                         }    
                     }    
                 }
-                else
-                    row.Cells["GiaTriThamSo"].Value = row.Cells["GiaTri"].Value;
-                ChuoiThamSoHienThiGrid += row.Cells["DienGiaiThamSo"].Value.ToString() + ": " + row.Cells["GiaTri"].Value.ToString() + "; ";
+                //else
+                //    row.Cells["GiaTriThamSo"].Value = row.Cells["GiaTri"].Value;
+                if (!coreCommon.coreCommon.IsNull(row.Cells["GiaTri"].Value))
+                    ChuoiThamSoHienThiGrid += row.Cells["DienGiaiThamSo"].Value.ToString() + ": " + row.Cells["GiaTri"].Value.ToString() + "; ";
             }    
             OK = true;
             DialogResult = DialogResult.OK;
@@ -94,12 +95,14 @@ namespace coreReportController
             if (!GridValidation) return;
             UltraGridRow row = e.Cell.Row;
             object cellValue = e.Cell.Value;
-            if (!row.Cells["TenThamSo"].Value.ToString().StartsWith("@IDDanhMuc")) return;
+            
             if (e.Cell.Column.Key != "GiaTri") return;
             //Valid mã đối tượng, không cho thêm, ghi tên đối tượng vào cột ghi chú
-            string MaDanhMucLoaiDoiTuong = row.Cells["TenThamSo"].Value.ToString().Substring(10);
+            
             if (!coreCommon.coreCommon.IsNull(cellValue))
             {
+                if (!row.Cells["TenThamSo"].Value.ToString().StartsWith("@IDDanhMuc")) return;
+                string MaDanhMucLoaiDoiTuong = row.Cells["TenThamSo"].Value.ToString().Substring(10);
                 DataTable dt;
                 switch (MaDanhMucLoaiDoiTuong)
                 {
@@ -173,6 +176,15 @@ namespace coreReportController
                         break;
                 }
             }
+            else
+            {
+                GridValidation = false;
+                row.Cells["GiaTri"].Value = DBNull.Value;
+                row.Cells["GiaTriThamSo"].Value = DBNull.Value;
+                if (row.Cells["KieuDuLieu"].Value.ToString() != "DATE")
+                    row.Cells["GhiChu"].Value = DBNull.Value;
+                GridValidation = true;
+            }    
         }
     }
 }
