@@ -32,7 +32,7 @@ namespace coreUI
                 txtMa.ReturnColumnsList = ReturnColumnList;
                 txtMa.txtMoRong = txtMoRong;
                 txtMa.IsModified = false;
-                txtMa.Value = null;
+              
                 txtMa.Validating += new CancelEventHandler(validData.txtBox_Validating);
             }
             public static void txtBox_Validating(object sender, CancelEventArgs e)
