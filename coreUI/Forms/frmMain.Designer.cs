@@ -54,6 +54,8 @@
             Infragistics.Win.UltraWinToolbars.ButtonTool buttonTool21 = new Infragistics.Win.UltraWinToolbars.ButtonTool("_sys_DanhMucPhanQuyen");
             Infragistics.Win.UltraWinToolbars.ButtonTool buttonTool22 = new Infragistics.Win.UltraWinToolbars.ButtonTool("_sys_DanhMucNguoiSuDung");
             Infragistics.Win.UltraWinToolbars.ButtonTool buttonTool18 = new Infragistics.Win.UltraWinToolbars.ButtonTool("_sys_DanhMucThamSoNguoiSuDung");
+            Infragistics.Win.UltraWinToolbars.ButtonTool buttonTool20 = new Infragistics.Win.UltraWinToolbars.ButtonTool("_SYS_TAIKHOANKETOAN");
+            Infragistics.Win.UltraWinToolbars.ButtonTool buttonTool31 = new Infragistics.Win.UltraWinToolbars.ButtonTool("_SYS_NGHIEPVUKETOAN");
             Infragistics.Win.UltraWinToolbars.ButtonTool buttonTool23 = new Infragistics.Win.UltraWinToolbars.ButtonTool("_sys_DanhMucNguoiSuDung");
             Infragistics.Win.UltraWinToolbars.ButtonTool buttonTool24 = new Infragistics.Win.UltraWinToolbars.ButtonTool("_sys_DanhMucChungTu");
             Infragistics.Win.UltraWinToolbars.ButtonTool buttonTool25 = new Infragistics.Win.UltraWinToolbars.ButtonTool("_sys_DanhMucBaoCao");
@@ -70,6 +72,8 @@
             Infragistics.Win.UltraWinToolbars.TaskPaneTool taskPaneTool2 = new Infragistics.Win.UltraWinToolbars.TaskPaneTool("TaskPaneTool1");
             Infragistics.Win.UltraWinToolbars.ButtonTool buttonTool12 = new Infragistics.Win.UltraWinToolbars.ButtonTool("ButtonTool1");
             Infragistics.Win.UltraWinToolbars.ButtonTool buttonTool10 = new Infragistics.Win.UltraWinToolbars.ButtonTool("_sys_DanhMucThamSoNguoiSuDung");
+            Infragistics.Win.UltraWinToolbars.ButtonTool buttonTool32 = new Infragistics.Win.UltraWinToolbars.ButtonTool("_SYS_TAIKHOANKETOAN");
+            Infragistics.Win.UltraWinToolbars.ButtonTool buttonTool34 = new Infragistics.Win.UltraWinToolbars.ButtonTool("_SYS_NGHIEPVUKETOAN");
             Infragistics.Win.Appearance appearance1 = new Infragistics.Win.Appearance();
             Infragistics.Win.UltraWinStatusBar.UltraStatusPanel ultraStatusPanel1 = new Infragistics.Win.UltraWinStatusBar.UltraStatusPanel();
             Infragistics.Win.UltraWinStatusBar.UltraStatusPanel ultraStatusPanel2 = new Infragistics.Win.UltraWinStatusBar.UltraStatusPanel();
@@ -140,6 +144,7 @@
             buttonTool17.InstanceProps.IsFirstInGroup = true;
             buttonTool21.InstanceProps.IsFirstInGroup = true;
             buttonTool22.InstanceProps.IsFirstInGroup = true;
+            buttonTool20.InstanceProps.IsFirstInGroup = true;
             popupMenuTool4.Tools.AddRange(new Infragistics.Win.UltraWinToolbars.ToolBase[] {
             buttonTool9,
             buttonTool11,
@@ -151,7 +156,9 @@
             buttonTool17,
             buttonTool21,
             buttonTool22,
-            buttonTool18});
+            buttonTool18,
+            buttonTool20,
+            buttonTool31});
             buttonTool23.SharedPropsInternal.Caption = "Danh mục người sử dụng";
             buttonTool24.SharedPropsInternal.Caption = "Danh mục chứng từ";
             buttonTool25.SharedPropsInternal.Caption = "Danh mục báo cáo";
@@ -168,6 +175,8 @@
             taskPaneTool2.SharedPropsInternal.Caption = "TaskPaneTool1";
             buttonTool12.SharedPropsInternal.Caption = "ButtonTool1";
             buttonTool10.SharedPropsInternal.Caption = "Danh mục tham số người sử dụng";
+            buttonTool32.SharedPropsInternal.Caption = "Danh mục tài khoản kế toán";
+            buttonTool34.SharedPropsInternal.Caption = "Danh mục nghiệp vụ kế toán";
             this.ultraToolbarsManager1.Tools.AddRange(new Infragistics.Win.UltraWinToolbars.ToolBase[] {
             popupMenuTool2,
             buttonTool6,
@@ -189,7 +198,9 @@
             buttonTool39,
             taskPaneTool2,
             buttonTool12,
-            buttonTool10});
+            buttonTool10,
+            buttonTool32,
+            buttonTool34});
             this.ultraToolbarsManager1.ToolClick += new Infragistics.Win.UltraWinToolbars.ToolClickEventHandler(this.ultraToolbarsManager1_ToolClick);
             // 
             // _frmMain_Toolbars_Dock_Area_Right

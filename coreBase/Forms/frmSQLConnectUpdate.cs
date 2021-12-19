@@ -48,13 +48,12 @@ namespace coreBase.Forms
             if (txtData.Value == null) { coreCommon.coreCommon.ErrorMessageOkOnly("Tên dữ liệu không được để trống!"); return false; }
             if (txtUserName.Value == null) { coreCommon.coreCommon.ErrorMessageOkOnly("Tên người sử dụng không được để trống!"); return false; }
             if (txtPassword.Value == null) { coreCommon.coreCommon.ErrorMessageOkOnly("Password không được để trống!"); return false; }
-            connectionString = @"Data Source=" + txtServer.Text.Trim() + @";Initial Catalog=" + txtData.Text.Trim() + @";Persist Security Info=True;User ID=" + txtUserName.Text.Trim() + @";Password=" + txtPassword.Text + ";Connect Timeout=60";
+            connectionString = @"Data Source=" + txtServer.Text.Trim() + @";Initial Catalog=" + txtData.Text.Trim() + @";Persist Security Info=True;User ID=" + txtUserName.Text.Trim() + @";Password=" + txtPassword.Text + ";Connect Timeout=0";
             return true;
         }
 
         private void cmdTestConnection_Click(object sender, EventArgs e)
         {
-
             if (!ValidData()) return;
             using (SqlConnection connection = new SqlConnection(connectionString))
             {

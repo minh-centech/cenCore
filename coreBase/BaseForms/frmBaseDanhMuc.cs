@@ -9,7 +9,7 @@ namespace coreBase.BaseForms
         public object IDDanhMucLoaiDoiTuong;
         public string TenDanhMucLoaiDoiTuong;
 
-        public static DataTable dtData = null;
+        public DataTable dtData = null;
         public BindingSource bsDanhMuc = null;
         protected Boolean bContinue = true;
 

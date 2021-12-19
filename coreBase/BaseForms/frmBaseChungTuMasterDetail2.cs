@@ -155,6 +155,9 @@ namespace coreBase.BaseForms
         protected virtual void openChiTietChungTu2()
         {
         }
+        protected virtual void refresh()
+        {
+        }
         #endregion Methods
         #region FormEvents
         private void frmBaseChungTu_Load(object sender, EventArgs e)
@@ -252,6 +255,9 @@ namespace coreBase.BaseForms
                     break;
                 case "BTTHEMDONG":
                     themChungTuChiTiet();
+                    break;
+                case "BTREFRESH":
+                    refresh();
                     break;
                 case "BTIMPORT":
                     import();

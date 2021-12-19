@@ -193,6 +193,7 @@ namespace coreUI
             }
             public static void gridColumnValid(UltraGridCell uCell, string ValidColumName, string ReturnValueColumnList, string ReturnDataColumnList, Func<DataTable> listProcedure, Func<DataRow> insertProcedure, bool ShowLookup, out bool GridValidation)
             {
+                if (!uCell.Row.IsDataRow) { GridValidation = true; return; }
                 string[] ReturnValueColumnNames = ReturnValueColumnList.Split(';');
                 string[] ReturnDataColumnNames = ReturnDataColumnList.Split(';');
                 GridValidation = false;

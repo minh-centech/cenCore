@@ -131,7 +131,7 @@ namespace coreControls
                             ugcol.Hidden = true;
                         }
                         ugcol.Header.Caption = coreCommon.coreCommon.TraTuDien(ColumnKey);
-                        if (AddSummaryRow && (ColumnKey.StartsWith("SOLUONG") || ColumnKey.StartsWith("KHOILUONG") || ColumnKey.StartsWith("SOCBM") || ColumnKey.StartsWith("TRONGLUONG") || ColumnKey.StartsWith("SOTIEN") || ColumnKey.StartsWith("TIENHANG") || ColumnKey.StartsWith("TIENTHUE") || ColumnKey.StartsWith("THANHTIEN") || ColumnKey.StartsWith("SOTIEN") || ColumnKey.StartsWith("TONGSO") || ColumnKey.StartsWith("TONGKHOILUONG") || ColumnKey.StartsWith("TONGTRONGLUONG")))
+                        if (AddSummaryRow && (ColumnKey.StartsWith("SOLUONG") || ColumnKey.StartsWith("KHOILUONG") || ColumnKey.StartsWith("SOCBM") || ColumnKey.StartsWith("TRONGLUONG") || ColumnKey.StartsWith("SOTIEN") || ColumnKey.StartsWith("TIENHANG") || ColumnKey.StartsWith("TIENTHUE") || ColumnKey.StartsWith("THANHTIEN") || ColumnKey.StartsWith("SOTIEN") || ColumnKey.StartsWith("TONGSO") || ColumnKey.StartsWith("TONGKHOILUONG") || ColumnKey.StartsWith("TONGTRONGLUONG") || ColumnKey.StartsWith("CBM") || ColumnKey.StartsWith("CBMTHUCTE")))
                         {
                             saBand.Summaries.Add(ugcol.Key.ToString(), Infragistics.Win.UltraWinGrid.SummaryType.Sum, saBand.Columns[ugcol.Key]);
                         }
@@ -139,7 +139,10 @@ namespace coreControls
                         {
                             ugcol.Header.Fixed = true;
                         }
-                        coreCommon.coreCommon.SetGridColumnWidth(ugcol);
+                        if (!coreCommon.coreCommon.IsNull(coreBUS.DanhMucThamSoHeThongBUS.GetGiaTri("DoRongCot_" + ColumnKey)))
+                            ugcol.Width = coreCommon.coreCommon.intParse(coreBUS.DanhMucThamSoHeThongBUS.GetGiaTri("DoRongCot_" + ColumnKey).ToString());
+                        else
+                            coreCommon.coreCommon.SetGridColumnWidth(ugcol);
                         coreCommon.coreCommon.SetGridColumnMask(ugcol);
                     }
                     if (AddSummaryRow)
@@ -152,12 +155,11 @@ namespace coreControls
                         //Định dạng dòng tổng cộng
                         foreach (Infragistics.Win.UltraWinGrid.SummarySettings ugsum in saBand.Summaries)
                         {
-                            
                             if (ugsum.SummaryType != Infragistics.Win.UltraWinGrid.SummaryType.Count) ugsum.Appearance.TextHAlign = Infragistics.Win.HAlign.Right;
                             if (ugsum.SummaryType == SummaryType.Count)
                                 ugsum.DisplayFormat = "Count: {0:##,###;(##,###);-;-}";
 
-                            if (ugsum.Key.Contains("TIEN"))
+                            if (ugsum.Key.StartsWith("SOTIEN"))
                                 ugsum.DisplayFormat = "{0:" + coreCommon.GlobalVariables.FormatInteger + ";(" + coreCommon.GlobalVariables.FormatInteger + ");-;-}";
                             else
                                 ugsum.DisplayFormat = "{0:" + coreCommon.GlobalVariables.FormatReal + ";(" + coreCommon.GlobalVariables.FormatReal + ");-;-}";

@@ -88,6 +88,6 @@ D:\cenCORE\coreBase\obj\Debug\coreBase.Properties.Resources.resources
 D:\cenCORE\coreBase\obj\Debug\coreBase.csproj.GenerateResource.cache
 D:\cenCORE\coreBase\obj\Debug\coreBase.dll.licenses
 D:\cenCORE\coreBase\obj\Debug\coreBase.csproj.CoreCompileInputs.cache
-D:\cenCORE\coreBase\obj\Debug\coreBase.csproj.CopyComplete
 D:\cenCORE\coreBase\obj\Debug\coreBase.dll
 D:\cenCORE\coreBase\obj\Debug\coreBase.pdb
+D:\cenCORE\coreBase\obj\Debug\coreBase.csproj.CopyComplete

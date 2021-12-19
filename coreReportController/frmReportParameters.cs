@@ -48,8 +48,8 @@ namespace coreReportController
                         }    
                     }    
                 }
-                //else
-                //    row.Cells["GiaTriThamSo"].Value = row.Cells["GiaTri"].Value;
+                if (row.Cells["KieuDuLieu"].Value.ToString() == "NVARCHAR")
+                    row.Cells["GiaTriThamSo"].Value = row.Cells["GiaTri"].Value;
                 if (!coreCommon.coreCommon.IsNull(row.Cells["GiaTri"].Value))
                     ChuoiThamSoHienThiGrid += row.Cells["DienGiaiThamSo"].Value.ToString() + ": " + row.Cells["GiaTri"].Value.ToString() + "; ";
             }    
@@ -71,7 +71,7 @@ namespace coreReportController
 
         private void frmReportParameters_Load(object sender, EventArgs e)
         {
-            ug.HiddenColumnsList = "[TenThamSo][GiaTriThamSo]";
+            ug.HiddenColumnsList = "[TenThamSo][GiaTriThamSo][KieuDuLieu]";
             ug.FixedColumnsList = "[DienGiaiThamSo]";
             ug.ReadOnlyColumnsList = "[KieuDuLieu]";
             ug.DataSource = dtParameters;
@@ -92,7 +92,7 @@ namespace coreReportController
 
         private void ug_AfterCellUpdate(object sender, Infragistics.Win.UltraWinGrid.CellEventArgs e)
         {
-            if (!GridValidation) return;
+            if (!GridValidation || !e.Cell.Row.IsDataRow) return;
             UltraGridRow row = e.Cell.Row;
             object cellValue = e.Cell.Value;
             
@@ -127,7 +127,7 @@ namespace coreReportController
                             //Show valid form
                             coreUI.Forms.frmDataValid frm_ctValid = new coreUI.Forms.frmDataValid()
                             {
-                                validProcedure = new Func<DataTable>(() => coreBUS.DanhMucNguoiSuDungBUS.ListValidMa(cellValue)),
+                                validProcedure = new Func<DataTable>(() => coreBUS.DanhMucNguoiSuDungBUS.ListValidMa(null)),
                                 validColumn = "Ma",
                                 validValue = cellValue
                             };
@@ -161,7 +161,7 @@ namespace coreReportController
                             //Show valid form
                             coreUI.Forms.frmDataValid frm_ctValid = new coreUI.Forms.frmDataValid()
                             {
-                                validProcedure = new Func<DataTable>(() => coreBUS.DanhMucDoiTuongBUS.List(null, IDDanhMucLoaiDoiTuong, cellValue)),
+                                validProcedure = new Func<DataTable>(() => coreBUS.DanhMucDoiTuongBUS.List(null, IDDanhMucLoaiDoiTuong, null)),
                                 validColumn = "Ma",
                                 validValue = cellValue
                             };

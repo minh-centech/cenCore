@@ -6,7 +6,7 @@ namespace coreBase.BaseForms
     public partial class frmBaseChungTuSingleList : Form
     {
         public object IDDanhMucChungTu = null, LoaiManHinh = null;
-        public static DataTable dtData = null;
+        public DataTable dtData;
         public BindingSource bsData = null;
         protected Boolean bContinue = true;
         protected String tableName = "";

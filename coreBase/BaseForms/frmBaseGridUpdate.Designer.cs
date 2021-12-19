@@ -238,13 +238,12 @@
         }
 
         #endregion
-
-        internal Infragistics.Win.UltraWinToolbars.UltraToolbarsManager UltraToolbarsManager1;
         internal Infragistics.Win.UltraWinToolbars.UltraToolbarsDockArea _frm_quanly_nguoisudung_Toolbars_Dock_Area_Left;
         internal Infragistics.Win.UltraWinToolbars.UltraToolbarsDockArea _frm_quanly_nguoisudung_Toolbars_Dock_Area_Right;
         internal Infragistics.Win.UltraWinToolbars.UltraToolbarsDockArea _frm_quanly_nguoisudung_Toolbars_Dock_Area_Bottom;
         internal Infragistics.Win.UltraWinToolbars.UltraToolbarsDockArea _frm_quanly_nguoisudung_Toolbars_Dock_Area_Top;
         private Infragistics.Win.UltraWinCalcManager.UltraCalcManager ultraCalcManager1;
-        protected internal coreControls.saUpdateGrid saUpdateGrid;
+        public Infragistics.Win.UltraWinToolbars.UltraToolbarsManager UltraToolbarsManager1;
+        public coreControls.saUpdateGrid saUpdateGrid;
     }
 }

@@ -467,11 +467,20 @@ namespace coreCommon
             {
                 column.MaskInput = GlobalVariables.MaskInputDate;
             }
-            if (column.DataType == typeof(double) || column.DataType == typeof(float) || column.DataType == typeof(decimal))
+            if (column.DataType == typeof(double) || column.DataType == typeof(float) || column.DataType == typeof(Decimal) || column.DataType == typeof(Single))
             {
-                column.CellAppearance.TextHAlign = HAlign.Right;
-                column.Format = GlobalVariables.FormatReal;
-                column.MaskInput = GlobalVariables.DinhDangNhapReal;
+                if (column.Key.StartsWith("SoTien") || column.Key.StartsWith("ThueSuat"))
+                {
+                    column.CellAppearance.TextHAlign = HAlign.Right;
+                    column.Format = GlobalVariables.FormatInteger;
+                    column.MaskInput = GlobalVariables.DinhDangNhapInteger;
+                }
+                else
+                {
+                    column.CellAppearance.TextHAlign = HAlign.Right;
+                    column.Format = GlobalVariables.FormatReal;
+                    column.MaskInput = GlobalVariables.DinhDangNhapReal;
+                }    
             }
             if (column.DataType == typeof(byte) || column.DataType == typeof(int) || column.DataType == typeof(long) || ColumnKey == "STT" || ColumnKey.StartsWith("SOTHUTU"))
             {
@@ -739,16 +748,19 @@ namespace coreCommon
         public static String DigitSymbol = "."; //Dấu phân cách hàng nghìn
         
         
-        public static String FormatReal = "##,##0.00";
-        public static String DinhDangNhapReal = "-nnn,nnn,nnn,nnn,nnn,nnn.nn";
+        public static String FormatReal = "##,##0.0000";
+        public static String DinhDangNhapReal = "-nnn,nnn,nnn,nnn.nnnn";
+
         public static String FormatInteger = "##,###0";
-        public static String DinhDangNhapInteger = "-nnn,nnn,nnn,nnn,nnn,nnn";
+        public static String DinhDangNhapInteger = "-,nnn,nnn,nnn,nnn";
 
         public static Int16 LamTronSoLuong = 2;
-        public static Int16 LamTronTrongLuong = 2;
         public static Int16 LamTronKhoiLuong = 2;
+        public static Int16 LamTronCBM = 2;
         public static Int16 LamTronDonGia = 2;
+        public static Int16 LamTronDonGiaNgoaiTe = 2;
         public static Int16 LamTronSoTien = 0;
+        public static Int16 LamTronSoTienNgoaiTe = 0;
 
         //Than số người sử dụng đăng nhập
         public static object IDDanhMucNguoiSuDung = "";

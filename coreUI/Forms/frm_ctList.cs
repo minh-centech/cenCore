@@ -51,11 +51,11 @@ namespace coreUI.Forms
             //ug.DisplayLayout.Bands[0].Columns["IDChungTu"].Hidden = false;
             //ug.DisplayLayout.Bands[0].Columns["ID"].Hidden = false;
         }
-        public static void InsertToList(DataTable dtUpdate)
+        public void InsertToList(DataTable dtUpdate)
         {
             dtData.Merge(dtUpdate);
         }
-        public static void UpdateToList(DataTable dtUpdate)
+        public void UpdateToList(DataTable dtUpdate)
         {
             if (!coreCommon.coreCommon.IsNull(dtUpdate))
             {

@@ -117,7 +117,7 @@ namespace coreControls
                         if (ugcol.Key.Contains("$$"))
                             ugcol.Header.Caption = coreCommon.coreCommon.TraTuDien(ugcol.Key.Substring(ugcol.Key.IndexOf("$$") + 2));
                         //Nếu là cột chứa số tiền hoặc số lượng thì thêm tổng cộng
-                        if (coreCommon.GlobalVariables.TenCotSoLuong.ToUpper().IndexOf("(" + ColumnKey + ")") >= 0 || coreCommon.GlobalVariables.TenCotTrongLuong.ToUpper().IndexOf("(" + ColumnKey + ")") >= 0 || coreCommon.GlobalVariables.TenCotKhoiLuong.ToUpper().IndexOf("(" + ColumnKey + ")") >= 0 || coreCommon.GlobalVariables.TenCotTien.ToUpper().IndexOf("(" + ColumnKey + ")") >= 0)
+                        if (SummaryColumnsList.ToUpper().IndexOf("[" + ColumnKey + "]") >= 0)
                         {
                             saBand.Summaries.Add(ugcol.Key.ToString(), Infragistics.Win.UltraWinGrid.SummaryType.Sum, saBand.Columns[ugcol.Key]);
                         }
@@ -133,9 +133,10 @@ namespace coreControls
                             ugcol.CellActivation = Activation.NoEdit;
                             ugcol.CellClickAction = CellClickAction.CellSelect;
                         }
-
-
-                        coreCommon.coreCommon.SetGridColumnWidth(ugcol);
+                        if (!coreCommon.coreCommon.IsNull(coreBUS.DanhMucThamSoHeThongBUS.GetGiaTri("DoRongCot_" + ColumnKey)))
+                            ugcol.Width = coreCommon.coreCommon.intParse(coreBUS.DanhMucThamSoHeThongBUS.GetGiaTri("DoRongCot_" + ColumnKey).ToString());
+                        else
+                            coreCommon.coreCommon.SetGridColumnWidth(ugcol);
                         coreCommon.coreCommon.SetGridColumnMask(ugcol);
 
                     }
@@ -148,13 +149,10 @@ namespace coreControls
                         if (ugsum.SummaryType != Infragistics.Win.UltraWinGrid.SummaryType.Count) ugsum.Appearance.TextHAlign = Infragistics.Win.HAlign.Right;
                         if (ugsum.SummaryType == SummaryType.Count)
                             ugsum.DisplayFormat = "Count: {0:##,###;(##,###);-;-}";
-                        if (coreCommon.GlobalVariables.TenCotSoLuong.ToUpper().IndexOf("(" + ugsum.Key.ToUpper() + ")") >= 0)
-                            ugsum.DisplayFormat = "{0:" + coreCommon.GlobalVariables.FormatReal + ";(" + coreCommon.GlobalVariables.FormatReal + ");-;-}";
-                        if (coreCommon.GlobalVariables.TenCotTrongLuong.ToUpper().IndexOf("(" + ugsum.Key.ToUpper() + ")") >= 0)
-                            ugsum.DisplayFormat = "{0:" + coreCommon.GlobalVariables.FormatReal + ";(" + coreCommon.GlobalVariables.FormatReal + ");-;-}";
-                        if (coreCommon.GlobalVariables.TenCotKhoiLuong.ToUpper().IndexOf("(" + ugsum.Key.ToUpper() + ")") >= 0)
-                            ugsum.DisplayFormat = "{0:" + coreCommon.GlobalVariables.FormatReal + ";(" + coreCommon.GlobalVariables.FormatReal + ");-;-}";
-                        if (coreCommon.GlobalVariables.TenCotTien.ToUpper().IndexOf("(" + ugsum.Key.ToUpper() + ")") >= 0)
+
+                        if (ugsum.Key.StartsWith("SOTIEN"))
+                            ugsum.DisplayFormat = "{0:" + coreCommon.GlobalVariables.FormatInteger + ";(" + coreCommon.GlobalVariables.FormatInteger + ");-;-}";
+                        else
                             ugsum.DisplayFormat = "{0:" + coreCommon.GlobalVariables.FormatReal + ";(" + coreCommon.GlobalVariables.FormatReal + ");-;-}";
                         ugsum.SummaryDisplayArea = Infragistics.Win.UltraWinGrid.SummaryDisplayAreas.BottomFixed;
                         ugsum.Appearance.FontData.Bold = Infragistics.Win.DefaultableBoolean.True;

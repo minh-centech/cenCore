@@ -27,6 +27,7 @@ namespace coreControls
                 this.MaskInput = coreCommon.GlobalVariables.DinhDangNhapReal;
                 this.FormatString = coreCommon.GlobalVariables.FormatReal;
             }
+            this.Value = null;
         }
         protected override void OnEnter(EventArgs e)
         {

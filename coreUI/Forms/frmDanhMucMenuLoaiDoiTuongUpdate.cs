@@ -111,7 +111,7 @@ namespace coreUI.Forms
 
         private void frmDanhMucLoaiDoiTuongUpdate_Load(object sender, EventArgs e)
         {
-            
+            coreUI.validData.SetValidTextbox(txtMaDanhMucLoaiDoiTuong, new saTextBox[1] { txtTenDanhMucLoaiDoiTuong }, new Func<DataTable>(() => DanhMucLoaiDoiTuongBUS.ListValidMa(txtMaDanhMucLoaiDoiTuong.Value)), "Ma", "ID", "Ten", null, null, null);
             if (CapNhat >= 2)
             {
                 IDDanhMucMenu = dataRow["IDDanhMucMenu"];
@@ -122,7 +122,6 @@ namespace coreUI.Forms
                 chkTachNhom.Checked = coreCommon.coreCommon.stringParseBoolean(dataRow["PhanCachNhom"]);
                 txtThuTuHienThi.Value = int.Parse(dataRow["ThuTuHienThi"].ToString());
             }
-            coreUI.validData.SetValidTextbox(txtMaDanhMucLoaiDoiTuong, new saTextBox[1] { txtTenDanhMucLoaiDoiTuong }, new Func<DataTable>(() => DanhMucLoaiDoiTuongBUS.ListValidMa(txtMaDanhMucLoaiDoiTuong.Value)), "Ma", "ID", "Ten", null, null, null);
         }
 
         private void txtTenDanhMucLoaiDoiTuong_ValueChanged(object sender, EventArgs e)

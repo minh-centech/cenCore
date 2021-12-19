@@ -143,7 +143,7 @@
             this.txtGiaTri.Appearance = appearance2;
             this.txtGiaTri.AutoSize = false;
             this.txtGiaTri.Location = new System.Drawing.Point(72, 61);
-            this.txtGiaTri.MaxLength = 255;
+            this.txtGiaTri.MaxLength = 0;
             this.txtGiaTri.Name = "txtGiaTri";
             this.txtGiaTri.Size = new System.Drawing.Size(494, 21);
             this.txtGiaTri.TabIndex = 2;
@@ -165,7 +165,7 @@
             this.txtGhiChu.Appearance = appearance1;
             this.txtGhiChu.AutoSize = false;
             this.txtGhiChu.Location = new System.Drawing.Point(72, 88);
-            this.txtGhiChu.MaxLength = 255;
+            this.txtGhiChu.MaxLength = 0;
             this.txtGhiChu.Name = "txtGhiChu";
             this.txtGhiChu.Size = new System.Drawing.Size(494, 21);
             this.txtGhiChu.TabIndex = 3;

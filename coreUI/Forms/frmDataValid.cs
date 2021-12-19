@@ -46,6 +46,7 @@ namespace coreUI.Forms
         /// </summary>
         private void LoadDanhMuc()
         {
+            Cursor.Current = Cursors.WaitCursor;
             //
             dtValid = validProcedure();
             //
