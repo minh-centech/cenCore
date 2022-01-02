@@ -55,12 +55,15 @@ namespace coreBase.BaseForms
                     DeleteDanhMuc();
                     break;
                 case "BTTHEM":
+                    Cursor.Current = Cursors.WaitCursor;
                     InsertDanhMuc();
                     break;
                 case "BTCOPY":
+                    Cursor.Current = Cursors.WaitCursor;
                     CopyDanhMuc();
                     break;
                 case "BTSUA":
+                    Cursor.Current = Cursors.WaitCursor;
                     UpdateDanhMuc();
                     break;
                 case "BTTAILAI":
