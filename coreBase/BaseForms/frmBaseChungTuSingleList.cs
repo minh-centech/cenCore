@@ -107,7 +107,19 @@ namespace coreBase.BaseForms
         }
         private void ultraButton1_Click(object sender, EventArgs e)
         {
-            List();
+            try
+            {
+                Cursor.Current = Cursors.WaitCursor;
+                List();
+            }
+            catch (Exception ex)
+            {
+                coreCommon.coreCommon.ErrorMessageOkOnly(ex.Message);
+            }
+            finally
+            {
+                Cursor.Current = Cursors.Default;
+            }
         }
     }
 }
