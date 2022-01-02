@@ -24,15 +24,26 @@ namespace coreBase.BaseForms
 
         private void frmQuanLy_Load(object sender, EventArgs e)
         {
-            List();
-
-            if (tableName == "SYSNHATKYDULIEU")
+            try
             {
-                foreach (Infragistics.Win.UltraWinGrid.UltraGridColumn ugc in ug.DisplayLayout.Bands[0].Columns)
+                Cursor.Current = Cursors.WaitCursor;
+                List();
+                if (tableName == "SYSNHATKYDULIEU")
                 {
-                    ugc.CellMultiLine = Infragistics.Win.DefaultableBoolean.True;
+                    foreach (Infragistics.Win.UltraWinGrid.UltraGridColumn ugc in ug.DisplayLayout.Bands[0].Columns)
+                    {
+                        ugc.CellMultiLine = Infragistics.Win.DefaultableBoolean.True;
+                    }
+                    ug.DisplayLayout.Override.RowSizing = Infragistics.Win.UltraWinGrid.RowSizing.AutoFree;
                 }
-                ug.DisplayLayout.Override.RowSizing = Infragistics.Win.UltraWinGrid.RowSizing.AutoFree;
+            }
+            catch (Exception ex)
+            {
+                coreCommon.coreCommon.ErrorMessageOkOnly(ex.Message);
+            }
+            finally
+            {
+                Cursor.Current = Cursors.Default;
             }
         }
 

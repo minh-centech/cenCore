@@ -256,8 +256,10 @@ namespace coreReportController
                             sqlParameters[i + 1] = new SqlParameter(dtParameters.Rows[i]["TenThamSo"].ToString(), dtParameters.Rows[i]["GiaTriThamSo"]);
                         }
                     }
+                    Cursor.Current = Cursors.WaitCursor;
                     coreDAO.ConnectionDAO connectionDAO = new coreDAO.ConnectionDAO();
                     dtData = connectionDAO.tableList(sqlParameters, reportProcedureName, reportProcedureName);
+                    Cursor.Current = Cursors.Default;
                     LoadReport();
                     break;
             }

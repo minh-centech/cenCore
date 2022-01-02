@@ -472,8 +472,17 @@ namespace coreCommon
                 if (column.Key.StartsWith("SoTien") || column.Key.StartsWith("ThueSuat"))
                 {
                     column.CellAppearance.TextHAlign = HAlign.Right;
-                    column.Format = GlobalVariables.FormatInteger;
-                    column.MaskInput = GlobalVariables.DinhDangNhapInteger;
+                    if (column.Key.EndsWith("NguyenTe"))
+                    {
+                        column.Format = GlobalVariables.FormatReal;
+                        column.MaskInput = GlobalVariables.DinhDangNhapReal;
+                    }
+                    else
+                    {
+                        column.Format = GlobalVariables.FormatInteger;
+                        column.MaskInput = GlobalVariables.DinhDangNhapInteger;
+
+                    }
                 }
                 else
                 {

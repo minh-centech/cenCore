@@ -13,6 +13,7 @@ namespace coreReportController
         public static void runReport(string reportProcedureName, string TenDanhMucBaoCao, Form MDIParent)
         {
             //Lấy parameter
+            Cursor.Current = Cursors.WaitCursor;
             DataTable dtParameters = new DataTable();
             dtParameters.Columns.Add(new DataColumn("TenThamSo", typeof(string))); //Tên tham số trong procedure
             dtParameters.Columns.Add(new DataColumn("DienGiaiThamSo", typeof(string))); //Tên tham số tiếng Việt
@@ -68,6 +69,9 @@ namespace coreReportController
             Boolean OK = true;
             DataTable dtData;
             string ChuoiThamSoHienThi = "";
+
+            Cursor.Current = Cursors.Default;
+
             if (dtParameters.Rows.Count > 0)
             {
                 frmReportParameters frmReportParameters = new frmReportParameters()
@@ -86,6 +90,7 @@ namespace coreReportController
             }
             if (!OK) return;
 
+            Cursor.Current = Cursors.WaitCursor;
             SqlParameter[] sqlParameters = new SqlParameter[dtParameters.Rows.Count + 1];
             sqlParameters[0] = new SqlParameter("@IDDanhMucDonVi", coreCommon.GlobalVariables.IDDonVi);
             if (dtParameters.Rows.Count > 0)
@@ -97,6 +102,9 @@ namespace coreReportController
             }
             coreDAO.ConnectionDAO connectionDAO = new coreDAO.ConnectionDAO();
             dtData = connectionDAO.tableList(sqlParameters, reportProcedureName, reportProcedureName);
+            Cursor.Current = Cursors.Default;
+
+
             frmReportViewer frmReportViewer = new frmReportViewer();
             frmReportViewer.Text = TenDanhMucBaoCao;
             frmReportViewer.dtData = dtData;
