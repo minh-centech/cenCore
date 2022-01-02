@@ -23,7 +23,19 @@ namespace coreBase.BaseForms
 
         private void frmQuanLy_Load(object sender, EventArgs e)
         {
-            List();
+            try
+            {
+                Cursor.Current = Cursors.WaitCursor;
+                List();
+            }
+            catch (Exception ex)
+            {
+                coreCommon.coreCommon.ErrorMessageOkOnly(ex.Message);
+            }
+            finally
+            {
+                Cursor.Current = Cursors.Default;
+            }
         }
 
         private void UltraToolbarsManager1_ToolClick(object sender, Infragistics.Win.UltraWinToolbars.ToolClickEventArgs e)

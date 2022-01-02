@@ -37,27 +37,39 @@ namespace coreUI.Forms
             coreCommon.GlobalVariables.Logged = true;
             if (coreCommon.GlobalVariables.Logged)
             {
-                this.Text = coreCommon.GlobalVariables.SolutionName;
-                //Tạo folder output nếu chưa có
-                if (!Directory.Exists(coreCommon.GlobalVariables.OutputDir))
-                    Directory.CreateDirectory(coreCommon.GlobalVariables.OutputDir);
-                //Disable menu quản trị nếu không phải người dùng quản trị
-                PopupMenuTool mnuHeThong = (PopupMenuTool)this.ultraToolbarsManager1.Toolbars[0].Tools["mnuHeThong"];
-                mnuHeThong.Tools["_sys_DanhMucQuanTri"].SharedProps.Enabled = coreCommon.GlobalVariables.isAdmin;
-                //Nạp danh mục từ điển
-                coreCommon.GlobalVariables.dtTuDien = new DataTable();
-                coreCommon.GlobalVariables.dtTuDien = DanhMucTuDienBUS.List(null);
-                LoadMenu();
-                //InitParameters();
-                frmDesktop frmDesktop = new frmDesktop
+                try
                 {
-                    MdiParent = this
-                };
-                frmDesktop.Show();
-                //Hiển thị trạng thái
-                this.ultraStatusBar1.Panels["sttTenDuLieu"].Text = "Dữ liệu: " + coreCommon.GlobalVariables.TenDuLieu;
-                this.ultraStatusBar1.Panels["sttTenDonVi"].Text = "Đơn vị: " + coreCommon.GlobalVariables.TenDonVi;
-                this.ultraStatusBar1.Panels["sttTenDanhMucNguoiSuDung"].Text = "User: " + coreCommon.GlobalVariables.MaDanhMucNguoiSuDung;
+                    Cursor.Current = Cursors.WaitCursor;
+                    this.Text = coreCommon.GlobalVariables.SolutionName;
+                    //Tạo folder output nếu chưa có
+                    if (!Directory.Exists(coreCommon.GlobalVariables.OutputDir))
+                        Directory.CreateDirectory(coreCommon.GlobalVariables.OutputDir);
+                    //Disable menu quản trị nếu không phải người dùng quản trị
+                    PopupMenuTool mnuHeThong = (PopupMenuTool)this.ultraToolbarsManager1.Toolbars[0].Tools["mnuHeThong"];
+                    mnuHeThong.Tools["_sys_DanhMucQuanTri"].SharedProps.Enabled = coreCommon.GlobalVariables.isAdmin;
+                    //Nạp danh mục từ điển
+                    coreCommon.GlobalVariables.dtTuDien = new DataTable();
+                    coreCommon.GlobalVariables.dtTuDien = DanhMucTuDienBUS.List(null);
+                    LoadMenu();
+                    //InitParameters();
+                    frmDesktop frmDesktop = new frmDesktop
+                    {
+                        MdiParent = this
+                    };
+                    frmDesktop.Show();
+                    //Hiển thị trạng thái
+                    this.ultraStatusBar1.Panels["sttTenDuLieu"].Text = "Dữ liệu: " + coreCommon.GlobalVariables.TenDuLieu;
+                    this.ultraStatusBar1.Panels["sttTenDonVi"].Text = "Đơn vị: " + coreCommon.GlobalVariables.TenDonVi;
+                    this.ultraStatusBar1.Panels["sttTenDanhMucNguoiSuDung"].Text = "User: " + coreCommon.GlobalVariables.MaDanhMucNguoiSuDung;
+                }
+                catch (Exception ex)
+                {
+
+                }
+                finally
+                {
+                    Cursor.Current = Cursors.Default;
+                }
             }
         }
         public void ultraToolbarsManager1_ToolClick(object sender, Infragistics.Win.UltraWinToolbars.ToolClickEventArgs e)
