@@ -32,59 +32,73 @@ namespace coreBase.Forms
         }
         private void cmdOK_Click(object sender, EventArgs e)
         {
-            if (dtConnects.Rows.Count == 0) { coreCommon.coreCommon.ErrorMessageOkOnly("Không tìm thấy thông tin kết nối!"); return; }
 
-            bool ConnectionFound = false;
-            foreach (DataRow dr in dtConnects.Rows)
+            try
             {
-                if (dr["ID"].ToString() == cboConnect.SelectedItem.DataValue.ToString())
-                {
-                    coreCommon.GlobalVariables.ConnectionString = coreCommon.coreCommon.DecryptString(dr["ConnectionString"].ToString());
-                    ConnectionFound = true;
-                    break;
-                }
-            }
-            if (!ConnectionFound) { coreCommon.coreCommon.ErrorMessageOkOnly("Không tìm thấy thông tin kết nối!"); return; }
+                Cursor.Current = Cursors.WaitCursor;
 
-            coreCommon.GlobalVariables.IDDanhMucNguoiSuDung = DanhMucNguoiSuDungBUS.GetID(txtUserName.Value, coreCommon.coreCommon.EncryptString(txtPassword.Text), out coreCommon.GlobalVariables.IDDanhMucPhanQuyen, out coreCommon.GlobalVariables.isAdmin);
-            OK = coreCommon.GlobalVariables.IDDanhMucNguoiSuDung != null;
-            if (OK)
-            {
-                coreCommon.GlobalVariables.MaDanhMucNguoiSuDung = txtUserName.Text;
-                coreCommon.GlobalVariables.Password = coreCommon.coreCommon.EncryptString(txtPassword.Text);
-                if (coreCommon.GlobalVariables.IDDanhMucPhanQuyen == null)
+                if (dtConnects.Rows.Count == 0) { coreCommon.coreCommon.ErrorMessageOkOnly("Không tìm thấy thông tin kết nối!"); return; }
+
+                bool ConnectionFound = false;
+                foreach (DataRow dr in dtConnects.Rows)
                 {
-                    coreCommon.coreCommon.ErrorMessageOkOnly("Người sử dụng chưa được cấp quyền!");
-                    OK = false;
-                }
-                else
-                {
-                    dtDonVi = DanhMucPhanQuyenDonViBUS.List(null, coreCommon.GlobalVariables.IDDanhMucPhanQuyen);
-                    if (dtDonVi == null || dtDonVi.Rows.Count == 0)
+                    if (dr["ID"].ToString() == cboConnect.SelectedItem.DataValue.ToString())
                     {
-                        coreCommon.coreCommon.ErrorMessageOkOnly("Người sử dụng chưa được khai báo đơn vị!");
+                        coreCommon.GlobalVariables.ConnectionString = coreCommon.coreCommon.DecryptString(dr["ConnectionString"].ToString());
+                        ConnectionFound = true;
+                        break;
+                    }
+                }
+                if (!ConnectionFound) { coreCommon.coreCommon.ErrorMessageOkOnly("Không tìm thấy thông tin kết nối!"); return; }
+
+                coreCommon.GlobalVariables.IDDanhMucNguoiSuDung = DanhMucNguoiSuDungBUS.GetID(txtUserName.Value, coreCommon.coreCommon.EncryptString(txtPassword.Text), out coreCommon.GlobalVariables.IDDanhMucPhanQuyen, out coreCommon.GlobalVariables.isAdmin);
+                OK = coreCommon.GlobalVariables.IDDanhMucNguoiSuDung != null;
+                if (OK)
+                {
+                    coreCommon.GlobalVariables.MaDanhMucNguoiSuDung = txtUserName.Text;
+                    coreCommon.GlobalVariables.Password = coreCommon.coreCommon.EncryptString(txtPassword.Text);
+                    if (coreCommon.GlobalVariables.IDDanhMucPhanQuyen == null)
+                    {
+                        coreCommon.coreCommon.ErrorMessageOkOnly("Người sử dụng chưa được cấp quyền!");
                         OK = false;
-                        coreCommon.GlobalVariables.Logged = false;
                     }
                     else
                     {
-                        Close();
-                        OK = true;
-                        coreCommon.GlobalVariables.Logged = true;
-
-                        coreCommon.coreCommon.listLoaiManHinh = listLoaiManHinh;
-                        frmLoginExtended frmLoginExtended = new frmLoginExtended
+                        dtDonVi = DanhMucPhanQuyenDonViBUS.List(null, coreCommon.GlobalVariables.IDDanhMucPhanQuyen);
+                        if (dtDonVi == null || dtDonVi.Rows.Count == 0)
                         {
-                            dtDonVi = dtDonVi
-                        };
-                        frmLoginExtended.ShowDialog();
-                        coreCommon.GlobalVariables.TenDuLieu = cboConnect.Text;
+                            coreCommon.coreCommon.ErrorMessageOkOnly("Người sử dụng chưa được khai báo đơn vị!");
+                            OK = false;
+                            coreCommon.GlobalVariables.Logged = false;
+                        }
+                        else
+                        {
+                            Close();
+                            OK = true;
+                            coreCommon.GlobalVariables.Logged = true;
+
+                            coreCommon.coreCommon.listLoaiManHinh = listLoaiManHinh;
+                            frmLoginExtended frmLoginExtended = new frmLoginExtended
+                            {
+                                dtDonVi = dtDonVi
+                            };
+                            frmLoginExtended.ShowDialog();
+                            coreCommon.GlobalVariables.TenDuLieu = cboConnect.Text;
+                        }
                     }
                 }
+                else
+                {
+                    MessageBox.Show("Tên đăng nhập hoặc mật khẩu không hợp lệ!", "ChuY", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                }
             }
-            else
+            catch (Exception ex)
             {
-                MessageBox.Show("Tên đăng nhập hoặc mật khẩu không hợp lệ!", "ChuY", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                coreCommon.coreCommon.ErrorMessageOkOnly(ex.Message);
+            }
+            finally
+            {
+                Cursor.Current = Cursors.Default;
             }
         }
         private void cmdSQLConnect_Click(object sender, EventArgs e)

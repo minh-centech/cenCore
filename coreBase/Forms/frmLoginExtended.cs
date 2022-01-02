@@ -28,27 +28,39 @@ namespace coreBase.Forms
         }
         private void cmdOK_Click(object sender, EventArgs e)
         {
-            if (this.cboDonVi.SelectedItem != null)
+            try
             {
-                OK = true;
-
-                coreBUS.DanhMucPhanQuyenBUS.GetPhanQuyenDonVi(coreCommon.GlobalVariables.IDDanhMucPhanQuyen, cboDonVi.Value, out bool Xem);
-                if (!Xem)
+                Cursor.Current = Cursors.WaitCursor;
+                if (this.cboDonVi.SelectedItem != null)
                 {
-                    coreCommon.coreCommon.ErrorMessageOkOnly("Bạn không có quyền truy cập số liệu của đơn vị này!");
-                    return;
-                }
-                coreCommon.GlobalVariables.IDDonVi = this.cboDonVi.Value.ToString();
-                coreCommon.GlobalVariables.TenDonVi = this.cboDonVi.Text;
-                //Tạo thư mục Temp
-                if (!Directory.Exists(coreCommon.GlobalVariables.TempDir))
-                    Directory.CreateDirectory(coreCommon.GlobalVariables.TempDir);
-                Close();
-            }
-            else
-                coreCommon.coreCommon.ErrorMessageOkOnly("Bạn chưa chọn đơn vị sử dụng!");
-            coreCommon.GlobalVariables.Logged = OK;
+                    OK = true;
 
+                    coreBUS.DanhMucPhanQuyenBUS.GetPhanQuyenDonVi(coreCommon.GlobalVariables.IDDanhMucPhanQuyen, cboDonVi.Value, out bool Xem);
+                    if (!Xem)
+                    {
+                        coreCommon.coreCommon.ErrorMessageOkOnly("Bạn không có quyền truy cập số liệu của đơn vị này!");
+                        return;
+                    }
+                    coreCommon.GlobalVariables.IDDonVi = this.cboDonVi.Value.ToString();
+                    coreCommon.GlobalVariables.TenDonVi = this.cboDonVi.Text;
+                    //Tạo thư mục Temp
+                    if (!Directory.Exists(coreCommon.GlobalVariables.TempDir))
+                        Directory.CreateDirectory(coreCommon.GlobalVariables.TempDir);
+                    Close();
+                }
+                else
+                    coreCommon.coreCommon.ErrorMessageOkOnly("Bạn chưa chọn đơn vị sử dụng!");
+                coreCommon.GlobalVariables.Logged = OK;
+            }
+            catch (Exception ex)
+            {
+                coreCommon.GlobalVariables.Logged = false;
+                coreCommon.coreCommon.ErrorMessageOkOnly(ex.Message);
+            }
+            finally
+            {
+                Cursor.Current = Cursors.Default;
+            }
         }
 
         private void frmLoginExtended_Load(object sender, EventArgs e)
