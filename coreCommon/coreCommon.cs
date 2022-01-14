@@ -504,7 +504,7 @@ namespace coreCommon
         }
         public static string stringParse(object value)
         {
-            return (IsNull(value)) ? null : value.ToString();
+            return (IsNull(value)) ? "" : value.ToString();
         }
         public static byte? stringParseByte(object value)
         {

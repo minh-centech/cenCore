@@ -27,6 +27,11 @@ namespace coreBase.BaseForms
             {
                 Cursor.Current = Cursors.WaitCursor;
                 List();
+                if (dtData != null)
+                {
+                    ug.DisplayLayout.Bands[0].Columns["CreateDate"].MaskInput = coreCommon.GlobalVariables.MaskInputDateTime;
+                    ug.DisplayLayout.Bands[0].Columns["EditDate"].MaskInput = coreCommon.GlobalVariables.MaskInputDateTime;
+                }    
             }
             catch (Exception ex)
             {
@@ -114,6 +119,11 @@ namespace coreBase.BaseForms
             {
                 Cursor.Current = Cursors.WaitCursor;
                 List();
+                if (dtData != null)
+                {
+                    ug.DisplayLayout.Bands[0].Columns["CreateDate"].MaskInput = coreCommon.GlobalVariables.MaskInputDateTime;
+                    ug.DisplayLayout.Bands[0].Columns["EditDate"].MaskInput = coreCommon.GlobalVariables.MaskInputDateTime;
+                }
             }
             catch (Exception ex)
             {

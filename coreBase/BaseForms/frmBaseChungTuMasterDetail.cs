@@ -46,7 +46,6 @@ namespace coreBase.BaseForms
             toolBar.Toolbars[0].Tools["btXoa"].SharedProps.Visible = false;
             toolBar.Toolbars[0].Tools["btThemDong"].SharedProps.Visible = false;
             toolBar.Toolbars[0].Tools["btXoaDong"].SharedProps.Visible = false;
-            
         }
         #region Methods
         //Thêm chứng từ
