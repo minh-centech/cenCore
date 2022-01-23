@@ -512,8 +512,10 @@ namespace coreCommon
                 return null;
             else
             {
-                byte.TryParse(value.ToString(), out byte t);
-                return t;
+                if (byte.TryParse(value.ToString(), out byte t))
+                    return t;
+                else
+                    return null;
             }
         }
         public static int? stringParseInt(object value)
@@ -522,8 +524,10 @@ namespace coreCommon
                 return null;
             else
             {
-                int.TryParse(value.ToString(), out int t);
-                return t;
+                if (int.TryParse(value.ToString(), out int t))
+                    return t;
+                else
+                    return null;
             }
         }
         public static long? stringParseLong(object value)
@@ -532,8 +536,10 @@ namespace coreCommon
                 return null;
             else
             {
-                long.TryParse(value.ToString(), out long t);
-                return t;
+                if (long.TryParse(value.ToString(), out long t))
+                    return t;
+                else
+                    return null;
             }
         }
         public static double? stringParseDouble(object value)
@@ -542,8 +548,10 @@ namespace coreCommon
                 return null;
             else
             {
-                double.TryParse(value.ToString(), out double t);
-                return t;
+                if (double.TryParse(value.ToString(), out double t))
+                    return t;
+                else
+                    return null;
             }
         }
         public static decimal? stringParseDecimal(object value)
@@ -552,8 +560,10 @@ namespace coreCommon
                 return null;
             else
             {
-                decimal.TryParse(value.ToString(), out decimal t);
-                return t;
+                if (decimal.TryParse(value.ToString(), out decimal t))
+                    return t;
+                else
+                    return null;
             }
         }
         public static float? stringParseFloat(object value)
@@ -562,18 +572,24 @@ namespace coreCommon
                 return null;
             else
             {
-                float.TryParse(value.ToString(), out float t);
-                return t;
+                if (float.TryParse(value.ToString(), out float t))
+                    return t;
+                else
+                    return null;
             }
         }
         public static bool stringParseBoolean(object value)
         {
             if (IsNull(value))
+            {
                 return false;
+            }
             else
             {
-                bool.TryParse(value.ToString(), out bool t);
-                return t;
+                if (bool.TryParse(value.ToString(), out bool t))
+                    return t;
+                else
+                    return false;
             }
         }
         public static DateTime? stringParseDateTime(object value)
@@ -582,8 +598,10 @@ namespace coreCommon
                 return null;
             else
             {
-                DateTime.TryParse(value.ToString(), out DateTime t);
-                return t;
+                if (DateTime.TryParse(value.ToString(), out DateTime t))
+                    return t;
+                else
+                    return null;
             }
         }
         public static byte byteParse(object value)
@@ -592,8 +610,10 @@ namespace coreCommon
                 return 0;
             else
             {
-                byte.TryParse(value.ToString(), out byte t);
-                return t;
+                if (byte.TryParse(value.ToString(), out byte t))
+                    return t;
+                else
+                    return 0;
             }
         }
         public static int intParse(object value)
@@ -602,8 +622,10 @@ namespace coreCommon
                 return 0;
             else
             {
-                int.TryParse(value.ToString(), out int t);
-                return t;
+                if (int.TryParse(value.ToString(), out int t))
+                    return t;
+                else
+                    return 0;
             }
         }
         public static long longParse(object value)
@@ -612,8 +634,10 @@ namespace coreCommon
                 return 0;
             else
             {
-                long.TryParse(value.ToString(), out long t);
-                return t;
+                if (long.TryParse(value.ToString(), out long t))
+                    return t;
+                else
+                    return 0;
             }
         }
         public static double doubleParse(object value)
@@ -622,8 +646,10 @@ namespace coreCommon
                 return 0;
             else
             {
-                double.TryParse(value.ToString(), out double t);
-                return t;
+                if (double.TryParse(value.ToString(), out double t))
+                    return t;
+                else
+                    return 0;
             }
         }
         public static decimal decimalParse(object value)
@@ -632,8 +658,10 @@ namespace coreCommon
                 return 0;
             else
             {
-                decimal.TryParse(value.ToString(), out decimal t);
-                return t;
+                if (decimal.TryParse(value.ToString(), out decimal t))
+                    return t;
+                else
+                    return 0;
             }
         }
         public static float floatParse(object value)
@@ -642,8 +670,10 @@ namespace coreCommon
                 return 0;
             else
             {
-                float.TryParse(value.ToString(), out float t);
-                return t;
+                if (float.TryParse(value.ToString(), out float t))
+                    return t;
+                else
+                    return 0;
             }
         }
         public static byte[] ObjectToByteArray(object obj)

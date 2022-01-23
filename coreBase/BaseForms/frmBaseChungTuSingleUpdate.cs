@@ -12,6 +12,10 @@ namespace coreBase.BaseForms
         public string TenDanhMucChungTu = string.Empty;
         public DataRow dataRow = null;
         public DataTable dataTable = null;
+
+        public static DataTable dtUpdate;
+        public Action InsertToList, UpdateToList;
+        public object TuNgay, DenNgay;
         public frmBaseChungTuSingleUpdate()
         {
             InitializeComponent();
