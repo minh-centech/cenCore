@@ -18,8 +18,7 @@ namespace coreUI.Forms
         {
 
             dtData = NhatKyDuLieuBUS.List();
-            tableName = NhatKyDuLieu.tableName;
-            dtData.TableName = tableName;
+            TenDanhMucLoaiDoiTuong = NhatKyDuLieu.tableName;
             bsData = new BindingSource
             {
                 DataSource = dtData

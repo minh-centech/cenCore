@@ -7,6 +7,8 @@ namespace coreUI.Forms
     public partial class frmDanhMucTuDienUpdate : coreBase.BaseForms.frmBaseDanhMucUpdate
     {
         coreDTO.DanhMucTuDien obj = null;
+        public static DataTable dtUpdate;
+        public Action InsertToList, UpdateToList;
         public frmDanhMucTuDienUpdate()
         {
             InitializeComponent();
@@ -56,29 +58,19 @@ namespace coreUI.Forms
             bool OK = (CapNhat == 1 || CapNhat == 3) ? coreBUS.DanhMucTuDienBUS.Insert(ref obj) : coreBUS.DanhMucTuDienBUS.Update(ref obj);
             if (OK && obj != null && Int64.TryParse(obj.ID.ToString(), out Int64 _ID) && _ID > 0)
             {
-                if (dataTable != null)
+                dtUpdate = coreBUS.DanhMucTuDienBUS.List(obj.ID);
+                if (CapNhat == coreCommon.ThaoTacDuLieu.Them || CapNhat == coreCommon.ThaoTacDuLieu.Copy)
                 {
-                    if (CapNhat == coreCommon.ThaoTacDuLieu.Them || CapNhat == coreCommon.ThaoTacDuLieu.Copy)
-                    {
-                        DataRow dr = dataTable.NewRow();
-                        foreach (var prop in obj.GetType().GetProperties())
-                        {
-                            if (dataTable.Columns.Contains(prop.Name))
-                                dr[prop.Name] = !coreCommon.coreCommon.IsNull(prop.GetValue(obj, null)) ? prop.GetValue(obj, null) : DBNull.Value;
-                        }
-                        dataTable.Rows.Add(dr);
-                        dataTable.AcceptChanges();
-                    }
-                    else
-                    {
-                        foreach (var prop in obj.GetType().GetProperties())
-                        {
-                            if (dataTable.Columns.Contains(prop.Name))
-                                dataRow[prop.Name] = !coreCommon.coreCommon.IsNull(prop.GetValue(obj, null)) ? prop.GetValue(obj, null) : DBNull.Value;
-                        }
-                    }
+                    if (InsertToList != null)
+                        InsertToList();
                 }
-                ID = _ID;
+                else
+                {
+                    if (UpdateToList != null)
+                        UpdateToList();
+                }
+                dataRow = dtUpdate.Rows[0];
+                ID = obj.ID;
                 return true;
             }
             else

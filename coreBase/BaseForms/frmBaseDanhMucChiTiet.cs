@@ -6,16 +6,13 @@ namespace coreBase.BaseForms
 {
     public partial class frmBaseDanhMucChiTiet : Form
     {
+        public object IDDanhMucDoiTuong;
         public object IDDanhMucLoaiDoiTuong;
         public string TenDanhMucLoaiDoiTuong;
 
         protected DataSet dsData = null;
         protected BindingSource bsData = null, bsDataChiTiet = null;
 
-        protected Action deleteAction;
-
-        protected String tableNameDanhMucChiTiet = String.Empty;
-        protected Boolean bContinue = true;
         public frmBaseDanhMucChiTiet()
         {
             InitializeComponent();
@@ -62,31 +59,21 @@ namespace coreBase.BaseForms
         }
         protected virtual void Insert()
         {
-            bContinue = (bsData != null);
         }
         protected virtual void Copy()
         {
-            bContinue = (ug.ActiveRow != null && ug.ActiveRow.IsDataRow);
         }
-        protected virtual void Update()
+        protected new virtual void Update()
         {
-            bContinue = (ug.ActiveRow != null && ug.ActiveRow.IsDataRow);
-        }
-        protected bool CanDelete(UltraGrid ugCanDelete)
-        {
-            return ((ugCanDelete.ActiveRow != null && ugCanDelete.ActiveRow.IsDataRow && coreCommon.coreCommon.QuestionMessage("Bạn có chắc chắn muốn xóa mục dữ liệu này?", 0) == DialogResult.Yes));
         }
 
         protected virtual void Delete()
         {
-            if (!coreCommon.coreCommon.IsNull(deleteAction))
-                deleteAction();
         }
 
 
         protected virtual void InsertChiTiet()
         {
-            bContinue = (ug.ActiveRow != null && ug.ActiveRow.IsDataRow);
         }
         protected virtual void UpdateChiTiet()
         {

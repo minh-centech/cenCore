@@ -7,9 +7,9 @@ namespace coreUI.Forms
     public partial class frmDanhMucDoiTuongUpdate : coreBase.BaseForms.frmBaseDanhMucUpdate
     {
         public object DefaultValue = null;
-        public Action InsertToList, UpdateToList;
-        public static DataTable dtUpdate;
         coreDTO.DanhMucDoiTuong obj = null;
+        public static DataTable dtUpdate;
+        public Action InsertToList, UpdateToList;
         public frmDanhMucDoiTuongUpdate()
         {
             InitializeComponent();
@@ -60,29 +60,7 @@ namespace coreUI.Forms
                     if (UpdateToList != null)
                         UpdateToList();
                 }
-
-                if (dataTable != null)
-                {
-                    if (CapNhat == coreCommon.ThaoTacDuLieu.Them || CapNhat == coreCommon.ThaoTacDuLieu.Copy)
-                    {
-                        dataRow = dataTable.NewRow();
-                        foreach (var prop in obj.GetType().GetProperties())
-                        {
-                            if (dataTable.Columns.Contains(prop.Name))
-                                dataRow[prop.Name] = !coreCommon.coreCommon.IsNull(prop.GetValue(obj, null)) ? prop.GetValue(obj, null) : DBNull.Value;
-                        }
-                        dataTable.Rows.Add(dataRow);
-                        dataTable.AcceptChanges();
-                    }
-                    else
-                    {
-                        foreach (var prop in obj.GetType().GetProperties())
-                        {
-                            if (dataTable.Columns.Contains(prop.Name))
-                                dataRow[prop.Name] = !coreCommon.coreCommon.IsNull(prop.GetValue(obj, null)) ? prop.GetValue(obj, null) : DBNull.Value;
-                        }
-                    }
-                }
+                dataRow = dtUpdate.Rows[0];
                 ID = obj.ID;
                 return true;
             }

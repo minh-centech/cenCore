@@ -54,12 +54,9 @@ namespace coreUI.Forms
 
         protected override void Insert()
         {
-            base.Insert();
-            if (!bContinue) return;
             frmDanhMucMenuUpdate frmUpdate = new frmDanhMucMenuUpdate
             {
                 CapNhat = coreCommon.ThaoTacDuLieu.Them,
-                dataTable = dsData.Tables[DanhMucMenu.tableName],
                 Text = "Thêm mới danh mục menu",
             };
             frmUpdate.ShowDialog();
@@ -67,13 +64,10 @@ namespace coreUI.Forms
         }
         protected override void Copy()
         {
-            base.Copy();
-            if (!bContinue) return;
             frmDanhMucMenuUpdate frmUpdate = new frmDanhMucMenuUpdate
             {
                 CapNhat = coreCommon.ThaoTacDuLieu.Copy,
                 Text = "Sao chép danh mục menu",
-                dataTable = dsData.Tables[DanhMucMenu.tableName],
                 dataRow = ((DataRowView)bsData.Current).Row
             };
             frmUpdate.ShowDialog();
@@ -81,13 +75,10 @@ namespace coreUI.Forms
         }
         protected override void Update()
         {
-            base.Update();
-            if (!bContinue) return;
             frmDanhMucMenuUpdate frmUpdate = new frmDanhMucMenuUpdate
             {
                 CapNhat = coreCommon.ThaoTacDuLieu.Sua,
                 Text = "Chỉnh sửa danh mục menu",
-                dataTable = dsData.Tables[DanhMucMenu.tableName],
                 dataRow = ((DataRowView)bsData.Current).Row
             };
             frmUpdate.ShowDialog();
@@ -95,17 +86,15 @@ namespace coreUI.Forms
         }
         protected override void Delete()
         {
-            if (ug.ActiveRow != null && ug.ActiveRow.IsDataRow)
-            {
-                deleteAction = new Action(() => { coreUI.DanhMuc.Delete(null, new Func<bool>(() => DanhMucMenuBUS.Delete(new DanhMucMenu() { ID = ug.ActiveRow.Cells["ID"].Value })), ug, bsData); });
-                base.Delete();
-            }
+            //if (ug.ActiveRow != null && ug.ActiveRow.IsDataRow)
+            //{
+            //    deleteAction = new Action(() => { coreUI.DanhMuc.Delete(null, new Func<bool>(() => DanhMucMenuBUS.Delete(new DanhMucMenu() { ID = ug.ActiveRow.Cells["ID"].Value })), ug, bsData); });
+            //    base.Delete();
+            //}
         }
 
         protected override void InsertChiTiet()
         {
-            base.InsertChiTiet();
-            if (!bContinue) return;
             switch (tabChiTiet.SelectedTab.Key.ToUpper())
             {
                 case "TABCHITIET":
@@ -113,7 +102,6 @@ namespace coreUI.Forms
                     {
                         CapNhat = coreCommon.ThaoTacDuLieu.Them,
                         Text = "Thêm mới danh mục menu loại đối tượng",
-                        dataTable = dsData.Tables[DanhMucMenuLoaiDoiTuong.tableName],
                         IDDanhMucMenu = ((DataRowView)bsData.Current).Row["ID"],
                     };
                     frmDanhMucMenuLoaiDoiTuongUpdate.ShowDialog();
@@ -124,7 +112,6 @@ namespace coreUI.Forms
                     {
                         CapNhat = coreCommon.ThaoTacDuLieu.Them,
                         Text = "Thêm mới danh mục menu loại chứng từ",
-                        dataTable = dsData.Tables[DanhMucMenuChungTu.tableName],
                         IDDanhMucMenu = ((DataRowView)bsData.Current).Row["ID"],
                     };
                     frmDanhMucMenuChungTuUpdate.ShowDialog();
@@ -135,7 +122,6 @@ namespace coreUI.Forms
                     {
                         CapNhat = coreCommon.ThaoTacDuLieu.Them,
                         Text = "Thêm mới danh mục menu báo cáo",
-                        dataTable = dsData.Tables[DanhMucMenuBaoCao.tableName],
                         IDDanhMucMenu = ((DataRowView)bsData.Current).Row["ID"],
                     };
                     frmDanhMucMenuBaoCaoUpdate.ShowDialog();
@@ -157,7 +143,6 @@ namespace coreUI.Forms
                         CapNhat = coreCommon.ThaoTacDuLieu.Sua,
                         Text = "Chỉnh sửa danh mục menu loại đối tượng",
                         IDDanhMucMenu = ((DataRowView)bsDataChiTiet.Current).Row["IDDanhMucMenu"],
-                        dataTable = dsData.Tables[DanhMucMenuLoaiDoiTuong.tableName],
                         dataRow = ((DataRowView)bsDataChiTiet.Current).Row,
                     };
                     frmDanhMucMenuLoaiDoiTuongUpdate.ShowDialog();
@@ -169,7 +154,6 @@ namespace coreUI.Forms
                         CapNhat = coreCommon.ThaoTacDuLieu.Sua,
                         Text = "Chỉnh sửa danh mục menu chứng từ",
                         IDDanhMucMenu = ((DataRowView)bsChungTu.Current).Row["IDDanhMucMenu"],
-                        dataTable = dsData.Tables[DanhMucMenuChungTu.tableName],
                         dataRow = ((DataRowView)bsChungTu.Current).Row,
                     };
                     frmDanhMucMenuChungTuUpdate.ShowDialog();
@@ -181,7 +165,6 @@ namespace coreUI.Forms
                         CapNhat = coreCommon.ThaoTacDuLieu.Sua,
                         Text = "Chỉnh sửa danh mục menu loại báo cáo",
                         IDDanhMucMenu = ((DataRowView)bsBaoCao.Current).Row["IDDanhMucMenu"],
-                        dataTable = dsData.Tables[DanhMucMenuBaoCao.tableName],
                         dataRow = ((DataRowView)bsBaoCao.Current).Row,
                     };
                     frmDanhMucMenuBaoCaoUpdate.ShowDialog();
@@ -192,30 +175,30 @@ namespace coreUI.Forms
 
         protected override void DeleteChiTiet()
         {
-            switch (tabChiTiet.SelectedTab.Key.ToUpper())
-            {
-                case "TABCHITIET":
-                    if (ugChiTiet.ActiveRow != null && ugChiTiet.ActiveRow.IsDataRow)
-                    {
-                        deleteAction = new Action(() => { coreUI.DanhMuc.Delete(null, new Func<bool>(() => DanhMucMenuLoaiDoiTuongBUS.Delete(new DanhMucMenuLoaiDoiTuong() { ID = ugChiTiet.ActiveRow.Cells["ID"].Value })), ugChiTiet, bsDataChiTiet); });
-                        base.Delete();
-                    }
-                    break;
-                case "TABCHUNGTU":
-                    if (ugChungTu.ActiveRow != null && ugChungTu.ActiveRow.IsDataRow)
-                    {
-                        deleteAction = new Action(() => { coreUI.DanhMuc.Delete(null, new Func<bool>(() => DanhMucMenuChungTuBUS.Delete(new DanhMucMenuChungTu() { ID = ugChungTu.ActiveRow.Cells["ID"].Value })), ugChungTu, bsChungTu); });
-                        base.Delete();
-                    }
-                    break;
-                case "TABBAOCAO":
-                    if (ugBaoCao.ActiveRow != null && ugBaoCao.ActiveRow.IsDataRow)
-                    {
-                        deleteAction = new Action(() => { coreUI.DanhMuc.Delete(null, new Func<bool>(() => DanhMucMenuBaoCaoBUS.Delete(new DanhMucMenuBaoCao() { ID = ugBaoCao.ActiveRow.Cells["ID"].Value })), ugBaoCao, bsBaoCao); });
-                        base.Delete();
-                    }
-                    break;
-            }
+            //switch (tabChiTiet.SelectedTab.Key.ToUpper())
+            //{
+            //    case "TABCHITIET":
+            //        if (ugChiTiet.ActiveRow != null && ugChiTiet.ActiveRow.IsDataRow)
+            //        {
+            //            deleteAction = new Action(() => { coreUI.DanhMuc.Delete(null, new Func<bool>(() => DanhMucMenuLoaiDoiTuongBUS.Delete(new DanhMucMenuLoaiDoiTuong() { ID = ugChiTiet.ActiveRow.Cells["ID"].Value })), ugChiTiet, bsDataChiTiet); });
+            //            base.Delete();
+            //        }
+            //        break;
+            //    case "TABCHUNGTU":
+            //        if (ugChungTu.ActiveRow != null && ugChungTu.ActiveRow.IsDataRow)
+            //        {
+            //            deleteAction = new Action(() => { coreUI.DanhMuc.Delete(null, new Func<bool>(() => DanhMucMenuChungTuBUS.Delete(new DanhMucMenuChungTu() { ID = ugChungTu.ActiveRow.Cells["ID"].Value })), ugChungTu, bsChungTu); });
+            //            base.Delete();
+            //        }
+            //        break;
+            //    case "TABBAOCAO":
+            //        if (ugBaoCao.ActiveRow != null && ugBaoCao.ActiveRow.IsDataRow)
+            //        {
+            //            deleteAction = new Action(() => { coreUI.DanhMuc.Delete(null, new Func<bool>(() => DanhMucMenuBaoCaoBUS.Delete(new DanhMucMenuBaoCao() { ID = ugBaoCao.ActiveRow.Cells["ID"].Value })), ugBaoCao, bsBaoCao); });
+            //            base.Delete();
+            //        }
+            //        break;
+            //}
         }
 
         private void ugBaoCao_DoubleClickRow(object sender, Infragistics.Win.UltraWinGrid.DoubleClickRowEventArgs e)
@@ -226,7 +209,6 @@ namespace coreUI.Forms
                 CapNhat = coreCommon.ThaoTacDuLieu.Sua,
                 Text = "Chỉnh sửa danh mục menu báo cáo",
                 IDDanhMucMenu = ((DataRowView)bsBaoCao.Current).Row["IDDanhMucMenu"],
-                dataTable = dsData.Tables[DanhMucMenuBaoCao.tableName],
                 dataRow = ((DataRowView)bsBaoCao.Current).Row,
             };
             frmDanhMucMenuBaoCaoUpdate.ShowDialog();
@@ -256,7 +238,6 @@ namespace coreUI.Forms
                 CapNhat = coreCommon.ThaoTacDuLieu.Sua,
                 Text = "Chỉnh sửa danh mục menu chứng tù",
                 IDDanhMucMenu = ((DataRowView)bsChungTu.Current).Row["IDDanhMucMenu"],
-                dataTable = dsData.Tables[DanhMucMenuChungTu.tableName],
                 dataRow = ((DataRowView)bsChungTu.Current).Row,
             };
             frmDanhMucMenuChungTuUpdate.ShowDialog();

@@ -11,7 +11,6 @@ namespace coreUI.Forms
         public Action fInsert, fUpdate, fCopy;
         public Func<bool> fDelete;
         public string FixedColumnsList, HiddenColumnsList;
-        static object IDDanhMucDoiTuong;
         public frm_dtList()
         {
             InitializeComponent();

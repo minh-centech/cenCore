@@ -286,7 +286,6 @@ namespace coreUI
                 frmDanhMucDoiTuongUpdate frmUpdate = new frmDanhMucDoiTuongUpdate
                 {
                     CapNhat = coreCommon.ThaoTacDuLieu.Them,
-                    dataTable = dtData,
                     IDDanhMucLoaiDoiTuong = IDDanhMucLoaiDoiTuong,
                     InsertToList = InsertToList
                 };

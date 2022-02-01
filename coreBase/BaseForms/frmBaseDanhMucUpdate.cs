@@ -7,12 +7,11 @@ namespace coreBase.BaseForms
     {
 
         //Trạng thái cập nhật 1: Thêm mới, 2: Sửa
-        public int CapNhat = 0;
+        public int CapNhat = coreCommon.ThaoTacDuLieu.Xem;
         public object ID;
         public object IDDanhMucLoaiDoiTuong = null;
         public string TenDanhMucLoaiDoiTuong = string.Empty;
         public DataRow dataRow = null;
-        public DataTable dataTable = null;
         public frmBaseDanhMucUpdate()
         {
             InitializeComponent();

@@ -6,17 +6,13 @@ namespace coreBase.BaseForms
 {
     public partial class frmBaseDanhMuc : Form
     {
+        public object IDDanhMucDoiTuong;
         public object IDDanhMucLoaiDoiTuong;
         public string TenDanhMucLoaiDoiTuong;
 
         public DataTable dtData = null;
         public BindingSource bsData = null;
-        protected Boolean bContinue = true;
 
-        protected Action deleteAction = null;
-
-        protected String tableName = "";
-        protected bool Loaded = false;
         public frmBaseDanhMuc()
         {
             InitializeComponent();
@@ -28,7 +24,7 @@ namespace coreBase.BaseForms
             {
                 Cursor.Current = Cursors.WaitCursor;
                 List();
-                if (tableName == "SYSNHATKYDULIEU")
+                if (TenDanhMucLoaiDoiTuong == "SYSNHATKYDULIEU")
                 {
                     foreach (Infragistics.Win.UltraWinGrid.UltraGridColumn ugc in ug.DisplayLayout.Bands[0].Columns)
                     {
@@ -86,16 +82,12 @@ namespace coreBase.BaseForms
         }
         protected virtual void Copy()
         {
-            bContinue = (ug.ActiveRow != null && ug.ActiveRow.IsDataRow);
         }
-        protected virtual void Update()
+        protected new virtual void Update()
         {
-            bContinue = (tableName.ToUpper() != "SYSNHATKYDULIEU" && ug.ActiveRow != null && ug.ActiveRow.IsDataRow);
         }
         protected virtual void Delete()
         {
-            if (!coreCommon.coreCommon.IsNull(deleteAction))
-                deleteAction();    
         }
     }
 }

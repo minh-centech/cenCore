@@ -14,9 +14,6 @@ namespace coreUI.Forms
         protected override void List()
         {
             dtData = DanhMucNguoiSuDungBUS.List(null);
-            tableName = DanhMucNguoiSuDung.tableName;
-            dtData.TableName = tableName;
-
             bsData = new BindingSource
             {
                 DataSource = dtData
@@ -26,12 +23,9 @@ namespace coreUI.Forms
         }
         protected override void Insert()
         {
-            base.Insert();
-            if (!bContinue) return;
             frmDanhMucNguoiSuDungUpdate frmUpdate = new frmDanhMucNguoiSuDungUpdate
             {
                 CapNhat = coreCommon.ThaoTacDuLieu.Them,
-                dataTable = dtData,
                 TenDanhMucLoaiDoiTuong = "Thêm mới Danh mục người sử dụng",
             };
             frmUpdate.ShowDialog();
@@ -39,13 +33,10 @@ namespace coreUI.Forms
         }
         protected override void Copy()
         {
-            base.Copy();
-            if (!bContinue) return;
             frmDanhMucNguoiSuDungUpdate frmUpdate = new frmDanhMucNguoiSuDungUpdate
             {
                 CapNhat = coreCommon.ThaoTacDuLieu.Copy,
                 TenDanhMucLoaiDoiTuong = "Sao chép Danh mục người sử dụng",
-                dataTable = dtData,
                 dataRow = ((DataRowView)bsData.Current).Row
             };
             frmUpdate.ShowDialog();
@@ -53,13 +44,10 @@ namespace coreUI.Forms
         }
         protected override void Update()
         {
-            base.Update();
-            if (!bContinue) return;
             frmDanhMucNguoiSuDungUpdate frmUpdate = new frmDanhMucNguoiSuDungUpdate
             {
                 CapNhat = coreCommon.ThaoTacDuLieu.Sua,
                 TenDanhMucLoaiDoiTuong = "Chỉnh sửa Danh mục người sử dụng",
-                dataTable = dtData,
                 dataRow = ((DataRowView)bsData.Current).Row
             };
             frmUpdate.ShowDialog();
@@ -67,11 +55,11 @@ namespace coreUI.Forms
         }
         protected override void Delete()
         {
-            if (ug.ActiveRow != null && ug.ActiveRow.IsDataRow)
-            {
-                deleteAction = new Action(() => { coreUI.DanhMuc.Delete(null, new Func<bool>(() => DanhMucNguoiSuDungBUS.Delete(new DanhMucNguoiSuDung() { ID = ug.ActiveRow.Cells["ID"].Value })), ug, bsData); });
-                base.Delete();
-            }
+            //if (ug.ActiveRow != null && ug.ActiveRow.IsDataRow)
+            //{
+            //    deleteAction = new Action(() => { coreUI.DanhMuc.Delete(null, new Func<bool>(() => DanhMucNguoiSuDungBUS.Delete(new DanhMucNguoiSuDung() { ID = ug.ActiveRow.Cells["ID"].Value })), ug, bsData); });
+            //    base.Delete();
+            //}
         }
     }
 }
