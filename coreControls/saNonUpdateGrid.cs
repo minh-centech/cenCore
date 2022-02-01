@@ -19,7 +19,7 @@ namespace coreControls
         public String SummaryColumnsList = "";
 
         public String LoaiDanhMuc = "";
-        public Boolean RowCount = true;
+        public Boolean RowCount = true, SetColumnWidth = true;;
 
         public saNonUpdateGrid()
         {
@@ -139,10 +139,13 @@ namespace coreControls
                         {
                             ugcol.Header.Fixed = true;
                         }
-                        if (!coreCommon.coreCommon.IsNull(coreBUS.DanhMucThamSoHeThongBUS.GetGiaTri("DoRongCot_" + ColumnKey)))
-                            ugcol.Width = coreCommon.coreCommon.intParse(coreBUS.DanhMucThamSoHeThongBUS.GetGiaTri("DoRongCot_" + ColumnKey).ToString());
-                        else
-                            coreCommon.coreCommon.SetGridColumnWidth(ugcol);
+                        if (SetColumnWidth)
+                        {
+                            if (!coreCommon.coreCommon.IsNull(coreBUS.DanhMucThamSoHeThongBUS.GetGiaTri("DoRongCot_" + ColumnKey)))
+                                ugcol.Width = coreCommon.coreCommon.intParse(coreBUS.DanhMucThamSoHeThongBUS.GetGiaTri("DoRongCot_" + ColumnKey).ToString());
+                            else
+                                coreCommon.coreCommon.SetGridColumnWidth(ugcol);
+                        }
                         coreCommon.coreCommon.SetGridColumnMask(ugcol);
                     }
                     if (AddSummaryRow)
