@@ -61,9 +61,9 @@ namespace coreUI.Forms
             tabChiTiet.Tabs["tabBaoCao"].Text = coreCommon.coreCommon.TraTuDien(DanhMucPhanQuyenBaoCao.tableName);
         }
 
-        protected override void InsertDanhMuc()
+        protected override void Insert()
         {
-            base.InsertDanhMuc();
+            base.Insert();
             if (!bContinue) return;
             frmDanhMucPhanQuyenUpdate frmUpdate = new frmDanhMucPhanQuyenUpdate
             {
@@ -74,9 +74,9 @@ namespace coreUI.Forms
             frmUpdate.ShowDialog();
             frmUpdate.Dispose();
         }
-        protected override void CopyDanhMuc()
+        protected override void Copy()
         {
-            base.CopyDanhMuc();
+            base.Copy();
             if (!bContinue) return;
             frmDanhMucPhanQuyenUpdate frmUpdate = new frmDanhMucPhanQuyenUpdate
             {
@@ -88,9 +88,9 @@ namespace coreUI.Forms
             frmUpdate.ShowDialog();
             frmUpdate.Dispose();
         }
-        protected override void UpdateDanhMuc()
+        protected override void Update()
         {
-            base.UpdateDanhMuc();
+            base.Update();
             if (!bContinue) return;
             frmDanhMucPhanQuyenUpdate frmUpdate = new frmDanhMucPhanQuyenUpdate
             {
@@ -102,18 +102,18 @@ namespace coreUI.Forms
             frmUpdate.ShowDialog();
             frmUpdate.Dispose();
         }
-        protected override void DeleteDanhMuc()
+        protected override void Delete()
         {
             if (ug.ActiveRow != null && ug.ActiveRow.IsDataRow)
             {
                 deleteAction = new Action(() => { coreUI.DanhMuc.Delete(null, new Func<bool>(() => DanhMucPhanQuyenBUS.Delete(new DanhMucPhanQuyen() { ID = ug.ActiveRow.Cells["ID"].Value })), ug, bsData); });
-                base.DeleteDanhMuc();
+                base.Delete();
             }
         }
 
-        protected override void UpdateDanhMucChiTiet()
+        protected override void UpdateChiTiet()
         {
-            base.UpdateDanhMucChiTiet();
+            base.UpdateChiTiet();
             if (!bContinue) return;
             switch (tabChiTiet.SelectedTab.Key.ToUpper())
             {
@@ -174,7 +174,7 @@ namespace coreUI.Forms
 
         //private void ugChiTiet_DoubleClickRow(object sender, Infragistics.Win.UltraWinGrid.DoubleClickRowEventArgs e)
         //{
-        //    base.UpdateDanhMucChiTiet();
+        //    base.UpdateChiTiet();
         //    if (!bContinue) return;
         //    frmDanhMucPhanQuyenDonViUpdate frmDanhMucPhanQuyenDonViUpdate = new frmDanhMucPhanQuyenDonViUpdate
         //    {
@@ -231,7 +231,7 @@ namespace coreUI.Forms
             frmDanhMucPhanQuyenLoaiDoiTuongUpdate.ShowDialog();
             frmDanhMucPhanQuyenLoaiDoiTuongUpdate.Dispose();
         }
-        protected override void DeleteDanhMucChiTiet()
+        protected override void DeleteChiTiet()
         {
             switch (tabChiTiet.SelectedTab.Key.ToUpper())
             {
@@ -239,28 +239,28 @@ namespace coreUI.Forms
                     if (ugChiTiet.ActiveRow != null && ugChiTiet.ActiveRow.IsDataRow)
                     {
                         deleteAction = new Action(() => { coreUI.DanhMuc.Delete(null, new Func<bool>(() => DanhMucPhanQuyenDonViBUS.Delete(new DanhMucPhanQuyenDonVi() { ID = ugChiTiet.ActiveRow.Cells["ID"].Value })), ugChiTiet, bsDataChiTiet); });
-                        base.DeleteDanhMuc();
+                        base.Delete();
                     }
                     break;
                 case "TABLOAIDOITUONG":
                     if (ugLoaiDoiTuong.ActiveRow != null && ugLoaiDoiTuong.ActiveRow.IsDataRow)
                     {
                         deleteAction = new Action(() => { coreUI.DanhMuc.Delete(null, new Func<bool>(() => DanhMucPhanQuyenLoaiDoiTuongBUS.Delete(new DanhMucPhanQuyenLoaiDoiTuong() { ID = ugLoaiDoiTuong.ActiveRow.Cells["ID"].Value })), ugLoaiDoiTuong, bsLoaiDoiTuong); });
-                        base.DeleteDanhMuc();
+                        base.Delete();
                     }
                     break;
                 case "TABCHUNGTU":
                     if (ugChungTu.ActiveRow != null && ugChungTu.ActiveRow.IsDataRow)
                     {
                         deleteAction = new Action(() => { coreUI.DanhMuc.Delete(null, new Func<bool>(() => DanhMucPhanQuyenChungTuBUS.Delete(new DanhMucPhanQuyenChungTu() { ID = ugChungTu.ActiveRow.Cells["ID"].Value })), ugChungTu, bsChungTu); });
-                        base.DeleteDanhMuc();
+                        base.Delete();
                     }
                     break;
                 case "TABBAOCAO":
                     if (ugBaoCao.ActiveRow != null && ugBaoCao.ActiveRow.IsDataRow)
                     {
                         deleteAction = new Action(() => { coreUI.DanhMuc.Delete(null, new Func<bool>(() => DanhMucPhanQuyenBaoCaoBUS.Delete(new DanhMucPhanQuyenBaoCao() { ID = ugBaoCao.ActiveRow.Cells["ID"].Value })), ugBaoCao, bsBaoCao); });
-                        base.DeleteDanhMuc();
+                        base.Delete();
                     }
                     break;
             }

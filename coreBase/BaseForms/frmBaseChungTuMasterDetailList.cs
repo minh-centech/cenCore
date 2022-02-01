@@ -31,16 +31,16 @@ namespace coreBase.BaseForms
             switch (e.Tool.Key.ToString().ToUpper())
             {
                 case "BTXOA":
-                    DeleteDanhMuc();
+                    Delete();
                     break;
                 case "BTTHEM":
-                    InsertDanhMuc();
+                    Insert();
                     break;
                 case "BTCOPY":
-                    CopyDanhMuc();
+                    Copy();
                     break;
                 case "BTSUA":
-                    UpdateDanhMuc();
+                    Update();
                     break;
                 case "BTTAILAI":
                     List();
@@ -60,15 +60,15 @@ namespace coreBase.BaseForms
         protected virtual void In()
         {
         }
-        protected virtual void InsertDanhMuc()
+        protected virtual void Insert()
         {
             bContinue = (bsDanhMuc != null);
         }
-        protected virtual void CopyDanhMuc()
+        protected virtual void Copy()
         {
             bContinue = (bsDanhMuc != null && bsDanhMuc.Current != null && ug.ActiveRow != null);
         }
-        protected virtual void UpdateDanhMuc()
+        protected virtual void Update()
         {
             bContinue = (bsDanhMuc != null && bsDanhMuc.Current != null && ug.ActiveRow != null && ug.ActiveRow.IsFilterRow == false);
         }
@@ -76,19 +76,19 @@ namespace coreBase.BaseForms
         {
             bContinue = (bsDanhMuc != null && bsDanhMuc.Current != null && ug.ActiveRow != null && ug.ActiveRow.IsFilterRow == false);
         }
-        protected virtual void DeleteDanhMuc()
+        protected virtual void Delete()
         {
             bContinue = (bsDanhMuc != null && bsDanhMuc.Current != null && ug.ActiveRow != null && coreCommon.coreCommon.QuestionMessage("Bạn có chắc chắn muốn xóa mục dữ liệu này?", 0) != DialogResult.No);
         }
-        protected virtual void InsertDanhMucChiTiet()
+        protected virtual void InsertChiTiet()
         {
             bContinue = (bsDanhMuc != null && bsDanhMuc.Current != null && ug.ActiveRow != null);
         }
-        protected virtual void UpdateDanhMucChiTiet()
+        protected virtual void UpdateChiTiet()
         {
             bContinue = (bsDanhMucChiTiet != null && bsDanhMucChiTiet.Current != null && ugDanhMucChiTiet != null && ugDanhMucChiTiet.ActiveRow != null);
         }
-        protected virtual void DeleteDanhMucChiTiet()
+        protected virtual void DeleteChiTiet()
         {
             bContinue = (bsDanhMucChiTiet != null && bsDanhMucChiTiet.Current != null && ugDanhMucChiTiet != null && ugDanhMucChiTiet.ActiveRow != null && coreCommon.coreCommon.QuestionMessage("Bạn có chắc chắn muốn xóa mục dữ liệu này?", 0) != DialogResult.No);
         }
@@ -100,13 +100,13 @@ namespace coreBase.BaseForms
                 switch (e.KeyCode)
                 {
                     case Keys.Insert:
-                        InsertDanhMucChiTiet();
+                        InsertChiTiet();
                         break;
                     case Keys.Enter:
-                        UpdateDanhMucChiTiet();
+                        UpdateChiTiet();
                         break;
                     case Keys.Delete:
-                        DeleteDanhMucChiTiet();
+                        DeleteChiTiet();
                         break;
                 }
             }
@@ -122,13 +122,13 @@ namespace coreBase.BaseForms
             switch (e.Button.Key.ToUpper())
             {
                 case "BTTHEMCHITIET":
-                    InsertDanhMucChiTiet();
+                    InsertChiTiet();
                     break;
                 case "BTSUACHITIET":
-                    UpdateDanhMucChiTiet();
+                    UpdateChiTiet();
                     break;
                 case "BTXOACHITIET":
-                    DeleteDanhMucChiTiet();
+                    DeleteChiTiet();
                     break;
             }
         }

@@ -23,9 +23,9 @@ namespace coreUI.Forms
             };
             ug.DataSource = bsData;
         }
-        protected override void InsertDanhMuc()
+        protected override void Insert()
         {
-            base.InsertDanhMuc();
+            base.Insert();
             if (!bContinue) return;
             frmDanhMucNhomBaoCaoUpdate frmUpdate = new frmDanhMucNhomBaoCaoUpdate
             {
@@ -36,9 +36,9 @@ namespace coreUI.Forms
             frmUpdate.ShowDialog();
             frmUpdate.Dispose();
         }
-        protected override void CopyDanhMuc()
+        protected override void Copy()
         {
-            base.CopyDanhMuc();
+            base.Copy();
             if (!bContinue) return;
             frmDanhMucNhomBaoCaoUpdate frmUpdate = new frmDanhMucNhomBaoCaoUpdate
             {
@@ -50,9 +50,9 @@ namespace coreUI.Forms
             frmUpdate.ShowDialog();
             frmUpdate.Dispose();
         }
-        protected override void UpdateDanhMuc()
+        protected override void Update()
         {
-            base.UpdateDanhMuc();
+            base.Update();
             if (!bContinue) return;
             frmDanhMucNhomBaoCaoUpdate frmUpdate = new frmDanhMucNhomBaoCaoUpdate
             {
@@ -64,12 +64,12 @@ namespace coreUI.Forms
             frmUpdate.ShowDialog();
             frmUpdate.Dispose();
         }
-        protected override void DeleteDanhMuc()
+        protected override void Delete()
         {
             if (ug.ActiveRow != null && ug.ActiveRow.IsDataRow)
             {
                 deleteAction = new Action(() => { coreUI.DanhMuc.Delete(null, new Func<bool>(() => DanhMucNhomBaoCaoBUS.Delete(new DanhMucNhomBaoCao() { ID = ug.ActiveRow.Cells["ID"].Value })), ug, bsData); });
-                base.DeleteDanhMuc();
+                base.Delete();
             }
         }
     }

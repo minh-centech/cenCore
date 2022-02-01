@@ -138,12 +138,6 @@
     <Compile Include="Forms\frmChangePassword.designer.cs">
       <DependentUpon>frmChangePassword.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\frmChungTuList.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\frmChungTuList.Designer.cs">
-      <DependentUpon>frmChungTuList.cs</DependentUpon>
-    </Compile>
     <Compile Include="Forms\frmChungTuPrintPreview.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -204,9 +198,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmChangePassword.resx">
       <DependentUpon>frmChangePassword.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\frmChungTuList.resx">
-      <DependentUpon>frmChungTuList.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmChungTuPrintPreview.resx">
       <DependentUpon>frmChungTuPrintPreview.cs</DependentUpon>

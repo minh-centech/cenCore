@@ -28,7 +28,7 @@ namespace coreUI.Forms
             };
             ug.DataSource = bsData;
         }
-        protected override void InsertDanhMuc()
+        protected override void Insert()
         {
             DanhMucPhanQuyenBUS.GetPhanQuyenLoaiDoiTuong(coreCommon.GlobalVariables.IDDanhMucPhanQuyen, IDDanhMucLoaiDoiTuong, out bool Xem, out bool Them, out bool Sua, out bool Xoa);
             if (!coreCommon.GlobalVariables.isAdmin && !Them)
@@ -36,7 +36,7 @@ namespace coreUI.Forms
                 coreCommon.coreCommon.ErrorMessageOkOnly("Bạn không có quyền thêm mới dữ liệu danh mục này!");
                 return;
             }
-            base.InsertDanhMuc();
+            base.Insert();
             if (!bContinue) return;
             frmDanhMucDoiTuongUpdate frmUpdate = new frmDanhMucDoiTuongUpdate
             {
@@ -48,7 +48,7 @@ namespace coreUI.Forms
             frmUpdate.ShowDialog();
             frmUpdate.Dispose();
         }
-        protected override void CopyDanhMuc()
+        protected override void Copy()
         {
             DanhMucPhanQuyenBUS.GetPhanQuyenLoaiDoiTuong(coreCommon.GlobalVariables.IDDanhMucPhanQuyen, IDDanhMucLoaiDoiTuong, out bool Xem, out bool Them, out bool Sua, out bool Xoa);
             if (!coreCommon.GlobalVariables.isAdmin && !Them)
@@ -56,7 +56,7 @@ namespace coreUI.Forms
                 coreCommon.coreCommon.ErrorMessageOkOnly("Bạn không có quyền thêm mới dữ liệu danh mục này!");
                 return;
             }
-            base.CopyDanhMuc();
+            base.Copy();
             if (!bContinue) return;
             frmDanhMucDoiTuongUpdate frmUpdate = new frmDanhMucDoiTuongUpdate
             {
@@ -69,7 +69,7 @@ namespace coreUI.Forms
             frmUpdate.ShowDialog();
             frmUpdate.Dispose();
         }
-        protected override void UpdateDanhMuc()
+        protected override void Update()
         {
             DanhMucPhanQuyenBUS.GetPhanQuyenLoaiDoiTuong(coreCommon.GlobalVariables.IDDanhMucPhanQuyen, IDDanhMucLoaiDoiTuong, out bool Xem, out bool Them, out bool Sua, out bool Xoa);
             if (!coreCommon.GlobalVariables.isAdmin && !Sua)
@@ -77,7 +77,7 @@ namespace coreUI.Forms
                 coreCommon.coreCommon.ErrorMessageOkOnly("Bạn không có quyền sửa dữ liệu danh mục này!");
                 return;
             }
-            base.UpdateDanhMuc();
+            base.Update();
             if (!bContinue) return;
             frmDanhMucDoiTuongUpdate frmUpdate = new frmDanhMucDoiTuongUpdate
             {
@@ -90,12 +90,12 @@ namespace coreUI.Forms
             frmUpdate.ShowDialog();
             frmUpdate.Dispose();
         }
-        protected override void DeleteDanhMuc()
+        protected override void Delete()
         {
             if (ug.ActiveRow != null && ug.ActiveRow.IsDataRow)
             {
                 deleteAction = new Action(() => { coreUI.DanhMuc.Delete(IDDanhMucLoaiDoiTuong, new Func<bool>(() => DanhMucDoiTuongBUS.Delete(new DanhMucDoiTuong() { ID = ug.ActiveRow.Cells["ID"].Value })), ug, bsData); });
-                base.DeleteDanhMuc();
+                base.Delete();
             }
         }
     }

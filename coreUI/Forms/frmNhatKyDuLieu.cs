@@ -29,16 +29,16 @@ namespace coreUI.Forms
             ug.DataSource = bsData;
             ug.DisplayLayout.Bands[0].PerformAutoResizeColumns(false, PerformAutoSizeType.AllRowsInBand);
         }
-        protected override void InsertDanhMuc()
+        protected override void Insert()
         {
         }
-        protected override void CopyDanhMuc()
+        protected override void Copy()
         {
         }
-        protected override void UpdateDanhMuc()
+        protected override void Update()
         {
         }
-        protected override void DeleteDanhMuc()
+        protected override void Delete()
         {
         }
     }

@@ -78,7 +78,6 @@ D:\cenCORE\coreBase\obj\Debug\coreBase.BaseForms.frmBaseDanhMuc.resources
 D:\cenCORE\coreBase\obj\Debug\coreBase.BaseForms.frmBaseDanhMucUpdate.resources
 D:\cenCORE\coreBase\obj\Debug\coreBase.BaseForms.frmBaseGridUpdate.resources
 D:\cenCORE\coreBase\obj\Debug\coreBase.Forms.frmChangePassword.resources
-D:\cenCORE\coreBase\obj\Debug\coreBase.Forms.frmChungTuList.resources
 D:\cenCORE\coreBase\obj\Debug\coreBase.Forms.frmChungTuPrintPreview.resources
 D:\cenCORE\coreBase\obj\Debug\coreBase.Forms.frmLogin.resources
 D:\cenCORE\coreBase\obj\Debug\coreBase.Forms.frmLoginExtended.resources

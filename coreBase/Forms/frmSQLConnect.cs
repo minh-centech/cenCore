@@ -47,13 +47,13 @@ namespace coreBase.Forms
                 coreCommon.coreCommon.ErrorMessageOkOnly(ex.Message);
             }
         }
-        protected override void InsertDanhMuc()
+        protected override void Insert()
         {
             frmSQLConnectUpdate frmSQLConnectUpdate = new frmSQLConnectUpdate();
             frmSQLConnectUpdate.ShowDialog();
             List();
         }
-        protected override void DeleteDanhMuc()
+        protected override void Delete()
         {
             if (bsData.Current == null) return;
             if (coreCommon.coreCommon.QuestionMessage("Bạn có chắc chắn muốn xóa không?", 0) == DialogResult.Yes)

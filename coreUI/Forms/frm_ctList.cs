@@ -17,7 +17,7 @@ namespace coreUI.Forms
     {
         public Func<DataTable> fList;
         public Action fInsert, fUpdate;
-        public Func<bool> fDelete, fDeleteChiTiet;
+        public Func<bool> fDelete;
         public string FixedColumnsList, HiddenColumnsList;
         static object IDChungTu;
         public frm_ctList()
@@ -92,40 +92,45 @@ namespace coreUI.Forms
                 dtData.AcceptChanges();
             }
         }
-        protected override void InsertDanhMuc()
+        protected override void Insert()
         {
+            DanhMucPhanQuyenBUS.GetPhanQuyenChungTu(coreCommon.GlobalVariables.IDDanhMucPhanQuyen, IDDanhMucChungTu, out bool Xem, out bool Them, out bool Sua, out bool Xoa);
+            if (!coreCommon.GlobalVariables.isAdmin && !Xem)
+            {
+                coreCommon.coreCommon.ErrorMessageOkOnly("Bạn không có quyền thêm mới chứng từ này!");
+                return;
+            }
             if (fInsert != null)
             {
                 fInsert();
             }
         }
-        protected override void UpdateDanhMuc()
+        protected override void Update()
         {
+            DanhMucPhanQuyenBUS.GetPhanQuyenChungTu(coreCommon.GlobalVariables.IDDanhMucPhanQuyen, IDDanhMucChungTu, out bool Xem, out bool Them, out bool Sua, out bool Xoa);
+            if (!coreCommon.GlobalVariables.isAdmin && !Sua)
+            {
+                coreCommon.coreCommon.ErrorMessageOkOnly("Bạn không có quyền sửa chứng từ này!");
+                return;
+            }
             if (ug.ActiveRow == null || !ug.ActiveRow.IsDataRow || fUpdate == null) return;
             IDChungTu = (dtData.Columns.Contains("IDChungTu")) ? ug.ActiveRow.Cells["IDChungTu"].Value.ToString() : null;
             fUpdate();
         }
-        protected override void DeleteDanhMuc()
+        protected override void Delete()
         {
-            if (ug.ActiveRow == null || !ug.ActiveRow.IsDataRow || (fDelete == null && fDeleteChiTiet == null)) return;
+            DanhMucPhanQuyenBUS.GetPhanQuyenChungTu(coreCommon.GlobalVariables.IDDanhMucPhanQuyen, IDDanhMucChungTu, out bool Xem, out bool Them, out bool Sua, out bool Xoa);
+            if (!coreCommon.GlobalVariables.isAdmin && !Xoa)
+            {
+                coreCommon.coreCommon.ErrorMessageOkOnly("Bạn không có quyền xóa chứng từ này!");
+                return;
+            }
+            if (ug.ActiveRow == null || !ug.ActiveRow.IsDataRow || fDelete == null) return;
             if (coreCommon.coreCommon.QuestionMessage("Bạn chắc chắn muốn xóa chứng từ này?", 0) == DialogResult.No) return;
             //Nếu ID = null thì xóa theo ID chứng từ
             bool OK = false;
-            if (!coreCommon.coreCommon.IsNull(ug.ActiveRow.Cells["ID"].Value))
-            {
-                if (fDeleteChiTiet != null)
-                    OK = fDeleteChiTiet();
-                else
-                {
-                    if (fDelete != null)
-                        OK = fDelete();
-                }    
-            }
-            else
-            {
-                if (fDelete != null)
-                    OK = fDelete();
-            }
+            if (fDelete != null)
+                OK = fDelete();
             if (OK)
             {
                 int i = ug.ActiveRow.Index;

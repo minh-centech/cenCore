@@ -155,17 +155,17 @@ namespace coreUI.Forms
             switch (e.Tool.Key.ToString().ToUpper())
             {
                 case "BTTHEM":
-                    InsertDanhMuc();
+                    Insert();
                     break;
                 case "BTSUA":
-                    UpdateDanhMuc();
+                    Update();
                     break;
                 case "BTTAILAI":
                     LoadDanhMuc();
                     break;
             }
         }
-        private void InsertDanhMuc()
+        private void Insert()
         {
             //if (insertProcedure != null)
             //{
@@ -173,7 +173,7 @@ namespace coreUI.Forms
             //    if (dataRow != null) dtValid.ImportRow(dataRow); else LoadDanhMuc();
             //}
         }
-        private void UpdateDanhMuc()
+        private void Update()
         {
             //Nếu có trong DTO thì gọi form tương ứng, nếu ko thì gọi customs
         }

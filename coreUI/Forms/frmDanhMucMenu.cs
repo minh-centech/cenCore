@@ -52,9 +52,9 @@ namespace coreUI.Forms
             tabChiTiet.Tabs["tabBaoCao"].Text = coreCommon.coreCommon.TraTuDien(DanhMucMenuBaoCao.tableName);
         }
 
-        protected override void InsertDanhMuc()
+        protected override void Insert()
         {
-            base.InsertDanhMuc();
+            base.Insert();
             if (!bContinue) return;
             frmDanhMucMenuUpdate frmUpdate = new frmDanhMucMenuUpdate
             {
@@ -65,9 +65,9 @@ namespace coreUI.Forms
             frmUpdate.ShowDialog();
             frmUpdate.Dispose();
         }
-        protected override void CopyDanhMuc()
+        protected override void Copy()
         {
-            base.CopyDanhMuc();
+            base.Copy();
             if (!bContinue) return;
             frmDanhMucMenuUpdate frmUpdate = new frmDanhMucMenuUpdate
             {
@@ -79,9 +79,9 @@ namespace coreUI.Forms
             frmUpdate.ShowDialog();
             frmUpdate.Dispose();
         }
-        protected override void UpdateDanhMuc()
+        protected override void Update()
         {
-            base.UpdateDanhMuc();
+            base.Update();
             if (!bContinue) return;
             frmDanhMucMenuUpdate frmUpdate = new frmDanhMucMenuUpdate
             {
@@ -93,18 +93,18 @@ namespace coreUI.Forms
             frmUpdate.ShowDialog();
             frmUpdate.Dispose();
         }
-        protected override void DeleteDanhMuc()
+        protected override void Delete()
         {
             if (ug.ActiveRow != null && ug.ActiveRow.IsDataRow)
             {
                 deleteAction = new Action(() => { coreUI.DanhMuc.Delete(null, new Func<bool>(() => DanhMucMenuBUS.Delete(new DanhMucMenu() { ID = ug.ActiveRow.Cells["ID"].Value })), ug, bsData); });
-                base.DeleteDanhMuc();
+                base.Delete();
             }
         }
 
-        protected override void InsertDanhMucChiTiet()
+        protected override void InsertChiTiet()
         {
-            base.InsertDanhMucChiTiet();
+            base.InsertChiTiet();
             if (!bContinue) return;
             switch (tabChiTiet.SelectedTab.Key.ToUpper())
             {
@@ -145,9 +145,9 @@ namespace coreUI.Forms
         }
 
 
-        protected override void UpdateDanhMucChiTiet()
+        protected override void UpdateChiTiet()
         {
-            //base.UpdateDanhMucChiTiet();
+            //base.UpdateChiTiet();
             //if (!bContinue) return;
             switch (tabChiTiet.SelectedTab.Key.ToUpper())
             {
@@ -190,7 +190,7 @@ namespace coreUI.Forms
             }
         }
 
-        protected override void DeleteDanhMucChiTiet()
+        protected override void DeleteChiTiet()
         {
             switch (tabChiTiet.SelectedTab.Key.ToUpper())
             {
@@ -198,21 +198,21 @@ namespace coreUI.Forms
                     if (ugChiTiet.ActiveRow != null && ugChiTiet.ActiveRow.IsDataRow)
                     {
                         deleteAction = new Action(() => { coreUI.DanhMuc.Delete(null, new Func<bool>(() => DanhMucMenuLoaiDoiTuongBUS.Delete(new DanhMucMenuLoaiDoiTuong() { ID = ugChiTiet.ActiveRow.Cells["ID"].Value })), ugChiTiet, bsDataChiTiet); });
-                        base.DeleteDanhMuc();
+                        base.Delete();
                     }
                     break;
                 case "TABCHUNGTU":
                     if (ugChungTu.ActiveRow != null && ugChungTu.ActiveRow.IsDataRow)
                     {
                         deleteAction = new Action(() => { coreUI.DanhMuc.Delete(null, new Func<bool>(() => DanhMucMenuChungTuBUS.Delete(new DanhMucMenuChungTu() { ID = ugChungTu.ActiveRow.Cells["ID"].Value })), ugChungTu, bsChungTu); });
-                        base.DeleteDanhMuc();
+                        base.Delete();
                     }
                     break;
                 case "TABBAOCAO":
                     if (ugBaoCao.ActiveRow != null && ugBaoCao.ActiveRow.IsDataRow)
                     {
                         deleteAction = new Action(() => { coreUI.DanhMuc.Delete(null, new Func<bool>(() => DanhMucMenuBaoCaoBUS.Delete(new DanhMucMenuBaoCao() { ID = ugBaoCao.ActiveRow.Cells["ID"].Value })), ugBaoCao, bsBaoCao); });
-                        base.DeleteDanhMuc();
+                        base.Delete();
                     }
                     break;
             }

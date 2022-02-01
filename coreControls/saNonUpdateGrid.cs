@@ -19,7 +19,7 @@ namespace coreControls
         public String SummaryColumnsList = "";
 
         public String LoaiDanhMuc = "";
-        public Boolean RowCount = true, SetColumnWidth = true;;
+        public Boolean RowCount = true, SetColumnWidth = true;
 
         public saNonUpdateGrid()
         {

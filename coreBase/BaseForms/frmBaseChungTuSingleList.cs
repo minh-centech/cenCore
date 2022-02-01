@@ -48,19 +48,19 @@ namespace coreBase.BaseForms
             switch (e.Tool.Key.ToString().ToUpper())
             {
                 case "BTXOA":
-                    DeleteDanhMuc();
+                    Delete();
                     break;
                 case "BTTHEM":
                     Cursor.Current = Cursors.WaitCursor;
-                    InsertDanhMuc();
+                    Insert();
                     break;
                 case "BTCOPY":
                     Cursor.Current = Cursors.WaitCursor;
-                    CopyDanhMuc();
+                    Copy();
                     break;
                 case "BTSUA":
                     Cursor.Current = Cursors.WaitCursor;
-                    UpdateDanhMuc();
+                    Update();
                     break;
                 case "BTEXCEL":
                     coreCommon.coreCommon.ExportGrid2Excel(ug);
@@ -83,34 +83,34 @@ namespace coreBase.BaseForms
                         //TenMayIn = e.Tool.Key.Substring(TenChucNang.IndexOf("PRINTER:") + 8, TenChucNang.IndexOf("SOLIEN:"));
                         SoLien = Convert.ToInt16(e.Tool.Key.Substring(TenChucNang.IndexOf("SOLIEN:") + 12, TenChucNang.IndexOf("SPNAME:") - TenChucNang.IndexOf("SOLIEN:") - 7));
                         spName = e.Tool.Key.Substring(TenChucNang.IndexOf("SPNAME:") + 12, e.Tool.Key.Length - TenChucNang.IndexOf("SPNAME:") - 12);
-                        inChungTu();
+                        In();
                     }
                     break;
             }
         }
         private void ug_DoubleClickRow(object sender, Infragistics.Win.UltraWinGrid.DoubleClickRowEventArgs e)
         {
-            UpdateDanhMuc();
+            Update();
         }
         protected virtual void List()
         {
         }
-        protected virtual void InsertDanhMuc()
+        protected virtual void Insert()
         {
         }
-        protected virtual void CopyDanhMuc()
+        protected virtual void Copy()
         {
         }
-        protected virtual void UpdateDanhMuc()
+        protected virtual void Update()
         {
         }
-        protected virtual void DeleteDanhMuc()
+        protected virtual void Delete()
         {
         }
-        protected virtual void ViewDanhMuc()
+        protected virtual void View()
         {
         }
-        protected virtual void inChungTu()
+        protected virtual void In()
         {
         }
         private void ultraButton1_Click(object sender, EventArgs e)

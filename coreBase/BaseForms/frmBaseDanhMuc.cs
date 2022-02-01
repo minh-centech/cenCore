@@ -52,19 +52,19 @@ namespace coreBase.BaseForms
             switch (e.Tool.Key.ToString().ToUpper())
             {
                 case "BTXOA":
-                    DeleteDanhMuc();
+                    Delete();
                     break;
                 case "BTTHEM":
                     Cursor.Current = Cursors.WaitCursor;
-                    InsertDanhMuc();
+                    Insert();
                     break;
                 case "BTCOPY":
                     Cursor.Current = Cursors.WaitCursor;
-                    CopyDanhMuc();
+                    Copy();
                     break;
                 case "BTSUA":
                     Cursor.Current = Cursors.WaitCursor;
-                    UpdateDanhMuc();
+                    Update();
                     break;
                 case "BTTAILAI":
                     List();
@@ -76,23 +76,23 @@ namespace coreBase.BaseForms
         }
         private void ug_DoubleClickRow(object sender, Infragistics.Win.UltraWinGrid.DoubleClickRowEventArgs e)
         {
-            UpdateDanhMuc();
+            Update();
         }
         protected virtual void List()
         {
         }
-        protected virtual void InsertDanhMuc()
+        protected virtual void Insert()
         {
         }
-        protected virtual void CopyDanhMuc()
+        protected virtual void Copy()
         {
             bContinue = (ug.ActiveRow != null && ug.ActiveRow.IsDataRow);
         }
-        protected virtual void UpdateDanhMuc()
+        protected virtual void Update()
         {
             bContinue = (tableName.ToUpper() != "SYSNHATKYDULIEU" && ug.ActiveRow != null && ug.ActiveRow.IsDataRow);
         }
-        protected virtual void DeleteDanhMuc()
+        protected virtual void Delete()
         {
             if (!coreCommon.coreCommon.IsNull(deleteAction))
                 deleteAction();    

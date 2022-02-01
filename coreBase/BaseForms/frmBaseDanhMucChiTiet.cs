@@ -31,16 +31,16 @@ namespace coreBase.BaseForms
             switch (e.Tool.Key.ToString().ToUpper())
             {
                 case "BTXOA":
-                    DeleteDanhMuc();
+                    Delete();
                     break;
                 case "BTTHEM":
-                    InsertDanhMuc();
+                    Insert();
                     break;
                 case "BTCOPY":
-                    CopyDanhMuc();
+                    Copy();
                     break;
                 case "BTSUA":
-                    UpdateDanhMuc();
+                    Update();
                     break;
                 case "BTTAILAI":
                     List();
@@ -60,15 +60,15 @@ namespace coreBase.BaseForms
         protected virtual void In()
         {
         }
-        protected virtual void InsertDanhMuc()
+        protected virtual void Insert()
         {
             bContinue = (bsData != null);
         }
-        protected virtual void CopyDanhMuc()
+        protected virtual void Copy()
         {
             bContinue = (ug.ActiveRow != null && ug.ActiveRow.IsDataRow);
         }
-        protected virtual void UpdateDanhMuc()
+        protected virtual void Update()
         {
             bContinue = (ug.ActiveRow != null && ug.ActiveRow.IsDataRow);
         }
@@ -77,23 +77,23 @@ namespace coreBase.BaseForms
             return ((ugCanDelete.ActiveRow != null && ugCanDelete.ActiveRow.IsDataRow && coreCommon.coreCommon.QuestionMessage("Bạn có chắc chắn muốn xóa mục dữ liệu này?", 0) == DialogResult.Yes));
         }
 
-        protected virtual void DeleteDanhMuc()
+        protected virtual void Delete()
         {
             if (!coreCommon.coreCommon.IsNull(deleteAction))
                 deleteAction();
         }
 
 
-        protected virtual void InsertDanhMucChiTiet()
+        protected virtual void InsertChiTiet()
         {
             bContinue = (ug.ActiveRow != null && ug.ActiveRow.IsDataRow);
         }
-        protected virtual void UpdateDanhMucChiTiet()
+        protected virtual void UpdateChiTiet()
         {
         }
-        protected virtual void DeleteDanhMucChiTiet()
+        protected virtual void DeleteChiTiet()
         {
-            DeleteDanhMuc();
+            Delete();
         }
         private void frmBaseDanhMuc_KeyDown(object sender, KeyEventArgs e)
         {
@@ -103,13 +103,13 @@ namespace coreBase.BaseForms
                 switch (e.KeyCode)
                 {
                     case Keys.Insert:
-                        InsertDanhMucChiTiet();
+                        InsertChiTiet();
                         break;
                     case Keys.Enter:
-                        UpdateDanhMucChiTiet();
+                        UpdateChiTiet();
                         break;
                     case Keys.Delete:
-                        DeleteDanhMucChiTiet();
+                        DeleteChiTiet();
                         break;
                 }
             }
@@ -117,7 +117,7 @@ namespace coreBase.BaseForms
 
         private void ug_DoubleClickRow(object sender, DoubleClickRowEventArgs e)
         {
-            UpdateDanhMuc();
+            Update();
         }
 
         private void txtChiTietfilterBox_EditorButtonClick(object sender, Infragistics.Win.UltraWinEditors.EditorButtonEventArgs e)
@@ -125,20 +125,20 @@ namespace coreBase.BaseForms
             switch (e.Button.Key.ToUpper())
             {
                 case "BTTHEMCHITIET":
-                    InsertDanhMucChiTiet();
+                    InsertChiTiet();
                     break;
                 case "BTSUACHITIET":
-                    UpdateDanhMucChiTiet();
+                    UpdateChiTiet();
                     break;
                 case "BTXOACHITIET":
-                    DeleteDanhMucChiTiet();
+                    DeleteChiTiet();
                     break;
             }
         }
 
         private void ugChiTiet_DoubleClickRow(object sender, DoubleClickRowEventArgs e)
         {
-            UpdateDanhMucChiTiet();
+            UpdateChiTiet();
         }
         
     }
