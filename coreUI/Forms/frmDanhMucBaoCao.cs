@@ -17,19 +17,19 @@ namespace coreUI.Forms
         {
             dsData = DanhMucBaoCaoBUS.List(null);
 
-            bsDanhMuc = new BindingSource
+            bsData = new BindingSource
             {
                 DataSource = dsData,
                 DataMember = DanhMucBaoCao.tableName
             };
 
-            bsDanhMucChiTiet = new BindingSource
+            bsDataChiTiet = new BindingSource
             {
-                DataSource = bsDanhMuc,
+                DataSource = bsData,
                 DataMember = GlobalVariables.prefix_DataRelation + DanhMucBaoCaoCot.tableName
             };
-            ug.DataSource = bsDanhMuc;
-            ugChiTiet.DataSource = bsDanhMucChiTiet;
+            ug.DataSource = bsData;
+            ugChiTiet.DataSource = bsDataChiTiet;
             tabChiTiet.Tabs["tabChiTiet"].Text = coreCommon.coreCommon.TraTuDien(DanhMucBaoCaoCot.tableName);
         }
 
@@ -56,7 +56,7 @@ namespace coreUI.Forms
                 CapNhat = coreCommon.ThaoTacDuLieu.Copy,
                 Text = "Thêm mới danh mục báo cáo",
                 dataTable = dsData.Tables[DanhMucBaoCao.tableName],
-                dataRow = ((DataRowView)bsDanhMuc.Current).Row
+                dataRow = ((DataRowView)bsData.Current).Row
             };
             frmUpdate.ShowDialog();
             frmUpdate.Dispose();
@@ -70,7 +70,7 @@ namespace coreUI.Forms
                 CapNhat = coreCommon.ThaoTacDuLieu.Sua,
                 Text = "Chỉnh sửa danh mục báo cáo",
                 dataTable = dsData.Tables[DanhMucBaoCao.tableName],
-                dataRow = ((DataRowView)bsDanhMuc.Current).Row
+                dataRow = ((DataRowView)bsData.Current).Row
             };
             frmUpdate.ShowDialog();
             frmUpdate.Dispose();
@@ -79,7 +79,7 @@ namespace coreUI.Forms
         {
             if (ug.ActiveRow != null && ug.ActiveRow.IsDataRow)
             {
-                deleteAction = new Action(() => { coreUI.DanhMuc.Delete(null, new Func<bool>(() => DanhMucBaoCaoBUS.Delete(new DanhMucBaoCao() { ID = ug.ActiveRow.Cells["ID"].Value })), ug, bsDanhMuc); });
+                deleteAction = new Action(() => { coreUI.DanhMuc.Delete(null, new Func<bool>(() => DanhMucBaoCaoBUS.Delete(new DanhMucBaoCao() { ID = ug.ActiveRow.Cells["ID"].Value })), ug, bsData); });
                 base.DeleteDanhMuc();
             }
         }
@@ -93,7 +93,7 @@ namespace coreUI.Forms
                 CapNhat = 1,
                 Text = "Thêm mới danh mục cột báo cáo",
                 dataTable = dsData.Tables[DanhMucBaoCaoCot.tableName],
-                IDDanhMucBaoCao = ((DataRowView)bsDanhMuc.Current).Row["ID"],
+                IDDanhMucBaoCao = ((DataRowView)bsData.Current).Row["ID"],
             };
             frmUpdate.ShowDialog();
             frmUpdate.Dispose();
@@ -105,9 +105,9 @@ namespace coreUI.Forms
             {
                 CapNhat = 2,
                 Text = "Chỉnh sửa danh mục cột báo cáo",
-                IDDanhMucBaoCao = ((DataRowView)bsDanhMucChiTiet.Current).Row["IDDanhMucBaoCao"],
+                IDDanhMucBaoCao = ((DataRowView)bsDataChiTiet.Current).Row["IDDanhMucBaoCao"],
                 dataTable = dsData.Tables[DanhMucBaoCaoCot.tableName],
-                dataRow = ((DataRowView)bsDanhMucChiTiet.Current).Row,
+                dataRow = ((DataRowView)bsDataChiTiet.Current).Row,
             };
             frmUpdate.ShowDialog();
             frmUpdate.Dispose();
@@ -116,7 +116,7 @@ namespace coreUI.Forms
         {
             if (ugChiTiet.ActiveRow != null && ugChiTiet.ActiveRow.IsDataRow)
             {
-                deleteAction = new Action(() => { coreUI.DanhMuc.Delete(null, new Func<bool>(() => DanhMucBaoCaoCotBUS.Delete(new DanhMucBaoCaoCot() { ID = ugChiTiet.ActiveRow.Cells["ID"].Value })), ugChiTiet, bsDanhMucChiTiet); });
+                deleteAction = new Action(() => { coreUI.DanhMuc.Delete(null, new Func<bool>(() => DanhMucBaoCaoCotBUS.Delete(new DanhMucBaoCaoCot() { ID = ugChiTiet.ActiveRow.Cells["ID"].Value })), ugChiTiet, bsDataChiTiet); });
                 base.DeleteDanhMuc();
             }
         }

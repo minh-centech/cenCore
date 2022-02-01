@@ -10,7 +10,7 @@ namespace coreBase.BaseForms
         public string TenDanhMucLoaiDoiTuong;
 
         protected DataSet dsData = null;
-        protected BindingSource bsDanhMuc = null, bsDanhMucChiTiet = null;
+        protected BindingSource bsData = null, bsDataChiTiet = null;
 
         protected Action deleteAction;
 
@@ -62,7 +62,7 @@ namespace coreBase.BaseForms
         }
         protected virtual void InsertDanhMuc()
         {
-            bContinue = (bsDanhMuc != null);
+            bContinue = (bsData != null);
         }
         protected virtual void CopyDanhMuc()
         {

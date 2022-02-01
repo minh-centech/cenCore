@@ -255,3 +255,4 @@ D:\cenCORE\coreUI\obj\Debug\coreUI.csproj.CoreCompileInputs.cache
 D:\cenCORE\coreUI\obj\Debug\coreUI.csproj.CopyComplete
 D:\cenCORE\coreUI\obj\Debug\coreUI.dll
 D:\cenCORE\coreUI\obj\Debug\coreUI.pdb
+D:\cenCORE\coreUI\obj\Debug\coreUI.Forms.frm_dtList.resources

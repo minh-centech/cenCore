@@ -16,11 +16,11 @@ namespace coreUI.Forms
             dtData = DanhMucDonViBUS.List(null);
             tableName = DanhMucDonVi.tableName;
             dtData.TableName = tableName;
-            bsDanhMuc = new BindingSource
+            bsData = new BindingSource
             {
                 DataSource = dtData
             };
-            ug.DataSource = bsDanhMuc;
+            ug.DataSource = bsData;
         }
         protected override void InsertDanhMuc()
         {
@@ -56,7 +56,7 @@ namespace coreUI.Forms
             {
                 CapNhat = coreCommon.ThaoTacDuLieu.Sua,
                 dataTable = dtData,
-                dataRow = ((DataRowView)bsDanhMuc.Current).Row,
+                dataRow = ((DataRowView)bsData.Current).Row,
                 TenDanhMucLoaiDoiTuong = "Chỉnh sửa Danh mục đơn vị",
             };
             frmUpdate.ShowDialog();
@@ -66,7 +66,7 @@ namespace coreUI.Forms
         {
             if (ug.ActiveRow != null && ug.ActiveRow.IsDataRow)
             {
-                deleteAction = new Action(() => { coreUI.DanhMuc.Delete(null, new Func<bool>(() => DanhMucDonViBUS.Delete(new DanhMucDonVi() { ID = ug.ActiveRow.Cells["ID"].Value })), ug, bsDanhMuc); });
+                deleteAction = new Action(() => { coreUI.DanhMuc.Delete(null, new Func<bool>(() => DanhMucDonViBUS.Delete(new DanhMucDonVi() { ID = ug.ActiveRow.Cells["ID"].Value })), ug, bsData); });
                 base.DeleteDanhMuc();
             }
         }

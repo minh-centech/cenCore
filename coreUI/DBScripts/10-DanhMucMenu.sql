@@ -62,7 +62,7 @@ create table DanhMucMenuBaoCao
 )
 go
 */
-create procedure List_DanhMucMenu
+alter procedure List_DanhMucMenu
 	@ID	bigint = null
 as
 begin
@@ -110,7 +110,7 @@ begin
 	order by ThuTuHienThi;
 end
 go
-create procedure Insert_DanhMucMenu
+alter procedure Insert_DanhMucMenu
 	@ID				bigint out,
 	@Ma				nvarchar(128),
 	@Ten			nvarchar(255),
@@ -134,7 +134,7 @@ begin
 	end catch
 end
 go
-create procedure Update_DanhMucMenu
+alter procedure Update_DanhMucMenu
 	@ID				bigint,
 	@Ma				nvarchar(128),
 	@Ten			nvarchar(255),
@@ -162,7 +162,7 @@ begin
 	end catch
 end
 go
-create procedure Delete_DanhMucMenu
+alter procedure Delete_DanhMucMenu
 	@ID			bigint
 as
 begin
@@ -184,7 +184,7 @@ begin
 	end catch
 end
 go
-create procedure List_DanhMucMenuLoaiDoiTuong
+alter procedure List_DanhMucMenuLoaiDoiTuong
 	@ID	bigint = null,
 	@IDDanhMucMenu	bigint = null
 as
@@ -204,7 +204,7 @@ begin
 	order by a.ThuTuHienThi;
 end
 go
-create procedure Insert_DanhMucMenuLoaiDoiTuong
+alter procedure Insert_DanhMucMenuLoaiDoiTuong
 	@ID						bigint out,
 	@IDDanhMucMenu			bigint,
 	@IDDanhMucLoaiDoiTuong	bigint,
@@ -230,7 +230,7 @@ begin
 	end catch
 end
 go
-create procedure Update_DanhMucMenuLoaiDoiTuong
+alter procedure Update_DanhMucMenuLoaiDoiTuong
 	@ID						bigint,
 	@IDDanhMucLoaiDoiTuong	bigint,
 	@NoiDungHienThi			nvarchar(255),
@@ -260,7 +260,7 @@ begin
 	end catch
 end
 go
-create procedure Delete_DanhMucMenuLoaiDoiTuong
+alter procedure Delete_DanhMucMenuLoaiDoiTuong
 	@ID			bigint
 as
 begin
@@ -279,7 +279,7 @@ begin
 	end catch
 end
 go
-create procedure List_DanhMucMenuChungTu
+alter procedure List_DanhMucMenuChungTu
 	@ID	bigint = null,
 	@IDDanhMucMenu	bigint = null
 as
@@ -299,7 +299,7 @@ begin
 	order by a.ThuTuHienThi;
 end
 go
-create procedure Insert_DanhMucMenuChungTu
+alter procedure Insert_DanhMucMenuChungTu
 	@ID					bigint out,
 	@IDDanhMucMenu		bigint,
 	@IDDanhMucChungTu	bigint,
@@ -325,7 +325,7 @@ begin
 	end catch
 end
 go
-create procedure Update_DanhMucMenuChungTu
+alter procedure Update_DanhMucMenuChungTu
 	@ID					bigint,
 	@IDDanhMucChungTu	bigint,
 	@NoiDungHienThi		nvarchar(255),
@@ -355,7 +355,7 @@ begin
 	end catch
 end
 go
-create procedure Delete_DanhMucMenuChungTu
+alter procedure Delete_DanhMucMenuChungTu
 	@ID			bigint
 as
 begin
@@ -374,7 +374,7 @@ begin
 	end catch
 end
 go
-create procedure List_DanhMucMenuBaoCao
+alter procedure List_DanhMucMenuBaoCao
 	@ID	bigint = null,
 	@IDDanhMucMenu	bigint = null
 as
@@ -394,7 +394,7 @@ begin
 	order by a.ThuTuHienThi;
 end
 go
-create procedure Insert_DanhMucMenuBaoCao
+alter procedure Insert_DanhMucMenuBaoCao
 	@ID					bigint out,
 	@IDDanhMucMenu		bigint,
 	@IDDanhMucBaoCao	bigint,
@@ -420,7 +420,7 @@ begin
 	end catch
 end
 go
-create procedure Update_DanhMucMenuBaoCao
+alter procedure Update_DanhMucMenuBaoCao
 	@ID					bigint,
 	@IDDanhMucBaoCao	bigint,
 	@NoiDungHienThi		nvarchar(255),
@@ -450,7 +450,7 @@ begin
 	end catch
 end
 go
-create procedure Delete_DanhMucMenuBaoCao
+alter procedure Delete_DanhMucMenuBaoCao
 	@ID			bigint
 as
 begin

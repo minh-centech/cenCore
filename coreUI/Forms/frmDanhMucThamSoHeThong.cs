@@ -17,11 +17,11 @@ namespace coreUI.Forms
             tableName = DanhMucThamSoHeThong.tableName;
             dtData.TableName = tableName;
 
-            bsDanhMuc = new BindingSource
+            bsData = new BindingSource
             {
                 DataSource = dtData
             };
-            ug.DataSource = bsDanhMuc;
+            ug.DataSource = bsData;
         }
         protected override void InsertDanhMuc()
         {
@@ -45,7 +45,7 @@ namespace coreUI.Forms
                 CapNhat = coreCommon.ThaoTacDuLieu.Copy,
                 Text = "Sao chép danh mục tham số hệ thống",
                 dataTable = dtData,
-                dataRow = ((DataRowView)bsDanhMuc.Current).Row
+                dataRow = ((DataRowView)bsData.Current).Row
             };
             frmUpdate.ShowDialog();
             frmUpdate.Dispose();
@@ -59,7 +59,7 @@ namespace coreUI.Forms
                 CapNhat = coreCommon.ThaoTacDuLieu.Sua,
                 Text = "Chỉnh sửa danh mục tham số hệ thống",
                 dataTable = dtData,
-                dataRow = ((DataRowView)bsDanhMuc.Current).Row
+                dataRow = ((DataRowView)bsData.Current).Row
             };
             frmUpdate.ShowDialog();
             frmUpdate.Dispose();
@@ -68,7 +68,7 @@ namespace coreUI.Forms
         {
             if (ug.ActiveRow != null && ug.ActiveRow.IsDataRow)
             {
-                deleteAction = new Action(() => { coreUI.DanhMuc.Delete(null, new Func<bool>(() => DanhMucThamSoHeThongBUS.Delete(new DanhMucThamSoHeThong() { ID = ug.ActiveRow.Cells["ID"].Value })), ug, bsDanhMuc); });
+                deleteAction = new Action(() => { coreUI.DanhMuc.Delete(null, new Func<bool>(() => DanhMucThamSoHeThongBUS.Delete(new DanhMucThamSoHeThong() { ID = ug.ActiveRow.Cells["ID"].Value })), ug, bsData); });
                 base.DeleteDanhMuc();
             }
         }

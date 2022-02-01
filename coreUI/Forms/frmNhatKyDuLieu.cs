@@ -20,13 +20,13 @@ namespace coreUI.Forms
             dtData = NhatKyDuLieuBUS.List();
             tableName = NhatKyDuLieu.tableName;
             dtData.TableName = tableName;
-            bsDanhMuc = new BindingSource
+            bsData = new BindingSource
             {
                 DataSource = dtData
             };
             ug.HiddenColumnsList = "[AutoID][AutoIDChungTu][AutoIDChungTuChiTiet]";
             ug.FixedColumnsList = "[Ngay][Gio][MaDanhMucNguoiSuDung][TenDanhMucNguoiSuDung]";
-            ug.DataSource = bsDanhMuc;
+            ug.DataSource = bsData;
             ug.DisplayLayout.Bands[0].PerformAutoResizeColumns(false, PerformAutoSizeType.AllRowsInBand);
         }
         protected override void InsertDanhMuc()

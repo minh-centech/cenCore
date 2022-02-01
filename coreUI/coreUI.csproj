@@ -134,6 +134,12 @@
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="coreUI.cs" />
+    <Compile Include="Forms\frm_dtList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frm_dtList.Designer.cs">
+      <DependentUpon>frm_dtList.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\frmDataValidMultiSelect.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -412,6 +418,9 @@
     <EmbeddedResource Include="bin\Debug\Reports\ctYeuCauVanChuyen.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>ctYeuCauVanChuyen.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frm_dtList.resx">
+      <DependentUpon>frm_dtList.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmDataValidMultiSelect.resx">
       <DependentUpon>frmDataValidMultiSelect.cs</DependentUpon>

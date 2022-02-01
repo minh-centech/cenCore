@@ -22,11 +22,11 @@ namespace coreUI.Forms
             }
             dtData = DanhMucDoiTuongBUS.List(null, IDDanhMucLoaiDoiTuong, null);
             dtData.TableName = tableName;
-            bsDanhMuc = new BindingSource
+            bsData = new BindingSource
             {
                 DataSource = dtData
             };
-            ug.DataSource = bsDanhMuc;
+            ug.DataSource = bsData;
         }
         protected override void InsertDanhMuc()
         {
@@ -62,7 +62,7 @@ namespace coreUI.Forms
             {
                 CapNhat = coreCommon.ThaoTacDuLieu.Copy,
                 dataTable = dtData,
-                dataRow = ((DataRowView)bsDanhMuc.Current).Row,
+                dataRow = ((DataRowView)bsData.Current).Row,
                 IDDanhMucLoaiDoiTuong = IDDanhMucLoaiDoiTuong,
                 TenDanhMucLoaiDoiTuong = TenDanhMucLoaiDoiTuong
             };
@@ -83,7 +83,7 @@ namespace coreUI.Forms
             {
                 CapNhat = coreCommon.ThaoTacDuLieu.Sua,
                 dataTable = dtData,
-                dataRow = ((DataRowView)bsDanhMuc.Current).Row,
+                dataRow = ((DataRowView)bsData.Current).Row,
                 IDDanhMucLoaiDoiTuong = IDDanhMucLoaiDoiTuong,
                 TenDanhMucLoaiDoiTuong = TenDanhMucLoaiDoiTuong
             };
@@ -94,7 +94,7 @@ namespace coreUI.Forms
         {
             if (ug.ActiveRow != null && ug.ActiveRow.IsDataRow)
             {
-                deleteAction = new Action(() => { coreUI.DanhMuc.Delete(IDDanhMucLoaiDoiTuong, new Func<bool>(() => DanhMucDoiTuongBUS.Delete(new DanhMucDoiTuong() { ID = ug.ActiveRow.Cells["ID"].Value })), ug, bsDanhMuc); });
+                deleteAction = new Action(() => { coreUI.DanhMuc.Delete(IDDanhMucLoaiDoiTuong, new Func<bool>(() => DanhMucDoiTuongBUS.Delete(new DanhMucDoiTuong() { ID = ug.ActiveRow.Cells["ID"].Value })), ug, bsData); });
                 base.DeleteDanhMuc();
             }
         }

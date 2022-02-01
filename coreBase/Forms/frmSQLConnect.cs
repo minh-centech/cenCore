@@ -33,11 +33,11 @@ namespace coreBase.Forms
                 dr["ConnectionString"] = coreCommon.coreCommon.DecryptString(dr["ConnectionString"].ToString());
             }
 
-            bsDanhMuc = new BindingSource
+            bsData = new BindingSource
             {
                 DataSource = dtConnects
             };
-            ug.DataSource = bsDanhMuc;
+            ug.DataSource = bsData;
         }
         protected override void InsertDanhMuc()
         {
@@ -47,10 +47,10 @@ namespace coreBase.Forms
         }
         protected override void DeleteDanhMuc()
         {
-            if (bsDanhMuc.Current == null) return;
+            if (bsData.Current == null) return;
             if (coreCommon.coreCommon.QuestionMessage("Bạn có chắc chắn muốn xóa không?", 0) == DialogResult.Yes)
             {
-                bsDanhMuc.RemoveCurrent();
+                bsData.RemoveCurrent();
             }
             SaveData();
         }

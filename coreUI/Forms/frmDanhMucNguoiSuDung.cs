@@ -17,11 +17,11 @@ namespace coreUI.Forms
             tableName = DanhMucNguoiSuDung.tableName;
             dtData.TableName = tableName;
 
-            bsDanhMuc = new BindingSource
+            bsData = new BindingSource
             {
                 DataSource = dtData
             };
-            ug.DataSource = bsDanhMuc;
+            ug.DataSource = bsData;
             ug.DisplayLayout.Bands[0].Columns["Password"].Hidden = true;
         }
         protected override void InsertDanhMuc()
@@ -46,7 +46,7 @@ namespace coreUI.Forms
                 CapNhat = coreCommon.ThaoTacDuLieu.Copy,
                 TenDanhMucLoaiDoiTuong = "Sao chép Danh mục người sử dụng",
                 dataTable = dtData,
-                dataRow = ((DataRowView)bsDanhMuc.Current).Row
+                dataRow = ((DataRowView)bsData.Current).Row
             };
             frmUpdate.ShowDialog();
             frmUpdate.Dispose();
@@ -60,7 +60,7 @@ namespace coreUI.Forms
                 CapNhat = coreCommon.ThaoTacDuLieu.Sua,
                 TenDanhMucLoaiDoiTuong = "Chỉnh sửa Danh mục người sử dụng",
                 dataTable = dtData,
-                dataRow = ((DataRowView)bsDanhMuc.Current).Row
+                dataRow = ((DataRowView)bsData.Current).Row
             };
             frmUpdate.ShowDialog();
             frmUpdate.Dispose();
@@ -69,7 +69,7 @@ namespace coreUI.Forms
         {
             if (ug.ActiveRow != null && ug.ActiveRow.IsDataRow)
             {
-                deleteAction = new Action(() => { coreUI.DanhMuc.Delete(null, new Func<bool>(() => DanhMucNguoiSuDungBUS.Delete(new DanhMucNguoiSuDung() { ID = ug.ActiveRow.Cells["ID"].Value })), ug, bsDanhMuc); });
+                deleteAction = new Action(() => { coreUI.DanhMuc.Delete(null, new Func<bool>(() => DanhMucNguoiSuDungBUS.Delete(new DanhMucNguoiSuDung() { ID = ug.ActiveRow.Cells["ID"].Value })), ug, bsData); });
                 base.DeleteDanhMuc();
             }
         }

@@ -18,32 +18,32 @@ namespace coreUI.Forms
         {
             dsData = DanhMucMenuBUS.List(null);
 
-            bsDanhMuc = new BindingSource
+            bsData = new BindingSource
             {
                 DataSource = dsData,
                 DataMember = DanhMucMenu.tableName
             };
 
-            bsDanhMucChiTiet = new BindingSource
+            bsDataChiTiet = new BindingSource
             {
-                DataSource = bsDanhMuc,
+                DataSource = bsData,
                 DataMember = GlobalVariables.prefix_DataRelation + DanhMucMenuLoaiDoiTuong.tableName
             };
 
             bsChungTu = new BindingSource
             {
-                DataSource = bsDanhMuc,
+                DataSource = bsData,
                 DataMember = GlobalVariables.prefix_DataRelation + DanhMucMenuChungTu.tableName
             };
 
             bsBaoCao = new BindingSource
             {
-                DataSource = bsDanhMuc,
+                DataSource = bsData,
                 DataMember = GlobalVariables.prefix_DataRelation + DanhMucMenuBaoCao.tableName
             };
 
-            ug.DataSource = bsDanhMuc;
-            ugChiTiet.DataSource = bsDanhMucChiTiet;
+            ug.DataSource = bsData;
+            ugChiTiet.DataSource = bsDataChiTiet;
             ugChungTu.DataSource = bsChungTu;
             ugBaoCao.DataSource = bsBaoCao;
 
@@ -74,7 +74,7 @@ namespace coreUI.Forms
                 CapNhat = coreCommon.ThaoTacDuLieu.Copy,
                 Text = "Sao chép danh mục menu",
                 dataTable = dsData.Tables[DanhMucMenu.tableName],
-                dataRow = ((DataRowView)bsDanhMuc.Current).Row
+                dataRow = ((DataRowView)bsData.Current).Row
             };
             frmUpdate.ShowDialog();
             frmUpdate.Dispose();
@@ -88,7 +88,7 @@ namespace coreUI.Forms
                 CapNhat = coreCommon.ThaoTacDuLieu.Sua,
                 Text = "Chỉnh sửa danh mục menu",
                 dataTable = dsData.Tables[DanhMucMenu.tableName],
-                dataRow = ((DataRowView)bsDanhMuc.Current).Row
+                dataRow = ((DataRowView)bsData.Current).Row
             };
             frmUpdate.ShowDialog();
             frmUpdate.Dispose();
@@ -97,7 +97,7 @@ namespace coreUI.Forms
         {
             if (ug.ActiveRow != null && ug.ActiveRow.IsDataRow)
             {
-                deleteAction = new Action(() => { coreUI.DanhMuc.Delete(null, new Func<bool>(() => DanhMucMenuBUS.Delete(new DanhMucMenu() { ID = ug.ActiveRow.Cells["ID"].Value })), ug, bsDanhMuc); });
+                deleteAction = new Action(() => { coreUI.DanhMuc.Delete(null, new Func<bool>(() => DanhMucMenuBUS.Delete(new DanhMucMenu() { ID = ug.ActiveRow.Cells["ID"].Value })), ug, bsData); });
                 base.DeleteDanhMuc();
             }
         }
@@ -114,7 +114,7 @@ namespace coreUI.Forms
                         CapNhat = coreCommon.ThaoTacDuLieu.Them,
                         Text = "Thêm mới danh mục menu loại đối tượng",
                         dataTable = dsData.Tables[DanhMucMenuLoaiDoiTuong.tableName],
-                        IDDanhMucMenu = ((DataRowView)bsDanhMuc.Current).Row["ID"],
+                        IDDanhMucMenu = ((DataRowView)bsData.Current).Row["ID"],
                     };
                     frmDanhMucMenuLoaiDoiTuongUpdate.ShowDialog();
                     frmDanhMucMenuLoaiDoiTuongUpdate.Dispose();
@@ -125,7 +125,7 @@ namespace coreUI.Forms
                         CapNhat = coreCommon.ThaoTacDuLieu.Them,
                         Text = "Thêm mới danh mục menu loại chứng từ",
                         dataTable = dsData.Tables[DanhMucMenuChungTu.tableName],
-                        IDDanhMucMenu = ((DataRowView)bsDanhMuc.Current).Row["ID"],
+                        IDDanhMucMenu = ((DataRowView)bsData.Current).Row["ID"],
                     };
                     frmDanhMucMenuChungTuUpdate.ShowDialog();
                     frmDanhMucMenuChungTuUpdate.Dispose();
@@ -136,7 +136,7 @@ namespace coreUI.Forms
                         CapNhat = coreCommon.ThaoTacDuLieu.Them,
                         Text = "Thêm mới danh mục menu báo cáo",
                         dataTable = dsData.Tables[DanhMucMenuBaoCao.tableName],
-                        IDDanhMucMenu = ((DataRowView)bsDanhMuc.Current).Row["ID"],
+                        IDDanhMucMenu = ((DataRowView)bsData.Current).Row["ID"],
                     };
                     frmDanhMucMenuBaoCaoUpdate.ShowDialog();
                     frmDanhMucMenuBaoCaoUpdate.Dispose();
@@ -156,9 +156,9 @@ namespace coreUI.Forms
                     {
                         CapNhat = coreCommon.ThaoTacDuLieu.Sua,
                         Text = "Chỉnh sửa danh mục menu loại đối tượng",
-                        IDDanhMucMenu = ((DataRowView)bsDanhMucChiTiet.Current).Row["IDDanhMucMenu"],
+                        IDDanhMucMenu = ((DataRowView)bsDataChiTiet.Current).Row["IDDanhMucMenu"],
                         dataTable = dsData.Tables[DanhMucMenuLoaiDoiTuong.tableName],
-                        dataRow = ((DataRowView)bsDanhMucChiTiet.Current).Row,
+                        dataRow = ((DataRowView)bsDataChiTiet.Current).Row,
                     };
                     frmDanhMucMenuLoaiDoiTuongUpdate.ShowDialog();
                     frmDanhMucMenuLoaiDoiTuongUpdate.Dispose();
@@ -197,7 +197,7 @@ namespace coreUI.Forms
                 case "TABCHITIET":
                     if (ugChiTiet.ActiveRow != null && ugChiTiet.ActiveRow.IsDataRow)
                     {
-                        deleteAction = new Action(() => { coreUI.DanhMuc.Delete(null, new Func<bool>(() => DanhMucMenuLoaiDoiTuongBUS.Delete(new DanhMucMenuLoaiDoiTuong() { ID = ugChiTiet.ActiveRow.Cells["ID"].Value })), ugChiTiet, bsDanhMucChiTiet); });
+                        deleteAction = new Action(() => { coreUI.DanhMuc.Delete(null, new Func<bool>(() => DanhMucMenuLoaiDoiTuongBUS.Delete(new DanhMucMenuLoaiDoiTuong() { ID = ugChiTiet.ActiveRow.Cells["ID"].Value })), ugChiTiet, bsDataChiTiet); });
                         base.DeleteDanhMuc();
                     }
                     break;
@@ -240,9 +240,9 @@ namespace coreUI.Forms
         //    {
         //        CapNhat = coreCommon.ThaoTacDuLieu.Sua,
         //        Text = "Chỉnh sửa danh mục menu loại đối tượng",
-        //        IDDanhMucMenu = ((DataRowView)bsDanhMucChiTiet.Current).Row["IDDanhMucMenu"],
+        //        IDDanhMucMenu = ((DataRowView)bsDataChiTiet.Current).Row["IDDanhMucMenu"],
         //        dataTable = dsData.Tables[DanhMucMenuLoaiDoiTuong.tableName],
-        //        dataRow = ((DataRowView)bsDanhMucChiTiet.Current).Row,
+        //        dataRow = ((DataRowView)bsDataChiTiet.Current).Row,
         //    };
         //    frmDanhMucMenuLoaiDoiTuongUpdate.ShowDialog();
         //    frmDanhMucMenuLoaiDoiTuongUpdate.Dispose();
