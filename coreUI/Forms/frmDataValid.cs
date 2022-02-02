@@ -160,7 +160,7 @@ namespace coreUI.Forms
         {
             dtValid.Merge(dtUpdate);
         }
-        private void Update()
+        private new void Update()
         {
             //Nếu có trong DTO thì gọi form tương ứng, nếu ko thì gọi customs
         }
