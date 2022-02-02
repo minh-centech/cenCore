@@ -101,7 +101,7 @@ namespace coreBase.BaseForms
         protected virtual void Copy()
         {
         }
-        protected virtual void Update()
+        protected new virtual void Update()
         {
         }
         protected virtual void Delete()

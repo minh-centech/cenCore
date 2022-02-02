@@ -323,7 +323,7 @@ namespace coreUI
                 }
                 frmDanhMucDoiTuongUpdate frmUpdate = new frmDanhMucDoiTuongUpdate
                 {
-                    CapNhat = coreCommon.ThaoTacDuLieu.Them,
+                    CapNhat = coreCommon.ThaoTacDuLieu.Sua,
                     IDDanhMucLoaiDoiTuong = IDDanhMucLoaiDoiTuong,
                     ID = IDDanhMucDoiTuong,
                     UpdateToList = UpdateToList
@@ -366,7 +366,7 @@ namespace coreUI
             {
                 frmDanhMucBaoCaoUpdate frmUpdate = new frmDanhMucBaoCaoUpdate
                 {
-                    CapNhat = coreCommon.ThaoTacDuLieu.Them,
+                    CapNhat = coreCommon.ThaoTacDuLieu.Sua,
                     ID = IDDanhMucBaoCao,
                     UpdateToList = UpdateToList
                 };
@@ -401,7 +401,7 @@ namespace coreUI
             {
                 frmDanhMucBaoCaoCotUpdate frmUpdate = new frmDanhMucBaoCaoCotUpdate
                 {
-                    CapNhat = coreCommon.ThaoTacDuLieu.Them,
+                    CapNhat = coreCommon.ThaoTacDuLieu.Sua,
                     ID = IDDanhMucBaoCaoCot,
                     UpdateToList = UpdateToList
                 };
@@ -436,7 +436,7 @@ namespace coreUI
             {
                 frmDanhMucChungTuUpdate frmUpdate = new frmDanhMucChungTuUpdate
                 {
-                    CapNhat = coreCommon.ThaoTacDuLieu.Them,
+                    CapNhat = coreCommon.ThaoTacDuLieu.Sua,
                     ID = IDDanhMucChungTu,
                     UpdateToList = UpdateToList
                 };
@@ -471,7 +471,7 @@ namespace coreUI
             {
                 frmDanhMucChungTuInUpdate frmUpdate = new frmDanhMucChungTuInUpdate
                 {
-                    CapNhat = coreCommon.ThaoTacDuLieu.Them,
+                    CapNhat = coreCommon.ThaoTacDuLieu.Sua,
                     ID = IDDanhMucChungTuIn,
                     UpdateToList = UpdateToList
                 };
@@ -506,7 +506,7 @@ namespace coreUI
             {
                 frmDanhMucChungTuQuyTrinhUpdate frmUpdate = new frmDanhMucChungTuQuyTrinhUpdate
                 {
-                    CapNhat = coreCommon.ThaoTacDuLieu.Them,
+                    CapNhat = coreCommon.ThaoTacDuLieu.Sua,
                     ID = IDDanhMucChungTuQuyTrinh,
                     UpdateToList = UpdateToList
                 };
@@ -541,7 +541,7 @@ namespace coreUI
             {
                 frmDanhMucChungTuTrangThaiUpdate frmUpdate = new frmDanhMucChungTuTrangThaiUpdate
                 {
-                    CapNhat = coreCommon.ThaoTacDuLieu.Them,
+                    CapNhat = coreCommon.ThaoTacDuLieu.Sua,
                     ID = IDDanhMucChungTuTrangThai,
                     UpdateToList = UpdateToList
                 };
@@ -576,7 +576,7 @@ namespace coreUI
             {
                 frmDanhMucDonViUpdate frmUpdate = new frmDanhMucDonViUpdate
                 {
-                    CapNhat = coreCommon.ThaoTacDuLieu.Them,
+                    CapNhat = coreCommon.ThaoTacDuLieu.Sua,
                     ID = IDDanhMucDonVi,
                     UpdateToList = UpdateToList
                 };
@@ -611,7 +611,7 @@ namespace coreUI
             {
                 frmDanhMucLoaiDoiTuongUpdate frmUpdate = new frmDanhMucLoaiDoiTuongUpdate
                 {
-                    CapNhat = coreCommon.ThaoTacDuLieu.Them,
+                    CapNhat = coreCommon.ThaoTacDuLieu.Sua,
                     ID = IDDanhMucLoaiDoiTuong,
                     UpdateToList = UpdateToList
                 };
@@ -646,7 +646,7 @@ namespace coreUI
             {
                 frmDanhMucMenuUpdate frmUpdate = new frmDanhMucMenuUpdate
                 {
-                    CapNhat = coreCommon.ThaoTacDuLieu.Them,
+                    CapNhat = coreCommon.ThaoTacDuLieu.Sua,
                     ID = IDDanhMucMenu,
                     UpdateToList = UpdateToList
                 };
@@ -681,7 +681,7 @@ namespace coreUI
             {
                 frmDanhMucMenuBaoCaoUpdate frmUpdate = new frmDanhMucMenuBaoCaoUpdate
                 {
-                    CapNhat = coreCommon.ThaoTacDuLieu.Them,
+                    CapNhat = coreCommon.ThaoTacDuLieu.Sua,
                     ID = IDDanhMucMenuBaoCao,
                     UpdateToList = UpdateToList
                 };
@@ -716,7 +716,7 @@ namespace coreUI
             {
                 frmDanhMucMenuChungTuUpdate frmUpdate = new frmDanhMucMenuChungTuUpdate
                 {
-                    CapNhat = coreCommon.ThaoTacDuLieu.Them,
+                    CapNhat = coreCommon.ThaoTacDuLieu.Sua,
                     ID = IDDanhMucMenuChungTu,
                     UpdateToList = UpdateToList
                 };
@@ -751,7 +751,7 @@ namespace coreUI
             {
                 frmDanhMucMenuLoaiDoiTuongUpdate frmUpdate = new frmDanhMucMenuLoaiDoiTuongUpdate
                 {
-                    CapNhat = coreCommon.ThaoTacDuLieu.Them,
+                    CapNhat = coreCommon.ThaoTacDuLieu.Sua,
                     ID = IDDanhMucMenuLoaiDoiTuong,
                     UpdateToList = UpdateToList
                 };
@@ -786,7 +786,7 @@ namespace coreUI
             {
                 frmDanhMucNguoiSuDungUpdate frmUpdate = new frmDanhMucNguoiSuDungUpdate
                 {
-                    CapNhat = coreCommon.ThaoTacDuLieu.Them,
+                    CapNhat = coreCommon.ThaoTacDuLieu.Sua,
                     ID = IDDanhMucNguoiSuDung,
                     UpdateToList = UpdateToList
                 };
@@ -821,7 +821,7 @@ namespace coreUI
             {
                 frmDanhMucNhomBaoCaoUpdate frmUpdate = new frmDanhMucNhomBaoCaoUpdate
                 {
-                    CapNhat = coreCommon.ThaoTacDuLieu.Them,
+                    CapNhat = coreCommon.ThaoTacDuLieu.Sua,
                     ID = IDDanhMucNhomBaoCao,
                     UpdateToList = UpdateToList
                 };
@@ -856,7 +856,7 @@ namespace coreUI
             {
                 frmDanhMucPhanQuyenUpdate frmUpdate = new frmDanhMucPhanQuyenUpdate
                 {
-                    CapNhat = coreCommon.ThaoTacDuLieu.Them,
+                    CapNhat = coreCommon.ThaoTacDuLieu.Sua,
                     ID = IDDanhMucPhanQuyen,
                     UpdateToList = UpdateToList
                 };
@@ -891,7 +891,7 @@ namespace coreUI
             {
                 frmDanhMucPhanQuyenBaoCaoUpdate frmUpdate = new frmDanhMucPhanQuyenBaoCaoUpdate
                 {
-                    CapNhat = coreCommon.ThaoTacDuLieu.Them,
+                    CapNhat = coreCommon.ThaoTacDuLieu.Sua,
                     ID = IDDanhMucPhanQuyenBaoCao,
                     UpdateToList = UpdateToList
                 };
@@ -926,7 +926,7 @@ namespace coreUI
             {
                 frmDanhMucPhanQuyenChungTuUpdate frmUpdate = new frmDanhMucPhanQuyenChungTuUpdate
                 {
-                    CapNhat = coreCommon.ThaoTacDuLieu.Them,
+                    CapNhat = coreCommon.ThaoTacDuLieu.Sua,
                     ID = IDDanhMucPhanQuyenChungTu,
                     UpdateToList = UpdateToList
                 };
@@ -961,7 +961,7 @@ namespace coreUI
             {
                 frmDanhMucPhanQuyenDonViUpdate frmUpdate = new frmDanhMucPhanQuyenDonViUpdate
                 {
-                    CapNhat = coreCommon.ThaoTacDuLieu.Them,
+                    CapNhat = coreCommon.ThaoTacDuLieu.Sua,
                     ID = IDDanhMucPhanQuyenDonVi,
                     UpdateToList = UpdateToList
                 };
@@ -996,7 +996,7 @@ namespace coreUI
             {
                 frmDanhMucPhanQuyenLoaiDoiTuongUpdate frmUpdate = new frmDanhMucPhanQuyenLoaiDoiTuongUpdate
                 {
-                    CapNhat = coreCommon.ThaoTacDuLieu.Them,
+                    CapNhat = coreCommon.ThaoTacDuLieu.Sua,
                     ID = IDDanhMucPhanQuyenLoaiDoiTuong,
                     UpdateToList = UpdateToList
                 };
@@ -1031,7 +1031,7 @@ namespace coreUI
             {
                 frmDanhMucThamSoHeThongUpdate frmUpdate = new frmDanhMucThamSoHeThongUpdate
                 {
-                    CapNhat = coreCommon.ThaoTacDuLieu.Them,
+                    CapNhat = coreCommon.ThaoTacDuLieu.Sua,
                     ID = IDDanhMucThamSoHeThong,
                     UpdateToList = UpdateToList
                 };
@@ -1066,7 +1066,7 @@ namespace coreUI
             {
                 frmDanhMucThamSoNguoiSuDungUpdate frmUpdate = new frmDanhMucThamSoNguoiSuDungUpdate
                 {
-                    CapNhat = coreCommon.ThaoTacDuLieu.Them,
+                    CapNhat = coreCommon.ThaoTacDuLieu.Sua,
                     ID = IDDanhMucThamSoNguoiSuDung,
                     UpdateToList = UpdateToList
                 };
@@ -1101,7 +1101,7 @@ namespace coreUI
             {
                 frmDanhMucTuDienUpdate frmUpdate = new frmDanhMucTuDienUpdate
                 {
-                    CapNhat = coreCommon.ThaoTacDuLieu.Them,
+                    CapNhat = coreCommon.ThaoTacDuLieu.Sua,
                     ID = IDDanhMucTuDien,
                     UpdateToList = UpdateToList
                 };
