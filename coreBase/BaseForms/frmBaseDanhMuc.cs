@@ -48,7 +48,6 @@ namespace coreBase.BaseForms
             switch (e.Tool.Key.ToString().ToUpper())
             {
                 case "BTXOA":
-
                     Delete();
                     break;
                 case "BTTHEM":

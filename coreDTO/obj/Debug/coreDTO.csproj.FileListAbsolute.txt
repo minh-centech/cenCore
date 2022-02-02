@@ -52,6 +52,6 @@ D:\cenCORE\Outputs\coreDTO.dll
 D:\cenCORE\Outputs\coreDTO.pdb
 D:\cenCORE\coreDTO\obj\Debug\coreDTO.csproj.AssemblyReference.cache
 D:\cenCORE\coreDTO\obj\Debug\coreDTO.csproj.CoreCompileInputs.cache
+D:\cenCORE\coreDTO\obj\Debug\coreDTO.csproj.CopyComplete
 D:\cenCORE\coreDTO\obj\Debug\coreDTO.dll
 D:\cenCORE\coreDTO\obj\Debug\coreDTO.pdb
-D:\cenCORE\coreDTO\obj\Debug\coreDTO.csproj.CopyComplete

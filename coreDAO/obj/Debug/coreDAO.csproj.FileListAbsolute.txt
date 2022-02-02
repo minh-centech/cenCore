@@ -40,6 +40,6 @@ D:\cenCORE\Outputs\coreDAO.dll
 D:\cenCORE\Outputs\coreDAO.pdb
 D:\cenCORE\coreDAO\obj\Debug\coreDAO.csproj.AssemblyReference.cache
 D:\cenCORE\coreDAO\obj\Debug\coreDAO.csproj.CoreCompileInputs.cache
+D:\cenCORE\coreDAO\obj\Debug\coreDAO.csproj.CopyComplete
 D:\cenCORE\coreDAO\obj\Debug\coreDAO.dll
 D:\cenCORE\coreDAO\obj\Debug\coreDAO.pdb
-D:\cenCORE\coreDAO\obj\Debug\coreDAO.csproj.CopyComplete

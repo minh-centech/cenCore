@@ -207,6 +207,7 @@ D:\cenCORE\Outputs\coreUI.dll.config
 D:\cenCORE\Outputs\coreUI.dll
 D:\cenCORE\Outputs\coreUI.pdb
 D:\cenCORE\coreUI\obj\Debug\coreUI.csproj.AssemblyReference.cache
+D:\cenCORE\coreUI\obj\Debug\coreUI.Forms.frm_dtList.resources
 D:\cenCORE\coreUI\obj\Debug\coreUI.Forms.frmDataValidMultiSelect.resources
 D:\cenCORE\coreUI\obj\Debug\coreUI.Forms.frmDataValid.resources
 D:\cenCORE\coreUI\obj\Debug\coreUI.Forms.frmDanhMucBaoCao.resources
@@ -255,4 +256,3 @@ D:\cenCORE\coreUI\obj\Debug\coreUI.csproj.CoreCompileInputs.cache
 D:\cenCORE\coreUI\obj\Debug\coreUI.csproj.CopyComplete
 D:\cenCORE\coreUI\obj\Debug\coreUI.dll
 D:\cenCORE\coreUI\obj\Debug\coreUI.pdb
-D:\cenCORE\coreUI\obj\Debug\coreUI.Forms.frm_dtList.resources

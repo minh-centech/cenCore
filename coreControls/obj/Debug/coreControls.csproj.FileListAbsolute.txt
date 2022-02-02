@@ -92,6 +92,6 @@ D:\cenCORE\coreControls\obj\Debug\coreControls.saUpdateGrid.resources
 D:\cenCORE\coreControls\obj\Debug\coreControls.csproj.GenerateResource.cache
 D:\cenCORE\coreControls\obj\Debug\coreControls.dll.licenses
 D:\cenCORE\coreControls\obj\Debug\coreControls.csproj.CoreCompileInputs.cache
+D:\cenCORE\coreControls\obj\Debug\coreControls.csproj.CopyComplete
 D:\cenCORE\coreControls\obj\Debug\coreControls.dll
 D:\cenCORE\coreControls\obj\Debug\coreControls.pdb
-D:\cenCORE\coreControls\obj\Debug\coreControls.csproj.CopyComplete
