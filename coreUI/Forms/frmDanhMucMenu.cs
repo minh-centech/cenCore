@@ -54,194 +54,91 @@ namespace coreUI.Forms
 
         protected override void Insert()
         {
-            frmDanhMucMenuUpdate frmUpdate = new frmDanhMucMenuUpdate
-            {
-                CapNhat = coreCommon.ThaoTacDuLieu.Them,
-                Text = "Thêm mới danh mục menu",
-            };
-            frmUpdate.ShowDialog();
-            frmUpdate.Dispose();
+            coreUI.clsDanhMucMenu.Insert(new Action(() => coreUI.InsertToList(dsData.Tables[DanhMucMenu.tableName], frmDanhMucMenuUpdate.dtUpdate)));
         }
         protected override void Copy()
         {
-            frmDanhMucMenuUpdate frmUpdate = new frmDanhMucMenuUpdate
-            {
-                CapNhat = coreCommon.ThaoTacDuLieu.Copy,
-                Text = "Sao chép danh mục menu",
-                dataRow = ((DataRowView)bsData.Current).Row
-            };
-            frmUpdate.ShowDialog();
-            frmUpdate.Dispose();
+            if (coreCommon.coreCommon.IsNull(ug.ActiveRow) || !ug.ActiveRow.IsDataRow || coreCommon.coreCommon.IsNull(ug.ActiveRow.Cells["ID"].Value)) return;
+            coreUI.clsDanhMucMenu.Copy(ug.ActiveRow.Cells["ID"].Value, new Action(() => coreUI.InsertToList(dsData.Tables[DanhMucMenu.tableName], frmDanhMucMenuUpdate.dtUpdate)));
         }
         protected override void Update()
         {
-            frmDanhMucMenuUpdate frmUpdate = new frmDanhMucMenuUpdate
-            {
-                CapNhat = coreCommon.ThaoTacDuLieu.Sua,
-                Text = "Chỉnh sửa danh mục menu",
-                dataRow = ((DataRowView)bsData.Current).Row
-            };
-            frmUpdate.ShowDialog();
-            frmUpdate.Dispose();
+            if (coreCommon.coreCommon.IsNull(ug.ActiveRow) || !ug.ActiveRow.IsDataRow || coreCommon.coreCommon.IsNull(ug.ActiveRow.Cells["ID"].Value)) return;
+            coreUI.clsDanhMucMenu.Update(ug.ActiveRow.Cells["ID"].Value, new Action(() => coreUI.UpdateToList(dsData.Tables[DanhMucMenu.tableName], frmDanhMucMenuUpdate.dtUpdate)));
         }
         protected override void Delete()
         {
-            //if (ug.ActiveRow != null && ug.ActiveRow.IsDataRow)
-            //{
-            //    deleteAction = new Action(() => { coreUI.DanhMuc.Delete(null, new Func<bool>(() => DanhMucMenuBUS.Delete(new DanhMucMenu() { ID = ug.ActiveRow.Cells["ID"].Value })), ug, bsData); });
-            //    base.Delete();
-            //}
+            if (coreCommon.coreCommon.IsNull(ug.ActiveRow) || !ug.ActiveRow.IsDataRow || coreCommon.coreCommon.IsNull(ug.ActiveRow.Cells["ID"].Value)) return;
+            if (DanhMucMenuBUS.Delete(ug.ActiveRow.Cells["ID"].Value))
+                coreUI.ugDeleteRow(bsData, ug);
         }
 
         protected override void InsertChiTiet()
         {
+            if (coreCommon.coreCommon.IsNull(ug.ActiveRow) || !ug.ActiveRow.IsDataRow || coreCommon.coreCommon.IsNull(ug.ActiveRow.Cells["ID"].Value)) return;
             switch (tabChiTiet.SelectedTab.Key.ToUpper())
             {
                 case "TABCHITIET":
-                    frmDanhMucMenuLoaiDoiTuongUpdate frmDanhMucMenuLoaiDoiTuongUpdate = new frmDanhMucMenuLoaiDoiTuongUpdate
-                    {
-                        CapNhat = coreCommon.ThaoTacDuLieu.Them,
-                        Text = "Thêm mới danh mục menu loại đối tượng",
-                        IDDanhMucMenu = ((DataRowView)bsData.Current).Row["ID"],
-                    };
-                    frmDanhMucMenuLoaiDoiTuongUpdate.ShowDialog();
-                    frmDanhMucMenuLoaiDoiTuongUpdate.Dispose();
+                    coreUI.clsDanhMucMenuLoaiDoiTuong.Insert(new Action(() => coreUI.InsertToList(dsData.Tables[DanhMucMenuLoaiDoiTuong.tableName], frmDanhMucMenuLoaiDoiTuongUpdate.dtUpdate)));
                     break;
                 case "TABCHUNGTU":
-                    frmDanhMucMenuChungTuUpdate frmDanhMucMenuChungTuUpdate = new frmDanhMucMenuChungTuUpdate
-                    {
-                        CapNhat = coreCommon.ThaoTacDuLieu.Them,
-                        Text = "Thêm mới danh mục menu loại chứng từ",
-                        IDDanhMucMenu = ((DataRowView)bsData.Current).Row["ID"],
-                    };
-                    frmDanhMucMenuChungTuUpdate.ShowDialog();
-                    frmDanhMucMenuChungTuUpdate.Dispose();
+                    coreUI.clsDanhMucMenuChungTu.Insert(new Action(() => coreUI.InsertToList(dsData.Tables[DanhMucMenuChungTu.tableName], frmDanhMucMenuChungTuUpdate.dtUpdate)));
                     break;
                 case "TABBAOCAO":
-                    frmDanhMucMenuBaoCaoUpdate frmDanhMucMenuBaoCaoUpdate = new frmDanhMucMenuBaoCaoUpdate
-                    {
-                        CapNhat = coreCommon.ThaoTacDuLieu.Them,
-                        Text = "Thêm mới danh mục menu báo cáo",
-                        IDDanhMucMenu = ((DataRowView)bsData.Current).Row["ID"],
-                    };
-                    frmDanhMucMenuBaoCaoUpdate.ShowDialog();
-                    frmDanhMucMenuBaoCaoUpdate.Dispose();
+                    coreUI.clsDanhMucMenuBaoCao.Insert(new Action(() => coreUI.InsertToList(dsData.Tables[DanhMucMenuBaoCao.tableName], frmDanhMucMenuBaoCaoUpdate.dtUpdate)));
                     break;
             }
         }
-
-
         protected override void UpdateChiTiet()
         {
-            //base.UpdateChiTiet();
-            //if (!bContinue) return;
             switch (tabChiTiet.SelectedTab.Key.ToUpper())
             {
                 case "TABCHITIET":
-                    frmDanhMucMenuLoaiDoiTuongUpdate frmDanhMucMenuLoaiDoiTuongUpdate = new frmDanhMucMenuLoaiDoiTuongUpdate
-                    {
-                        CapNhat = coreCommon.ThaoTacDuLieu.Sua,
-                        Text = "Chỉnh sửa danh mục menu loại đối tượng",
-                        IDDanhMucMenu = ((DataRowView)bsDataChiTiet.Current).Row["IDDanhMucMenu"],
-                        dataRow = ((DataRowView)bsDataChiTiet.Current).Row,
-                    };
-                    frmDanhMucMenuLoaiDoiTuongUpdate.ShowDialog();
-                    frmDanhMucMenuLoaiDoiTuongUpdate.Dispose();
+                    if (coreCommon.coreCommon.IsNull(ugChiTiet.ActiveRow) || !ugChiTiet.ActiveRow.IsDataRow || coreCommon.coreCommon.IsNull(ugChiTiet.ActiveRow.Cells["ID"].Value)) return;
+                    coreUI.clsDanhMucMenuLoaiDoiTuong.Update(ugChiTiet.ActiveRow.Cells["ID"].Value, new Action(() => coreUI.UpdateToList(dsData.Tables[DanhMucMenuLoaiDoiTuong.tableName], frmDanhMucMenuLoaiDoiTuongUpdate.dtUpdate)));
                     break;
                 case "TABCHUNGTU":
-                    frmDanhMucMenuChungTuUpdate frmDanhMucMenuChungTuUpdate = new frmDanhMucMenuChungTuUpdate
-                    {
-                        CapNhat = coreCommon.ThaoTacDuLieu.Sua,
-                        Text = "Chỉnh sửa danh mục menu chứng từ",
-                        IDDanhMucMenu = ((DataRowView)bsChungTu.Current).Row["IDDanhMucMenu"],
-                        dataRow = ((DataRowView)bsChungTu.Current).Row,
-                    };
-                    frmDanhMucMenuChungTuUpdate.ShowDialog();
-                    frmDanhMucMenuChungTuUpdate.Dispose();
+                    if (coreCommon.coreCommon.IsNull(ugChungTu.ActiveRow) || !ugChungTu.ActiveRow.IsDataRow || coreCommon.coreCommon.IsNull(ugChungTu.ActiveRow.Cells["ID"].Value)) return;
+                    coreUI.clsDanhMucMenuChungTu.Update(ugChungTu.ActiveRow.Cells["ID"].Value, new Action(() => coreUI.UpdateToList(dsData.Tables[DanhMucMenuChungTu.tableName], frmDanhMucMenuChungTuUpdate.dtUpdate)));
                     break;
                 case "TABBAOCAO":
-                    frmDanhMucMenuBaoCaoUpdate frmDanhMucMenuBaoCaoUpdate = new frmDanhMucMenuBaoCaoUpdate
-                    {
-                        CapNhat = coreCommon.ThaoTacDuLieu.Sua,
-                        Text = "Chỉnh sửa danh mục menu loại báo cáo",
-                        IDDanhMucMenu = ((DataRowView)bsBaoCao.Current).Row["IDDanhMucMenu"],
-                        dataRow = ((DataRowView)bsBaoCao.Current).Row,
-                    };
-                    frmDanhMucMenuBaoCaoUpdate.ShowDialog();
-                    frmDanhMucMenuBaoCaoUpdate.Dispose();
+                    if (coreCommon.coreCommon.IsNull(ugBaoCao.ActiveRow) || !ugBaoCao.ActiveRow.IsDataRow || coreCommon.coreCommon.IsNull(ugBaoCao.ActiveRow.Cells["ID"].Value)) return;
+                    coreUI.clsDanhMucMenuBaoCao.Update(ugBaoCao.ActiveRow.Cells["ID"].Value, new Action(() => coreUI.UpdateToList(dsData.Tables[DanhMucMenuBaoCao.tableName], frmDanhMucMenuBaoCaoUpdate.dtUpdate)));
                     break;
             }
         }
 
         protected override void DeleteChiTiet()
         {
-            //switch (tabChiTiet.SelectedTab.Key.ToUpper())
-            //{
-            //    case "TABCHITIET":
-            //        if (ugChiTiet.ActiveRow != null && ugChiTiet.ActiveRow.IsDataRow)
-            //        {
-            //            deleteAction = new Action(() => { coreUI.DanhMuc.Delete(null, new Func<bool>(() => DanhMucMenuLoaiDoiTuongBUS.Delete(new DanhMucMenuLoaiDoiTuong() { ID = ugChiTiet.ActiveRow.Cells["ID"].Value })), ugChiTiet, bsDataChiTiet); });
-            //            base.Delete();
-            //        }
-            //        break;
-            //    case "TABCHUNGTU":
-            //        if (ugChungTu.ActiveRow != null && ugChungTu.ActiveRow.IsDataRow)
-            //        {
-            //            deleteAction = new Action(() => { coreUI.DanhMuc.Delete(null, new Func<bool>(() => DanhMucMenuChungTuBUS.Delete(new DanhMucMenuChungTu() { ID = ugChungTu.ActiveRow.Cells["ID"].Value })), ugChungTu, bsChungTu); });
-            //            base.Delete();
-            //        }
-            //        break;
-            //    case "TABBAOCAO":
-            //        if (ugBaoCao.ActiveRow != null && ugBaoCao.ActiveRow.IsDataRow)
-            //        {
-            //            deleteAction = new Action(() => { coreUI.DanhMuc.Delete(null, new Func<bool>(() => DanhMucMenuBaoCaoBUS.Delete(new DanhMucMenuBaoCao() { ID = ugBaoCao.ActiveRow.Cells["ID"].Value })), ugBaoCao, bsBaoCao); });
-            //            base.Delete();
-            //        }
-            //        break;
-            //}
+            switch (tabChiTiet.SelectedTab.Key.ToUpper())
+            {
+                case "TABCHITIET":
+                    if (coreCommon.coreCommon.IsNull(ugChiTiet.ActiveRow) || !ugChiTiet.ActiveRow.IsDataRow || coreCommon.coreCommon.IsNull(ugChiTiet.ActiveRow.Cells["ID"].Value)) return;
+                    if (DanhMucMenuLoaiDoiTuongBUS.Delete(ugChiTiet.ActiveRow.Cells["ID"].Value))
+                        coreUI.ugDeleteRow(bsDataChiTiet, ugChiTiet);
+                    break;
+                case "TABCHUNGTU":
+                    if (coreCommon.coreCommon.IsNull(ugChungTu.ActiveRow) || !ugChungTu.ActiveRow.IsDataRow || coreCommon.coreCommon.IsNull(ugChungTu.ActiveRow.Cells["ID"].Value)) return;
+                    if (DanhMucMenuChungTuBUS.Delete(ugChungTu.ActiveRow.Cells["ID"].Value))
+                        coreUI.ugDeleteRow(bsChungTu, ugChungTu);
+                    break;
+                case "TABBAOCAO":
+                    if (coreCommon.coreCommon.IsNull(ugBaoCao.ActiveRow) || !ugBaoCao.ActiveRow.IsDataRow || coreCommon.coreCommon.IsNull(ugBaoCao.ActiveRow.Cells["ID"].Value)) return;
+                    if (DanhMucMenuBaoCaoBUS.Delete(ugBaoCao.ActiveRow.Cells["ID"].Value))
+                        coreUI.ugDeleteRow(bsBaoCao, ugBaoCao);
+                    break;
+            }
         }
 
         private void ugBaoCao_DoubleClickRow(object sender, Infragistics.Win.UltraWinGrid.DoubleClickRowEventArgs e)
         {
-            if (ugBaoCao.ActiveRow == null || !ugBaoCao.ActiveRow.IsDataRow) return;
-            frmDanhMucMenuBaoCaoUpdate frmDanhMucMenuBaoCaoUpdate = new frmDanhMucMenuBaoCaoUpdate
-            {
-                CapNhat = coreCommon.ThaoTacDuLieu.Sua,
-                Text = "Chỉnh sửa danh mục menu báo cáo",
-                IDDanhMucMenu = ((DataRowView)bsBaoCao.Current).Row["IDDanhMucMenu"],
-                dataRow = ((DataRowView)bsBaoCao.Current).Row,
-            };
-            frmDanhMucMenuBaoCaoUpdate.ShowDialog();
-            frmDanhMucMenuBaoCaoUpdate.Dispose();
+            if (coreCommon.coreCommon.IsNull(ugBaoCao.ActiveRow) || !ugBaoCao.ActiveRow.IsDataRow || coreCommon.coreCommon.IsNull(ugBaoCao.ActiveRow.Cells["ID"].Value)) return;
+            coreUI.clsDanhMucMenuBaoCao.Update(ugBaoCao.ActiveRow.Cells["ID"].Value, new Action(() => coreUI.UpdateToList(dsData.Tables[DanhMucMenuBaoCao.tableName], frmDanhMucMenuBaoCaoUpdate.dtUpdate)));
         }
-
-        //private void ugChiTiet_DoubleClickRow(object sender, Infragistics.Win.UltraWinGrid.DoubleClickRowEventArgs e)
-        //{
-        //    if (ugChiTiet.ActiveRow == null || !ugChiTiet.ActiveRow.IsDataRow) return;
-        //    frmDanhMucMenuLoaiDoiTuongUpdate frmDanhMucMenuLoaiDoiTuongUpdate = new frmDanhMucMenuLoaiDoiTuongUpdate
-        //    {
-        //        CapNhat = coreCommon.ThaoTacDuLieu.Sua,
-        //        Text = "Chỉnh sửa danh mục menu loại đối tượng",
-        //        IDDanhMucMenu = ((DataRowView)bsDataChiTiet.Current).Row["IDDanhMucMenu"],
-        //        dataTable = dsData.Tables[DanhMucMenuLoaiDoiTuong.tableName],
-        //        dataRow = ((DataRowView)bsDataChiTiet.Current).Row,
-        //    };
-        //    frmDanhMucMenuLoaiDoiTuongUpdate.ShowDialog();
-        //    frmDanhMucMenuLoaiDoiTuongUpdate.Dispose();
-        //}
-
         private void ugChungTu_DoubleClickRow(object sender, Infragistics.Win.UltraWinGrid.DoubleClickRowEventArgs e)
         {
-            if (ugChungTu.ActiveRow == null || !ugChungTu.ActiveRow.IsDataRow) return;
-            frmDanhMucMenuChungTuUpdate frmDanhMucMenuChungTuUpdate = new frmDanhMucMenuChungTuUpdate
-            {
-                CapNhat = coreCommon.ThaoTacDuLieu.Sua,
-                Text = "Chỉnh sửa danh mục menu chứng tù",
-                IDDanhMucMenu = ((DataRowView)bsChungTu.Current).Row["IDDanhMucMenu"],
-                dataRow = ((DataRowView)bsChungTu.Current).Row,
-            };
-            frmDanhMucMenuChungTuUpdate.ShowDialog();
-            frmDanhMucMenuChungTuUpdate.Dispose();
+            if (coreCommon.coreCommon.IsNull(ugChungTu.ActiveRow) || !ugChungTu.ActiveRow.IsDataRow || coreCommon.coreCommon.IsNull(ugChungTu.ActiveRow.Cells["ID"].Value)) return;
+            coreUI.clsDanhMucMenuChungTu.Update(ugChungTu.ActiveRow.Cells["ID"].Value, new Action(() => coreUI.UpdateToList(dsData.Tables[DanhMucMenuChungTu.tableName], frmDanhMucMenuChungTuUpdate.dtUpdate)));
         }
     }
 }

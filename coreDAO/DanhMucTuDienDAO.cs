@@ -15,7 +15,7 @@ namespace coreDAO
             DataTable dt = dao.tableList(sqlParameters, DanhMucTuDien.listProcedureName, DanhMucTuDien.tableName);
             return dt;
         }
-        public bool Insert(ref DanhMucTuDien obj)
+        public bool Insert(DanhMucTuDien obj)
         {
             try
             {
@@ -44,16 +44,8 @@ namespace coreDAO
                             int rowAffected = sqlCommand.ExecuteNonQuery();
                             obj.ID = Int64.Parse(sqlParameters[0].Value.ToString());
                             obj.CreateDate = DateTime.Parse(sqlParameters[sqlParameters.Length - 1].Value.ToString());
-                            if (NhatKyDuLieuDAO.Insert(coreCommon.coreCommon.AllPropertiesAndValues(obj), obj.ID, null, null, coreCommon.ThaoTacDuLieu.Them, coreCommon.coreCommon.TraTuDien(DanhMucTuDien.tableName), sqlConnection, sqlTransaction))
-                            {
-                                sqlTransaction.Commit();
-                                return true;
-                            }
-                            else
-                            {
-                                sqlTransaction.Rollback();
-                                return false;
-                            }
+                            sqlTransaction.Commit();
+                            return true;
                         }
                     }
                 }
@@ -64,7 +56,7 @@ namespace coreDAO
                 return false;
             }
         }
-        public bool Update(ref DanhMucTuDien obj)
+        public bool Update(DanhMucTuDien obj)
         {
             try
             {
@@ -89,16 +81,8 @@ namespace coreDAO
                             int rowAffected = sqlCommand.ExecuteNonQuery();
                             obj.ID = Int64.Parse(sqlParameters[0].Value.ToString());
                             obj.CreateDate = DateTime.Parse(sqlParameters[sqlParameters.Length - 1].Value.ToString());
-                            if (NhatKyDuLieuDAO.Insert(coreCommon.coreCommon.AllPropertiesAndValues(obj), obj.ID, null, null, coreCommon.ThaoTacDuLieu.Sua, coreCommon.coreCommon.TraTuDien(DanhMucTuDien.tableName), sqlConnection, sqlTransaction))
-                            {
-                                sqlTransaction.Commit();
-                                return true;
-                            }
-                            else
-                            {
-                                sqlTransaction.Rollback();
-                                return false;
-                            }
+                            sqlTransaction.Commit();
+                            return true;
                         }
                     }
                 }
@@ -109,7 +93,7 @@ namespace coreDAO
                 return false;
             }
         }
-        public bool Delete(DanhMucTuDien obj)
+        public bool Delete(object ID)
         {
             try
             {
@@ -122,19 +106,11 @@ namespace coreDAO
                         {
                             sqlCommand.CommandType = CommandType.StoredProcedure;
                             SqlParameter[] sqlParameters = new SqlParameter[1];
-                            sqlParameters[0] = new SqlParameter("@ID", obj.ID);
+                            sqlParameters[0] = new SqlParameter("@ID", ID);
                             sqlCommand.Parameters.AddRange(sqlParameters);
                             int rowAffected = sqlCommand.ExecuteNonQuery();
-                            if (NhatKyDuLieuDAO.Insert(coreCommon.coreCommon.AllPropertiesAndValues(obj), obj.ID, null, null, coreCommon.ThaoTacDuLieu.Xoa, coreCommon.coreCommon.TraTuDien(DanhMucTuDien.tableName), sqlConnection, sqlTransaction))
-                            {
-                                sqlTransaction.Commit();
-                                return true;
-                            }
-                            else
-                            {
-                                sqlTransaction.Rollback();
-                                return false;
-                            }
+                            sqlTransaction.Commit();
+                            return true;
                         }
                     }
                 }

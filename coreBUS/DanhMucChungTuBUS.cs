@@ -26,36 +26,36 @@ namespace coreBUS
                 return null;
             }
         }
-        public static bool Insert(ref DanhMucChungTu obj)
+        public static bool Insert(DanhMucChungTu obj)
         {
             try
             {
                 DanhMucChungTuDAO dao = new DanhMucChungTuDAO();
-                return dao.Insert(ref obj);
+                return dao.Insert(obj);
             }
             catch (Exception ex)
             {
                 return false;
             }
         }
-        public static bool Update(ref DanhMucChungTu obj)
+        public static bool Update(DanhMucChungTu obj)
         {
             try
             {
                 DanhMucChungTuDAO dao = new DanhMucChungTuDAO();
-                return dao.Update(ref obj);
+                return dao.Update(obj);
             }
             catch (Exception ex)
             {
                 return false;
             }
         }
-        public static bool Delete(DanhMucChungTu obj)
+        public static bool Delete(object ID)
         {
             try
             {
                 DanhMucChungTuDAO dao = new DanhMucChungTuDAO();
-                return dao.Delete(obj);
+                return dao.Delete(ID);
             }
             catch (Exception ex)
             {
@@ -92,41 +92,38 @@ namespace coreBUS
                 return null;
             }
         }
-        public static bool Insert(ref DanhMucChungTuTrangThai obj)
+        public static bool Insert(DanhMucChungTuTrangThai obj)
         {
             try
             {
                 DanhMucChungTuTrangThaiDAO dao = new DanhMucChungTuTrangThaiDAO();
-                return dao.Insert(ref obj);
+                return dao.Insert(obj);
             }
             catch (Exception ex)
             {
                 return false;
             }
         }
-        public static bool Update(ref DanhMucChungTuTrangThai obj)
+        public static bool Update(DanhMucChungTuTrangThai obj)
         {
             try
             {
                 DanhMucChungTuTrangThaiDAO dao = new DanhMucChungTuTrangThaiDAO();
-                return dao.Update(ref obj);
+                return dao.Update(obj);
             }
             catch (Exception ex)
             {
                 return false;
             }
         }
-        public static bool Delete(DanhMucChungTuTrangThai obj)
+        public static bool Delete(object ID)
         {
             try
             {
                 DanhMucChungTuTrangThaiDAO dao = new DanhMucChungTuTrangThaiDAO();
-                return dao.Delete(obj);
+                return dao.Delete(ID);
             }
-            catch (Exception ex)
-            {
-                return false;
-            }
+            catch (Exception ex) { return false; }
         }
 
     }
@@ -145,41 +142,38 @@ namespace coreBUS
                 return null;
             }
         }
-        public static bool Insert(ref DanhMucChungTuIn obj)
+        public static bool Insert(DanhMucChungTuIn obj)
         {
             try
             {
                 DanhMucChungTuInDAO dao = new DanhMucChungTuInDAO();
-                return dao.Insert(ref obj);
+                return dao.Insert(obj);
             }
             catch (Exception ex)
             {
                 return false;
             }
         }
-        public static bool Update(ref DanhMucChungTuIn obj)
+        public static bool Update(DanhMucChungTuIn obj)
         {
             try
             {
                 DanhMucChungTuInDAO dao = new DanhMucChungTuInDAO();
-                return dao.Update(ref obj);
+                return dao.Update(obj);
             }
             catch (Exception ex)
             {
                 return false;
             }
         }
-        public static bool Delete(DanhMucChungTuIn obj)
+        public static bool Delete(object ID)
         {
             try
             {
                 DanhMucChungTuInDAO dao = new DanhMucChungTuInDAO();
-                return dao.Delete(obj);
+                return dao.Delete(ID);
             }
-            catch (Exception ex)
-            {
-                return false;
-            }
+            catch (Exception ex) { return false; }
         }
 
     }
@@ -198,41 +192,38 @@ namespace coreBUS
                 return null;
             }
         }
-        public static bool Insert(ref DanhMucChungTuQuyTrinh obj)
+        public static bool Insert(DanhMucChungTuQuyTrinh obj)
         {
             try
             {
                 DanhMucChungTuQuyTrinhDAO dao = new DanhMucChungTuQuyTrinhDAO();
-                return dao.Insert(ref obj);
+                return dao.Insert(obj);
             }
             catch (Exception ex)
             {
                 return false;
             }
         }
-        public static bool Update(ref DanhMucChungTuQuyTrinh obj)
+        public static bool Update(DanhMucChungTuQuyTrinh obj)
         {
             try
             {
                 DanhMucChungTuQuyTrinhDAO dao = new DanhMucChungTuQuyTrinhDAO();
-                return dao.Update(ref obj);
+                return dao.Update(obj);
             }
             catch (Exception ex)
             {
                 return false;
             }
         }
-        public static bool Delete(DanhMucChungTuQuyTrinh obj)
+        public static bool Delete(object ID)
         {
             try
             {
                 DanhMucChungTuQuyTrinhDAO dao = new DanhMucChungTuQuyTrinhDAO();
-                return dao.Delete(obj);
+                return dao.Delete(ID);
             }
-            catch (Exception ex)
-            {
-                return false;
-            }
+            catch (Exception ex) { return false; }
         }
 
     }

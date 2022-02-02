@@ -30,41 +30,38 @@ namespace coreBUS
                 return null;
             }
         }
-        public static bool Insert(ref DanhMucNguoiSuDung obj)
+        public static bool Insert(DanhMucNguoiSuDung obj)
         {
             try
             {
                 DanhMucNguoiSuDungDAO dao = new DanhMucNguoiSuDungDAO();
-                return dao.Insert(ref obj);
+                return dao.Insert(obj);
             }
             catch (Exception ex)
             {
                 return false;
             }
         }
-        public static bool Update(ref DanhMucNguoiSuDung obj)
+        public static bool Update(DanhMucNguoiSuDung obj)
         {
             try
             {
                 DanhMucNguoiSuDungDAO dao = new DanhMucNguoiSuDungDAO();
-                return dao.Update(ref obj);
+                return dao.Update(obj);
             }
             catch (Exception ex)
             {
                 return false;
             }
         }
-        public static bool Delete(DanhMucNguoiSuDung obj)
+        public static bool Delete(object ID)
         {
             try
             {
                 DanhMucNguoiSuDungDAO dao = new DanhMucNguoiSuDungDAO();
-                return dao.Delete(obj);
+                return dao.Delete(ID);
             }
-            catch (Exception ex)
-            {
-                return false;
-            }
+            catch (Exception ex) { return false; }
         }
         public static object GetID(object Ma, object Password, out object IDDanhMucPhanQuyen, out bool isAdmin)
         {

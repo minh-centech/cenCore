@@ -41,16 +41,8 @@
             Infragistics.Win.Appearance appearance10 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance11 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance12 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance13 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance14 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance15 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance16 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance17 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance18 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance19 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance20 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance21 = new Infragistics.Win.Appearance();
             ((System.ComponentModel.ISupportInitialize)(this.ug)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.UltraToolbarsManager1)).BeginInit();
             this.SuspendLayout();
             // 
             // ug
@@ -130,18 +122,23 @@
             this.ug.DisplayLayout.UseFixedHeaders = true;
             this.ug.DisplayLayout.ViewStyle = Infragistics.Win.UltraWinGrid.ViewStyle.SingleBand;
             this.ug.DisplayLayout.ViewStyleBand = Infragistics.Win.UltraWinGrid.ViewStyleBand.OutlookGroupBy;
-            this.ug.Location = new System.Drawing.Point(0, 46);
-            this.ug.Size = new System.Drawing.Size(543, 377);
-            
+            this.ug.Location = new System.Drawing.Point(0, 25);
+            this.ug.Size = new System.Drawing.Size(543, 404);
             // 
-            // frmDanhMucDonVi
+            // UltraToolbarsManager1
+            // 
+            this.UltraToolbarsManager1.MenuSettings.ForceSerialization = true;
+            this.UltraToolbarsManager1.ToolbarSettings.ForceSerialization = true;
+            // 
+            // frm_dtList
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(543, 429);
-            this.Name = "frmDanhMucDonVi";
+            this.Name = "frm_dtList";
             this.Text = "frmDanhMuc";
             ((System.ComponentModel.ISupportInitialize)(this.ug)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.UltraToolbarsManager1)).EndInit();
             this.ResumeLayout(false);
 
         }

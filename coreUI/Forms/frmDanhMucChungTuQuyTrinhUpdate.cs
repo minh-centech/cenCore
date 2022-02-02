@@ -29,7 +29,7 @@ namespace coreUI.Forms
                 }
                 else
                 {
-                    CapNhat = 1;
+                    CapNhat = coreCommon.ThaoTacDuLieu.Them;
                     //Xóa text box
                     txtMaDanhMucChungTuQuyTrinh.Value = null;
                     txtTenDanhMucChungTuQuyTrinh.Value = null;
@@ -39,7 +39,7 @@ namespace coreUI.Forms
         }
         private bool Save()
         {
-            if (CapNhat == 1 || CapNhat == 3)
+            if (CapNhat == coreCommon.ThaoTacDuLieu.Them || CapNhat == coreCommon.ThaoTacDuLieu.Copy)
             {
                 obj = new coreDTO.DanhMucChungTuQuyTrinh
                 {
@@ -64,7 +64,7 @@ namespace coreUI.Forms
                     EditDate = null
                 };
             }
-            bool OK = (CapNhat == 1 || CapNhat == 3) ? coreBUS.DanhMucChungTuQuyTrinhBUS.Insert(ref obj) : coreBUS.DanhMucChungTuQuyTrinhBUS.Update(ref obj);
+            bool OK = (CapNhat == coreCommon.ThaoTacDuLieu.Them || CapNhat == coreCommon.ThaoTacDuLieu.Copy) ? coreBUS.DanhMucChungTuQuyTrinhBUS.Insert(obj) : coreBUS.DanhMucChungTuQuyTrinhBUS.Update(obj);
             if (OK && obj != null && Int64.TryParse(obj.ID.ToString(), out Int64 _ID) && _ID > 0)
             {
                 dtUpdate = coreBUS.DanhMucChungTuQuyTrinhBUS.List(obj.ID);
@@ -93,8 +93,10 @@ namespace coreUI.Forms
 
         private void frmDanhMucDonViUpdate_Load(object sender, EventArgs e)
         {
-            if (CapNhat >= 2)
+            if (CapNhat >= coreCommon.ThaoTacDuLieu.Sua)
             {
+                dataRow = coreBUS.DanhMucChungTuQuyTrinhBUS.List(ID).Rows[0];
+                if (coreCommon.coreCommon.IsNull(dataRow)) { coreCommon.coreCommon.ErrorMessageOkOnly("Không lấy được dữ liệu!"); this.DialogResult = DialogResult.Cancel; }
                 IDDanhMucChungTu = dataRow["IDDanhMucChungTu"];
                 txtMaDanhMucChungTuQuyTrinh.Value = dataRow["MaDanhMucChungTuQuyTrinh"];
                 txtMaDanhMucChungTuQuyTrinh.ID = dataRow["IDDanhMucChungTuQuytrinh"];

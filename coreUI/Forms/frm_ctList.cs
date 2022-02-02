@@ -19,12 +19,10 @@ namespace coreUI.Forms
         public Action fInsert, fUpdate;
         public Func<bool> fDelete;
         public string FixedColumnsList, HiddenColumnsList;
-        static object IDChungTu;
         public frm_ctList()
         {
             InitializeComponent();
         }
-
         private void frm_ctList_Load(object sender, EventArgs e)
         {
             //Add các button là mẫu in chứng từ
@@ -38,7 +36,6 @@ namespace coreUI.Forms
                 btChungTuIn.SharedProps.Visible = true;
             }
         }
-
         protected override void List()
         {
             dtData = fList();
@@ -64,30 +61,27 @@ namespace coreUI.Forms
                 {
                     Found = false;
                     //Cập nhật dòng chỉnh sửa
-                    foreach (DataRow drChungTuUpdate in dtUpdate.Rows)
+                    foreach (DataRow drUpdate in dtUpdate.Rows)
                     {
-                        if (dtData.Rows[i].RowState != DataRowState.Deleted && dtData.Rows[i]["ID"].ToString() == drChungTuUpdate["ID"].ToString())
+                        if (dtData.Rows[i].RowState != DataRowState.Deleted && dtData.Rows[i]["ID"].ToString() == drUpdate["ID"].ToString())
                         {
-                            dtData.Rows[i].ItemArray = drChungTuUpdate.ItemArray;
+                            dtData.Rows[i].ItemArray = drUpdate.ItemArray;
                             Found = true;
                         }
                     }
-                    //Xóa dòng bị xóa
-                    if (!coreCommon.coreCommon.IsNull(IDChungTu))
-                        if (!Found && dtData.Rows[i].RowState != DataRowState.Deleted && dtData.Columns.Contains("IDChungTu") && dtData.Rows[i]["IDChungTu"].ToString() == IDChungTu.ToString()) dtData.Rows[i].Delete();
                 }
                 //Thêm mới những dòng được thêm
-                foreach (DataRow drChungTuUpdate in dtUpdate.Rows)
+                foreach (DataRow drUpdate in dtUpdate.Rows)
                 {
                     Found = false;
                     foreach (DataRow drData in dtData.Rows)
                     {
-                        if (drData.RowState != DataRowState.Deleted && drChungTuUpdate["ID"].ToString() == drData["ID"].ToString())
+                        if (drData.RowState != DataRowState.Deleted && drUpdate["ID"].ToString() == drData["ID"].ToString())
                         {
                             Found = true;
                         }
                     }
-                    if (!Found) dtData.ImportRow(drChungTuUpdate);
+                    if (!Found) dtData.ImportRow(drUpdate);
                 }
                 dtData.AcceptChanges();
             }
@@ -114,7 +108,6 @@ namespace coreUI.Forms
                 return;
             }
             if (ug.ActiveRow == null || !ug.ActiveRow.IsDataRow || fUpdate == null) return;
-            IDChungTu = (dtData.Columns.Contains("IDChungTu")) ? ug.ActiveRow.Cells["IDChungTu"].Value.ToString() : null;
             fUpdate();
         }
         protected override void Delete()
@@ -132,17 +125,7 @@ namespace coreUI.Forms
             if (fDelete != null)
                 OK = fDelete();
             if (OK)
-            {
-                int i = ug.ActiveRow.Index;
-                bsData.RemoveCurrent();
-                while (i > ug.Rows.Count - 1) i -= 1;
-                if (i <= ug.Rows.Count - 1 && i >= 0)
-                {
-                    ug.Focus();
-                    ug.Rows[i].Activate();
-                }
-                bsData.EndEdit();
-            }
+                coreUI.ugDeleteRow(bsData, ug);
         }
     }
 }

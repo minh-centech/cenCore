@@ -28,7 +28,7 @@ namespace coreDAO
             DataTable dt = dao.tableList(sqlParameters, DanhMucDoiTuong.validMaProcedureName, DanhMucDoiTuong.tableName);
             return dt;
         }
-        public bool Insert(ref DanhMucDoiTuong obj)
+        public bool Insert(DanhMucDoiTuong obj)
         {
             try
             {
@@ -72,7 +72,7 @@ namespace coreDAO
                 return false;
             }
         }
-        public bool Update(ref DanhMucDoiTuong obj)
+        public bool Update(DanhMucDoiTuong obj)
         {
             try
             {
@@ -100,16 +100,8 @@ namespace coreDAO
                             int rowAffected = sqlCommand.ExecuteNonQuery();
                             obj.ID = Int64.Parse(sqlParameters[0].Value.ToString());
                             obj.EditDate = DateTime.Parse(sqlParameters[sqlParameters.Length - 1].Value.ToString());
-                            if (NhatKyDuLieuDAO.Insert(coreCommon.coreCommon.AllPropertiesAndValues(obj), obj.ID, null, null, coreCommon.ThaoTacDuLieu.Sua, coreCommon.coreCommon.TraTuDien(DanhMucLoaiDoiTuongDAO.GetMa(obj.IDDanhMucLoaiDoiTuong).ToString()), sqlConnection, sqlTransaction))
-                            {
-                                sqlTransaction.Commit();
-                                return true;
-                            }
-                            else
-                            {
-                                sqlTransaction.Rollback();
-                                return false;
-                            }
+                            sqlTransaction.Commit();
+                            return true;
                         }
                     }
                 }
@@ -120,7 +112,7 @@ namespace coreDAO
                 return false;
             }
         }
-        public bool Delete(DanhMucDoiTuong obj)
+        public bool Delete(object ID)
         {
             try
             {
@@ -133,7 +125,7 @@ namespace coreDAO
                         {
                             sqlCommand.CommandType = CommandType.StoredProcedure;
                             SqlParameter[] sqlParameters = new SqlParameter[1];
-                            sqlParameters[0] = new SqlParameter("@ID", obj.ID);
+                            sqlParameters[0] = new SqlParameter("@ID", ID);
                             sqlCommand.Parameters.AddRange(sqlParameters);
                             int rowAffected = sqlCommand.ExecuteNonQuery();
                             sqlTransaction.Commit();

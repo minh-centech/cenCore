@@ -14,6 +14,56 @@ namespace coreUI
 {
     public class coreUI
     {
+        public static void ugDeleteRow(BindingSource bsData, UltraGrid ug)
+        {
+            int i = ug.ActiveRow.Index;
+            bsData.RemoveCurrent();
+            while (i > ug.Rows.Count - 1) i -= 1;
+            if (i <= ug.Rows.Count - 1 && i >= 0)
+            {
+                ug.Focus();
+                ug.Rows[i].Activate();
+            }
+            bsData.EndEdit();
+        }
+        public static void InsertToList(DataTable dtData, DataTable dtUpdate)
+        {
+            dtData.Merge(dtUpdate);
+        }
+        public static void UpdateToList(DataTable dtData, DataTable dtUpdate)
+        {
+            if (!coreCommon.coreCommon.IsNull(dtUpdate))
+            {
+                bool Found = false;
+                for (int i = dtData.Rows.Count - 1; i >= 0; i--)
+                {
+                    Found = false;
+                    //Cập nhật dòng chỉnh sửa
+                    foreach (DataRow drUpdate in dtUpdate.Rows)
+                    {
+                        if (dtData.Rows[i].RowState != DataRowState.Deleted && dtData.Rows[i]["ID"].ToString() == drUpdate["ID"].ToString())
+                        {
+                            dtData.Rows[i].ItemArray = drUpdate.ItemArray;
+                            Found = true;
+                        }
+                    }
+                }
+                //Thêm mới những dòng được thêm
+                foreach (DataRow drUpdate in dtUpdate.Rows)
+                {
+                    Found = false;
+                    foreach (DataRow drData in dtData.Rows)
+                    {
+                        if (drData.RowState != DataRowState.Deleted && drUpdate["ID"].ToString() == drData["ID"].ToString())
+                        {
+                            Found = true;
+                        }
+                    }
+                    if (!Found) dtData.ImportRow(drUpdate);
+                }
+                dtData.AcceptChanges();
+            }
+        }
         public class validData
         {
             public static void SetValidTextbox(saTextBox txtMa, saTextBox[] txtMoRong, Func<DataTable> validProcedure, string ValidColumnName, string ValueColumnName, string ReturnColumnList, Func<DataRow> insertProcedure, Action UpdateCustomData, Action DeleteCustomData)
@@ -244,38 +294,9 @@ namespace coreUI
                 }
             }
         }
-        public class DanhMuc
-        {
-            public static void Delete(object IDDanhMucLoaiDoiTuong, Func<bool> deleteProcedure, UltraGrid ug, BindingSource bs)
-            {
-                if (!coreCommon.coreCommon.IsNull(IDDanhMucLoaiDoiTuong))
-                {
-                    DanhMucPhanQuyenBUS.GetPhanQuyenLoaiDoiTuong(coreCommon.GlobalVariables.IDDanhMucPhanQuyen, IDDanhMucLoaiDoiTuong, out bool Xem, out bool Them, out bool Sua, out bool Xoa);
-                    if (!coreCommon.GlobalVariables.isAdmin && !Xoa)
-                    {
-                        coreCommon.coreCommon.ErrorMessageOkOnly("Bạn không có quyền xóa dữ liệu danh mục này!");
-                        return;
-                    }
-                }
-                if (coreCommon.coreCommon.QuestionMessage("Bạn có chắc chắn muốn xóa mục dữ liệu này?", 0) == DialogResult.Yes)
-                {
-                    if (deleteProcedure())
-                    {
-                        int i = ug.ActiveRow.Index;
-                        bs.RemoveCurrent();
-                        while (i > ug.Rows.Count - 1) i -= 1;
-                        if (i <= ug.Rows.Count - 1 && i >= 0)
-                        {
-                            ug.Focus();
-                            ug.Rows[i].Activate();
-                        }
-                    }
-                }
-            }
-        }
         public class clsDanhMucDoiTuong
         {
-            public static DataRow Insert(object IDDanhMucLoaiDoiTuong, DataTable dtData, Action InsertToList)
+            public static DataRow Insert(object IDDanhMucLoaiDoiTuong, Action InsertToList)
             {
                 DanhMucPhanQuyenBUS.GetPhanQuyenLoaiDoiTuong(coreCommon.GlobalVariables.IDDanhMucPhanQuyen, IDDanhMucLoaiDoiTuong, out bool Xem, out bool Them, out bool Sua, out bool Xoa);
                 if (!coreCommon.GlobalVariables.isAdmin && !Them)
@@ -287,6 +308,812 @@ namespace coreUI
                 {
                     CapNhat = coreCommon.ThaoTacDuLieu.Them,
                     IDDanhMucLoaiDoiTuong = IDDanhMucLoaiDoiTuong,
+                    InsertToList = InsertToList
+                };
+                frmUpdate.ShowDialog();
+                return frmUpdate.dataRow;
+            }
+            public static DataRow Update(object IDDanhMucLoaiDoiTuong, object IDDanhMucDoiTuong, Action UpdateToList)
+            {
+                DanhMucPhanQuyenBUS.GetPhanQuyenLoaiDoiTuong(coreCommon.GlobalVariables.IDDanhMucPhanQuyen, IDDanhMucLoaiDoiTuong, out bool Xem, out bool Them, out bool Sua, out bool Xoa);
+                if (!coreCommon.GlobalVariables.isAdmin && !Them)
+                {
+                    coreCommon.coreCommon.ErrorMessageOkOnly("Bạn không có quyền thêm mới dữ liệu danh mục này!");
+                    return null;
+                }
+                frmDanhMucDoiTuongUpdate frmUpdate = new frmDanhMucDoiTuongUpdate
+                {
+                    CapNhat = coreCommon.ThaoTacDuLieu.Them,
+                    IDDanhMucLoaiDoiTuong = IDDanhMucLoaiDoiTuong,
+                    ID = IDDanhMucDoiTuong,
+                    UpdateToList = UpdateToList
+                };
+                frmUpdate.ShowDialog();
+                return frmUpdate.dataRow;
+            }
+            public static DataRow Copy(object IDDanhMucLoaiDoiTuong, object IDDanhMucDoiTuong, Action InsertToList)
+            {
+                DanhMucPhanQuyenBUS.GetPhanQuyenLoaiDoiTuong(coreCommon.GlobalVariables.IDDanhMucPhanQuyen, IDDanhMucLoaiDoiTuong, out bool Xem, out bool Them, out bool Sua, out bool Xoa);
+                if (!coreCommon.GlobalVariables.isAdmin && !Them)
+                {
+                    coreCommon.coreCommon.ErrorMessageOkOnly("Bạn không có quyền thêm mới dữ liệu danh mục này!");
+                    return null;
+                }
+                frmDanhMucDoiTuongUpdate frmUpdate = new frmDanhMucDoiTuongUpdate
+                {
+                    CapNhat = coreCommon.ThaoTacDuLieu.Copy,
+                    IDDanhMucLoaiDoiTuong = IDDanhMucLoaiDoiTuong,
+                    ID = IDDanhMucDoiTuong,
+                    InsertToList = InsertToList
+                };
+                frmUpdate.ShowDialog();
+                return frmUpdate.dataRow;
+            }
+        }
+        public class clsDanhMucBaoCao
+        {
+            public static DataRow Insert(Action InsertToList)
+            {
+                frmDanhMucBaoCaoUpdate frmUpdate = new frmDanhMucBaoCaoUpdate
+                {
+                    CapNhat = coreCommon.ThaoTacDuLieu.Them,
+                    InsertToList = InsertToList
+                };
+                frmUpdate.ShowDialog();
+                return frmUpdate.dataRow;
+            }
+            public static DataRow Update(object IDDanhMucBaoCao, Action UpdateToList)
+            {
+                frmDanhMucBaoCaoUpdate frmUpdate = new frmDanhMucBaoCaoUpdate
+                {
+                    CapNhat = coreCommon.ThaoTacDuLieu.Them,
+                    ID = IDDanhMucBaoCao,
+                    UpdateToList = UpdateToList
+                };
+                frmUpdate.ShowDialog();
+                return frmUpdate.dataRow;
+            }
+            public static DataRow Copy(object IDDanhMucBaoCao, Action InsertToList)
+            {
+                frmDanhMucBaoCaoUpdate frmUpdate = new frmDanhMucBaoCaoUpdate
+                {
+                    CapNhat = coreCommon.ThaoTacDuLieu.Copy,
+                    ID = IDDanhMucBaoCao,
+                    InsertToList = InsertToList
+                };
+                frmUpdate.ShowDialog();
+                return frmUpdate.dataRow;
+            }
+        }
+        public class clsDanhMucBaoCaoCot
+        {
+            public static DataRow Insert(Action InsertToList)
+            {
+                frmDanhMucBaoCaoCotUpdate frmUpdate = new frmDanhMucBaoCaoCotUpdate
+                {
+                    CapNhat = coreCommon.ThaoTacDuLieu.Them,
+                    InsertToList = InsertToList
+                };
+                frmUpdate.ShowDialog();
+                return frmUpdate.dataRow;
+            }
+            public static DataRow Update(object IDDanhMucBaoCaoCot, Action UpdateToList)
+            {
+                frmDanhMucBaoCaoCotUpdate frmUpdate = new frmDanhMucBaoCaoCotUpdate
+                {
+                    CapNhat = coreCommon.ThaoTacDuLieu.Them,
+                    ID = IDDanhMucBaoCaoCot,
+                    UpdateToList = UpdateToList
+                };
+                frmUpdate.ShowDialog();
+                return frmUpdate.dataRow;
+            }
+            public static DataRow Copy(object IDDanhMucBaoCaoCot, Action InsertToList)
+            {
+                frmDanhMucBaoCaoCotUpdate frmUpdate = new frmDanhMucBaoCaoCotUpdate
+                {
+                    CapNhat = coreCommon.ThaoTacDuLieu.Copy,
+                    ID = IDDanhMucBaoCaoCot,
+                    InsertToList = InsertToList
+                };
+                frmUpdate.ShowDialog();
+                return frmUpdate.dataRow;
+            }
+        }
+        public class clsDanhMucChungTu
+        {
+            public static DataRow Insert(Action InsertToList)
+            {
+                frmDanhMucChungTuUpdate frmUpdate = new frmDanhMucChungTuUpdate
+                {
+                    CapNhat = coreCommon.ThaoTacDuLieu.Them,
+                    InsertToList = InsertToList
+                };
+                frmUpdate.ShowDialog();
+                return frmUpdate.dataRow;
+            }
+            public static DataRow Update(object IDDanhMucChungTu, Action UpdateToList)
+            {
+                frmDanhMucChungTuUpdate frmUpdate = new frmDanhMucChungTuUpdate
+                {
+                    CapNhat = coreCommon.ThaoTacDuLieu.Them,
+                    ID = IDDanhMucChungTu,
+                    UpdateToList = UpdateToList
+                };
+                frmUpdate.ShowDialog();
+                return frmUpdate.dataRow;
+            }
+            public static DataRow Copy(object IDDanhMucChungTu, Action InsertToList)
+            {
+                frmDanhMucChungTuUpdate frmUpdate = new frmDanhMucChungTuUpdate
+                {
+                    CapNhat = coreCommon.ThaoTacDuLieu.Copy,
+                    ID = IDDanhMucChungTu,
+                    InsertToList = InsertToList
+                };
+                frmUpdate.ShowDialog();
+                return frmUpdate.dataRow;
+            }
+        }
+        public class clsDanhMucChungTuIn
+        {
+            public static DataRow Insert(Action InsertToList)
+            {
+                frmDanhMucChungTuInUpdate frmUpdate = new frmDanhMucChungTuInUpdate
+                {
+                    CapNhat = coreCommon.ThaoTacDuLieu.Them,
+                    InsertToList = InsertToList
+                };
+                frmUpdate.ShowDialog();
+                return frmUpdate.dataRow;
+            }
+            public static DataRow Update(object IDDanhMucChungTuIn, Action UpdateToList)
+            {
+                frmDanhMucChungTuInUpdate frmUpdate = new frmDanhMucChungTuInUpdate
+                {
+                    CapNhat = coreCommon.ThaoTacDuLieu.Them,
+                    ID = IDDanhMucChungTuIn,
+                    UpdateToList = UpdateToList
+                };
+                frmUpdate.ShowDialog();
+                return frmUpdate.dataRow;
+            }
+            public static DataRow Copy(object IDDanhMucChungTuIn, Action InsertToList)
+            {
+                frmDanhMucChungTuInUpdate frmUpdate = new frmDanhMucChungTuInUpdate
+                {
+                    CapNhat = coreCommon.ThaoTacDuLieu.Copy,
+                    ID = IDDanhMucChungTuIn,
+                    InsertToList = InsertToList
+                };
+                frmUpdate.ShowDialog();
+                return frmUpdate.dataRow;
+            }
+        }
+        public class clsDanhMucChungTuQuyTrinh
+        {
+            public static DataRow Insert(Action InsertToList)
+            {
+                frmDanhMucChungTuQuyTrinhUpdate frmUpdate = new frmDanhMucChungTuQuyTrinhUpdate
+                {
+                    CapNhat = coreCommon.ThaoTacDuLieu.Them,
+                    InsertToList = InsertToList
+                };
+                frmUpdate.ShowDialog();
+                return frmUpdate.dataRow;
+            }
+            public static DataRow Update(object IDDanhMucChungTuQuyTrinh, Action UpdateToList)
+            {
+                frmDanhMucChungTuQuyTrinhUpdate frmUpdate = new frmDanhMucChungTuQuyTrinhUpdate
+                {
+                    CapNhat = coreCommon.ThaoTacDuLieu.Them,
+                    ID = IDDanhMucChungTuQuyTrinh,
+                    UpdateToList = UpdateToList
+                };
+                frmUpdate.ShowDialog();
+                return frmUpdate.dataRow;
+            }
+            public static DataRow Copy(object IDDanhMucChungTuQuyTrinh, Action InsertToList)
+            {
+                frmDanhMucChungTuQuyTrinhUpdate frmUpdate = new frmDanhMucChungTuQuyTrinhUpdate
+                {
+                    CapNhat = coreCommon.ThaoTacDuLieu.Copy,
+                    ID = IDDanhMucChungTuQuyTrinh,
+                    InsertToList = InsertToList
+                };
+                frmUpdate.ShowDialog();
+                return frmUpdate.dataRow;
+            }
+        }
+        public class clsDanhMucChungTuTrangThai
+        {
+            public static DataRow Insert(Action InsertToList)
+            {
+                frmDanhMucChungTuTrangThaiUpdate frmUpdate = new frmDanhMucChungTuTrangThaiUpdate
+                {
+                    CapNhat = coreCommon.ThaoTacDuLieu.Them,
+                    InsertToList = InsertToList
+                };
+                frmUpdate.ShowDialog();
+                return frmUpdate.dataRow;
+            }
+            public static DataRow Update(object IDDanhMucChungTuTrangThai, Action UpdateToList)
+            {
+                frmDanhMucChungTuTrangThaiUpdate frmUpdate = new frmDanhMucChungTuTrangThaiUpdate
+                {
+                    CapNhat = coreCommon.ThaoTacDuLieu.Them,
+                    ID = IDDanhMucChungTuTrangThai,
+                    UpdateToList = UpdateToList
+                };
+                frmUpdate.ShowDialog();
+                return frmUpdate.dataRow;
+            }
+            public static DataRow Copy(object IDDanhMucChungTuTrangThai, Action InsertToList)
+            {
+                frmDanhMucChungTuTrangThaiUpdate frmUpdate = new frmDanhMucChungTuTrangThaiUpdate
+                {
+                    CapNhat = coreCommon.ThaoTacDuLieu.Copy,
+                    ID = IDDanhMucChungTuTrangThai,
+                    InsertToList = InsertToList
+                };
+                frmUpdate.ShowDialog();
+                return frmUpdate.dataRow;
+            }
+        }
+        public class clsDanhMucDonVi
+        {
+            public static DataRow Insert(Action InsertToList)
+            {
+                frmDanhMucDonViUpdate frmUpdate = new frmDanhMucDonViUpdate
+                {
+                    CapNhat = coreCommon.ThaoTacDuLieu.Them,
+                    InsertToList = InsertToList
+                };
+                frmUpdate.ShowDialog();
+                return frmUpdate.dataRow;
+            }
+            public static DataRow Update(object IDDanhMucDonVi, Action UpdateToList)
+            {
+                frmDanhMucDonViUpdate frmUpdate = new frmDanhMucDonViUpdate
+                {
+                    CapNhat = coreCommon.ThaoTacDuLieu.Them,
+                    ID = IDDanhMucDonVi,
+                    UpdateToList = UpdateToList
+                };
+                frmUpdate.ShowDialog();
+                return frmUpdate.dataRow;
+            }
+            public static DataRow Copy(object IDDanhMucDonVi, Action InsertToList)
+            {
+                frmDanhMucDonViUpdate frmUpdate = new frmDanhMucDonViUpdate
+                {
+                    CapNhat = coreCommon.ThaoTacDuLieu.Copy,
+                    ID = IDDanhMucDonVi,
+                    InsertToList = InsertToList
+                };
+                frmUpdate.ShowDialog();
+                return frmUpdate.dataRow;
+            }
+        }
+        public class clsDanhMucLoaiDoiTuong
+        {
+            public static DataRow Insert(Action InsertToList)
+            {
+                frmDanhMucLoaiDoiTuongUpdate frmUpdate = new frmDanhMucLoaiDoiTuongUpdate
+                {
+                    CapNhat = coreCommon.ThaoTacDuLieu.Them,
+                    InsertToList = InsertToList
+                };
+                frmUpdate.ShowDialog();
+                return frmUpdate.dataRow;
+            }
+            public static DataRow Update(object IDDanhMucLoaiDoiTuong, Action UpdateToList)
+            {
+                frmDanhMucLoaiDoiTuongUpdate frmUpdate = new frmDanhMucLoaiDoiTuongUpdate
+                {
+                    CapNhat = coreCommon.ThaoTacDuLieu.Them,
+                    ID = IDDanhMucLoaiDoiTuong,
+                    UpdateToList = UpdateToList
+                };
+                frmUpdate.ShowDialog();
+                return frmUpdate.dataRow;
+            }
+            public static DataRow Copy(object IDDanhMucLoaiDoiTuong, Action InsertToList)
+            {
+                frmDanhMucLoaiDoiTuongUpdate frmUpdate = new frmDanhMucLoaiDoiTuongUpdate
+                {
+                    CapNhat = coreCommon.ThaoTacDuLieu.Copy,
+                    ID = IDDanhMucLoaiDoiTuong,
+                    InsertToList = InsertToList
+                };
+                frmUpdate.ShowDialog();
+                return frmUpdate.dataRow;
+            }
+        }
+        public class clsDanhMucMenu
+        {
+            public static DataRow Insert(Action InsertToList)
+            {
+                frmDanhMucMenuUpdate frmUpdate = new frmDanhMucMenuUpdate
+                {
+                    CapNhat = coreCommon.ThaoTacDuLieu.Them,
+                    InsertToList = InsertToList
+                };
+                frmUpdate.ShowDialog();
+                return frmUpdate.dataRow;
+            }
+            public static DataRow Update(object IDDanhMucMenu, Action UpdateToList)
+            {
+                frmDanhMucMenuUpdate frmUpdate = new frmDanhMucMenuUpdate
+                {
+                    CapNhat = coreCommon.ThaoTacDuLieu.Them,
+                    ID = IDDanhMucMenu,
+                    UpdateToList = UpdateToList
+                };
+                frmUpdate.ShowDialog();
+                return frmUpdate.dataRow;
+            }
+            public static DataRow Copy(object IDDanhMucMenu, Action InsertToList)
+            {
+                frmDanhMucMenuUpdate frmUpdate = new frmDanhMucMenuUpdate
+                {
+                    CapNhat = coreCommon.ThaoTacDuLieu.Copy,
+                    ID = IDDanhMucMenu,
+                    InsertToList = InsertToList
+                };
+                frmUpdate.ShowDialog();
+                return frmUpdate.dataRow;
+            }
+        }
+        public class clsDanhMucMenuBaoCao
+        {
+            public static DataRow Insert(Action InsertToList)
+            {
+                frmDanhMucMenuBaoCaoUpdate frmUpdate = new frmDanhMucMenuBaoCaoUpdate
+                {
+                    CapNhat = coreCommon.ThaoTacDuLieu.Them,
+                    InsertToList = InsertToList
+                };
+                frmUpdate.ShowDialog();
+                return frmUpdate.dataRow;
+            }
+            public static DataRow Update(object IDDanhMucMenuBaoCao, Action UpdateToList)
+            {
+                frmDanhMucMenuBaoCaoUpdate frmUpdate = new frmDanhMucMenuBaoCaoUpdate
+                {
+                    CapNhat = coreCommon.ThaoTacDuLieu.Them,
+                    ID = IDDanhMucMenuBaoCao,
+                    UpdateToList = UpdateToList
+                };
+                frmUpdate.ShowDialog();
+                return frmUpdate.dataRow;
+            }
+            public static DataRow Copy(object IDDanhMucMenuBaoCao, Action InsertToList)
+            {
+                frmDanhMucMenuBaoCaoUpdate frmUpdate = new frmDanhMucMenuBaoCaoUpdate
+                {
+                    CapNhat = coreCommon.ThaoTacDuLieu.Copy,
+                    ID = IDDanhMucMenuBaoCao,
+                    InsertToList = InsertToList
+                };
+                frmUpdate.ShowDialog();
+                return frmUpdate.dataRow;
+            }
+        }
+        public class clsDanhMucMenuChungTu
+        {
+            public static DataRow Insert(Action InsertToList)
+            {
+                frmDanhMucMenuChungTuUpdate frmUpdate = new frmDanhMucMenuChungTuUpdate
+                {
+                    CapNhat = coreCommon.ThaoTacDuLieu.Them,
+                    InsertToList = InsertToList
+                };
+                frmUpdate.ShowDialog();
+                return frmUpdate.dataRow;
+            }
+            public static DataRow Update(object IDDanhMucMenuChungTu, Action UpdateToList)
+            {
+                frmDanhMucMenuChungTuUpdate frmUpdate = new frmDanhMucMenuChungTuUpdate
+                {
+                    CapNhat = coreCommon.ThaoTacDuLieu.Them,
+                    ID = IDDanhMucMenuChungTu,
+                    UpdateToList = UpdateToList
+                };
+                frmUpdate.ShowDialog();
+                return frmUpdate.dataRow;
+            }
+            public static DataRow Copy(object IDDanhMucMenuChungTu, Action InsertToList)
+            {
+                frmDanhMucMenuChungTuUpdate frmUpdate = new frmDanhMucMenuChungTuUpdate
+                {
+                    CapNhat = coreCommon.ThaoTacDuLieu.Copy,
+                    ID = IDDanhMucMenuChungTu,
+                    InsertToList = InsertToList
+                };
+                frmUpdate.ShowDialog();
+                return frmUpdate.dataRow;
+            }
+        }
+        public class clsDanhMucMenuLoaiDoiTuong
+        {
+            public static DataRow Insert(Action InsertToList)
+            {
+                frmDanhMucMenuLoaiDoiTuongUpdate frmUpdate = new frmDanhMucMenuLoaiDoiTuongUpdate
+                {
+                    CapNhat = coreCommon.ThaoTacDuLieu.Them,
+                    InsertToList = InsertToList
+                };
+                frmUpdate.ShowDialog();
+                return frmUpdate.dataRow;
+            }
+            public static DataRow Update(object IDDanhMucMenuLoaiDoiTuong, Action UpdateToList)
+            {
+                frmDanhMucMenuLoaiDoiTuongUpdate frmUpdate = new frmDanhMucMenuLoaiDoiTuongUpdate
+                {
+                    CapNhat = coreCommon.ThaoTacDuLieu.Them,
+                    ID = IDDanhMucMenuLoaiDoiTuong,
+                    UpdateToList = UpdateToList
+                };
+                frmUpdate.ShowDialog();
+                return frmUpdate.dataRow;
+            }
+            public static DataRow Copy(object IDDanhMucMenuLoaiDoiTuong, Action InsertToList)
+            {
+                frmDanhMucMenuLoaiDoiTuongUpdate frmUpdate = new frmDanhMucMenuLoaiDoiTuongUpdate
+                {
+                    CapNhat = coreCommon.ThaoTacDuLieu.Copy,
+                    ID = IDDanhMucMenuLoaiDoiTuong,
+                    InsertToList = InsertToList
+                };
+                frmUpdate.ShowDialog();
+                return frmUpdate.dataRow;
+            }
+        }
+        public class clsDanhMucNguoiSuDung
+        {
+            public static DataRow Insert(Action InsertToList)
+            {
+                frmDanhMucNguoiSuDungUpdate frmUpdate = new frmDanhMucNguoiSuDungUpdate
+                {
+                    CapNhat = coreCommon.ThaoTacDuLieu.Them,
+                    InsertToList = InsertToList
+                };
+                frmUpdate.ShowDialog();
+                return frmUpdate.dataRow;
+            }
+            public static DataRow Update(object IDDanhMucNguoiSuDung, Action UpdateToList)
+            {
+                frmDanhMucNguoiSuDungUpdate frmUpdate = new frmDanhMucNguoiSuDungUpdate
+                {
+                    CapNhat = coreCommon.ThaoTacDuLieu.Them,
+                    ID = IDDanhMucNguoiSuDung,
+                    UpdateToList = UpdateToList
+                };
+                frmUpdate.ShowDialog();
+                return frmUpdate.dataRow;
+            }
+            public static DataRow Copy(object IDDanhMucNguoiSuDung, Action InsertToList)
+            {
+                frmDanhMucNguoiSuDungUpdate frmUpdate = new frmDanhMucNguoiSuDungUpdate
+                {
+                    CapNhat = coreCommon.ThaoTacDuLieu.Copy,
+                    ID = IDDanhMucNguoiSuDung,
+                    InsertToList = InsertToList
+                };
+                frmUpdate.ShowDialog();
+                return frmUpdate.dataRow;
+            }
+        }
+        public class clsDanhMucNhomBaoCao
+        {
+            public static DataRow Insert(Action InsertToList)
+            {
+                frmDanhMucNhomBaoCaoUpdate frmUpdate = new frmDanhMucNhomBaoCaoUpdate
+                {
+                    CapNhat = coreCommon.ThaoTacDuLieu.Them,
+                    InsertToList = InsertToList
+                };
+                frmUpdate.ShowDialog();
+                return frmUpdate.dataRow;
+            }
+            public static DataRow Update(object IDDanhMucNhomBaoCao, Action UpdateToList)
+            {
+                frmDanhMucNhomBaoCaoUpdate frmUpdate = new frmDanhMucNhomBaoCaoUpdate
+                {
+                    CapNhat = coreCommon.ThaoTacDuLieu.Them,
+                    ID = IDDanhMucNhomBaoCao,
+                    UpdateToList = UpdateToList
+                };
+                frmUpdate.ShowDialog();
+                return frmUpdate.dataRow;
+            }
+            public static DataRow Copy(object IDDanhMucNhomBaoCao, Action InsertToList)
+            {
+                frmDanhMucNhomBaoCaoUpdate frmUpdate = new frmDanhMucNhomBaoCaoUpdate
+                {
+                    CapNhat = coreCommon.ThaoTacDuLieu.Copy,
+                    ID = IDDanhMucNhomBaoCao,
+                    InsertToList = InsertToList
+                };
+                frmUpdate.ShowDialog();
+                return frmUpdate.dataRow;
+            }
+        }
+        public class clsDanhMucPhanQuyen
+        {
+            public static DataRow Insert(Action InsertToList)
+            {
+                frmDanhMucPhanQuyenUpdate frmUpdate = new frmDanhMucPhanQuyenUpdate
+                {
+                    CapNhat = coreCommon.ThaoTacDuLieu.Them,
+                    InsertToList = InsertToList
+                };
+                frmUpdate.ShowDialog();
+                return frmUpdate.dataRow;
+            }
+            public static DataRow Update(object IDDanhMucPhanQuyen, Action UpdateToList)
+            {
+                frmDanhMucPhanQuyenUpdate frmUpdate = new frmDanhMucPhanQuyenUpdate
+                {
+                    CapNhat = coreCommon.ThaoTacDuLieu.Them,
+                    ID = IDDanhMucPhanQuyen,
+                    UpdateToList = UpdateToList
+                };
+                frmUpdate.ShowDialog();
+                return frmUpdate.dataRow;
+            }
+            public static DataRow Copy(object IDDanhMucPhanQuyen, Action InsertToList)
+            {
+                frmDanhMucPhanQuyenUpdate frmUpdate = new frmDanhMucPhanQuyenUpdate
+                {
+                    CapNhat = coreCommon.ThaoTacDuLieu.Copy,
+                    ID = IDDanhMucPhanQuyen,
+                    InsertToList = InsertToList
+                };
+                frmUpdate.ShowDialog();
+                return frmUpdate.dataRow;
+            }
+        }
+        public class clsDanhMucPhanQuyenBaoCao
+        {
+            public static DataRow Insert(Action InsertToList)
+            {
+                frmDanhMucPhanQuyenBaoCaoUpdate frmUpdate = new frmDanhMucPhanQuyenBaoCaoUpdate
+                {
+                    CapNhat = coreCommon.ThaoTacDuLieu.Them,
+                    InsertToList = InsertToList
+                };
+                frmUpdate.ShowDialog();
+                return frmUpdate.dataRow;
+            }
+            public static DataRow Update(object IDDanhMucPhanQuyenBaoCao, Action UpdateToList)
+            {
+                frmDanhMucPhanQuyenBaoCaoUpdate frmUpdate = new frmDanhMucPhanQuyenBaoCaoUpdate
+                {
+                    CapNhat = coreCommon.ThaoTacDuLieu.Them,
+                    ID = IDDanhMucPhanQuyenBaoCao,
+                    UpdateToList = UpdateToList
+                };
+                frmUpdate.ShowDialog();
+                return frmUpdate.dataRow;
+            }
+            public static DataRow Copy(object IDDanhMucPhanQuyenBaoCao, Action InsertToList)
+            {
+                frmDanhMucPhanQuyenBaoCaoUpdate frmUpdate = new frmDanhMucPhanQuyenBaoCaoUpdate
+                {
+                    CapNhat = coreCommon.ThaoTacDuLieu.Copy,
+                    ID = IDDanhMucPhanQuyenBaoCao,
+                    InsertToList = InsertToList
+                };
+                frmUpdate.ShowDialog();
+                return frmUpdate.dataRow;
+            }
+        }
+        public class clsDanhMucPhanQuyenChungTu
+        {
+            public static DataRow Insert(Action InsertToList)
+            {
+                frmDanhMucPhanQuyenChungTuUpdate frmUpdate = new frmDanhMucPhanQuyenChungTuUpdate
+                {
+                    CapNhat = coreCommon.ThaoTacDuLieu.Them,
+                    InsertToList = InsertToList
+                };
+                frmUpdate.ShowDialog();
+                return frmUpdate.dataRow;
+            }
+            public static DataRow Update(object IDDanhMucPhanQuyenChungTu, Action UpdateToList)
+            {
+                frmDanhMucPhanQuyenChungTuUpdate frmUpdate = new frmDanhMucPhanQuyenChungTuUpdate
+                {
+                    CapNhat = coreCommon.ThaoTacDuLieu.Them,
+                    ID = IDDanhMucPhanQuyenChungTu,
+                    UpdateToList = UpdateToList
+                };
+                frmUpdate.ShowDialog();
+                return frmUpdate.dataRow;
+            }
+            public static DataRow Copy(object IDDanhMucPhanQuyenChungTu, Action InsertToList)
+            {
+                frmDanhMucPhanQuyenChungTuUpdate frmUpdate = new frmDanhMucPhanQuyenChungTuUpdate
+                {
+                    CapNhat = coreCommon.ThaoTacDuLieu.Copy,
+                    ID = IDDanhMucPhanQuyenChungTu,
+                    InsertToList = InsertToList
+                };
+                frmUpdate.ShowDialog();
+                return frmUpdate.dataRow;
+            }
+        }
+        public class clsDanhMucPhanQuyenDonVi
+        {
+            public static DataRow Insert(Action InsertToList)
+            {
+                frmDanhMucPhanQuyenDonViUpdate frmUpdate = new frmDanhMucPhanQuyenDonViUpdate
+                {
+                    CapNhat = coreCommon.ThaoTacDuLieu.Them,
+                    InsertToList = InsertToList
+                };
+                frmUpdate.ShowDialog();
+                return frmUpdate.dataRow;
+            }
+            public static DataRow Update(object IDDanhMucPhanQuyenDonVi, Action UpdateToList)
+            {
+                frmDanhMucPhanQuyenDonViUpdate frmUpdate = new frmDanhMucPhanQuyenDonViUpdate
+                {
+                    CapNhat = coreCommon.ThaoTacDuLieu.Them,
+                    ID = IDDanhMucPhanQuyenDonVi,
+                    UpdateToList = UpdateToList
+                };
+                frmUpdate.ShowDialog();
+                return frmUpdate.dataRow;
+            }
+            public static DataRow Copy(object IDDanhMucPhanQuyenDonVi, Action InsertToList)
+            {
+                frmDanhMucPhanQuyenDonViUpdate frmUpdate = new frmDanhMucPhanQuyenDonViUpdate
+                {
+                    CapNhat = coreCommon.ThaoTacDuLieu.Copy,
+                    ID = IDDanhMucPhanQuyenDonVi,
+                    InsertToList = InsertToList
+                };
+                frmUpdate.ShowDialog();
+                return frmUpdate.dataRow;
+            }
+        }
+        public class clsDanhMucPhanQuyenLoaiDoiTuong
+        {
+            public static DataRow Insert(Action InsertToList)
+            {
+                frmDanhMucPhanQuyenLoaiDoiTuongUpdate frmUpdate = new frmDanhMucPhanQuyenLoaiDoiTuongUpdate
+                {
+                    CapNhat = coreCommon.ThaoTacDuLieu.Them,
+                    InsertToList = InsertToList
+                };
+                frmUpdate.ShowDialog();
+                return frmUpdate.dataRow;
+            }
+            public static DataRow Update(object IDDanhMucPhanQuyenLoaiDoiTuong, Action UpdateToList)
+            {
+                frmDanhMucPhanQuyenLoaiDoiTuongUpdate frmUpdate = new frmDanhMucPhanQuyenLoaiDoiTuongUpdate
+                {
+                    CapNhat = coreCommon.ThaoTacDuLieu.Them,
+                    ID = IDDanhMucPhanQuyenLoaiDoiTuong,
+                    UpdateToList = UpdateToList
+                };
+                frmUpdate.ShowDialog();
+                return frmUpdate.dataRow;
+            }
+            public static DataRow Copy(object IDDanhMucPhanQuyenLoaiDoiTuong, Action InsertToList)
+            {
+                frmDanhMucPhanQuyenLoaiDoiTuongUpdate frmUpdate = new frmDanhMucPhanQuyenLoaiDoiTuongUpdate
+                {
+                    CapNhat = coreCommon.ThaoTacDuLieu.Copy,
+                    ID = IDDanhMucPhanQuyenLoaiDoiTuong,
+                    InsertToList = InsertToList
+                };
+                frmUpdate.ShowDialog();
+                return frmUpdate.dataRow;
+            }
+        }
+        public class clsDanhMucThamSoHeThong
+        {
+            public static DataRow Insert(Action InsertToList)
+            {
+                frmDanhMucThamSoHeThongUpdate frmUpdate = new frmDanhMucThamSoHeThongUpdate
+                {
+                    CapNhat = coreCommon.ThaoTacDuLieu.Them,
+                    InsertToList = InsertToList
+                };
+                frmUpdate.ShowDialog();
+                return frmUpdate.dataRow;
+            }
+            public static DataRow Update(object IDDanhMucThamSoHeThong, Action UpdateToList)
+            {
+                frmDanhMucThamSoHeThongUpdate frmUpdate = new frmDanhMucThamSoHeThongUpdate
+                {
+                    CapNhat = coreCommon.ThaoTacDuLieu.Them,
+                    ID = IDDanhMucThamSoHeThong,
+                    UpdateToList = UpdateToList
+                };
+                frmUpdate.ShowDialog();
+                return frmUpdate.dataRow;
+            }
+            public static DataRow Copy(object IDDanhMucThamSoHeThong, Action InsertToList)
+            {
+                frmDanhMucThamSoHeThongUpdate frmUpdate = new frmDanhMucThamSoHeThongUpdate
+                {
+                    CapNhat = coreCommon.ThaoTacDuLieu.Copy,
+                    ID = IDDanhMucThamSoHeThong,
+                    InsertToList = InsertToList
+                };
+                frmUpdate.ShowDialog();
+                return frmUpdate.dataRow;
+            }
+        }
+        public class clsDanhMucThamSoNguoiSuDung
+        {
+            public static DataRow Insert(Action InsertToList)
+            {
+                frmDanhMucThamSoNguoiSuDungUpdate frmUpdate = new frmDanhMucThamSoNguoiSuDungUpdate
+                {
+                    CapNhat = coreCommon.ThaoTacDuLieu.Them,
+                    InsertToList = InsertToList
+                };
+                frmUpdate.ShowDialog();
+                return frmUpdate.dataRow;
+            }
+            public static DataRow Update(object IDDanhMucThamSoNguoiSuDung, Action UpdateToList)
+            {
+                frmDanhMucThamSoNguoiSuDungUpdate frmUpdate = new frmDanhMucThamSoNguoiSuDungUpdate
+                {
+                    CapNhat = coreCommon.ThaoTacDuLieu.Them,
+                    ID = IDDanhMucThamSoNguoiSuDung,
+                    UpdateToList = UpdateToList
+                };
+                frmUpdate.ShowDialog();
+                return frmUpdate.dataRow;
+            }
+            public static DataRow Copy(object IDDanhMucThamSoNguoiSuDung, Action InsertToList)
+            {
+                frmDanhMucThamSoNguoiSuDungUpdate frmUpdate = new frmDanhMucThamSoNguoiSuDungUpdate
+                {
+                    CapNhat = coreCommon.ThaoTacDuLieu.Copy,
+                    ID = IDDanhMucThamSoNguoiSuDung,
+                    InsertToList = InsertToList
+                };
+                frmUpdate.ShowDialog();
+                return frmUpdate.dataRow;
+            }
+        }
+        public class clsDanhMucTuDien
+        {
+            public static DataRow Insert(Action InsertToList)
+            {
+                frmDanhMucTuDienUpdate frmUpdate = new frmDanhMucTuDienUpdate
+                {
+                    CapNhat = coreCommon.ThaoTacDuLieu.Them,
+                    InsertToList = InsertToList
+                };
+                frmUpdate.ShowDialog();
+                return frmUpdate.dataRow;
+            }
+            public static DataRow Update(object IDDanhMucTuDien, Action UpdateToList)
+            {
+                frmDanhMucTuDienUpdate frmUpdate = new frmDanhMucTuDienUpdate
+                {
+                    CapNhat = coreCommon.ThaoTacDuLieu.Them,
+                    ID = IDDanhMucTuDien,
+                    UpdateToList = UpdateToList
+                };
+                frmUpdate.ShowDialog();
+                return frmUpdate.dataRow;
+            }
+            public static DataRow Copy(object IDDanhMucTuDien, Action InsertToList)
+            {
+                frmDanhMucTuDienUpdate frmUpdate = new frmDanhMucTuDienUpdate
+                {
+                    CapNhat = coreCommon.ThaoTacDuLieu.Copy,
+                    ID = IDDanhMucTuDien,
                     InsertToList = InsertToList
                 };
                 frmUpdate.ShowDialog();

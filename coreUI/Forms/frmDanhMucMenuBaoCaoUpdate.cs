@@ -30,7 +30,7 @@ namespace coreUI.Forms
                 }
                 else
                 {
-                    CapNhat = 1;
+                    CapNhat = coreCommon.ThaoTacDuLieu.Them;
                     //Xóa text box
                     txtMaDanhMucBaoCao.Value = null;
                     txtTenDanhMucBaoCao.Value = null;
@@ -43,7 +43,7 @@ namespace coreUI.Forms
         private bool Save()
         {
 
-            if (CapNhat == 1 || CapNhat == 3)
+            if (CapNhat == coreCommon.ThaoTacDuLieu.Them || CapNhat == coreCommon.ThaoTacDuLieu.Copy)
             {
                 obj = new coreDTO.DanhMucMenuBaoCao
                 {
@@ -75,7 +75,7 @@ namespace coreUI.Forms
                 };
             }
             coreBUS.DanhMucMenuBaoCaoBUS _BUS = new coreBUS.DanhMucMenuBaoCaoBUS();
-            bool OK = (CapNhat == 1 || CapNhat == 3) ? coreBUS.DanhMucMenuBaoCaoBUS.Insert(ref obj) : coreBUS.DanhMucMenuBaoCaoBUS.Update(ref obj);
+            bool OK = (CapNhat == coreCommon.ThaoTacDuLieu.Them || CapNhat == coreCommon.ThaoTacDuLieu.Copy) ? coreBUS.DanhMucMenuBaoCaoBUS.Insert(obj) : coreBUS.DanhMucMenuBaoCaoBUS.Update(obj);
             if (OK && obj != null && Int64.TryParse(obj.ID.ToString(), out Int64 _ID) && _ID > 0)
             {
                 dtUpdate = coreBUS.DanhMucMenuBaoCaoBUS.List(obj.ID);
@@ -105,8 +105,10 @@ namespace coreUI.Forms
         private void frmDanhMucBaoCaoUpdate_Load(object sender, EventArgs e)
         {
             coreUI.validData.SetValidTextbox(txtMaDanhMucBaoCao, new saTextBox[1] { txtTenDanhMucBaoCao }, new Func<DataTable>(() => DanhMucBaoCaoBUS.List(null).Tables[0]), "Ma", "ID", "Ten", null, null, null);
-            if (CapNhat >= 2)
+            if (CapNhat >= coreCommon.ThaoTacDuLieu.Sua)
             {
+                dataRow = coreBUS.DanhMucMenuBaoCaoBUS.List(ID).Rows[0];
+                if (coreCommon.coreCommon.IsNull(dataRow)) { coreCommon.coreCommon.ErrorMessageOkOnly("Không lấy được dữ liệu!"); this.DialogResult = DialogResult.Cancel; }
                 IDDanhMucMenu = dataRow["IDDanhMucMenu"];
                 txtMaDanhMucBaoCao.Value = dataRow["MaDanhMucBaoCao"];
                 txtMaDanhMucBaoCao.ID = dataRow["IDDanhMucBaoCao"];
@@ -120,7 +122,7 @@ namespace coreUI.Forms
 
         private void txtTenDanhMucBaoCao_ValueChanged(object sender, EventArgs e)
         {
-            if (CapNhat == 1) txtNoiDungHienThi.Value = txtTenDanhMucBaoCao.Value;
+            if (CapNhat == coreCommon.ThaoTacDuLieu.Them) txtNoiDungHienThi.Value = txtTenDanhMucBaoCao.Value;
         }
     }
 }

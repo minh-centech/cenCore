@@ -29,7 +29,7 @@ namespace coreUI.Forms
                 }
                 else
                 {
-                    CapNhat = 1;
+                    CapNhat = coreCommon.ThaoTacDuLieu.Them;
                     //Xóa text box
                     txtMaDanhMucLoaiDoiTuong.Value = null;
                     txtTenDanhMucLoaiDoiTuong.Value = null;
@@ -44,7 +44,7 @@ namespace coreUI.Forms
         private bool Save()
         {
 
-            if (CapNhat == 1 || CapNhat == 3)
+            if (CapNhat == coreCommon.ThaoTacDuLieu.Them || CapNhat == coreCommon.ThaoTacDuLieu.Copy)
             {
                 obj = new coreDTO.DanhMucPhanQuyenLoaiDoiTuong
                 {
@@ -77,7 +77,7 @@ namespace coreUI.Forms
                     EditDate = null
                 };
             }
-            bool OK = (CapNhat == 1 || CapNhat == 3) ? coreBUS.DanhMucPhanQuyenLoaiDoiTuongBUS.Insert(ref obj) : coreBUS.DanhMucPhanQuyenLoaiDoiTuongBUS.Update(ref obj);
+            bool OK = (CapNhat == coreCommon.ThaoTacDuLieu.Them || CapNhat == coreCommon.ThaoTacDuLieu.Copy) ? coreBUS.DanhMucPhanQuyenLoaiDoiTuongBUS.Insert(obj) : coreBUS.DanhMucPhanQuyenLoaiDoiTuongBUS.Update(obj);
             if (OK && obj != null && Int64.TryParse(obj.ID.ToString(), out Int64 _ID) && _ID > 0)
             {
                 dtUpdate = coreBUS.DanhMucPhanQuyenLoaiDoiTuongBUS.List(obj.ID);
@@ -107,8 +107,10 @@ namespace coreUI.Forms
         private void frmDanhMucLoaiDoiTuongUpdate_Load(object sender, EventArgs e)
         {
             
-            if (CapNhat >= 2)
+            if (CapNhat >= coreCommon.ThaoTacDuLieu.Sua)
             {
+                dataRow = coreBUS.DanhMucPhanQuyenLoaiDoiTuongBUS.List(ID).Rows[0];
+                if (coreCommon.coreCommon.IsNull(dataRow)) { coreCommon.coreCommon.ErrorMessageOkOnly("Không lấy được dữ liệu!"); this.DialogResult = DialogResult.Cancel; }
                 IDDanhMucPhanQuyen = dataRow["IDDanhMucPhanQuyen"];
                 txtMaDanhMucLoaiDoiTuong.Value = dataRow["MaDanhMucLoaiDoiTuong"];
                 txtMaDanhMucLoaiDoiTuong.ID = dataRow["IDDanhMucLoaiDoiTuong"];

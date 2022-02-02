@@ -25,47 +25,6 @@ namespace coreUI.Forms
             ug.AddSummaryRow = true;
             ug.DataSource = bsData;
         }
-        public void InsertToList(DataTable dtUpdate)
-        {
-            dtData.Merge(dtUpdate);
-        }
-        public void UpdateToList(DataTable dtUpdate)
-        {
-            if (!coreCommon.coreCommon.IsNull(dtUpdate))
-            {
-                bool Found = false;
-                for (int i = dtData.Rows.Count - 1; i >= 0; i--)
-                {
-                    Found = false;
-                    //Cập nhật dòng chỉnh sửa
-                    foreach (DataRow drChungTuUpdate in dtUpdate.Rows)
-                    {
-                        if (dtData.Rows[i].RowState != DataRowState.Deleted && dtData.Rows[i]["ID"].ToString() == drChungTuUpdate["ID"].ToString())
-                        {
-                            dtData.Rows[i].ItemArray = drChungTuUpdate.ItemArray;
-                            Found = true;
-                        }
-                    }
-                    //Xóa dòng bị xóa
-                    if (!coreCommon.coreCommon.IsNull(IDDanhMucDoiTuong))
-                        if (!Found && dtData.Rows[i].RowState != DataRowState.Deleted && dtData.Columns.Contains("ID") && dtData.Rows[i]["ID"].ToString() == IDDanhMucDoiTuong.ToString()) dtData.Rows[i].Delete();
-                }
-                //Thêm mới những dòng được thêm
-                foreach (DataRow drChungTuUpdate in dtUpdate.Rows)
-                {
-                    Found = false;
-                    foreach (DataRow drData in dtData.Rows)
-                    {
-                        if (drData.RowState != DataRowState.Deleted && drChungTuUpdate["ID"].ToString() == drData["ID"].ToString())
-                        {
-                            Found = true;
-                        }
-                    }
-                    if (!Found) dtData.ImportRow(drChungTuUpdate);
-                }
-                dtData.AcceptChanges();
-            }
-        }
         protected override void Insert()
         {
             DanhMucPhanQuyenBUS.GetPhanQuyenLoaiDoiTuong(coreCommon.GlobalVariables.IDDanhMucPhanQuyen, IDDanhMucLoaiDoiTuong, out bool Xem, out bool Them, out bool Sua, out bool Xoa);
@@ -119,17 +78,7 @@ namespace coreUI.Forms
             if (fDelete != null)
                 OK = fDelete();
             if (OK)
-            {
-                int i = ug.ActiveRow.Index;
-                bsData.RemoveCurrent();
-                while (i > ug.Rows.Count - 1) i -= 1;
-                if (i <= ug.Rows.Count - 1 && i >= 0)
-                {
-                    ug.Focus();
-                    ug.Rows[i].Activate();
-                }
-                bsData.EndEdit();
-            }
+                coreUI.ugDeleteRow(bsData, ug);
         }
     }
 }

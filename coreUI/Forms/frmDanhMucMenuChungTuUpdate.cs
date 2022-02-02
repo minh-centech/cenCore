@@ -29,7 +29,7 @@ namespace coreUI.Forms
                 }
                 else
                 {
-                    CapNhat = 1;
+                    CapNhat = coreCommon.ThaoTacDuLieu.Them;
                     //Xóa text box
                     txtMaDanhMucChungTu.Value = null;
                     txtTenDanhMucChungTu.Value = null;
@@ -43,7 +43,7 @@ namespace coreUI.Forms
         private bool Save()
         {
 
-            if (CapNhat == 1 || CapNhat == 3)
+            if (CapNhat == coreCommon.ThaoTacDuLieu.Them || CapNhat == coreCommon.ThaoTacDuLieu.Copy)
             {
                 obj = new coreDTO.DanhMucMenuChungTu
                 {
@@ -74,7 +74,7 @@ namespace coreUI.Forms
                     EditDate = null
                 };
             }
-            bool OK = (CapNhat == 1 || CapNhat == 3) ? coreBUS.DanhMucMenuChungTuBUS.Insert(ref obj) : coreBUS.DanhMucMenuChungTuBUS.Update(ref obj);
+            bool OK = (CapNhat == coreCommon.ThaoTacDuLieu.Them || CapNhat == coreCommon.ThaoTacDuLieu.Copy) ? coreBUS.DanhMucMenuChungTuBUS.Insert(obj) : coreBUS.DanhMucMenuChungTuBUS.Update(obj);
             if (OK && obj != null && Int64.TryParse(obj.ID.ToString(), out Int64 _ID) && _ID > 0)
             {
                 dtUpdate = coreBUS.DanhMucMenuChungTuBUS.List(obj.ID);
@@ -104,8 +104,10 @@ namespace coreUI.Forms
         private void frmDanhMucChungTuUpdate_Load(object sender, EventArgs e)
         {
             coreUI.validData.SetValidTextbox(txtMaDanhMucChungTu, new saTextBox[1] { txtTenDanhMucChungTu }, new Func<DataTable>(() => DanhMucChungTuBUS.List(null).Tables[0]), "Ma", "ID", "Ten", null, null, null);
-            if (CapNhat >= 2)
+            if (CapNhat >= coreCommon.ThaoTacDuLieu.Sua)
             {
+                dataRow = coreBUS.DanhMucMenuChungTuBUS.List(ID).Rows[0];
+                if (coreCommon.coreCommon.IsNull(dataRow)) { coreCommon.coreCommon.ErrorMessageOkOnly("Không lấy được dữ liệu!"); this.DialogResult = DialogResult.Cancel; }
                 IDDanhMucMenu = dataRow["IDDanhMucMenu"];
                 txtMaDanhMucChungTu.Value = dataRow["MaDanhMucChungTu"];
                 txtMaDanhMucChungTu.ID = dataRow["IDDanhMucChungTu"];
@@ -118,7 +120,7 @@ namespace coreUI.Forms
 
         private void txtTenDanhMucChungTu_ValueChanged(object sender, EventArgs e)
         {
-            if (CapNhat == 1) txtNoiDungHienThi.Value = txtTenDanhMucChungTu.Value;
+            if (CapNhat == coreCommon.ThaoTacDuLieu.Them) txtNoiDungHienThi.Value = txtTenDanhMucChungTu.Value;
         }
     }
 }

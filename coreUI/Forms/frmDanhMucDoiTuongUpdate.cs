@@ -46,7 +46,7 @@ namespace coreUI.Forms
                 CreateDate = null,
                 EditDate = null
             };
-            bool OK = (CapNhat == coreCommon.ThaoTacDuLieu.Them || CapNhat == coreCommon.ThaoTacDuLieu.Copy) ? coreBUS.DanhMucDoiTuongBUS.Insert(ref obj) : coreBUS.DanhMucDoiTuongBUS.Update(ref obj);
+            bool OK = (CapNhat == coreCommon.ThaoTacDuLieu.Them || CapNhat == coreCommon.ThaoTacDuLieu.Copy) ? coreBUS.DanhMucDoiTuongBUS.Insert(obj) : coreBUS.DanhMucDoiTuongBUS.Update(obj);
             if (OK && obj != null && Int64.TryParse(obj.ID.ToString(), out Int64 _ID) && _ID > 0)
             {
                 dtUpdate = coreBUS.DanhMucDoiTuongBUS.List(obj.ID, IDDanhMucLoaiDoiTuong, null);
@@ -75,6 +75,8 @@ namespace coreUI.Forms
         {
             if (CapNhat == coreCommon.ThaoTacDuLieu.Sua)
             {
+                dataRow = coreBUS.DanhMucDoiTuongBUS.List(ID, IDDanhMucLoaiDoiTuong, null).Rows[0];
+                if (coreCommon.coreCommon.IsNull(dataRow)) { coreCommon.coreCommon.ErrorMessageOkOnly("Không lấy được dữ liệu!"); this.DialogResult = DialogResult.Cancel; }
                 txtMa.Value = dataRow["Ma"];
                 txtTen.Value = dataRow["Ten"];
             }

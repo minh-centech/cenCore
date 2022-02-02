@@ -24,7 +24,7 @@ namespace coreUI.Forms
                 }
                 else
                 {
-                    CapNhat = 1;
+                    CapNhat = coreCommon.ThaoTacDuLieu.Them;
                     //Xóa text box
                     txtMa.Value = null;
                     txtTen.Value = null;
@@ -37,7 +37,7 @@ namespace coreUI.Forms
         }
         private bool Save()
         {
-            if (CapNhat == 1 || CapNhat == 3)
+            if (CapNhat == coreCommon.ThaoTacDuLieu.Them || CapNhat == coreCommon.ThaoTacDuLieu.Copy)
             {
                 obj = new coreDTO.DanhMucChungTuTrangThai
                 {
@@ -66,7 +66,7 @@ namespace coreUI.Forms
                     EditDate = null
                 };
             }
-            bool OK = (CapNhat == 1 || CapNhat == 3) ? coreBUS.DanhMucChungTuTrangThaiBUS.Insert(ref obj) : coreBUS.DanhMucChungTuTrangThaiBUS.Update(ref obj);
+            bool OK = (CapNhat == coreCommon.ThaoTacDuLieu.Them || CapNhat == coreCommon.ThaoTacDuLieu.Copy) ? coreBUS.DanhMucChungTuTrangThaiBUS.Insert(obj) : coreBUS.DanhMucChungTuTrangThaiBUS.Update(obj);
             if (OK && obj != null && Int64.TryParse(obj.ID.ToString(), out Int64 _ID) && _ID > 0)
             {
                 dtUpdate = coreBUS.DanhMucChungTuTrangThaiBUS.List(obj.ID, IDDanhMucChungTu);
@@ -95,8 +95,10 @@ namespace coreUI.Forms
 
         private void frmDanhMucDonViUpdate_Load(object sender, EventArgs e)
         {
-            if (CapNhat >= 2)
+            if (CapNhat >= coreCommon.ThaoTacDuLieu.Sua)
             {
+                dataRow = coreBUS.DanhMucChungTuTrangThaiBUS.List(IDDanhMucChungTu, ID).Rows[0];
+                if (coreCommon.coreCommon.IsNull(dataRow)) { coreCommon.coreCommon.ErrorMessageOkOnly("Không lấy được dữ liệu!"); this.DialogResult = DialogResult.Cancel; }
                 IDDanhMucChungTu = dataRow["IDDanhMucChungTu"];
                 txtMa.Value = dataRow["Ma"];
                 txtTen.Value = dataRow["Ten"];

@@ -23,7 +23,7 @@ namespace coreUI.Forms
                 }
                 else
                 {
-                    CapNhat = 1;
+                    CapNhat = coreCommon.ThaoTacDuLieu.Them;
                     //Xóa text box
                     txtMa.Value = null;
                     txtTen.Value = null;
@@ -42,7 +42,7 @@ namespace coreUI.Forms
                 EditDate = null
             };
             coreBUS.DanhMucDonViBUS _BUS = new coreBUS.DanhMucDonViBUS();
-            bool OK = (CapNhat == coreCommon.ThaoTacDuLieu.Them || CapNhat == coreCommon.ThaoTacDuLieu.Copy) ? coreBUS.DanhMucDonViBUS.Insert(ref obj) : coreBUS.DanhMucDonViBUS.Update(ref obj);
+            bool OK = (CapNhat == coreCommon.ThaoTacDuLieu.Them || CapNhat == coreCommon.ThaoTacDuLieu.Copy) ? coreBUS.DanhMucDonViBUS.Insert(obj) : coreBUS.DanhMucDonViBUS.Update(obj);
             //
             if (OK && obj != null && Int64.TryParse(obj.ID.ToString(), out Int64 _ID) && _ID > 0)
             {
@@ -72,7 +72,8 @@ namespace coreUI.Forms
         {
             if (CapNhat == coreCommon.ThaoTacDuLieu.Sua)
             {
-                dataRow = coreBUS.DanhMucDonViBUS.List(obj.ID).Rows[0];
+                dataRow = coreBUS.DanhMucDonViBUS.List(ID).Rows[0];
+                if (coreCommon.coreCommon.IsNull(dataRow)) { coreCommon.coreCommon.ErrorMessageOkOnly("Không lấy được dữ liệu!"); this.DialogResult = DialogResult.Cancel; }
                 txtMa.Value = dataRow["Ma"];
                 txtTen.Value = dataRow["Ten"];
             }

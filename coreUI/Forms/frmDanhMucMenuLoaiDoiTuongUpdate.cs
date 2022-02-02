@@ -29,7 +29,7 @@ namespace coreUI.Forms
                 }
                 else
                 {
-                    CapNhat = 1;
+                    CapNhat = coreCommon.ThaoTacDuLieu.Them;
                     //Xóa text box
                     txtMaDanhMucLoaiDoiTuong.Value = null;
                     txtTenDanhMucLoaiDoiTuong.Value = null;
@@ -43,7 +43,7 @@ namespace coreUI.Forms
         private bool Save()
         {
 
-            if (CapNhat == 1 || CapNhat == 3)
+            if (CapNhat == coreCommon.ThaoTacDuLieu.Them || CapNhat == coreCommon.ThaoTacDuLieu.Copy)
             {
                 obj = new coreDTO.DanhMucMenuLoaiDoiTuong
                 {
@@ -74,7 +74,7 @@ namespace coreUI.Forms
                     EditDate = null
                 };
             }
-            bool OK = (CapNhat == 1 || CapNhat == 3) ? coreBUS.DanhMucMenuLoaiDoiTuongBUS.Insert(ref obj) : coreBUS.DanhMucMenuLoaiDoiTuongBUS.Update(ref obj);
+            bool OK = (CapNhat == coreCommon.ThaoTacDuLieu.Them || CapNhat == coreCommon.ThaoTacDuLieu.Copy) ? coreBUS.DanhMucMenuLoaiDoiTuongBUS.Insert(obj) : coreBUS.DanhMucMenuLoaiDoiTuongBUS.Update(obj);
             if (OK && obj != null && Int64.TryParse(obj.ID.ToString(), out Int64 _ID) && _ID > 0)
             {
                 dtUpdate = coreBUS.DanhMucMenuLoaiDoiTuongBUS.List(obj.ID);
@@ -104,8 +104,10 @@ namespace coreUI.Forms
         private void frmDanhMucLoaiDoiTuongUpdate_Load(object sender, EventArgs e)
         {
             coreUI.validData.SetValidTextbox(txtMaDanhMucLoaiDoiTuong, new saTextBox[1] { txtTenDanhMucLoaiDoiTuong }, new Func<DataTable>(() => DanhMucLoaiDoiTuongBUS.ListValidMa(txtMaDanhMucLoaiDoiTuong.Value)), "Ma", "ID", "Ten", null, null, null);
-            if (CapNhat >= 2)
+            if (CapNhat >= coreCommon.ThaoTacDuLieu.Sua)
             {
+                dataRow = coreBUS.DanhMucMenuLoaiDoiTuongBUS.List(ID).Rows[0];
+                if (coreCommon.coreCommon.IsNull(dataRow)) { coreCommon.coreCommon.ErrorMessageOkOnly("Không lấy được dữ liệu!"); this.DialogResult = DialogResult.Cancel; }
                 IDDanhMucMenu = dataRow["IDDanhMucMenu"];
                 txtMaDanhMucLoaiDoiTuong.Value = dataRow["MaDanhMucLoaiDoiTuong"];
                 txtMaDanhMucLoaiDoiTuong.ID = dataRow["IDDanhMucLoaiDoiTuong"];
@@ -118,7 +120,7 @@ namespace coreUI.Forms
 
         private void txtTenDanhMucLoaiDoiTuong_ValueChanged(object sender, EventArgs e)
         {
-            if (CapNhat == 1) txtNoiDungHienThi.Value = txtTenDanhMucLoaiDoiTuong.Value;
+            if (CapNhat == coreCommon.ThaoTacDuLieu.Them) txtNoiDungHienThi.Value = txtTenDanhMucLoaiDoiTuong.Value;
         }
     }
 }

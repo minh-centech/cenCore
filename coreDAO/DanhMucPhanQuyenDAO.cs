@@ -14,7 +14,7 @@ namespace coreDAO
             DataSet ds = dao.dsList(sqlParameters, DanhMucPhanQuyen.listProcedureName);
             return ds;
         }
-        public bool Insert(ref DanhMucPhanQuyen obj)
+        public bool Insert(DanhMucPhanQuyen obj)
         {
             try
             {
@@ -43,16 +43,8 @@ namespace coreDAO
                             int rowAffected = sqlCommand.ExecuteNonQuery();
                             obj.ID = Int64.Parse(sqlParameters[0].Value.ToString());
                             obj.CreateDate = DateTime.Parse(sqlParameters[sqlParameters.Length - 1].Value.ToString());
-                            if (NhatKyDuLieuDAO.Insert(coreCommon.coreCommon.AllPropertiesAndValues(obj), obj.ID, null, null, coreCommon.ThaoTacDuLieu.Them, coreCommon.coreCommon.TraTuDien(DanhMucPhanQuyen.tableName), sqlConnection, sqlTransaction))
-                            {
-                                sqlTransaction.Commit();
-                                return true;
-                            }
-                            else
-                            {
-                                sqlTransaction.Rollback();
-                                return false;
-                            }
+                            sqlTransaction.Commit();
+                            return true;
                         }
                     }
                 }
@@ -63,7 +55,7 @@ namespace coreDAO
                 return false;
             }
         }
-        public bool Update(ref DanhMucPhanQuyen obj)
+        public bool Update(DanhMucPhanQuyen obj)
         {
             try
             {
@@ -88,16 +80,8 @@ namespace coreDAO
                             int rowAffected = sqlCommand.ExecuteNonQuery();
                             obj.ID = Int64.Parse(sqlParameters[0].Value.ToString());
                             obj.CreateDate = DateTime.Parse(sqlParameters[sqlParameters.Length - 1].Value.ToString());
-                            if (NhatKyDuLieuDAO.Insert(coreCommon.coreCommon.AllPropertiesAndValues(obj), obj.ID, null, null, coreCommon.ThaoTacDuLieu.Sua, coreCommon.coreCommon.TraTuDien(DanhMucPhanQuyen.tableName), sqlConnection, sqlTransaction))
-                            {
-                                sqlTransaction.Commit();
-                                return true;
-                            }
-                            else
-                            {
-                                sqlTransaction.Rollback();
-                                return false;
-                            }
+                            sqlTransaction.Commit();
+                            return true;
                         }
                     }
                 }
@@ -108,7 +92,7 @@ namespace coreDAO
                 return false;
             }
         }
-        public bool Delete(DanhMucPhanQuyen obj)
+        public bool Delete(object ID)
         {
             try
             {
@@ -121,19 +105,11 @@ namespace coreDAO
                         {
                             sqlCommand.CommandType = CommandType.StoredProcedure;
                             SqlParameter[] sqlParameters = new SqlParameter[1];
-                            sqlParameters[0] = new SqlParameter("@ID", obj.ID);
+                            sqlParameters[0] = new SqlParameter("@ID", ID);
                             sqlCommand.Parameters.AddRange(sqlParameters);
                             int rowAffected = sqlCommand.ExecuteNonQuery();
-                            if (NhatKyDuLieuDAO.Insert(coreCommon.coreCommon.AllPropertiesAndValues(obj), obj.ID, null, null, coreCommon.ThaoTacDuLieu.Xoa, coreCommon.coreCommon.TraTuDien(DanhMucPhanQuyen.tableName), sqlConnection, sqlTransaction))
-                            {
-                                sqlTransaction.Commit();
-                                return true;
-                            }
-                            else
-                            {
-                                sqlTransaction.Rollback();
-                                return false;
-                            }
+                            sqlTransaction.Commit();
+                            return true;
                         }
                     }
                 }
@@ -298,7 +274,7 @@ namespace coreDAO
             DataTable dt = dao.tableList(sqlParameters, DanhMucPhanQuyenDonVi.listProcedureName, DanhMucPhanQuyenDonVi.tableName);
             return dt;
         }
-        public bool Insert(ref DanhMucPhanQuyenDonVi obj)
+        public bool Insert(DanhMucPhanQuyenDonVi obj)
         {
             try
             {
@@ -328,16 +304,8 @@ namespace coreDAO
                             int rowAffected = sqlCommand.ExecuteNonQuery();
                             obj.ID = Int64.Parse(sqlParameters[0].Value.ToString());
                             obj.CreateDate = DateTime.Parse(sqlParameters[sqlParameters.Length - 1].Value.ToString());
-                            if (NhatKyDuLieuDAO.Insert(coreCommon.coreCommon.AllPropertiesAndValues(obj), obj.ID, null, null, coreCommon.ThaoTacDuLieu.Them, coreCommon.coreCommon.TraTuDien(DanhMucPhanQuyenDonVi.tableName), sqlConnection, sqlTransaction))
-                            {
-                                sqlTransaction.Commit();
-                                return true;
-                            }
-                            else
-                            {
-                                sqlTransaction.Rollback();
-                                return false;
-                            }
+                            sqlTransaction.Commit();
+                            return true;
                         }
                     }
                 }
@@ -348,7 +316,7 @@ namespace coreDAO
                 return false;
             }
         }
-        public bool Update(ref DanhMucPhanQuyenDonVi obj)
+        public bool Update(DanhMucPhanQuyenDonVi obj)
         {
             try
             {
@@ -372,16 +340,8 @@ namespace coreDAO
                             int rowAffected = sqlCommand.ExecuteNonQuery();
                             obj.ID = Int64.Parse(sqlParameters[0].Value.ToString());
                             obj.CreateDate = DateTime.Parse(sqlParameters[sqlParameters.Length - 1].Value.ToString());
-                            if (NhatKyDuLieuDAO.Insert(coreCommon.coreCommon.AllPropertiesAndValues(obj), obj.ID, null, null, coreCommon.ThaoTacDuLieu.Sua, coreCommon.coreCommon.TraTuDien(DanhMucPhanQuyenDonVi.tableName), sqlConnection, sqlTransaction))
-                            {
-                                sqlTransaction.Commit();
-                                return true;
-                            }
-                            else
-                            {
-                                sqlTransaction.Rollback();
-                                return false;
-                            }
+                            sqlTransaction.Commit();
+                            return true;
                         }
                     }
                 }
@@ -392,7 +352,7 @@ namespace coreDAO
                 return false;
             }
         }
-        public bool Delete(DanhMucPhanQuyenDonVi obj)
+        public bool Delete(object ID)
         {
             try
             {
@@ -405,19 +365,11 @@ namespace coreDAO
                         {
                             sqlCommand.CommandType = CommandType.StoredProcedure;
                             SqlParameter[] sqlParameters = new SqlParameter[1];
-                            sqlParameters[0] = new SqlParameter("@ID", obj.ID);
+                            sqlParameters[0] = new SqlParameter("@ID", ID);
                             sqlCommand.Parameters.AddRange(sqlParameters);
                             int rowAffected = sqlCommand.ExecuteNonQuery();
-                            if (NhatKyDuLieuDAO.Insert(coreCommon.coreCommon.AllPropertiesAndValues(obj), obj.ID, null, null, coreCommon.ThaoTacDuLieu.Xoa, coreCommon.coreCommon.TraTuDien(DanhMucPhanQuyenDonVi.tableName), sqlConnection, sqlTransaction))
-                            {
-                                sqlTransaction.Commit();
-                                return true;
-                            }
-                            else
-                            {
-                                sqlTransaction.Rollback();
-                                return false;
-                            }
+                            sqlTransaction.Commit();
+                            return true;
                         }
                     }
                 }
@@ -440,7 +392,7 @@ namespace coreDAO
             DataTable dt = dao.tableList(sqlParameters, DanhMucPhanQuyenLoaiDoiTuong.listProcedureName, DanhMucPhanQuyenLoaiDoiTuong.tableName);
             return dt;
         }
-        public bool Insert(ref DanhMucPhanQuyenLoaiDoiTuong obj)
+        public bool Insert(DanhMucPhanQuyenLoaiDoiTuong obj)
         {
             try
             {
@@ -473,16 +425,8 @@ namespace coreDAO
                             int rowAffected = sqlCommand.ExecuteNonQuery();
                             obj.ID = Int64.Parse(sqlParameters[0].Value.ToString());
                             obj.CreateDate = DateTime.Parse(sqlParameters[sqlParameters.Length - 1].Value.ToString());
-                            if (NhatKyDuLieuDAO.Insert(coreCommon.coreCommon.AllPropertiesAndValues(obj), obj.ID, null, null, coreCommon.ThaoTacDuLieu.Them, coreCommon.coreCommon.TraTuDien(DanhMucPhanQuyenLoaiDoiTuong.tableName), sqlConnection, sqlTransaction))
-                            {
-                                sqlTransaction.Commit();
-                                return true;
-                            }
-                            else
-                            {
-                                sqlTransaction.Rollback();
-                                return false;
-                            }
+                            sqlTransaction.Commit();
+                            return true;
                         }
                     }
                 }
@@ -493,7 +437,7 @@ namespace coreDAO
                 return false;
             }
         }
-        public bool Update(ref DanhMucPhanQuyenLoaiDoiTuong obj)
+        public bool Update(DanhMucPhanQuyenLoaiDoiTuong obj)
         {
             try
             {
@@ -520,16 +464,8 @@ namespace coreDAO
                             int rowAffected = sqlCommand.ExecuteNonQuery();
                             obj.ID = Int64.Parse(sqlParameters[0].Value.ToString());
                             obj.CreateDate = DateTime.Parse(sqlParameters[sqlParameters.Length - 1].Value.ToString());
-                            if (NhatKyDuLieuDAO.Insert(coreCommon.coreCommon.AllPropertiesAndValues(obj), obj.ID, null, null, coreCommon.ThaoTacDuLieu.Sua, coreCommon.coreCommon.TraTuDien(DanhMucPhanQuyenLoaiDoiTuong.tableName), sqlConnection, sqlTransaction))
-                            {
-                                sqlTransaction.Commit();
-                                return true;
-                            }
-                            else
-                            {
-                                sqlTransaction.Rollback();
-                                return false;
-                            }
+                            sqlTransaction.Commit();
+                            return true;
                         }
                     }
                 }
@@ -540,7 +476,7 @@ namespace coreDAO
                 return false;
             }
         }
-        public bool Delete(DanhMucPhanQuyenLoaiDoiTuong obj)
+        public bool Delete(object ID)
         {
             try
             {
@@ -553,19 +489,11 @@ namespace coreDAO
                         {
                             sqlCommand.CommandType = CommandType.StoredProcedure;
                             SqlParameter[] sqlParameters = new SqlParameter[1];
-                            sqlParameters[0] = new SqlParameter("@ID", obj.ID);
+                            sqlParameters[0] = new SqlParameter("@ID", ID);
                             sqlCommand.Parameters.AddRange(sqlParameters);
                             int rowAffected = sqlCommand.ExecuteNonQuery();
-                            if (NhatKyDuLieuDAO.Insert(coreCommon.coreCommon.AllPropertiesAndValues(obj), obj.ID, null, null, coreCommon.ThaoTacDuLieu.Xoa, coreCommon.coreCommon.TraTuDien(DanhMucPhanQuyenLoaiDoiTuong.tableName), sqlConnection, sqlTransaction))
-                            {
-                                sqlTransaction.Commit();
-                                return true;
-                            }
-                            else
-                            {
-                                sqlTransaction.Rollback();
-                                return false;
-                            }
+                            sqlTransaction.Commit();
+                            return true;
                         }
                     }
                 }
@@ -588,7 +516,7 @@ namespace coreDAO
             DataTable dt = dao.tableList(sqlParameters, DanhMucPhanQuyenChungTu.listProcedureName, DanhMucPhanQuyenChungTu.tableName);
             return dt;
         }
-        public bool Insert(ref DanhMucPhanQuyenChungTu obj)
+        public bool Insert(DanhMucPhanQuyenChungTu obj)
         {
             try
             {
@@ -621,16 +549,8 @@ namespace coreDAO
                             int rowAffected = sqlCommand.ExecuteNonQuery();
                             obj.ID = Int64.Parse(sqlParameters[0].Value.ToString());
                             obj.CreateDate = DateTime.Parse(sqlParameters[sqlParameters.Length - 1].Value.ToString());
-                            if (NhatKyDuLieuDAO.Insert(coreCommon.coreCommon.AllPropertiesAndValues(obj), obj.ID, null, null, coreCommon.ThaoTacDuLieu.Them, coreCommon.coreCommon.TraTuDien(DanhMucPhanQuyenChungTu.tableName), sqlConnection, sqlTransaction))
-                            {
-                                sqlTransaction.Commit();
-                                return true;
-                            }
-                            else
-                            {
-                                sqlTransaction.Rollback();
-                                return false;
-                            }
+                            sqlTransaction.Commit();
+                            return true;
                         }
                     }
                 }
@@ -641,7 +561,7 @@ namespace coreDAO
                 return false;
             }
         }
-        public bool Update(ref DanhMucPhanQuyenChungTu obj)
+        public bool Update(DanhMucPhanQuyenChungTu obj)
         {
             try
             {
@@ -668,16 +588,8 @@ namespace coreDAO
                             int rowAffected = sqlCommand.ExecuteNonQuery();
                             obj.ID = Int64.Parse(sqlParameters[0].Value.ToString());
                             obj.CreateDate = DateTime.Parse(sqlParameters[sqlParameters.Length - 1].Value.ToString());
-                            if (NhatKyDuLieuDAO.Insert(coreCommon.coreCommon.AllPropertiesAndValues(obj), obj.ID, null, null, coreCommon.ThaoTacDuLieu.Sua, coreCommon.coreCommon.TraTuDien(DanhMucPhanQuyenChungTu.tableName), sqlConnection, sqlTransaction))
-                            {
-                                sqlTransaction.Commit();
-                                return true;
-                            }
-                            else
-                            {
-                                sqlTransaction.Rollback();
-                                return false;
-                            }
+                            sqlTransaction.Commit();
+                            return true;
                         }
                     }
                 }
@@ -688,7 +600,7 @@ namespace coreDAO
                 return false;
             }
         }
-        public bool Delete(DanhMucPhanQuyenChungTu obj)
+        public bool Delete(object ID)
         {
             try
             {
@@ -701,19 +613,11 @@ namespace coreDAO
                         {
                             sqlCommand.CommandType = CommandType.StoredProcedure;
                             SqlParameter[] sqlParameters = new SqlParameter[1];
-                            sqlParameters[0] = new SqlParameter("@ID", obj.ID);
+                            sqlParameters[0] = new SqlParameter("@ID", ID);
                             sqlCommand.Parameters.AddRange(sqlParameters);
                             int rowAffected = sqlCommand.ExecuteNonQuery();
-                            if (NhatKyDuLieuDAO.Insert(coreCommon.coreCommon.AllPropertiesAndValues(obj), obj.ID, null, null, coreCommon.ThaoTacDuLieu.Xoa, coreCommon.coreCommon.TraTuDien(DanhMucPhanQuyenChungTu.tableName), sqlConnection, sqlTransaction))
-                            {
-                                sqlTransaction.Commit();
-                                return true;
-                            }
-                            else
-                            {
-                                sqlTransaction.Rollback();
-                                return false;
-                            }
+                            sqlTransaction.Commit();
+                            return true;
                         }
                     }
                 }
@@ -736,7 +640,7 @@ namespace coreDAO
             DataTable dt = dao.tableList(sqlParameters, DanhMucPhanQuyenBaoCao.listProcedureName, DanhMucPhanQuyenBaoCao.tableName);
             return dt;
         }
-        public bool Insert(ref DanhMucPhanQuyenBaoCao obj)
+        public bool Insert(DanhMucPhanQuyenBaoCao obj)
         {
             try
             {
@@ -766,16 +670,8 @@ namespace coreDAO
                             int rowAffected = sqlCommand.ExecuteNonQuery();
                             obj.ID = Int64.Parse(sqlParameters[0].Value.ToString());
                             obj.CreateDate = DateTime.Parse(sqlParameters[sqlParameters.Length - 1].Value.ToString());
-                            if (NhatKyDuLieuDAO.Insert(coreCommon.coreCommon.AllPropertiesAndValues(obj), obj.ID, null, null, coreCommon.ThaoTacDuLieu.Them, coreCommon.coreCommon.TraTuDien(DanhMucPhanQuyenBaoCao.tableName), sqlConnection, sqlTransaction))
-                            {
-                                sqlTransaction.Commit();
-                                return true;
-                            }
-                            else
-                            {
-                                sqlTransaction.Rollback();
-                                return false;
-                            }
+                            sqlTransaction.Commit();
+                            return true;
                         }
                     }
                 }
@@ -786,7 +682,7 @@ namespace coreDAO
                 return false;
             }
         }
-        public bool Update(ref DanhMucPhanQuyenBaoCao obj)
+        public bool Update(DanhMucPhanQuyenBaoCao obj)
         {
             try
             {
@@ -810,16 +706,8 @@ namespace coreDAO
                             int rowAffected = sqlCommand.ExecuteNonQuery();
                             obj.ID = Int64.Parse(sqlParameters[0].Value.ToString());
                             obj.CreateDate = DateTime.Parse(sqlParameters[sqlParameters.Length - 1].Value.ToString());
-                            if (NhatKyDuLieuDAO.Insert(coreCommon.coreCommon.AllPropertiesAndValues(obj), obj.ID, null, null, coreCommon.ThaoTacDuLieu.Sua, coreCommon.coreCommon.TraTuDien(DanhMucPhanQuyenBaoCao.tableName), sqlConnection, sqlTransaction))
-                            {
-                                sqlTransaction.Commit();
-                                return true;
-                            }
-                            else
-                            {
-                                sqlTransaction.Rollback();
-                                return false;
-                            }
+                            sqlTransaction.Commit();
+                            return true;
                         }
                     }
                 }
@@ -830,7 +718,7 @@ namespace coreDAO
                 return false;
             }
         }
-        public bool Delete(DanhMucPhanQuyenBaoCao obj)
+        public bool Delete(object ID)
         {
             try
             {
@@ -843,19 +731,11 @@ namespace coreDAO
                         {
                             sqlCommand.CommandType = CommandType.StoredProcedure;
                             SqlParameter[] sqlParameters = new SqlParameter[1];
-                            sqlParameters[0] = new SqlParameter("@ID", obj.ID);
+                            sqlParameters[0] = new SqlParameter("@ID", ID);
                             sqlCommand.Parameters.AddRange(sqlParameters);
                             int rowAffected = sqlCommand.ExecuteNonQuery();
-                            if (NhatKyDuLieuDAO.Insert(coreCommon.coreCommon.AllPropertiesAndValues(obj), obj.ID, null, null, coreCommon.ThaoTacDuLieu.Xoa, coreCommon.coreCommon.TraTuDien(DanhMucPhanQuyenBaoCao.tableName), sqlConnection, sqlTransaction))
-                            {
-                                sqlTransaction.Commit();
-                                return true;
-                            }
-                            else
-                            {
-                                sqlTransaction.Rollback();
-                                return false;
-                            }
+                            sqlTransaction.Commit();
+                            return true;
                         }
                     }
                 }

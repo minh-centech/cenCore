@@ -28,7 +28,7 @@ namespace coreUI.Forms
                 }
                 else
                 {
-                    CapNhat = 1;
+                    CapNhat = coreCommon.ThaoTacDuLieu.Them;
                     //Xóa text box
                     txtMa.Value = null;
                     txtTen.Value = null;
@@ -58,7 +58,7 @@ namespace coreUI.Forms
         private bool Save()
         {
 
-            if (CapNhat == 1 || CapNhat == 3)
+            if (CapNhat == coreCommon.ThaoTacDuLieu.Them || CapNhat == coreCommon.ThaoTacDuLieu.Copy)
             {
                 obj = new coreDTO.DanhMucBaoCao
                 {
@@ -114,7 +114,7 @@ namespace coreUI.Forms
                     EditDate = null
                 };
             }
-            bool OK = (CapNhat == coreCommon.ThaoTacDuLieu.Them || CapNhat == coreCommon.ThaoTacDuLieu.Copy) ? coreBUS.DanhMucBaoCaoBUS.Insert(ref obj) : coreBUS.DanhMucBaoCaoBUS.Update(ref obj);
+            bool OK = (CapNhat == coreCommon.ThaoTacDuLieu.Them || CapNhat == coreCommon.ThaoTacDuLieu.Copy) ? coreBUS.DanhMucBaoCaoBUS.Insert(obj) : coreBUS.DanhMucBaoCaoBUS.Update(obj);
             if (OK && obj != null && Int64.TryParse(obj.ID.ToString(), out Int64 _ID) && _ID > 0)
             {
                 dtUpdate = coreBUS.DanhMucBaoCaoBUS.List(obj.ID).Tables[DanhMucBaoCao.tableName];
@@ -141,12 +141,14 @@ namespace coreUI.Forms
 
         private void frmDanhMucBaoCaoUpdate_Load(object sender, EventArgs e)
         {
-            txtMaDanhMucBaoCaoCopyCot.Enabled = (CapNhat != 2);
+            txtMaDanhMucBaoCaoCopyCot.Enabled = (CapNhat != coreCommon.ThaoTacDuLieu.Sua);
             //
             txtMa.Value = DefaultValue;
             txtTen.Value = DefaultValue;
-            if (CapNhat >= 2)
+            if (CapNhat >= coreCommon.ThaoTacDuLieu.Sua)
             {
+                dataRow = coreBUS.DanhMucBaoCaoBUS.List(ID).Tables[DanhMucBaoCao.tableName].Rows[0];
+                if (coreCommon.coreCommon.IsNull(dataRow)) { coreCommon.coreCommon.ErrorMessageOkOnly("Không lấy được dữ liệu!"); this.DialogResult = DialogResult.Cancel; }
                 txtMa.Value = dataRow["Ma"];
                 txtTen.Value = dataRow["Ten"];
                 txtTenStore.Value = dataRow["ReportProcedureName"];

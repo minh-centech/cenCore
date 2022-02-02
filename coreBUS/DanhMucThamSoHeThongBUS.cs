@@ -18,41 +18,38 @@ namespace coreBUS
                 return null;
             }
         }
-        public static bool Insert(ref DanhMucThamSoHeThong obj)
+        public static bool Insert(DanhMucThamSoHeThong obj)
         {
             try
             {
                 DanhMucThamSoHeThongDAO dao = new DanhMucThamSoHeThongDAO();
-                return dao.Insert(ref obj);
+                return dao.Insert(obj);
             }
             catch (Exception ex)
             {
                 return false;
             }
         }
-        public static bool Update(ref DanhMucThamSoHeThong obj)
+        public static bool Update(DanhMucThamSoHeThong obj)
         {
             try
             {
                 DanhMucThamSoHeThongDAO dao = new DanhMucThamSoHeThongDAO();
-                return dao.Update(ref obj);
+                return dao.Update(obj);
             }
             catch (Exception ex)
             {
                 return false;
             }
         }
-        public static bool Delete(DanhMucThamSoHeThong obj)
+        public static bool Delete(object ID)
         {
             try
             {
                 DanhMucThamSoHeThongDAO dao = new DanhMucThamSoHeThongDAO();
-                return dao.Delete(obj);
+                return dao.Delete(ID);
             }
-            catch (Exception ex)
-            {
-                return false;
-            }
+            catch (Exception ex) { return false; }
         }
         public static object GetGiaTri(object Ma)
         {
