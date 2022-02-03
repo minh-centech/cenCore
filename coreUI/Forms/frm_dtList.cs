@@ -73,8 +73,8 @@ namespace coreUI.Forms
 
             if (ug.ActiveRow == null || !ug.ActiveRow.IsDataRow || fDelete == null) return;
             if (coreCommon.coreCommon.QuestionMessage("Bạn chắc chắn muốn xóa danh mục này?", 0) == DialogResult.No) return;
-            //Nếu ID = null thì xóa theo ID chứng từ
             bool OK = false;
+            IDDanhMucDoiTuong = (dtData.Columns.Contains("ID")) ? ug.ActiveRow.Cells["ID"].Value.ToString() : null;
             if (fDelete != null)
                 OK = fDelete();
             if (OK)
