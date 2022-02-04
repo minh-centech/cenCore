@@ -85,13 +85,13 @@ namespace coreUI.Forms
             switch (tabChiTiet.SelectedTab.Key.ToUpper())
             {
                 case "TABCHITIET":
-                    coreUI.clsDanhMucChungTuTrangThai.Insert(new Action(() => coreUI.InsertToList(dsData.Tables[DanhMucChungTuTrangThai.tableName], frmDanhMucChungTuTrangThaiUpdate.dtUpdate)));
+                    coreUI.clsDanhMucChungTuTrangThai.Insert(ug.ActiveRow.Cells["ID"].Value, new Action(() => coreUI.InsertToList(dsData.Tables[DanhMucChungTuTrangThai.tableName], frmDanhMucChungTuTrangThaiUpdate.dtUpdate)));
                     break;
                 case "TABCHUNGTUIN":
-                    coreUI.clsDanhMucChungTuIn.Insert(new Action(() => coreUI.InsertToList(dsData.Tables[DanhMucChungTuIn.tableName], frmDanhMucChungTuInUpdate.dtUpdate)));
+                    coreUI.clsDanhMucChungTuIn.Insert(ug.ActiveRow.Cells["ID"].Value, new Action(() => coreUI.InsertToList(dsData.Tables[DanhMucChungTuIn.tableName], frmDanhMucChungTuInUpdate.dtUpdate)));
                     break;
                 case "TABCHUNGTUQUYTRINH":
-                    coreUI.clsDanhMucChungTuQuyTrinh.Insert(new Action(() => coreUI.InsertToList(dsData.Tables[DanhMucChungTuQuyTrinh.tableName], frmDanhMucChungTuQuyTrinhUpdate.dtUpdate)));
+                    coreUI.clsDanhMucChungTuQuyTrinh.Insert(ug.ActiveRow.Cells["ID"].Value, new Action(() => coreUI.InsertToList(dsData.Tables[DanhMucChungTuQuyTrinh.tableName], frmDanhMucChungTuQuyTrinhUpdate.dtUpdate)));
                     break;
             }
         }

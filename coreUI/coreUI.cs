@@ -457,11 +457,12 @@ namespace coreUI
         }
         public class clsDanhMucChungTuIn
         {
-            public static DataRow Insert(Action InsertToList)
+            public static DataRow Insert(object IDDanhMucChungTu, Action InsertToList)
             {
                 frmDanhMucChungTuInUpdate frmUpdate = new frmDanhMucChungTuInUpdate
                 {
                     CapNhat = coreCommon.ThaoTacDuLieu.Them,
+                    IDDanhMucChungTu = IDDanhMucChungTu,
                     InsertToList = InsertToList
                 };
                 frmUpdate.ShowDialog();
@@ -492,11 +493,12 @@ namespace coreUI
         }
         public class clsDanhMucChungTuQuyTrinh
         {
-            public static DataRow Insert(Action InsertToList)
+            public static DataRow Insert(object IDDanhMucChungTu, Action InsertToList)
             {
                 frmDanhMucChungTuQuyTrinhUpdate frmUpdate = new frmDanhMucChungTuQuyTrinhUpdate
                 {
                     CapNhat = coreCommon.ThaoTacDuLieu.Them,
+                    IDDanhMucChungTu = IDDanhMucChungTu,
                     InsertToList = InsertToList
                 };
                 frmUpdate.ShowDialog();
@@ -527,11 +529,12 @@ namespace coreUI
         }
         public class clsDanhMucChungTuTrangThai
         {
-            public static DataRow Insert(Action InsertToList)
+            public static DataRow Insert(object IDDanhMucChungTu, Action InsertToList)
             {
                 frmDanhMucChungTuTrangThaiUpdate frmUpdate = new frmDanhMucChungTuTrangThaiUpdate
                 {
                     CapNhat = coreCommon.ThaoTacDuLieu.Them,
+                    IDDanhMucChungTu = IDDanhMucChungTu,
                     InsertToList = InsertToList
                 };
                 frmUpdate.ShowDialog();
@@ -667,11 +670,12 @@ namespace coreUI
         }
         public class clsDanhMucMenuBaoCao
         {
-            public static DataRow Insert(Action InsertToList)
+            public static DataRow Insert(object IDDanhMucMenu, Action InsertToList)
             {
                 frmDanhMucMenuBaoCaoUpdate frmUpdate = new frmDanhMucMenuBaoCaoUpdate
                 {
                     CapNhat = coreCommon.ThaoTacDuLieu.Them,
+                    IDDanhMucMenu = IDDanhMucMenu,
                     InsertToList = InsertToList
                 };
                 frmUpdate.ShowDialog();
@@ -702,11 +706,12 @@ namespace coreUI
         }
         public class clsDanhMucMenuChungTu
         {
-            public static DataRow Insert(Action InsertToList)
+            public static DataRow Insert(object IDDanhMucMenu, Action InsertToList)
             {
                 frmDanhMucMenuChungTuUpdate frmUpdate = new frmDanhMucMenuChungTuUpdate
                 {
                     CapNhat = coreCommon.ThaoTacDuLieu.Them,
+                    IDDanhMucMenu = IDDanhMucMenu,
                     InsertToList = InsertToList
                 };
                 frmUpdate.ShowDialog();
@@ -737,11 +742,12 @@ namespace coreUI
         }
         public class clsDanhMucMenuLoaiDoiTuong
         {
-            public static DataRow Insert(Action InsertToList)
+            public static DataRow Insert(object IDDanhMucMenu, Action InsertToList)
             {
                 frmDanhMucMenuLoaiDoiTuongUpdate frmUpdate = new frmDanhMucMenuLoaiDoiTuongUpdate
                 {
                     CapNhat = coreCommon.ThaoTacDuLieu.Them,
+                    IDDanhMucMenu = IDDanhMucMenu,
                     InsertToList = InsertToList
                 };
                 frmUpdate.ShowDialog();
