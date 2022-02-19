@@ -833,6 +833,7 @@ namespace coreCommon
         //
         public const string DeleteConfirmMsg = "Dữ liệu đã xóa sẽ không thể khôi phục lại được, bạn có muốn xóa hay không?";
         //
+        public const string DanhMucLoaiDoiTuongTaiKhoanKeToan = "TAIKHOANKETOAN";
     }
 
 }

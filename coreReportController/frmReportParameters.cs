@@ -140,6 +140,39 @@ namespace coreReportController
                             GridValidation = true;
                         }
                         break;
+                    //case "DanhMucTaiKhoan":
+                    //    //Valid mã danh mục tài khoản
+                    //    GridValidation = false;
+                    //    row.Cells["GiaTriThamSo"].Value = DBNull.Value;
+                    //    //
+                    //    dt = coreBUS.DanhMucNguoiSuDungBUS.ListValidMa(cellValue);
+                    //    if (dt == null) { GridValidation = true; return; }
+                    //    if (dt.Rows.Count == 1)
+                    //    {
+                    //        GridValidation = false;
+                    //        row.Cells["GiaTri"].Value = dt.Rows[0]["Ma"];
+                    //        row.Cells["GiaTriThamSo"].Value = dt.Rows[0]["ID"];
+                    //        row.Cells["GhiChu"].Value = dt.Rows[0]["Ten"];
+                    //        GridValidation = true;
+                    //    }
+                    //    else
+                    //    {
+                    //        //Show valid form
+                    //        coreUI.Forms.frmDataValid frm_ctValid = new coreUI.Forms.frmDataValid()
+                    //        {
+                    //            validProcedure = new Func<DataTable>(() => coreBUS.DanhMucNguoiSuDungBUS.ListValidMa(null)),
+                    //            validColumn = "Ma",
+                    //            validValue = cellValue
+                    //        };
+                    //        frm_ctValid.ShowDialog();
+                    //        if (frm_ctValid.dataRow == null) { GridValidation = true; return; }
+                    //        GridValidation = false;
+                    //        row.Cells["GiaTri"].Value = frm_ctValid.dataRow["Ma"];
+                    //        row.Cells["GiaTriThamSo"].Value = frm_ctValid.dataRow["ID"];
+                    //        row.Cells["GhiChu"].Value = frm_ctValid.dataRow["Ten"];
+                    //        GridValidation = true;
+                    //    }
+                    //    break;
                     default:
                         object IDDanhMucLoaiDoiTuong = coreBUS.DanhMucLoaiDoiTuongBUS.GetID(MaDanhMucLoaiDoiTuong);
                         //Valid mã danh mục đối tượng

@@ -27,7 +27,9 @@ namespace coreUI.Forms
         }
         protected override void Insert()
         {
-            DanhMucPhanQuyenBUS.GetPhanQuyenLoaiDoiTuong(coreCommon.GlobalVariables.IDDanhMucPhanQuyen, IDDanhMucLoaiDoiTuong, out bool Xem, out bool Them, out bool Sua, out bool Xoa);
+            bool Xem = true;
+            if (coreCommon.coreCommon.stringParse(IDDanhMucLoaiDoiTuong) != coreCommon.GlobalVariables.DanhMucLoaiDoiTuongTaiKhoanKeToan)
+                DanhMucPhanQuyenBUS.GetPhanQuyenLoaiDoiTuong(coreCommon.GlobalVariables.IDDanhMucPhanQuyen, IDDanhMucLoaiDoiTuong, out Xem, out bool Them, out bool Sua, out bool Xoa);
             if (!coreCommon.GlobalVariables.isAdmin && !Xem)
             {
                 coreCommon.coreCommon.ErrorMessageOkOnly("Bạn không có quyền thêm mới dữ liệu danh mục này!");
@@ -40,7 +42,9 @@ namespace coreUI.Forms
         }
         protected override void Copy()
         {
-            DanhMucPhanQuyenBUS.GetPhanQuyenLoaiDoiTuong(coreCommon.GlobalVariables.IDDanhMucPhanQuyen, IDDanhMucLoaiDoiTuong, out bool Xem, out bool Them, out bool Sua, out bool Xoa);
+            bool Them = true;
+            if (coreCommon.coreCommon.stringParse(IDDanhMucLoaiDoiTuong) != coreCommon.GlobalVariables.DanhMucLoaiDoiTuongTaiKhoanKeToan)
+                DanhMucPhanQuyenBUS.GetPhanQuyenLoaiDoiTuong(coreCommon.GlobalVariables.IDDanhMucPhanQuyen, IDDanhMucLoaiDoiTuong, out bool Xem, out Them, out bool Sua, out bool Xoa);
             if (!coreCommon.GlobalVariables.isAdmin && !Them)
             {
                 coreCommon.coreCommon.ErrorMessageOkOnly("Bạn không có quyền thêm mới dữ liệu danh mục này!");
@@ -52,7 +56,9 @@ namespace coreUI.Forms
         }
         protected override void Update()
         {
-            DanhMucPhanQuyenBUS.GetPhanQuyenLoaiDoiTuong(coreCommon.GlobalVariables.IDDanhMucPhanQuyen, IDDanhMucLoaiDoiTuong, out bool Xem, out bool Them, out bool Sua, out bool Xoa);
+            bool Sua = true;
+            if (coreCommon.coreCommon.stringParse(IDDanhMucLoaiDoiTuong) != coreCommon.GlobalVariables.DanhMucLoaiDoiTuongTaiKhoanKeToan)
+                DanhMucPhanQuyenBUS.GetPhanQuyenLoaiDoiTuong(coreCommon.GlobalVariables.IDDanhMucPhanQuyen, IDDanhMucLoaiDoiTuong, out bool Xem, out bool Them, out Sua, out bool Xoa);
             if (!coreCommon.GlobalVariables.isAdmin && !Sua)
             {
                 coreCommon.coreCommon.ErrorMessageOkOnly("Bạn không có quyền sửa dữ liệu danh mục này!");
@@ -64,7 +70,9 @@ namespace coreUI.Forms
         }
         protected override void Delete()
         {
-            DanhMucPhanQuyenBUS.GetPhanQuyenLoaiDoiTuong(coreCommon.GlobalVariables.IDDanhMucPhanQuyen, IDDanhMucLoaiDoiTuong, out bool Xem, out bool Them, out bool Sua, out bool Xoa);
+            bool Xoa = true;
+            if (coreCommon.coreCommon.stringParse(IDDanhMucLoaiDoiTuong) != coreCommon.GlobalVariables.DanhMucLoaiDoiTuongTaiKhoanKeToan)
+                DanhMucPhanQuyenBUS.GetPhanQuyenLoaiDoiTuong(coreCommon.GlobalVariables.IDDanhMucPhanQuyen, IDDanhMucLoaiDoiTuong, out bool Xem, out bool Them, out bool Sua, out Xoa);
             if (!coreCommon.GlobalVariables.isAdmin && !Xoa)
             {
                 coreCommon.coreCommon.ErrorMessageOkOnly("Bạn không có quyền xóa dữ liệu danh mục này!");
