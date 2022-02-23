@@ -56,7 +56,7 @@ namespace coreReportController
         public frmReportViewer()
         {
             InitializeComponent();
-            ugBaoCao.HiddenColumnsList = "[LoaiManHinh][MaDanhMucChungTu][TenDanhMucChungTu]";
+            ugBaoCao.HiddenColumnsList = "[LoaiManHinh][TenDanhMucChungTu]";
         }
         private void cmdClose_Click(object sender, EventArgs e)
         {

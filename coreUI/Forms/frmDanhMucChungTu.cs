@@ -74,7 +74,7 @@ namespace coreUI.Forms
         }
         protected override void Delete()
         {
-            if (coreCommon.coreCommon.IsNull(ug.ActiveRow) || !ug.ActiveRow.IsDataRow || coreCommon.coreCommon.IsNull(ug.ActiveRow.Cells["ID"].Value)) return;
+            if (coreCommon.coreCommon.IsNull(ug.ActiveRow) || !ug.ActiveRow.IsDataRow || coreCommon.coreCommon.IsNull(ug.ActiveRow.Cells["ID"].Value) || coreCommon.coreCommon.QuestionMessage("Bạn chắc chắn muốn xóa dữ liệu này?", 0) == DialogResult.No) return;
             if (DanhMucChungTuBUS.Delete(ug.ActiveRow.Cells["ID"].Value))
                 coreUI.ugDeleteRow(bsData, ug);
         }
@@ -129,17 +129,17 @@ namespace coreUI.Forms
             switch (tabChiTiet.SelectedTab.Key.ToUpper())
             {
                 case "TABCHITIET":
-                    if (coreCommon.coreCommon.IsNull(ugChiTiet.ActiveRow) || !ugChiTiet.ActiveRow.IsDataRow || coreCommon.coreCommon.IsNull(ugChiTiet.ActiveRow.Cells["ID"].Value)) return;
+                    if (coreCommon.coreCommon.IsNull(ugChiTiet.ActiveRow) || !ugChiTiet.ActiveRow.IsDataRow || coreCommon.coreCommon.IsNull(ugChiTiet.ActiveRow.Cells["ID"].Value) || coreCommon.coreCommon.QuestionMessage("Bạn chắc chắn muốn xóa dữ liệu này?", 0) == DialogResult.No) return;
                     if (DanhMucChungTuTrangThaiBUS.Delete(ugChiTiet.ActiveRow.Cells["ID"].Value))
                         coreUI.ugDeleteRow(bsDataChiTiet, ugChiTiet);
                     break;
                 case "TABCHUNGTUIN":
-                    if (coreCommon.coreCommon.IsNull(ugChungTuIn.ActiveRow) || !ugChungTuIn.ActiveRow.IsDataRow || coreCommon.coreCommon.IsNull(ugChungTuIn.ActiveRow.Cells["ID"].Value)) return;
+                    if (coreCommon.coreCommon.IsNull(ugChungTuIn.ActiveRow) || !ugChungTuIn.ActiveRow.IsDataRow || coreCommon.coreCommon.IsNull(ugChungTuIn.ActiveRow.Cells["ID"].Value) || coreCommon.coreCommon.QuestionMessage("Bạn chắc chắn muốn xóa dữ liệu này?", 0) == DialogResult.No) return;
                     if (DanhMucChungTuInBUS.Delete(ugChungTuIn.ActiveRow.Cells["ID"].Value))
                         coreUI.ugDeleteRow(bsChungTuIn, ugChungTuIn);
                     break;
                 case "TABCHUNGTUQUYTRINH":
-                    if (coreCommon.coreCommon.IsNull(ugChungTuQuyTrinh.ActiveRow) || !ugChungTuQuyTrinh.ActiveRow.IsDataRow || coreCommon.coreCommon.IsNull(ugChungTuQuyTrinh.ActiveRow.Cells["ID"].Value)) return;
+                    if (coreCommon.coreCommon.IsNull(ugChungTuQuyTrinh.ActiveRow) || !ugChungTuQuyTrinh.ActiveRow.IsDataRow || coreCommon.coreCommon.IsNull(ugChungTuQuyTrinh.ActiveRow.Cells["ID"].Value) || coreCommon.coreCommon.QuestionMessage("Bạn chắc chắn muốn xóa dữ liệu này?", 0) == DialogResult.No) return;
                     if (DanhMucChungTuQuyTrinhBUS.Delete(ugChungTuQuyTrinh.ActiveRow.Cells["ID"].Value))
                         coreUI.ugDeleteRow(bsChungTuQuyTrinh, ugChungTuQuyTrinh);
                     break;

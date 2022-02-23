@@ -36,7 +36,7 @@ namespace coreUI.Forms
         }
         protected override void Delete()
         {
-            if (coreCommon.coreCommon.IsNull(ug.ActiveRow) || !ug.ActiveRow.IsDataRow || coreCommon.coreCommon.IsNull(ug.ActiveRow.Cells["ID"].Value)) return;
+            if (coreCommon.coreCommon.IsNull(ug.ActiveRow) || !ug.ActiveRow.IsDataRow || coreCommon.coreCommon.IsNull(ug.ActiveRow.Cells["ID"].Value) || coreCommon.coreCommon.QuestionMessage("Bạn chắc chắn muốn xóa dữ liệu này?", 0) == DialogResult.No) return;
             if (DanhMucNhomBaoCaoBUS.Delete(ug.ActiveRow.Cells["ID"].Value))
                 coreUI.ugDeleteRow(bsData, ug);
         }

@@ -49,7 +49,7 @@ namespace coreUI.Forms
         }
         protected override void Delete()
         {
-            if (coreCommon.coreCommon.IsNull(ug.ActiveRow) || !ug.ActiveRow.IsDataRow || coreCommon.coreCommon.IsNull(ug.ActiveRow.Cells["ID"].Value)) return;
+            if (coreCommon.coreCommon.IsNull(ug.ActiveRow) || !ug.ActiveRow.IsDataRow || coreCommon.coreCommon.IsNull(ug.ActiveRow.Cells["ID"].Value) || coreCommon.coreCommon.QuestionMessage("Bạn chắc chắn muốn xóa dữ liệu này?", 0) == DialogResult.No) return;
             if (DanhMucBaoCaoBUS.Delete(ug.ActiveRow.Cells["ID"].Value))
                 coreUI.ugDeleteRow(bsData, ug);
         }
@@ -65,7 +65,7 @@ namespace coreUI.Forms
         }
         protected override void DeleteChiTiet()
         {
-            if (coreCommon.coreCommon.IsNull(ugChiTiet.ActiveRow) || !ugChiTiet.ActiveRow.IsDataRow || coreCommon.coreCommon.IsNull(ugChiTiet.ActiveRow.Cells["ID"].Value)) return;
+            if (coreCommon.coreCommon.IsNull(ugChiTiet.ActiveRow) || !ugChiTiet.ActiveRow.IsDataRow || coreCommon.coreCommon.IsNull(ugChiTiet.ActiveRow.Cells["ID"].Value) || coreCommon.coreCommon.QuestionMessage("Bạn chắc chắn muốn xóa dữ liệu này?", 0) == DialogResult.No) return;
             if (DanhMucBaoCaoBUS.Delete(ugChiTiet.ActiveRow.Cells["ID"].Value))
                 coreUI.ugDeleteRow(bsDataChiTiet, ugChiTiet);
         }
