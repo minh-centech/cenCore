@@ -151,6 +151,11 @@ namespace coreBase.BaseForms
         protected virtual void import()
         {
         }
+        //Xuất chi tiết chứng từ ra excel
+        protected void export()
+        {
+            coreCommon.coreCommon.ExportGrid2Excel(ugChiTiet);
+        }
         //Mở chứng từ ở bước tiếp theo của quy trình
         protected virtual void runNext(String IDDanhMucChungTu, String MaDanhMucChungTu, String LoaiManHinh, String FormCaption)
         {
@@ -212,6 +217,9 @@ namespace coreBase.BaseForms
                     break;
                 case "BTIMPORT":
                     import();
+                    break;
+                case "BTEXPORT":
+                    export();
                     break;
                 case "BTIN":
                     inChungTu();

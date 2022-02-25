@@ -61,6 +61,7 @@
             Infragistics.Win.UltraWinToolbars.ButtonTool buttonTool1 = new Infragistics.Win.UltraWinToolbars.ButtonTool("btLuu");
             Infragistics.Win.UltraWinToolbars.ButtonTool buttonTool2 = new Infragistics.Win.UltraWinToolbars.ButtonTool("btNgung");
             Infragistics.Win.UltraWinToolbars.ButtonTool buttonTool12 = new Infragistics.Win.UltraWinToolbars.ButtonTool("btimport");
+            Infragistics.Win.UltraWinToolbars.ButtonTool buttonTool14 = new Infragistics.Win.UltraWinToolbars.ButtonTool("btExport");
             Infragistics.Win.UltraWinToolbars.ButtonTool buttonTool5 = new Infragistics.Win.UltraWinToolbars.ButtonTool("btThemDong");
             Infragistics.Win.UltraWinToolbars.ButtonTool buttonTool7 = new Infragistics.Win.UltraWinToolbars.ButtonTool("btXoaDong");
             Infragistics.Win.UltraWinToolbars.PopupMenuTool popupMenuTool5 = new Infragistics.Win.UltraWinToolbars.PopupMenuTool("btQuyTrinh");
@@ -85,6 +86,8 @@
             Infragistics.Win.UltraWinToolbars.ButtonTool buttonTool9 = new Infragistics.Win.UltraWinToolbars.ButtonTool("btRefresh");
             Infragistics.Win.UltraWinToolbars.PopupMenuTool popupMenuTool1 = new Infragistics.Win.UltraWinToolbars.PopupMenuTool("btIn");
             Infragistics.Win.Appearance appearance33 = new Infragistics.Win.Appearance();
+            Infragistics.Win.UltraWinToolbars.ButtonTool buttonTool11 = new Infragistics.Win.UltraWinToolbars.ButtonTool("btExport");
+            Infragistics.Win.Appearance appearance34 = new Infragistics.Win.Appearance();
             this.ultraTabPageControl1 = new Infragistics.Win.UltraWinTabControl.UltraTabPageControl();
             this.ugChiTiet = new coreControls.saUpdateGrid();
             this.lblNgayLap = new Infragistics.Win.Misc.UltraLabel();
@@ -398,6 +401,7 @@
             popupMenuTool2.InstanceProps.IsFirstInGroup = true;
             buttonTool1.InstanceProps.IsFirstInGroup = true;
             buttonTool12.InstanceProps.IsFirstInGroup = true;
+            buttonTool14.InstanceProps.IsFirstInGroup = true;
             buttonTool5.InstanceProps.IsFirstInGroup = true;
             popupMenuTool5.InstanceProps.IsFirstInGroup = true;
             ultraToolbar1.NonInheritedTools.AddRange(new Infragistics.Win.UltraWinToolbars.ToolBase[] {
@@ -408,6 +412,7 @@
             buttonTool1,
             buttonTool2,
             buttonTool12,
+            buttonTool14,
             buttonTool5,
             buttonTool7,
             popupMenuTool5});
@@ -465,6 +470,10 @@
             popupMenuTool1.SharedPropsInternal.AppearancesSmall.Appearance = appearance33;
             popupMenuTool1.SharedPropsInternal.Caption = "&In";
             popupMenuTool1.SharedPropsInternal.DisplayStyle = Infragistics.Win.UltraWinToolbars.ToolDisplayStyle.ImageAndText;
+            appearance34.Image = global::coreBase.Properties.Resources.excel;
+            buttonTool11.SharedPropsInternal.AppearancesSmall.Appearance = appearance34;
+            buttonTool11.SharedPropsInternal.Caption = "Export";
+            buttonTool11.SharedPropsInternal.DisplayStyle = Infragistics.Win.UltraWinToolbars.ToolDisplayStyle.ImageAndText;
             this.toolBar.Tools.AddRange(new Infragistics.Win.UltraWinToolbars.ToolBase[] {
             ButtonTool7,
             ButtonTool8,
@@ -476,7 +485,8 @@
             buttonTool10,
             popupMenuTool6,
             buttonTool9,
-            popupMenuTool1});
+            popupMenuTool1,
+            buttonTool11});
             this.toolBar.ToolClick += new Infragistics.Win.UltraWinToolbars.ToolClickEventHandler(this.toolBar_ToolClick);
             // 
             // _frm_quanly_nguoisudung_Toolbars_Dock_Area_Bottom
