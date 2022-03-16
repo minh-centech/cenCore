@@ -390,7 +390,7 @@ namespace coreCommon
             Chuoi = Chuoi.ToUpper();
             return Chuoi;
         }
-        public static String ChuoiNgayDDMMYYY(String ChuoiNgay)
+        public static String ChuoiThoiGianDDMMYYYHHMMSS(String ChuoiNgay)
         {
             String Ngay = ChuoiNgay.Substring(0, 2);
             String Thang = ChuoiNgay.Substring(3, 2);
@@ -398,7 +398,25 @@ namespace coreCommon
             String Gio = (ChuoiNgay.Length == 10) ? "00" : ChuoiNgay.Substring(11, 2);
             String Phut = (ChuoiNgay.Length == 10) ? "00" : ChuoiNgay.Substring(14, 2);
             String Giay = (ChuoiNgay.Length == 10) ? "00" : ChuoiNgay.Substring(17, 2);
-            return Nam + "/" + Thang + "/" + Ngay + " " + Gio + ":" + Phut + ":" + Giay;
+            return Nam + "-" + Thang + "-" + Ngay + " " + Gio + ":" + Phut + ":" + Giay;
+        }
+        public static String ChuoiNgayDDMMYYY(String ChuoiNgay)
+        {
+            String Ngay = ChuoiNgay.Substring(0, 2);
+            String Thang = ChuoiNgay.Substring(3, 2);
+            String Nam = ChuoiNgay.Substring(6, 4);
+            return Nam + "-" + Thang + "-" + Ngay;
+        }
+        public static string XMLEncode(string str)
+        {
+            str = str.Replace("&", "&amp;");
+            str = str.Replace("<", "&lt;");
+            str = str.Replace(">", "&gt;");
+            str = str.Replace(@"""", "&quot;");
+            str = str.Replace(@"'", "&apos;");
+            str = str.Replace("\n", "");
+            str = str.Replace("\t", "");
+            return str;
         }
         public static Decimal Convert2Decimal(object DecNum)
         {

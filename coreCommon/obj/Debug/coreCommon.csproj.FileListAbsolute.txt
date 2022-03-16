@@ -60,8 +60,8 @@ E:\cenCORE\coreCommon\obj\Debug\coreCommon.dll
 E:\cenCORE\coreCommon\obj\Debug\coreCommon.pdb
 D:\cenCORE\Outputs\coreCommon.dll
 D:\cenCORE\Outputs\coreCommon.pdb
+D:\cenCORE\coreCommon\obj\Debug\coreCommon.csproj.AssemblyReference.cache
 D:\cenCORE\coreCommon\obj\Debug\coreCommon.csproj.CoreCompileInputs.cache
 D:\cenCORE\coreCommon\obj\Debug\coreCommon.csproj.CopyComplete
 D:\cenCORE\coreCommon\obj\Debug\coreCommon.dll
 D:\cenCORE\coreCommon\obj\Debug\coreCommon.pdb
-D:\cenCore\coreCommon\obj\Debug\coreCommon.csproj.AssemblyReference.cache
