@@ -104,15 +104,16 @@ namespace coreBase.BaseForms
         {
             Boolean ReadOnly = (UpdateMode == coreCommon.ThaoTacDuLieu.Xem);
             //Toolbar
-            toolBar.Toolbars[0].Tools["btThem"].SharedProps.Enabled = !ReadOnly;
-            toolBar.Toolbars[0].Tools["btSua"].SharedProps.Enabled = !ReadOnly;
-            toolBar.Toolbars[0].Tools["btXoa"].SharedProps.Enabled = !ReadOnly;
+            toolBar.Toolbars[0].Tools["btThem"].SharedProps.Enabled = ReadOnly;
+            toolBar.Toolbars[0].Tools["btSua"].SharedProps.Enabled = ReadOnly;
+            toolBar.Toolbars[0].Tools["btXoa"].SharedProps.Enabled = ReadOnly;
             toolBar.Toolbars[0].Tools["btImport"].SharedProps.Enabled = !ReadOnly;
             toolBar.Toolbars[0].Tools["btThemDong"].SharedProps.Enabled = !ReadOnly;
             toolBar.Toolbars[0].Tools["btXoaDong"].SharedProps.Enabled = !ReadOnly;
             toolBar.Toolbars[0].Tools["btLuu"].SharedProps.Enabled = !ReadOnly;
             toolBar.Toolbars[0].Tools["btNgung"].SharedProps.Enabled = !ReadOnly;
             toolBar.Toolbars[0].Tools["btQuyTrinh"].SharedProps.Enabled = ReadOnly;
+            toolBar.Toolbars[0].Tools["btIn"].SharedProps.Enabled = true;
             //Header
             foreach (Control ctl in groupHeader.Controls)
             {

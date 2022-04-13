@@ -145,7 +145,7 @@ namespace coreDAO
                         using (SqlCommand sqlCommand = new SqlCommand(DanhMucBaoCao.insertProcedureName, sqlConnection, sqlTransaction))
                         {
                             sqlCommand.CommandType = CommandType.StoredProcedure;
-                            SqlParameter[] sqlParameters = new SqlParameter[18];
+                            SqlParameter[] sqlParameters = new SqlParameter[19];
                             sqlParameters[0] = new SqlParameter("@ID", DBNull.Value)
                             {
                                 Direction = ParameterDirection.Output,
@@ -160,14 +160,15 @@ namespace coreDAO
                             sqlParameters[7] = new SqlParameter("@ChucDanhKy", obj.ChucDanhKy);
                             sqlParameters[8] = new SqlParameter("@DienGiaiKy", obj.DienGiaiKy);
                             sqlParameters[9] = new SqlParameter("@TenNguoiKy", obj.TenNguoiKy);
-                            sqlParameters[10] = new SqlParameter("@ThamChieuChungTu", obj.ThamChieuChungTu);
-                            sqlParameters[11] = new SqlParameter("@IDDanhMucBaoCaoThamChieu", obj.IDDanhMucBaoCaoThamChieu);
-                            sqlParameters[12] = new SqlParameter("@IDDanhMucBaoCaoCopyCot", obj.IDDanhMucBaoCaoCopyCot);
-                            sqlParameters[13] = new SqlParameter("@FileExcelMau", obj.FileExcelMau);
-                            sqlParameters[14] = new SqlParameter("@SheetExcelMau", obj.SheetExcelMau);
-                            sqlParameters[15] = new SqlParameter("@SoDongBatDau", obj.SoDongBatDau);
-                            sqlParameters[16] = new SqlParameter("@IDDanhMucNhomBaoCao", obj.IDDanhMucNhomBaoCao);
-                            sqlParameters[17] = new SqlParameter("@CreateDate", DBNull.Value)
+                            sqlParameters[10] = new SqlParameter("@FileInMau", obj.FileInMau);
+                            sqlParameters[11] = new SqlParameter("@FileExcelMau", obj.FileExcelMau);
+                            sqlParameters[12] = new SqlParameter("@SheetExcelMau", obj.SheetExcelMau);
+                            sqlParameters[13] = new SqlParameter("@SoDongBatDau", obj.SoDongBatDau);
+                            sqlParameters[14] = new SqlParameter("@ThamChieuChungTu", obj.ThamChieuChungTu);
+                            sqlParameters[15] = new SqlParameter("@IDDanhMucBaoCaoThamChieu", obj.IDDanhMucBaoCaoThamChieu);
+                            sqlParameters[16] = new SqlParameter("@IDDanhMucBaoCaoCopyCot", obj.IDDanhMucBaoCaoCopyCot);
+                            sqlParameters[17] = new SqlParameter("@IDDanhMucNhomBaoCao", obj.IDDanhMucNhomBaoCao);
+                            sqlParameters[18] = new SqlParameter("@CreateDate", DBNull.Value)
                             {
                                 Direction = ParameterDirection.Output,
                                 Size = 8
@@ -200,7 +201,7 @@ namespace coreDAO
                         using (SqlCommand sqlCommand = new SqlCommand(DanhMucBaoCao.updateProcedureName, sqlConnection, sqlTransaction))
                         {
                             sqlCommand.CommandType = CommandType.StoredProcedure;
-                            SqlParameter[] sqlParameters = new SqlParameter[16];
+                            SqlParameter[] sqlParameters = new SqlParameter[17];
                             sqlParameters[0] = new SqlParameter("@ID", obj.ID);
                             sqlParameters[1] = new SqlParameter("@Ma", obj.Ma);
                             sqlParameters[2] = new SqlParameter("@Ten", obj.Ten);
@@ -211,12 +212,13 @@ namespace coreDAO
                             sqlParameters[7] = new SqlParameter("@ChucDanhKy", obj.ChucDanhKy);
                             sqlParameters[8] = new SqlParameter("@DienGiaiKy", obj.DienGiaiKy);
                             sqlParameters[9] = new SqlParameter("@TenNguoiKy", obj.TenNguoiKy);
-                            sqlParameters[10] = new SqlParameter("@ThamChieuChungTu", obj.ThamChieuChungTu);
+                            sqlParameters[10] = new SqlParameter("@FileInMau", obj.FileInMau);
                             sqlParameters[11] = new SqlParameter("@FileExcelMau", obj.FileExcelMau);
                             sqlParameters[12] = new SqlParameter("@SheetExcelMau", obj.SheetExcelMau);
                             sqlParameters[13] = new SqlParameter("@SoDongBatDau", obj.SoDongBatDau);
-                            sqlParameters[14] = new SqlParameter("@IDDanhMucNhomBaoCao", obj.IDDanhMucNhomBaoCao);
-                            sqlParameters[15] = new SqlParameter("@EditDate", DBNull.Value)
+                            sqlParameters[14] = new SqlParameter("@ThamChieuChungTu", obj.ThamChieuChungTu);
+                            sqlParameters[15] = new SqlParameter("@IDDanhMucNhomBaoCao", obj.IDDanhMucNhomBaoCao);
+                            sqlParameters[16] = new SqlParameter("@EditDate", DBNull.Value)
                             {
                                 Direction = ParameterDirection.Output,
                                 Size = 8

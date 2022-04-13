@@ -740,8 +740,6 @@ namespace coreCommon
         public const int Xoa = 4;
         public const string DienGiaiXoa = "Xóa";
     }
-    
-    
     public static class GlobalVariables
     {
         public static string SolutionName = "";
@@ -839,7 +837,6 @@ namespace coreCommon
         public static String ChungTuReportPath = Application.StartupPath + @"\Reports\ChungTu\";
         public static String BaoCaoReportPath = Application.StartupPath + @"\Reports\BaoCao\";
         //Tham số file report in chứng từ
-        //
         public static String importFileName = "";
         public static String importSheetName = "";
         public static Int32 importFromRow = 2;
@@ -852,6 +849,10 @@ namespace coreCommon
         public const string DeleteConfirmMsg = "Dữ liệu đã xóa sẽ không thể khôi phục lại được, bạn có muốn xóa hay không?";
         //
         public const string DanhMucLoaiDoiTuongTaiKhoanKeToan = "TAIKHOANKETOAN";
+        //
+        public const string tblReportHeaderName = "tblReportHeader";
+        public const string tblReportDataName = "tblReportData";
+        public const string tblReportDataGridName = "tblReportDataGrid";
     }
 
 }

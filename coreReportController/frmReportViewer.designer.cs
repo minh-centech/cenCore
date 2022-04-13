@@ -30,6 +30,7 @@
         {
             this.components = new System.ComponentModel.Container();
             Infragistics.Win.UltraWinTabControl.UltraTab ultraTab2 = new Infragistics.Win.UltraWinTabControl.UltraTab();
+            Infragistics.Win.UltraWinTabControl.UltraTab ultraTab1 = new Infragistics.Win.UltraWinTabControl.UltraTab();
             Infragistics.Win.UltraWinToolbars.UltraToolbar ultraToolbar1 = new Infragistics.Win.UltraWinToolbars.UltraToolbar("Toolbar1");
             Infragistics.Win.UltraWinToolbars.ButtonTool buttonTool2 = new Infragistics.Win.UltraWinToolbars.ButtonTool("btExcel");
             Infragistics.Win.UltraWinToolbars.ButtonTool buttonTool1 = new Infragistics.Win.UltraWinToolbars.ButtonTool("btTaiLai");
@@ -42,6 +43,8 @@
             this.ultraTabPageControl1 = new Infragistics.Win.UltraWinTabControl.UltraTabPageControl();
             this.ugBaoCao = new coreControls.saNonUpdateGrid();
             this.ultraCalcManager1 = new Infragistics.Win.UltraWinCalcManager.UltraCalcManager(this.components);
+            this.ultraTabPageControl2 = new Infragistics.Win.UltraWinTabControl.UltraTabPageControl();
+            this.crystalReportViewer = new CrystalDecisions.Windows.Forms.CrystalReportViewer();
             this.ultraTabControl1 = new Infragistics.Win.UltraWinTabControl.UltraTabControl();
             this.ultraTabSharedControlsPage1 = new Infragistics.Win.UltraWinTabControl.UltraTabSharedControlsPage();
             this._frmReportViewer_Toolbars_Dock_Area_Left = new Infragistics.Win.UltraWinToolbars.UltraToolbarsDockArea();
@@ -53,6 +56,7 @@
             this.ultraTabPageControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ugBaoCao)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ultraCalcManager1)).BeginInit();
+            this.ultraTabPageControl2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ultraTabControl1)).BeginInit();
             this.ultraTabControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ultraToolbarsManager1)).BeginInit();
@@ -62,7 +66,7 @@
             // ultraTabPageControl1
             // 
             this.ultraTabPageControl1.Controls.Add(this.ugBaoCao);
-            this.ultraTabPageControl1.Location = new System.Drawing.Point(1, 23);
+            this.ultraTabPageControl1.Location = new System.Drawing.Point(-10000, -10000);
             this.ultraTabPageControl1.Name = "ultraTabPageControl1";
             this.ultraTabPageControl1.Size = new System.Drawing.Size(681, 497);
             // 
@@ -83,10 +87,33 @@
             // 
             this.ultraCalcManager1.ContainingControl = this;
             // 
+            // ultraTabPageControl2
+            // 
+            this.ultraTabPageControl2.Controls.Add(this.crystalReportViewer);
+            this.ultraTabPageControl2.Location = new System.Drawing.Point(1, 23);
+            this.ultraTabPageControl2.Name = "ultraTabPageControl2";
+            this.ultraTabPageControl2.Size = new System.Drawing.Size(681, 497);
+            // 
+            // crystalReportViewer
+            // 
+            this.crystalReportViewer.ActiveViewIndex = -1;
+            this.crystalReportViewer.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.crystalReportViewer.Cursor = System.Windows.Forms.Cursors.Default;
+            this.crystalReportViewer.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.crystalReportViewer.Location = new System.Drawing.Point(0, 0);
+            this.crystalReportViewer.Name = "crystalReportViewer";
+            this.crystalReportViewer.ShowCloseButton = false;
+            this.crystalReportViewer.ShowGroupTreeButton = false;
+            this.crystalReportViewer.ShowParameterPanelButton = false;
+            this.crystalReportViewer.Size = new System.Drawing.Size(681, 497);
+            this.crystalReportViewer.TabIndex = 0;
+            this.crystalReportViewer.ToolPanelView = CrystalDecisions.Windows.Forms.ToolPanelViewType.None;
+            // 
             // ultraTabControl1
             // 
             this.ultraTabControl1.Controls.Add(this.ultraTabSharedControlsPage1);
             this.ultraTabControl1.Controls.Add(this.ultraTabPageControl1);
+            this.ultraTabControl1.Controls.Add(this.ultraTabPageControl2);
             this.ultraTabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ultraTabControl1.Location = new System.Drawing.Point(0, 46);
             this.ultraTabControl1.Name = "ultraTabControl1";
@@ -96,8 +123,12 @@
             ultraTab2.Key = "grid";
             ultraTab2.TabPage = this.ultraTabPageControl1;
             ultraTab2.Text = "Grid";
+            ultraTab1.Key = "print";
+            ultraTab1.TabPage = this.ultraTabPageControl2;
+            ultraTab1.Text = "Print";
             this.ultraTabControl1.Tabs.AddRange(new Infragistics.Win.UltraWinTabControl.UltraTab[] {
-            ultraTab2});
+            ultraTab2,
+            ultraTab1});
             // 
             // ultraTabSharedControlsPage1
             // 
@@ -209,6 +240,7 @@
             this.ultraTabPageControl1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.ugBaoCao)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ultraCalcManager1)).EndInit();
+            this.ultraTabPageControl2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.ultraTabControl1)).EndInit();
             this.ultraTabControl1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.ultraToolbarsManager1)).EndInit();
@@ -231,5 +263,7 @@
         private Infragistics.Win.UltraWinCalcManager.UltraCalcManager ultraCalcManager1;
         public coreControls.saNonUpdateGrid ugBaoCao;
         private coreControls.saTextBox txtDieuKien;
+        private Infragistics.Win.UltraWinTabControl.UltraTabPageControl ultraTabPageControl2;
+        private CrystalDecisions.Windows.Forms.CrystalReportViewer crystalReportViewer;
     }
 }

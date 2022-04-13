@@ -30,13 +30,15 @@
         public object ChucDanhKy { get; set; }
         public object DienGiaiKy { get; set; }
         public object TenNguoiKy { get; set; }
+        public object FileInMau { get; set; }
+        public object FileExcelMau { get; set; }
+        public object SheetExcelMau { get; set; }
+        public object SoDongBatDau { get; set; }
         public bool ThamChieuChungTu { get; set; }
         public object IDDanhMucBaoCaoThamChieu { get; set; }
         public object MaDanhMucBaoCaoThamChieu { get; set; }
         public object TenDanhMucBaoCaoThamChieu { get; set; }
-        public object FileExcelMau { get; set; }
-        public object SheetExcelMau { get; set; }
-        public object SoDongBatDau { get; set; }
+        
         public object IDDanhMucNhomBaoCao { get; set; }
         public object MaDanhMucNhomBaoCao { get; set; }
         public object TenDanhMucNhomBaoCao { get; set; }
@@ -60,13 +62,14 @@
             ChucDanhKy = null;
             DienGiaiKy = null;
             TenNguoiKy = null;
+            FileInMau = null;
+            FileExcelMau = null;
+            SheetExcelMau = null;
+            SoDongBatDau = null;
             ThamChieuChungTu = false;
             IDDanhMucBaoCaoThamChieu = null;
             MaDanhMucBaoCaoThamChieu = null;
             TenDanhMucBaoCaoThamChieu = null;
-            FileExcelMau = null;
-            SheetExcelMau = null;
-            SoDongBatDau = null;
             IDDanhMucNhomBaoCao = null;
             MaDanhMucNhomBaoCao = null;
             TenDanhMucNhomBaoCao = null;
@@ -92,7 +95,6 @@
         public const string insertProcedureName = "Insert_" + tableName;
         public const string updateProcedureName = "Update_" + tableName;
         public const string deleteProcedureName = "Delete_" + tableName;
-
         public DanhMucBaoCaoCot()
         {
             ID = null;

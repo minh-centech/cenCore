@@ -24,12 +24,14 @@ create table DanhMucBaoCao
 	ChucDanhKy					nvarchar(255),
 	DienGiaiKy					nvarchar(255),
 	TenNguoiKy					nvarchar(255),
-	ThamChieuChungTu			bit,
-	IDDanhMucBaoCaoThamChieu	bigint,
-	IDDanhMucNhomBaoCao			bigint			not null,
+	FileInMau					nvarchar(max), --File crystal report
 	FileExcelMau				nvarchar(max), --File Excel export
 	SheetExcelMau				nvarchar(255), --Sheet Excel export
 	SoDongBatDau				int, -- Số dòng bắt đầu export trong file excel
+	ThamChieuChungTu			bit,
+	IDDanhMucBaoCaoThamChieu	bigint,
+	IDDanhMucNhomBaoCao			bigint			not null,
+
 	CreateDate					datetime		not null,
 	EditDate					datetime,
 	constraint	PK_DanhMucBaoCao primary key (ID),
@@ -136,7 +138,7 @@ begin
 	end catch
 end
 go
-create procedure List_DanhMucBaoCao
+alter procedure List_DanhMucBaoCao
 	@ID bigint = null
 as
 begin
@@ -152,12 +154,13 @@ begin
 		a.ChucDanhKy,
 		a.DienGiaiKy,
 		a.TenNguoiKy,
-		a.ThamChieuChungTu,
-		a.IDDanhMucBaoCaoThamChieu, b.Ma MaDanhMucBaoCaoThamChieu, b.Ten TenDanhMucBaoCaoThamChieu,
-		a.IDDanhMucNhomBaoCao, c.Ma MaDanhMucNhomBaoCao, c.Ten TenDanhMucNhomBaoCao,
+		a.FileInMau,
 		a.FileExcelMau,
 		a.SheetExcelMau,
 		a.SoDongBatDau,
+		a.ThamChieuChungTu,
+		a.IDDanhMucBaoCaoThamChieu, b.Ma MaDanhMucBaoCaoThamChieu, b.Ten TenDanhMucBaoCaoThamChieu,
+		a.IDDanhMucNhomBaoCao, c.Ma MaDanhMucNhomBaoCao, c.Ten TenDanhMucNhomBaoCao,
 		a.CreateDate,
 		a.EditDate
 	from DanhMucBaoCao a
@@ -180,7 +183,7 @@ begin
 	from DanhMucBaoCaoCot where	case when @ID is not null then IDDanhMucBaoCao else 0 end = ISNULL(@ID, 0) order by ThuTu;
 end
 go
-create procedure Insert_DanhMucBaoCao
+alter procedure Insert_DanhMucBaoCao
 	@ID							bigint out,
 	@Ma							nvarchar(128),
 	@Ten						nvarchar(255),
@@ -191,12 +194,13 @@ create procedure Insert_DanhMucBaoCao
 	@ChucDanhKy					nvarchar(255) = null,
 	@DienGiaiKy					nvarchar(255) = null,
 	@TenNguoiKy					nvarchar(255) = null,
-	@ThamChieuChungTu			bit,
-	@IDDanhMucBaoCaoThamChieu	bigint = null,
-	@IDDanhMucBaoCaoCopyCot		bigint = null,
+	@FileInMau					nvarchar(max) = null,
 	@FileExcelMau				nvarchar(max) = null,
 	@SheetExcelMau				nvarchar(255) = null,
 	@SoDongBatDau				int = null,
+	@ThamChieuChungTu			bit,
+	@IDDanhMucBaoCaoThamChieu	bigint = null,
+	@IDDanhMucBaoCaoCopyCot		bigint = null,
 	@IDDanhMucNhomBaoCao		bigint,
 	@CreateDate					datetime out
 as
@@ -207,8 +211,8 @@ begin
 	begin try
 		exec Insert_AutoID @ID out, @TenBangDuLieu = N'DanhMucBaoCao';
 		set @CreateDate = GETDATE();
-		insert DanhMucBaoCao (ID, Ma, Ten, ReportProcedureName, FixedColumnList, KhoGiay, HuongIn, ChucDanhKy, DienGiaiKy, TenNguoiKy, ThamChieuChungTu, IDDanhMucBaoCaoThamChieu, FileExcelMau, SheetExcelMau, SoDongBatDau, IDDanhMucNhomBaoCao, CreateDate) 
-			values (@ID, @Ma, @Ten, @ReportProcedureName, @FixedColumnList, @KhoGiay, @HuongIn, @ChucDanhKy, @DienGiaiKy, @TenNguoiKy, @ThamChieuChungTu, @IDDanhMucBaoCaoThamChieu, @FileExcelMau, @SheetExcelMau, @SoDongBatDau, @IDDanhMucNhomBaoCao, @CreateDate);
+		insert DanhMucBaoCao (ID, Ma, Ten, ReportProcedureName, FixedColumnList, KhoGiay, HuongIn, ChucDanhKy, DienGiaiKy, TenNguoiKy, FileInMau, FileExcelMau, SheetExcelMau, SoDongBatDau, ThamChieuChungTu, IDDanhMucBaoCaoThamChieu, IDDanhMucNhomBaoCao, CreateDate) 
+			values (@ID, @Ma, @Ten, @ReportProcedureName, @FixedColumnList, @KhoGiay, @HuongIn, @ChucDanhKy, @DienGiaiKy, @TenNguoiKy, @FileInMau, @FileExcelMau, @SheetExcelMau, @SoDongBatDau, @ThamChieuChungTu, @IDDanhMucBaoCaoThamChieu, @IDDanhMucNhomBaoCao, @CreateDate);
 		--Thêm vào danh mục phân quyền
 		declare @IDChiTiet bigint;
 		declare curPhanQuyenChiTiet cursor for select ID from DanhMucPhanQuyen;
@@ -243,7 +247,7 @@ begin
 	end catch
 end
 go
-create procedure Update_DanhMucBaoCao
+alter procedure Update_DanhMucBaoCao
 	@ID							bigint,
 	@Ma							nvarchar(128),
 	@Ten						nvarchar(255),
@@ -254,11 +258,12 @@ create procedure Update_DanhMucBaoCao
 	@ChucDanhKy					nvarchar(255) = null,
 	@DienGiaiKy					nvarchar(255) = null,
 	@TenNguoiKy					nvarchar(255) = null,
-	@ThamChieuChungTu			bit,
-	@IDDanhMucBaoCaoThamChieu	bigint = null,
+	@FileInMau					nvarchar(max) = null,
 	@FileExcelMau				nvarchar(max) = null,
 	@SheetExcelMau				nvarchar(255) = null,
 	@SoDongBatDau				int = null,
+	@ThamChieuChungTu			bit,
+	@IDDanhMucBaoCaoThamChieu	bigint = null,
 	@IDDanhMucNhomBaoCao		bigint,
 	@EditDate					datetime out
 as
@@ -278,10 +283,11 @@ begin
 			ChucDanhKy = @ChucDanhKy,
 			DienGiaiKy = @DienGiaiKy,
 			TenNguoiKy = @TenNguoiKy,
-			ThamChieuChungTu = @ThamChieuChungTu,
+			FileInMau = @FileInMau,
 			FileExcelMau = @FileExcelMau,
 			SheetExcelMau = @SheetExcelMau,
 			SoDongBatDau = @SoDongBatDau,
+			ThamChieuChungTu = @ThamChieuChungTu,
 			IDDanhMucNhomBaoCao = @IDDanhMucNhomBaoCao,
 			EditDate = @EditDate
 		where ID = @ID;

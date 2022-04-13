@@ -10,11 +10,11 @@ namespace coreReportController
     public partial class frmReportParameters : Form
     {
         public string ChuoiThamSoHienThiGrid = "";
+        public string ChuoiThamSoHienThiCrystalReport = "";
         public DataTable dtParameters;
         bool GridValidation = true;
         //Thông tin trả về
         public Boolean OK = false;//Ok hay Cancel
-
         public frmReportParameters()
         {
             InitializeComponent();
@@ -51,8 +51,11 @@ namespace coreReportController
                 if (row.Cells["KieuDuLieu"].Value.ToString() == "NVARCHAR")
                     row.Cells["GiaTriThamSo"].Value = row.Cells["GiaTri"].Value;
                 if (!coreCommon.coreCommon.IsNull(row.Cells["GiaTri"].Value))
+                {
                     ChuoiThamSoHienThiGrid += row.Cells["DienGiaiThamSo"].Value.ToString() + ": " + row.Cells["GiaTri"].Value.ToString() + "; ";
-            }    
+                    ChuoiThamSoHienThiCrystalReport += row.Cells["DienGiaiThamSo"].Value.ToString() + ": " + row.Cells["GiaTri"].Value.ToString() + (char)13;
+                }
+            }
             OK = true;
             DialogResult = DialogResult.OK;
         }
@@ -68,7 +71,6 @@ namespace coreReportController
             OK = false;
             Close();
         }
-
         private void frmReportParameters_Load(object sender, EventArgs e)
         {
             ug.HiddenColumnsList = "[TenThamSo][GiaTriThamSo][KieuDuLieu]";
@@ -89,7 +91,6 @@ namespace coreReportController
             ug.DisplayLayout.Bands[0].Columns["GhiChu"].CellActivation = Infragistics.Win.UltraWinGrid.Activation.NoEdit;
             ug.DisplayLayout.Bands[0].Columns["GhiChu"].CellClickAction = Infragistics.Win.UltraWinGrid.CellClickAction.CellSelect;
         }
-
         private void ug_AfterCellUpdate(object sender, Infragistics.Win.UltraWinGrid.CellEventArgs e)
         {
             if (!GridValidation || !e.Cell.Row.IsDataRow) return;

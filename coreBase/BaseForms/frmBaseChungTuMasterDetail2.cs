@@ -98,9 +98,9 @@ namespace coreBase.BaseForms
         {
             Boolean ReadOnly = (UpdateMode == coreCommon.ThaoTacDuLieu.Xem);
             //Toolbar
-            toolBar.Toolbars[0].Tools["btThem"].SharedProps.Enabled = false;
-            toolBar.Toolbars[0].Tools["btSua"].SharedProps.Enabled = false;
-            toolBar.Toolbars[0].Tools["btXoa"].SharedProps.Enabled = false;
+            toolBar.Toolbars[0].Tools["btThem"].SharedProps.Enabled = ReadOnly;
+            toolBar.Toolbars[0].Tools["btSua"].SharedProps.Enabled = ReadOnly;
+            toolBar.Toolbars[0].Tools["btXoa"].SharedProps.Enabled = ReadOnly;
             toolBar.Toolbars[0].Tools["btImport"].SharedProps.Enabled = !ReadOnly;
             toolBar.Toolbars[0].Tools["btThemDong"].SharedProps.Enabled = !ReadOnly;
             toolBar.Toolbars[0].Tools["btXoaDong"].SharedProps.Enabled = !ReadOnly;

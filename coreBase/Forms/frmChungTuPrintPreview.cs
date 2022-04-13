@@ -25,7 +25,6 @@ namespace coreBase.Forms
 
         private void frmChungTuPrintPreview_Load(object sender, EventArgs e)
         {
-            CrystalReportViewer crViewer = new CrystalReportViewer();
             rpt = new CrystalDecisions.CrystalReports.Engine.ReportDocument();
             rpt.Load(FileReport, CrystalDecisions.Shared.OpenReportMethod.OpenReportByTempCopy);
             SetDataSourceUsingSchemaFile(rpt.ReportClientDocument, XMLFilePath);
