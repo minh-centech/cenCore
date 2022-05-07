@@ -5,21 +5,21 @@ using System.Drawing;
 using System.Windows.Forms;
 namespace coreControls
 {
-    public partial class saIntNumericBox : Infragistics.Win.UltraWinEditors.UltraNumericEditor
+    public partial class saNumericBox : Infragistics.Win.UltraWinEditors.UltraNumericEditor
     {
         public Boolean IsModified = false;
         public Boolean LeaveByKey = false;
         public Boolean IsNullable = false;
 
-        public saIntNumericBox()
+        public saNumericBox()
         {
             InitializeComponent();
             this.Nullable = true;
             this.TabNavigation = Infragistics.Win.UltraWinMaskedEdit.MaskedEditTabNavigation.NextControl;
             this.Appearance.ForeColorDisabled = Color.Black;
             this.PromptChar = char.MinValue;
-            this.FormatString = coreCommon.GlobalVariables.FormatInteger;
-            this.MaskInput = coreCommon.GlobalVariables.DinhDangNhapInteger;
+            this.FormatString = coreCommon.GlobalVariables.FormatReal;
+            this.MaskInput = coreCommon.GlobalVariables.DinhDangNhapReal;
             this.MinValue = "-999999999999999999";
             this.MaxValue = "999999999999999999";
             this.Value = null;

@@ -5,13 +5,13 @@ using System.Drawing;
 using System.Windows.Forms;
 namespace coreControls
 {
-    public partial class saNumericBox : Infragistics.Win.UltraWinEditors.UltraNumericEditor
+    public partial class saIntNumericBox : Infragistics.Win.UltraWinEditors.UltraNumericEditor
     {
         public Boolean IsModified = false;
         public Boolean LeaveByKey = false;
         public Boolean IsNullable = false;
 
-        public saNumericBox()
+        public saIntNumericBox()
         {
             InitializeComponent();
             this.Nullable = true;
