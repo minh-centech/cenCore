@@ -8,7 +8,7 @@ namespace coreBase.BaseForms
 {
     public partial class frmBaseChungTuMasterDetail2 : Form
     {
-        public short UpdateMode = coreCommon.ThaoTacDuLieu.Xem; //Chế độ cập nhật: 0: Chỉ đọc, 1: Thêm mới, 2: Sửa chứng từ
+        public byte UpdateMode = coreCommon.ThaoTacDuLieu.Xem; //Chế độ cập nhật: 0: Chỉ đọc, 1: Thêm mới, 2: Sửa chứng từ
         //Loại chứng từ
         public Object IDDanhMucChungTu = null;
         public Object MaDanhMucChungTu = null;
@@ -85,9 +85,9 @@ namespace coreBase.BaseForms
                 {
                     bsChungTuChiTiet.CancelEdit();
                     bsChungTu.CancelEdit();
+                    dsChungTu.RejectChanges();
                     UpdateMode = coreCommon.ThaoTacDuLieu.Xem;
                     Saved = false;
-                    IDChungTu = null;
                     enableControl();
                     if (Exit) Close();
                 }
@@ -243,16 +243,16 @@ namespace coreBase.BaseForms
                     themChungTu();
                     break;
                 case "BTSUA":
-                    //suaChungTu();
+                    suaChungTu();
                     break;
                 case "BTLUU":
-                    luuChungTu(true);
+                    luuChungTu(false);
                     break;
                 case "BTXOA":
                     xoaChungTu();
                     break;
                 case "BTNGUNG":
-                    ngungCapNhat(true);
+                    ngungCapNhat(false);
                     break;
                 case "BTXOADONG":
                     xoaChungTuChiTiet();
@@ -311,6 +311,14 @@ namespace coreBase.BaseForms
         private void ugChiTiet_Enter(object sender, EventArgs e)
         {
             ugChiTiet2.UpdateData();
+        }
+        private void ugChiTiet_DoubleClickRow(object sender, DoubleClickRowEventArgs e)
+        {
+            if (ugChiTiet.ActiveRow == null) return;
+            if (ugChiTiet.ActiveRow.IsFilterRow) return;
+            if (bsChungTuChiTiet.Current == null) return;
+            if (UpdateMode == coreCommon.ThaoTacDuLieu.Xem) return;
+            openChiTietChungTu2();
         }
         #endregion gridDetail
         //Valid các ô nhập dữ liệu trên lưới

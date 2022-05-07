@@ -7,7 +7,7 @@ namespace coreBase.BaseForms
     {
 
         //Trạng thái cập nhật 1: Thêm mới, 2: Sửa
-        public int UpdateMode = coreCommon.ThaoTacDuLieu.Xem;
+        public byte UpdateMode = coreCommon.ThaoTacDuLieu.Xem;
         public object ID = null, IDDanhMucChungTu = null, LoaiManHinh = null;
         public string TenDanhMucChungTu = string.Empty;
         public DataRow dataRow = null;

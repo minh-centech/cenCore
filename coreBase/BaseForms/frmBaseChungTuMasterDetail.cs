@@ -8,7 +8,7 @@ namespace coreBase.BaseForms
 {
     public partial class frmBaseChungTuMasterDetail : Form
     {
-        public short UpdateMode = 0; //Chế độ cập nhật: 0: Chỉ đọc, 1: Thêm mới, 2: Sửa chứng từ
+        public byte UpdateMode = 0; //Chế độ cập nhật: 0: Chỉ đọc, 1: Thêm mới, 2: Sửa chứng từ
 
         //Loại chứng từ
         public Object IDDanhMucChungTu = null;
@@ -86,12 +86,11 @@ namespace coreBase.BaseForms
                 {
                     bsChungTuChiTiet.CancelEdit();
                     bsChungTu.CancelEdit();
+                    dsChungTu.RejectChanges();
                     UpdateMode = coreCommon.ThaoTacDuLieu.Xem;
                     Saved = false;
-                    IDChungTu = null;
                     enableControl();
-                    if (Exit)
-                        Close();
+                    if (Exit) Close();
                 }
             }
         }
@@ -199,16 +198,16 @@ namespace coreBase.BaseForms
                     themChungTu();
                     break;
                 case "BTSUA":
-                    //suaChungTu();
+                    suaChungTu();
                     break;
                 case "BTLUU":
-                    luuChungTu(true);
+                    luuChungTu(false);
                     break;
                 case "BTXOA":
                     xoaChungTu();
                     break;
                 case "BTNGUNG":
-                    ngungCapNhat(true);
+                    ngungCapNhat(false);
                     break;
                 case "BTXOADONG":
                     xoaChungTuChiTiet();
@@ -222,9 +221,9 @@ namespace coreBase.BaseForms
                 case "BTEXPORT":
                     export();
                     break;
-                case "BTIN":
-                    inChungTu();
-                    break;
+                //case "BTIN":
+                //    inChungTu();
+                //    break;
                 default:
                     String LoaiChucNang = e.Tool.Key.Substring(0, 5).ToUpper(),
                             TenChucNang = e.Tool.Key.Substring(5).ToUpper();

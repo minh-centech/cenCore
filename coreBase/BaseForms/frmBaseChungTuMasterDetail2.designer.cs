@@ -225,6 +225,7 @@
             this.ugChiTiet.TabIndex = 1;
             this.ugChiTiet.Text = "saUpdateGrid1";
             this.ugChiTiet.BeforeRowInsert += new Infragistics.Win.UltraWinGrid.BeforeRowInsertEventHandler(this.ugChiTiet_BeforeRowInsert);
+            this.ugChiTiet.DoubleClickRow += new Infragistics.Win.UltraWinGrid.DoubleClickRowEventHandler(this.ugChiTiet_DoubleClickRow);
             this.ugChiTiet.Enter += new System.EventHandler(this.ugChiTiet_Enter);
             // 
             // ultraTabPageControl2

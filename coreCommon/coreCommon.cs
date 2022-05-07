@@ -483,7 +483,7 @@ namespace coreCommon
             String ColumnKey = column.Key.ToUpper();
             if (column.DataType == typeof(DateTime))
             {
-                column.MaskInput = GlobalVariables.MaskInputDate;
+                column.MaskInput = GlobalVariables.MaskInputDateTime;
             }
             if (column.DataType == typeof(double) || column.DataType == typeof(float) || column.DataType == typeof(Decimal) || column.DataType == typeof(Single))
             {
@@ -729,15 +729,15 @@ namespace coreCommon
     }
     public static class ThaoTacDuLieu
     {
-        public const int Xem = 0;
+        public const byte Xem = 0;
         public const string DienGiaiXem = "Xem";
-        public const int Them = 1;
+        public const byte Them = 1;
         public const string DienGiaiThem = "Thêm mới";
-        public const int Sua = 2;
+        public const byte Sua = 2;
         public const string DienGiaiSua = "Chỉnh sửa";
-        public const int Copy = 3;
+        public const byte Copy = 3;
         public const string DienGiaiCopy = "Sao chép";
-        public const int Xoa = 4;
+        public const byte Xoa = 4;
         public const string DienGiaiXoa = "Xóa";
     }
     public static class GlobalVariables
@@ -804,11 +804,11 @@ namespace coreCommon
         
         
         public static String FormatReal = "##,##0.0000";
-        public static String DinhDangNhapReal = "-nnn,nnn,nnn,nnn.nnnn";
+        public static String DinhDangNhapReal = "-nnn,nnn,nnn,nnn,nnn,nnn.nnnn";
 
         public static String FormatInteger = "##,###0";
-        public static String DinhDangNhapInteger = "-,nnn,nnn,nnn,nnn";
-
+        public static String DinhDangNhapInteger = "-nnn,nnn,nnn,nnn,nnn,nnn";
+            
         public static Int16 LamTronSoLuong = 2;
         public static Int16 LamTronKhoiLuong = 2;
         public static Int16 LamTronCBM = 2;

@@ -89,6 +89,12 @@
     <Compile Include="saNonUpdateGrid.Designer.cs">
       <DependentUpon>saNonUpdateGrid.cs</DependentUpon>
     </Compile>
+    <Compile Include="saIntNumericBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="saIntNumericBox.Designer.cs">
+      <DependentUpon>saIntNumericBox.cs</DependentUpon>
+    </Compile>
     <Compile Include="saNumericBox.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -126,6 +132,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="saNonUpdateGrid.resx">
       <DependentUpon>saNonUpdateGrid.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="saIntNumericBox.resx">
+      <DependentUpon>saIntNumericBox.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="saNumericBox.resx">
       <DependentUpon>saNumericBox.cs</DependentUpon>

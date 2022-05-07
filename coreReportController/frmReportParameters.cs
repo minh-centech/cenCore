@@ -53,7 +53,7 @@ namespace coreReportController
                 if (!coreCommon.coreCommon.IsNull(row.Cells["GiaTri"].Value))
                 {
                     ChuoiThamSoHienThiGrid += row.Cells["DienGiaiThamSo"].Value.ToString() + ": " + row.Cells["GiaTri"].Value.ToString() + "; ";
-                    ChuoiThamSoHienThiCrystalReport += row.Cells["DienGiaiThamSo"].Value.ToString() + ": " + row.Cells["GiaTri"].Value.ToString() + (char)13;
+                    ChuoiThamSoHienThiCrystalReport += row.Cells["DienGiaiThamSo"].Value.ToString() + ": " + row.Cells["GiaTri"].Value.ToString() + ";";
                 }
             }
             OK = true;

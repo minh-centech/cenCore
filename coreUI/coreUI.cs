@@ -64,6 +64,16 @@ namespace coreUI
                 dtData.AcceptChanges();
             }
         }
+        public static bool DeleteFromList(UltraGrid ug, string IDColumnName, string ID)
+        {
+            if (!ug.DisplayLayout.Bands[0].Columns.Exists(IDColumnName)) return false;
+            foreach(UltraGridRow row in ug.Rows)
+            {
+                if (row.IsDataRow && coreCommon.coreCommon.stringParse(row.Cells[IDColumnName].Value) == ID)
+                    row.Delete();
+            }
+            return true;
+        }
         public class validData
         {
             public static void SetValidTextbox(saTextBox txtMa, saTextBox[] txtMoRong, Func<DataTable> validProcedure, string ValidColumnName, string ValueColumnName, string ReturnColumnList, Func<DataRow> insertProcedure, Action UpdateCustomData, Action DeleteCustomData)

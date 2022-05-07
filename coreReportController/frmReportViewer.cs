@@ -9,6 +9,7 @@ using System.Windows.Forms;
 using CrystalDecisions.ReportAppServer.DataDefModel;
 using CrystalDecisions.ReportAppServer.DataSetConversion;
 using CrystalDecisions.Windows.Forms;
+using CrystalDecisions.ReportAppServer.ReportDefModel;
 
 namespace coreReportController
 {
@@ -41,6 +42,7 @@ namespace coreReportController
         public DataTable dtParameters = null;
         public DataTable dtData = new DataTable();
         public System.Data.DataSet dsData = new System.Data.DataSet();
+        System.Data.DataSet dsChungTuDetail;
 
         //Lấy cấu trúc cột report để test
         public DataTable dtCauTrucCot = new DataTable();
@@ -134,11 +136,14 @@ namespace coreReportController
             }
             if (ugBaoCao.Rows.Count > 0)
                 ugBaoCao.Rows[0].Selected = true;
-            //
-            rpt = new CrystalDecisions.CrystalReports.Engine.ReportDocument();
-            rpt.Load(ReportFileName, CrystalDecisions.Shared.OpenReportMethod.OpenReportByTempCopy);
-            SetDataSourceUsingSchemaFile(rpt.ReportClientDocument, DataXMLPath);
-            crystalReportViewer.ReportSource = rpt;
+            if (dsData.Tables.Count > 1)
+            {
+                Boolean OK = PrintProcess_Parameter(ReportFileName, dsData, ChuoiThamSoHienThi, out String GeneratedReportFile, out String XMLDataFile);
+                rpt = new CrystalDecisions.CrystalReports.Engine.ReportDocument();
+                rpt.Load(GeneratedReportFile, CrystalDecisions.Shared.OpenReportMethod.OpenReportByTempCopy);
+                SetDataSourceUsingSchemaFile(rpt.ReportClientDocument, XMLDataFile);
+                crystalReportViewer.ReportSource = rpt;
+            }
         }
         private void frmReportViewer_FormClosing(object sender, FormClosingEventArgs e)
         {
@@ -232,8 +237,16 @@ namespace coreReportController
                     }
                     System.Windows.Forms.Cursor.Current = Cursors.WaitCursor;
                     coreDAO.ConnectionDAO connectionDAO = new coreDAO.ConnectionDAO();
-                    dtData = connectionDAO.tableList(sqlParameters, reportProcedureName, reportProcedureName);
-                    System.Windows.Forms.Cursor.Current = Cursors.Default;
+                    System.Data.DataSet dsData = connectionDAO.dsList(sqlParameters, reportProcedureName);
+                    if (dsData != null)
+                    {
+                        dsData.Tables[0].TableName = coreCommon.GlobalVariables.tblReportDataGridName;
+                        if (dsData.Tables.Count >= 2)
+                            dsData.Tables[1].TableName = coreCommon.GlobalVariables.tblReportHeaderName;
+                        if (dsData.Tables.Count == 3)
+                            dsData.Tables[2].TableName = coreCommon.GlobalVariables.tblReportDataName;
+                    }
+                    dtData = dsData.Tables[coreCommon.GlobalVariables.tblReportDataGridName];
                     LoadReport();
                     break;
             }
@@ -246,9 +259,147 @@ namespace coreReportController
                 //cenCommonUIapps.cenCommonUIapps.runChungTu(e.Row.Cells["LoaiManHinh"].Value.ToString(), e.Row.Cells["TenDanhMucChungTu"].Value.ToString(), e.Row.Cells["IDDanhMucChungTu"].Value.ToString(), e.Row.Cells["MaDanhMucChungTu"].Value.ToString(), this.MDIParent, e.Row.Cells["IDChungTu"].Value);
             }
         }
-        private void SetDataSourceUsingSchemaFile(
-            CrystalDecisions.ReportAppServer.ClientDoc.ISCDReportClientDocument rcDoc,		// report client document 
-            string schema_file_name)		// xml schema file location 
+
+        public Boolean PrintProcess_Parameter(String FileReport, System.Data.DataSet dsData, string ChuoiThamSoHienThi, out String GeneratedReportFile, out String XMLDataFile)
+        {
+            Boolean OK = false;
+            //Tên file report được sinh ra
+            XMLDataFile = "";
+
+            GeneratedReportFile = coreCommon.GlobalVariables.TempDir + "\\" + Guid.NewGuid().ToString() + ".rpt";//cenCommon.GlobalVariables.TempDir + Guid.NewGuid().ToString() + ".rpt";
+            String FormattedValue = ""; //Chuỗi giá trị sau khi định dạng
+            String NumberFormatString = "";
+
+            //Bắt đầu xử lý in chứng từ
+            if (dsData != null && dsData.Tables.Count > 1 && dsData.Tables[coreCommon.GlobalVariables.tblReportHeaderName].Rows.Count > 0)
+            {
+                String ChungTuDetailDataXMLPath = "";
+                //Mở file Report
+                CrystalDecisions.CrystalReports.Engine.ReportDocument rpt = new CrystalDecisions.CrystalReports.Engine.ReportDocument();
+                rpt.Load(FileReport, CrystalDecisions.Shared.OpenReportMethod.OpenReportByTempCopy);
+                //Lưu vào file tạm
+                rpt.SaveAs(GeneratedReportFile);
+                rpt.Close();
+                //Mở file tạm để ghi thông tin
+                rpt.Load(GeneratedReportFile, CrystalDecisions.Shared.OpenReportMethod.OpenReportByTempCopy);
+                //
+                CrystalDecisions.ReportAppServer.ClientDoc.ISCDReportClientDocument rptClientDoc = rpt.ReportClientDocument;
+                CrystalDecisions.ReportAppServer.Controllers.ReportDefController2 reportDefController = rptClientDoc.ReportDefController;
+                CrystalDecisions.ReportAppServer.Controllers.ReportObjectController reportObjectController = rptClientDoc.ReportDefController.ReportObjectController;
+                CrystalDecisions.ReportAppServer.ReportDefModel.ReportObjects reportObjects = reportObjectController.GetReportObjectsByKind(CrReportObjectKindEnum.crReportObjectKindText);
+                //Gán dữ liệu cho Header Chứng từ
+                DataRow drChungTu = dsData.Tables[coreCommon.GlobalVariables.tblReportHeaderName].Rows[0];
+                DataTable dtChungTuDetail = dsData.Tables[coreCommon.GlobalVariables.tblReportDataName].Copy();
+                foreach (FormulaField formulaObject in rptClientDoc.DataDefController.DataDefinition.FormulaFields)
+                {
+                    if (formulaObject.Name.ToUpper().StartsWith("F"))
+                    {
+                        String DataFieldName = formulaObject.Name.Substring(1).ToUpper();
+                        switch (DataFieldName)
+                        {
+                            case "DIEUKIEN":
+                                rpt.DataDefinition.FormulaFields[formulaObject.Name].Text = "\"" + ChuoiThamSoHienThi + "\"";
+                                break;
+                            case "NGAY":
+                                if (drChungTu.Table.Columns.Contains("NgayHachToan"))
+                                {
+                                    rpt.DataDefinition.FormulaFields[formulaObject.Name].Text = "\"" + Convert.ToDateTime(drChungTu["NgayHachToan"]).Day + "\"";
+                                }
+                                else
+                                    rpt.DataDefinition.FormulaFields[formulaObject.Name].Text = "\"" + Convert.ToDateTime(drChungTu["NgayLap"]).Day + "\"";
+                                break;
+                            case "THANG":
+                                if (drChungTu.Table.Columns.Contains("NgayHachToan"))
+                                {
+                                    rpt.DataDefinition.FormulaFields[formulaObject.Name].Text = "\"" + Convert.ToDateTime(drChungTu["NgayHachToan"]).Month + "\"";
+                                }
+                                else
+                                    rpt.DataDefinition.FormulaFields[formulaObject.Name].Text = "\"" + Convert.ToDateTime(drChungTu["NgayLap"]).Month + "\"";
+                                break;
+                            case "NAM4":
+                                if (drChungTu.Table.Columns.Contains("NgayHachToan"))
+                                {
+                                    rpt.DataDefinition.FormulaFields[formulaObject.Name].Text = "\"" + Convert.ToDateTime(drChungTu["NgayHachToan"]).Year + "\"";
+                                }
+                                else
+                                    rpt.DataDefinition.FormulaFields[formulaObject.Name].Text = "\"" + Convert.ToDateTime(drChungTu["NgayLap"]).Year + "\"";
+                                break;
+                            case "NAM2":
+                                if (drChungTu.Table.Columns.Contains("NgayHachToan"))
+                                {
+                                    rpt.DataDefinition.FormulaFields[formulaObject.Name].Text = "\"" + Convert.ToDateTime(drChungTu["NgayHachToan"]).Year.ToString("0#") + "\"";
+                                }
+                                else
+                                    rpt.DataDefinition.FormulaFields[formulaObject.Name].Text = "\"" + Convert.ToDateTime(drChungTu["NgayLap"]).Year.ToString("0#") + "\"";
+                                break;
+                            case "SOTIENBANGCHU":
+                                if (drChungTu.Table.Columns.Contains("SoTienTong") && drChungTu["SoTienTong"] != DBNull.Value)
+                                    rpt.DataDefinition.FormulaFields[formulaObject.Name].Text = "\"" + coreCommon.coreCommon.SoTienBangChu(Math.Round(Double.Parse(drChungTu["SoTienTong"].ToString()), 0).ToString()) + " đồng." + "\"";
+                                break;
+                            default:
+                                //Lấy giá trị từ DataSet
+                                if (!drChungTu.Table.Columns.Contains(DataFieldName) || drChungTu[DataFieldName] == DBNull.Value) break;
+                                FormattedValue = drChungTu[DataFieldName].ToString();
+                                //Sửa lại làm tròn theo tham số cụ thể như độ rộng cột
+                                if (DataFieldName.ToUpper().StartsWith("SOLUONG") || DataFieldName.ToUpper().StartsWith("KHOILUONG") || DataFieldName.ToUpper().StartsWith("CBM")) //Định dạng số lượng
+                                {
+                                    NumberFormatString = "n2";
+                                    FormattedValue = Convert.ToDecimal(drChungTu[DataFieldName]).ToString(NumberFormatString, coreCommon.GlobalVariables.ci);
+                                }
+                                if (DataFieldName.ToUpper().StartsWith("SOTIEN")) //Định dạng tiền
+                                {
+                                    NumberFormatString = "n0";
+                                    FormattedValue = Convert.ToDecimal(drChungTu[DataFieldName]).ToString(NumberFormatString, coreCommon.GlobalVariables.ci);
+                                }
+                                rpt.DataDefinition.FormulaFields[formulaObject.Name].Text = "\"" + FormattedValue + "\"";
+                                break;
+                        }
+                    }
+                }
+                //Xử lý in chi tiết chứng từ, chỉ dùng cho những chứng từ có phần chi tiết
+                if (dtChungTuDetail != null && dtChungTuDetail.Rows.Count > 0)
+                {
+                    //Lưu chi tiết chứng từ ra XML
+                    ChungTuDetailDataXMLPath = coreCommon.GlobalVariables.TempDir + "\\" + Guid.NewGuid().ToString() + ".xml";
+                    dtChungTuDetail.TableName = "ChungTuChiTiet";
+                    dsChungTuDetail = new System.Data.DataSet();
+                    dsChungTuDetail.Tables.Add(dtChungTuDetail);
+                    dsChungTuDetail.WriteXml(ChungTuDetailDataXMLPath);
+                    //Gán DataSource cho file report
+                    AddDataSourceUsingSchemaFile(rpt.ReportClientDocument, ChungTuDetailDataXMLPath, "ChungTuChiTiet", dsChungTuDetail, false);
+                    //Gán dataField cho các formula
+                    foreach (FormulaField formulaObject in rptClientDoc.DataDefController.DataDefinition.FormulaFields)
+                    {
+                        if (formulaObject.Name.ToUpper().StartsWith("DT") && dtChungTuDetail.Columns.Contains(formulaObject.Name.Substring(2)))
+                        {
+                            String ColumnName = formulaObject.Name.Substring(2);
+                            String DataFieldName = "{" + dtChungTuDetail.TableName + "." + ColumnName + "}";
+                            //Sửa lại làm tròn theo tham số cụ thể như độ rộng cột
+                            if (ColumnName.ToUpper().StartsWith("SOLUONG") || ColumnName.ToUpper().StartsWith("KHOILUONG") || ColumnName.ToUpper().StartsWith("CBM")) //Định dạng số lượng
+                            {
+                                rpt.DataDefinition.FormulaFields[formulaObject.Name].Text = "IIF(" + DataFieldName + "=0,\"-\",ToText(" + DataFieldName + ", " + "2" + ", \"" + coreCommon.GlobalVariables.DigitSymbol + "\", \"" + coreCommon.GlobalVariables.DecimalSymbol + "\"))";
+                            }
+                            else if (ColumnName.ToUpper().StartsWith("SOTIEN") || ColumnName.ToUpper().StartsWith("THUESUAT")) //Định dạng số lượng
+                            {
+                                rpt.DataDefinition.FormulaFields[formulaObject.Name].Text = "IIF(" + DataFieldName + "=0,\"-\",ToText(" + DataFieldName + ", " + "0" + ", \"" + coreCommon.GlobalVariables.DigitSymbol + "\", \"" + coreCommon.GlobalVariables.DecimalSymbol + "\"))";
+                            }
+                            else
+                            {
+                                rpt.DataDefinition.FormulaFields[formulaObject.Name].Text = DataFieldName;
+                            }
+                        }
+                    }
+                    XMLDataFile = ChungTuDetailDataXMLPath;
+                }
+                rptClientDoc.Save();
+                rpt.Close();
+                rpt.Dispose();
+                OK = true;
+            }
+            return OK;
+        }
+
+        private void SetDataSourceUsingSchemaFile(CrystalDecisions.ReportAppServer.ClientDoc.ISCDReportClientDocument rcDoc, string schema_file_name)
         {
             PropertyBag crLogonInfo;			// logon info 
             PropertyBag crAttributes;			// logon attributes 
@@ -273,8 +424,44 @@ namespace coreReportController
                 crConnectionInfo.Attributes = crAttributes;
                 // create a table 
                 crTable.ConnectionInfo = crConnectionInfo;
-                rcDoc.DatabaseController.SetDataSource(DataSetConverter.Convert(dsData), "ChungTuChiTiet", "ChungTuChiTiet");
+                rcDoc.DatabaseController.SetDataSource(DataSetConverter.Convert(dsChungTuDetail), "ChungTuChiTiet", "ChungTuChiTiet");
             }
+        }
+        public static void AddDataSourceUsingSchemaFile(CrystalDecisions.ReportAppServer.ClientDoc.ISCDReportClientDocument rcDoc, string schema_file_name, string table_name, System.Data.DataSet data, Boolean Added)
+        {
+            PropertyBag crLogonInfo;            // logon info 
+            PropertyBag crAttributes;           // logon attributes 
+            CrystalDecisions.ReportAppServer.DataDefModel.ConnectionInfo crConnectionInfo;  // connection info 
+            CrystalDecisions.ReportAppServer.DataDefModel.Table crTable;
+            // database table 
+            // create logon property 
+            crLogonInfo = new PropertyBag();
+            crLogonInfo["XML File Path"] = schema_file_name;
+            // create logon attributes 
+            crAttributes = new PropertyBag();
+            crAttributes["Database DLL"] = "crdb_adoplus.dll";
+            crAttributes["QE_DatabaseType"] = "ADO.NET (XML)";
+            crAttributes["QE_ServerDescription"] = "NewDataSet";
+            crAttributes["QE_SQLDB"] = true;
+            crAttributes["QE_LogonProperties"] = crLogonInfo;
+            // create connection info 
+            crConnectionInfo = new CrystalDecisions.ReportAppServer.DataDefModel.ConnectionInfo
+            {
+                Kind = CrConnectionInfoKindEnum.crConnectionInfoKindCRQE,
+                Attributes = crAttributes
+            };
+            // create a table 
+            crTable = new CrystalDecisions.ReportAppServer.DataDefModel.Table
+            {
+                ConnectionInfo = crConnectionInfo,
+                Name = table_name,
+                Alias = table_name
+            };
+            // add a table 
+            if (!Added)
+                rcDoc.DatabaseController.AddTable(crTable, null);
+            // pass dataset 
+            rcDoc.DatabaseController.SetDataSource(DataSetConverter.Convert(data), table_name, table_name);
         }
     }
 }
