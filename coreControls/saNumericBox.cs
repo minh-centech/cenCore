@@ -18,6 +18,7 @@ namespace coreControls
             this.TabNavigation = Infragistics.Win.UltraWinMaskedEdit.MaskedEditTabNavigation.NextControl;
             this.Appearance.ForeColorDisabled = Color.Black;
             this.PromptChar = char.MinValue;
+            this.NumericType = NumericType.Decimal;
             this.FormatString = coreCommon.GlobalVariables.FormatReal;
             this.MaskInput = coreCommon.GlobalVariables.DinhDangNhapReal;
             this.MinValue = "-999999999999999999";

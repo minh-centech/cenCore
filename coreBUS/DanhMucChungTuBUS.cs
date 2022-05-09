@@ -75,7 +75,18 @@ namespace coreBUS
                 return null;
             }
         }
-
+        public static object GetIDThamSoHeThong(object MaThamSoChungTu)
+        {
+            try
+            {
+                DanhMucChungTuDAO dao = new DanhMucChungTuDAO();
+                return dao.GetID(DanhMucThamSoHeThongBUS.GetGiaTri(MaThamSoChungTu));
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+        }
     }
 
     public class DanhMucChungTuTrangThaiBUS
