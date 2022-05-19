@@ -93,30 +93,32 @@ namespace coreUI.Forms
         /// </summary>
         protected void CloseForm()
         {
-            if (Escape || bsData.Current == null)
+            if (!Escape && bsData.Current != null)
             {
-                dataRow = null;
-                return;
+                dataRow = ((DataRowView)bsData.Current).Row;
             }
-            dataRow = ((DataRowView)bsData.Current).Row;
+            else
+                dataRow = null;
+            DialogResult = DialogResult.OK;
         }
         protected override bool ProcessDialogKey(Keys keyData)
         {
-            if (keyData == Keys.Return | keyData == Keys.Escape)
+            if (keyData == Keys.Escape)
             {
-                Escape = (keyData == Keys.Escape);
-                Close();
+                Escape = true;
+                DialogResult = DialogResult.OK;
+                dataRow = null;
                 return true;
             }
+            else if (keyData == Keys.Return)
+            {
+                CloseForm();
+                return true;
+            }    
             else
                 return base.ProcessDialogKey(keyData);
         }
         private void Ug_DoubleClickRow(object sender, DoubleClickRowEventArgs e)
-        {
-            Close();
-        }
-
-        private void frmDanhMucXeValid_FormClosing(object sender, FormClosingEventArgs e)
         {
             CloseForm();
         }

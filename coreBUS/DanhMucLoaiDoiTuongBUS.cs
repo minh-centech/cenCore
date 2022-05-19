@@ -91,6 +91,18 @@ namespace coreBUS
                 return null;
             }
         }
+        public static object GetMa(object ID)
+        {
+            try
+            {
+                DanhMucLoaiDoiTuongDAO dao = new DanhMucLoaiDoiTuongDAO();
+                return dao.GetMa(ID);
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+        }
         public static object GetIDThamSoHeThong(object MaThamSoLoaiDoiTuong)
         {
             try

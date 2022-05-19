@@ -27,10 +27,10 @@ namespace coreUI.Forms
         }
         protected override void Insert()
         {
-            bool Xem = true;
+            bool Them = true;
             if (coreCommon.coreCommon.stringParse(IDDanhMucLoaiDoiTuong) != coreCommon.GlobalVariables.DanhMucLoaiDoiTuongTaiKhoanKeToan)
-                DanhMucPhanQuyenBUS.GetPhanQuyenLoaiDoiTuong(coreCommon.GlobalVariables.IDDanhMucPhanQuyen, IDDanhMucLoaiDoiTuong, out Xem, out bool Them, out bool Sua, out bool Xoa);
-            if (!coreCommon.GlobalVariables.isAdmin && !Xem)
+                DanhMucPhanQuyenBUS.GetPhanQuyenLoaiDoiTuong(coreCommon.GlobalVariables.IDDanhMucPhanQuyen, IDDanhMucLoaiDoiTuong, out bool Xem, out Them, out bool Sua, out bool Xoa);
+            if (!coreCommon.GlobalVariables.isAdmin && !Them)
             {
                 coreCommon.coreCommon.ErrorMessageOkOnly("Bạn không có quyền thêm mới dữ liệu danh mục này!");
                 return;

@@ -323,7 +323,7 @@ namespace coreUI
                 frmUpdate.ShowDialog();
                 return frmUpdate.dataRow;
             }
-            public static DataRow Update(object IDDanhMucLoaiDoiTuong, object IDDanhMucDoiTuong, Action UpdateToList)
+            public static DataRow Update(object IDDanhMucLoaiDoiTuong, object IDDanhMucDoiTuong, Action UpdateToList, Action InsertToList)
             {
                 DanhMucPhanQuyenBUS.GetPhanQuyenLoaiDoiTuong(coreCommon.GlobalVariables.IDDanhMucPhanQuyen, IDDanhMucLoaiDoiTuong, out bool Xem, out bool Them, out bool Sua, out bool Xoa);
                 if (!coreCommon.GlobalVariables.isAdmin && !Them)
@@ -336,7 +336,8 @@ namespace coreUI
                     CapNhat = coreCommon.ThaoTacDuLieu.Sua,
                     IDDanhMucLoaiDoiTuong = IDDanhMucLoaiDoiTuong,
                     ID = IDDanhMucDoiTuong,
-                    UpdateToList = UpdateToList
+                    UpdateToList = UpdateToList,
+                    InsertToList = InsertToList
                 };
                 frmUpdate.ShowDialog();
                 return frmUpdate.dataRow;
@@ -372,13 +373,14 @@ namespace coreUI
                 frmUpdate.ShowDialog();
                 return frmUpdate.dataRow;
             }
-            public static DataRow Update(object IDDanhMucBaoCao, Action UpdateToList)
+            public static DataRow Update(object IDDanhMucBaoCao, Action UpdateToList, Action InsertToList)
             {
                 frmDanhMucBaoCaoUpdate frmUpdate = new frmDanhMucBaoCaoUpdate
                 {
                     CapNhat = coreCommon.ThaoTacDuLieu.Sua,
                     ID = IDDanhMucBaoCao,
-                    UpdateToList = UpdateToList
+                    UpdateToList = UpdateToList,
+                    InsertToList = InsertToList
                 };
                 frmUpdate.ShowDialog();
                 return frmUpdate.dataRow;
@@ -407,13 +409,14 @@ namespace coreUI
                 frmUpdate.ShowDialog();
                 return frmUpdate.dataRow;
             }
-            public static DataRow Update(object IDDanhMucBaoCaoCot, Action UpdateToList)
+            public static DataRow Update(object IDDanhMucBaoCaoCot, Action UpdateToList, Action InsertToList)
             {
                 frmDanhMucBaoCaoCotUpdate frmUpdate = new frmDanhMucBaoCaoCotUpdate
                 {
                     CapNhat = coreCommon.ThaoTacDuLieu.Sua,
                     ID = IDDanhMucBaoCaoCot,
-                    UpdateToList = UpdateToList
+                    UpdateToList = UpdateToList,
+                    InsertToList = InsertToList
                 };
                 frmUpdate.ShowDialog();
                 return frmUpdate.dataRow;
@@ -442,13 +445,14 @@ namespace coreUI
                 frmUpdate.ShowDialog();
                 return frmUpdate.dataRow;
             }
-            public static DataRow Update(object IDDanhMucChungTu, Action UpdateToList)
+            public static DataRow Update(object IDDanhMucChungTu, Action UpdateToList, Action InsertToList)
             {
                 frmDanhMucChungTuUpdate frmUpdate = new frmDanhMucChungTuUpdate
                 {
                     CapNhat = coreCommon.ThaoTacDuLieu.Sua,
                     ID = IDDanhMucChungTu,
-                    UpdateToList = UpdateToList
+                    UpdateToList = UpdateToList,
+                    InsertToList = InsertToList
                 };
                 frmUpdate.ShowDialog();
                 return frmUpdate.dataRow;
@@ -478,13 +482,14 @@ namespace coreUI
                 frmUpdate.ShowDialog();
                 return frmUpdate.dataRow;
             }
-            public static DataRow Update(object IDDanhMucChungTuIn, Action UpdateToList)
+            public static DataRow Update(object IDDanhMucChungTuIn, Action UpdateToList, Action InsertToList)
             {
                 frmDanhMucChungTuInUpdate frmUpdate = new frmDanhMucChungTuInUpdate
                 {
                     CapNhat = coreCommon.ThaoTacDuLieu.Sua,
                     ID = IDDanhMucChungTuIn,
-                    UpdateToList = UpdateToList
+                    UpdateToList = UpdateToList,
+                    InsertToList = InsertToList
                 };
                 frmUpdate.ShowDialog();
                 return frmUpdate.dataRow;
@@ -514,13 +519,14 @@ namespace coreUI
                 frmUpdate.ShowDialog();
                 return frmUpdate.dataRow;
             }
-            public static DataRow Update(object IDDanhMucChungTuQuyTrinh, Action UpdateToList)
+            public static DataRow Update(object IDDanhMucChungTuQuyTrinh, Action UpdateToList, Action InsertToList)
             {
                 frmDanhMucChungTuQuyTrinhUpdate frmUpdate = new frmDanhMucChungTuQuyTrinhUpdate
                 {
                     CapNhat = coreCommon.ThaoTacDuLieu.Sua,
                     ID = IDDanhMucChungTuQuyTrinh,
-                    UpdateToList = UpdateToList
+                    UpdateToList = UpdateToList,
+                    InsertToList = InsertToList
                 };
                 frmUpdate.ShowDialog();
                 return frmUpdate.dataRow;
@@ -550,13 +556,14 @@ namespace coreUI
                 frmUpdate.ShowDialog();
                 return frmUpdate.dataRow;
             }
-            public static DataRow Update(object IDDanhMucChungTuTrangThai, Action UpdateToList)
+            public static DataRow Update(object IDDanhMucChungTuTrangThai, Action UpdateToList, Action InsertToList)
             {
                 frmDanhMucChungTuTrangThaiUpdate frmUpdate = new frmDanhMucChungTuTrangThaiUpdate
                 {
                     CapNhat = coreCommon.ThaoTacDuLieu.Sua,
                     ID = IDDanhMucChungTuTrangThai,
-                    UpdateToList = UpdateToList
+                    UpdateToList = UpdateToList,
+                    InsertToList = InsertToList
                 };
                 frmUpdate.ShowDialog();
                 return frmUpdate.dataRow;
@@ -585,13 +592,14 @@ namespace coreUI
                 frmUpdate.ShowDialog();
                 return frmUpdate.dataRow;
             }
-            public static DataRow Update(object IDDanhMucDonVi, Action UpdateToList)
+            public static DataRow Update(object IDDanhMucDonVi, Action UpdateToList, Action InsertToList)
             {
                 frmDanhMucDonViUpdate frmUpdate = new frmDanhMucDonViUpdate
                 {
                     CapNhat = coreCommon.ThaoTacDuLieu.Sua,
                     ID = IDDanhMucDonVi,
-                    UpdateToList = UpdateToList
+                    UpdateToList = UpdateToList,
+                    InsertToList = InsertToList
                 };
                 frmUpdate.ShowDialog();
                 return frmUpdate.dataRow;
@@ -620,13 +628,14 @@ namespace coreUI
                 frmUpdate.ShowDialog();
                 return frmUpdate.dataRow;
             }
-            public static DataRow Update(object IDDanhMucLoaiDoiTuong, Action UpdateToList)
+            public static DataRow Update(object IDDanhMucLoaiDoiTuong, Action UpdateToList, Action InsertToList)
             {
                 frmDanhMucLoaiDoiTuongUpdate frmUpdate = new frmDanhMucLoaiDoiTuongUpdate
                 {
                     CapNhat = coreCommon.ThaoTacDuLieu.Sua,
                     ID = IDDanhMucLoaiDoiTuong,
-                    UpdateToList = UpdateToList
+                    UpdateToList = UpdateToList,
+                    InsertToList = InsertToList
                 };
                 frmUpdate.ShowDialog();
                 return frmUpdate.dataRow;
@@ -655,13 +664,14 @@ namespace coreUI
                 frmUpdate.ShowDialog();
                 return frmUpdate.dataRow;
             }
-            public static DataRow Update(object IDDanhMucMenu, Action UpdateToList)
+            public static DataRow Update(object IDDanhMucMenu, Action UpdateToList, Action InsertToList)
             {
                 frmDanhMucMenuUpdate frmUpdate = new frmDanhMucMenuUpdate
                 {
                     CapNhat = coreCommon.ThaoTacDuLieu.Sua,
                     ID = IDDanhMucMenu,
-                    UpdateToList = UpdateToList
+                    UpdateToList = UpdateToList,
+                    InsertToList = InsertToList
                 };
                 frmUpdate.ShowDialog();
                 return frmUpdate.dataRow;
@@ -691,13 +701,14 @@ namespace coreUI
                 frmUpdate.ShowDialog();
                 return frmUpdate.dataRow;
             }
-            public static DataRow Update(object IDDanhMucMenuBaoCao, Action UpdateToList)
+            public static DataRow Update(object IDDanhMucMenuBaoCao, Action UpdateToList, Action InsertToList)
             {
                 frmDanhMucMenuBaoCaoUpdate frmUpdate = new frmDanhMucMenuBaoCaoUpdate
                 {
                     CapNhat = coreCommon.ThaoTacDuLieu.Sua,
                     ID = IDDanhMucMenuBaoCao,
-                    UpdateToList = UpdateToList
+                    UpdateToList = UpdateToList,
+                    InsertToList = InsertToList
                 };
                 frmUpdate.ShowDialog();
                 return frmUpdate.dataRow;
@@ -727,13 +738,14 @@ namespace coreUI
                 frmUpdate.ShowDialog();
                 return frmUpdate.dataRow;
             }
-            public static DataRow Update(object IDDanhMucMenuChungTu, Action UpdateToList)
+            public static DataRow Update(object IDDanhMucMenuChungTu, Action UpdateToList, Action InsertToList)
             {
                 frmDanhMucMenuChungTuUpdate frmUpdate = new frmDanhMucMenuChungTuUpdate
                 {
                     CapNhat = coreCommon.ThaoTacDuLieu.Sua,
                     ID = IDDanhMucMenuChungTu,
-                    UpdateToList = UpdateToList
+                    UpdateToList = UpdateToList,
+                    InsertToList = InsertToList
                 };
                 frmUpdate.ShowDialog();
                 return frmUpdate.dataRow;
@@ -763,13 +775,14 @@ namespace coreUI
                 frmUpdate.ShowDialog();
                 return frmUpdate.dataRow;
             }
-            public static DataRow Update(object IDDanhMucMenuLoaiDoiTuong, Action UpdateToList)
+            public static DataRow Update(object IDDanhMucMenuLoaiDoiTuong, Action UpdateToList, Action InsertToList)
             {
                 frmDanhMucMenuLoaiDoiTuongUpdate frmUpdate = new frmDanhMucMenuLoaiDoiTuongUpdate
                 {
                     CapNhat = coreCommon.ThaoTacDuLieu.Sua,
                     ID = IDDanhMucMenuLoaiDoiTuong,
-                    UpdateToList = UpdateToList
+                    UpdateToList = UpdateToList,
+                    InsertToList = InsertToList
                 };
                 frmUpdate.ShowDialog();
                 return frmUpdate.dataRow;
@@ -798,13 +811,14 @@ namespace coreUI
                 frmUpdate.ShowDialog();
                 return frmUpdate.dataRow;
             }
-            public static DataRow Update(object IDDanhMucNguoiSuDung, Action UpdateToList)
+            public static DataRow Update(object IDDanhMucNguoiSuDung, Action UpdateToList, Action InsertToList)
             {
                 frmDanhMucNguoiSuDungUpdate frmUpdate = new frmDanhMucNguoiSuDungUpdate
                 {
                     CapNhat = coreCommon.ThaoTacDuLieu.Sua,
                     ID = IDDanhMucNguoiSuDung,
-                    UpdateToList = UpdateToList
+                    UpdateToList = UpdateToList,
+                    InsertToList = InsertToList
                 };
                 frmUpdate.ShowDialog();
                 return frmUpdate.dataRow;
@@ -833,13 +847,14 @@ namespace coreUI
                 frmUpdate.ShowDialog();
                 return frmUpdate.dataRow;
             }
-            public static DataRow Update(object IDDanhMucNhomBaoCao, Action UpdateToList)
+            public static DataRow Update(object IDDanhMucNhomBaoCao, Action UpdateToList, Action InsertToList)
             {
                 frmDanhMucNhomBaoCaoUpdate frmUpdate = new frmDanhMucNhomBaoCaoUpdate
                 {
                     CapNhat = coreCommon.ThaoTacDuLieu.Sua,
                     ID = IDDanhMucNhomBaoCao,
-                    UpdateToList = UpdateToList
+                    UpdateToList = UpdateToList,
+                    InsertToList = InsertToList
                 };
                 frmUpdate.ShowDialog();
                 return frmUpdate.dataRow;
@@ -868,13 +883,14 @@ namespace coreUI
                 frmUpdate.ShowDialog();
                 return frmUpdate.dataRow;
             }
-            public static DataRow Update(object IDDanhMucPhanQuyen, Action UpdateToList)
+            public static DataRow Update(object IDDanhMucPhanQuyen, Action UpdateToList, Action InsertToList)
             {
                 frmDanhMucPhanQuyenUpdate frmUpdate = new frmDanhMucPhanQuyenUpdate
                 {
                     CapNhat = coreCommon.ThaoTacDuLieu.Sua,
                     ID = IDDanhMucPhanQuyen,
-                    UpdateToList = UpdateToList
+                    UpdateToList = UpdateToList,
+                    InsertToList = InsertToList
                 };
                 frmUpdate.ShowDialog();
                 return frmUpdate.dataRow;
@@ -1043,13 +1059,14 @@ namespace coreUI
                 frmUpdate.ShowDialog();
                 return frmUpdate.dataRow;
             }
-            public static DataRow Update(object IDDanhMucThamSoHeThong, Action UpdateToList)
+            public static DataRow Update(object IDDanhMucThamSoHeThong, Action UpdateToList, Action InsertToList)
             {
                 frmDanhMucThamSoHeThongUpdate frmUpdate = new frmDanhMucThamSoHeThongUpdate
                 {
                     CapNhat = coreCommon.ThaoTacDuLieu.Sua,
                     ID = IDDanhMucThamSoHeThong,
-                    UpdateToList = UpdateToList
+                    UpdateToList = UpdateToList,
+                    InsertToList = InsertToList
                 };
                 frmUpdate.ShowDialog();
                 return frmUpdate.dataRow;
@@ -1078,13 +1095,14 @@ namespace coreUI
                 frmUpdate.ShowDialog();
                 return frmUpdate.dataRow;
             }
-            public static DataRow Update(object IDDanhMucThamSoNguoiSuDung, Action UpdateToList)
+            public static DataRow Update(object IDDanhMucThamSoNguoiSuDung, Action UpdateToList, Action InsertToList)
             {
                 frmDanhMucThamSoNguoiSuDungUpdate frmUpdate = new frmDanhMucThamSoNguoiSuDungUpdate
                 {
                     CapNhat = coreCommon.ThaoTacDuLieu.Sua,
                     ID = IDDanhMucThamSoNguoiSuDung,
-                    UpdateToList = UpdateToList
+                    UpdateToList = UpdateToList,
+                    InsertToList = InsertToList
                 };
                 frmUpdate.ShowDialog();
                 return frmUpdate.dataRow;
@@ -1113,13 +1131,14 @@ namespace coreUI
                 frmUpdate.ShowDialog();
                 return frmUpdate.dataRow;
             }
-            public static DataRow Update(object IDDanhMucTuDien, Action UpdateToList)
+            public static DataRow Update(object IDDanhMucTuDien, Action UpdateToList, Action InsertToList)
             {
                 frmDanhMucTuDienUpdate frmUpdate = new frmDanhMucTuDienUpdate
                 {
                     CapNhat = coreCommon.ThaoTacDuLieu.Sua,
                     ID = IDDanhMucTuDien,
-                    UpdateToList = UpdateToList
+                    UpdateToList = UpdateToList,
+                    InsertToList = InsertToList
                 };
                 frmUpdate.ShowDialog();
                 return frmUpdate.dataRow;

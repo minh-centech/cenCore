@@ -32,7 +32,7 @@ namespace coreUI.Forms
         protected override void Update()
         {
             if (coreCommon.coreCommon.IsNull(ug.ActiveRow) || !ug.ActiveRow.IsDataRow || coreCommon.coreCommon.IsNull(ug.ActiveRow.Cells["ID"].Value)) return;
-            coreUI.clsDanhMucLoaiDoiTuong.Update(ug.ActiveRow.Cells["ID"].Value, new Action(() => coreUI.UpdateToList(dtData, frmDanhMucLoaiDoiTuongUpdate.dtUpdate)));
+            coreUI.clsDanhMucLoaiDoiTuong.Update(ug.ActiveRow.Cells["ID"].Value, new Action(() => coreUI.UpdateToList(dtData, frmDanhMucLoaiDoiTuongUpdate.dtUpdate)), new Action(() => coreUI.InsertToList(dtData, frmDanhMucLoaiDoiTuongUpdate.dtUpdate)));
         }
         protected override void Delete()
         {

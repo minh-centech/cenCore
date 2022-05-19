@@ -45,7 +45,7 @@ namespace coreUI.Forms
         protected override void Update()
         {
             if (coreCommon.coreCommon.IsNull(ug.ActiveRow) || !ug.ActiveRow.IsDataRow || coreCommon.coreCommon.IsNull(ug.ActiveRow.Cells["ID"].Value)) return;
-            coreUI.clsDanhMucBaoCao.Update(ug.ActiveRow.Cells["ID"].Value, new Action(() => coreUI.UpdateToList(dsData.Tables[DanhMucBaoCao.tableName], frmDanhMucBaoCaoUpdate.dtUpdate)));
+            coreUI.clsDanhMucBaoCao.Update(ug.ActiveRow.Cells["ID"].Value, new Action(() => coreUI.UpdateToList(dsData.Tables[DanhMucBaoCao.tableName], frmDanhMucBaoCaoUpdate.dtUpdate)), new Action(() => coreUI.InsertToList(dsData.Tables[DanhMucBaoCao.tableName], frmDanhMucBaoCaoUpdate.dtUpdate)));
         }
         protected override void Delete()
         {
@@ -61,7 +61,7 @@ namespace coreUI.Forms
         }
         protected override void UpdateChiTiet()
         {
-            coreUI.clsDanhMucBaoCaoCot.Update(ugChiTiet.ActiveRow.Cells["ID"].Value, new Action(() => coreUI.UpdateToList(dsData.Tables[DanhMucBaoCaoCot.tableName], frmDanhMucBaoCaoCotUpdate.dtUpdate)));
+            coreUI.clsDanhMucBaoCaoCot.Update(ugChiTiet.ActiveRow.Cells["ID"].Value, new Action(() => coreUI.UpdateToList(dsData.Tables[DanhMucBaoCaoCot.tableName], frmDanhMucBaoCaoCotUpdate.dtUpdate)), new Action(() => coreUI.InsertToList(dsData.Tables[DanhMucBaoCaoCot.tableName], frmDanhMucBaoCaoCotUpdate.dtUpdate)));
         }
         protected override void DeleteChiTiet()
         {

@@ -203,9 +203,6 @@ E:\cenCORE\coreUI\obj\Debug\coreUI.csproj.CopyComplete
 E:\cenCORE\coreUI\obj\Debug\coreUI.dll
 E:\cenCORE\coreUI\obj\Debug\coreUI.pdb
 E:\cenCORE\coreUI\obj\Debug\coreUI.Forms.frmDataValidMultiSelect.resources
-D:\cenCORE\Outputs\coreUI.dll.config
-D:\cenCORE\Outputs\coreUI.dll
-D:\cenCORE\Outputs\coreUI.pdb
 D:\cenCORE\coreUI\obj\Debug\coreUI.csproj.AssemblyReference.cache
 D:\cenCORE\coreUI\obj\Debug\coreUI.Forms.frm_dtList.resources
 D:\cenCORE\coreUI\obj\Debug\coreUI.Forms.frmDataValidMultiSelect.resources
@@ -253,6 +250,9 @@ D:\cenCORE\coreUI\obj\Debug\coreUI.Properties.Resources.resources
 D:\cenCORE\coreUI\obj\Debug\coreUI.csproj.GenerateResource.cache
 D:\cenCORE\coreUI\obj\Debug\coreUI.dll.licenses
 D:\cenCORE\coreUI\obj\Debug\coreUI.csproj.CoreCompileInputs.cache
+D:\cenCORE\Outputs\coreUI.dll.config
+D:\cenCORE\Outputs\coreUI.dll
+D:\cenCORE\Outputs\coreUI.pdb
 D:\cenCORE\coreUI\obj\Debug\coreUI.csproj.CopyComplete
 D:\cenCORE\coreUI\obj\Debug\coreUI.dll
 D:\cenCORE\coreUI\obj\Debug\coreUI.pdb

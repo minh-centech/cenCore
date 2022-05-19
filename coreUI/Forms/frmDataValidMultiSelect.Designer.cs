@@ -258,7 +258,6 @@
             this.Name = "frmDanhMucDoiTuongValid";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Valid";
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmDanhMucXeValid_FormClosing);
             this.Load += new System.EventHandler(this.FormLoad);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.FormKeyDown);
             ((System.ComponentModel.ISupportInitialize)(this.ultraCalcManager1)).EndInit();

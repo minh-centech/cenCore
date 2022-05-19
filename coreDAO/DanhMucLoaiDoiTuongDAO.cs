@@ -173,7 +173,7 @@ namespace coreDAO
                 return null;
             }
         }
-        public static object GetMa(object ID)
+        public object GetMa(object ID)
         {
             try
             {

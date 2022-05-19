@@ -12,6 +12,8 @@ namespace coreBase.BaseForms
         public object IDDanhMucLoaiDoiTuong = null;
         public string TenDanhMucLoaiDoiTuong = string.Empty;
         public DataRow dataRow = null;
+        public static DataTable dtUpdate;
+        public Action InsertToList, UpdateToList;
         public frmBaseDanhMucUpdate()
         {
             InitializeComponent();

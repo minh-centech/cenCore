@@ -117,7 +117,7 @@ namespace coreReportController
                 //}
             }
             ugBaoCao.FixedColumnsList = FixedColumnList;
-            ugBaoCao.AddSummaryRow = false;
+            ugBaoCao.AddSummaryRow = true;
             ugBaoCao.isReport = true;
             ugBaoCao.DataSource = dtData;
             ugBaoCao.DisplayLayout.Bands[0].Override.FilterUIType = FilterUIType.Default;

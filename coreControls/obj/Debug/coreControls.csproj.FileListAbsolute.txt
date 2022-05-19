@@ -86,6 +86,7 @@ D:\cenCORE\coreControls\obj\Debug\coreControls.csproj.AssemblyReference.cache
 D:\cenCORE\coreControls\obj\Debug\coreControls.saCheckBox.resources
 D:\cenCORE\coreControls\obj\Debug\coreControls.saDateTimeBox.resources
 D:\cenCORE\coreControls\obj\Debug\coreControls.saNonUpdateGrid.resources
+D:\cenCORE\coreControls\obj\Debug\coreControls.saIntNumericBox.resources
 D:\cenCORE\coreControls\obj\Debug\coreControls.saNumericBox.resources
 D:\cenCORE\coreControls\obj\Debug\coreControls.saTextBox.resources
 D:\cenCORE\coreControls\obj\Debug\coreControls.saUpdateGrid.resources
@@ -95,4 +96,3 @@ D:\cenCORE\coreControls\obj\Debug\coreControls.csproj.CoreCompileInputs.cache
 D:\cenCORE\coreControls\obj\Debug\coreControls.csproj.CopyComplete
 D:\cenCORE\coreControls\obj\Debug\coreControls.dll
 D:\cenCORE\coreControls\obj\Debug\coreControls.pdb
-D:\cenCORE\coreControls\obj\Debug\coreControls.saIntNumericBox.resources

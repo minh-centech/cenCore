@@ -98,11 +98,6 @@ namespace coreUI.Forms
         /// </summary>
         protected void CloseForm()
         {
-            if (Escape || bsData.Current == null)
-            {
-                dataRows = null;
-                return;
-            }
             foreach(UltraGridRow row in ug.Rows)
             {
                 if (row.IsDataRow && !row.IsFilteredOut && coreCommon.coreCommon.stringParseBoolean(row.Cells["CheckColumn"].Value))
@@ -116,25 +111,27 @@ namespace coreUI.Forms
                     }    
                 }    
             }
-            if (dataRows.Count == 0) dataRows.Add(((DataRowView)bsData.Current).Row);
+            if (dataRows.Count == 0 && bsData.Current != null) dataRows.Add(((DataRowView)bsData.Current).Row);
+            DialogResult = DialogResult.OK;
         }
         protected override bool ProcessDialogKey(Keys keyData)
         {
-            if (keyData == Keys.Return | keyData == Keys.Escape)
+            if (keyData == Keys.Escape)
             {
-                Escape = (keyData == Keys.Escape);
-                Close();
+                Escape = true;
+                DialogResult = DialogResult.OK;
+                dataRows = null;
+                return true;
+            }
+            else if (keyData == Keys.Return)
+            {
+                CloseForm();
                 return true;
             }
             else
                 return base.ProcessDialogKey(keyData);
         }
         private void Ug_DoubleClickRow(object sender, DoubleClickRowEventArgs e)
-        {
-            Close();
-        }
-
-        private void frmDanhMucXeValid_FormClosing(object sender, FormClosingEventArgs e)
         {
             CloseForm();
         }

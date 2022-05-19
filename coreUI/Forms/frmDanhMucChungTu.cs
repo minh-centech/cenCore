@@ -70,7 +70,7 @@ namespace coreUI.Forms
         protected override void Update()
         {
             if (coreCommon.coreCommon.IsNull(ug.ActiveRow) || !ug.ActiveRow.IsDataRow || coreCommon.coreCommon.IsNull(ug.ActiveRow.Cells["ID"].Value)) return;
-            coreUI.clsDanhMucChungTu.Update(ug.ActiveRow.Cells["ID"].Value, new Action(() => coreUI.UpdateToList(dsData.Tables[DanhMucChungTu.tableName], frmDanhMucChungTuUpdate.dtUpdate)));
+            coreUI.clsDanhMucChungTu.Update(ug.ActiveRow.Cells["ID"].Value, new Action(() => coreUI.UpdateToList(dsData.Tables[DanhMucChungTu.tableName], frmDanhMucChungTuUpdate.dtUpdate)), new Action(() => coreUI.InsertToList(dsData.Tables[DanhMucChungTu.tableName], frmDanhMucChungTuUpdate.dtUpdate)));
         }
         protected override void Delete()
         {
@@ -101,27 +101,27 @@ namespace coreUI.Forms
             {
                 case "TABCHITIET":
                     if (coreCommon.coreCommon.IsNull(ugChiTiet.ActiveRow) || !ugChiTiet.ActiveRow.IsDataRow || coreCommon.coreCommon.IsNull(ugChiTiet.ActiveRow.Cells["ID"].Value)) return;
-                    coreUI.clsDanhMucChungTuTrangThai.Update(ugChiTiet.ActiveRow.Cells["ID"].Value, new Action(() => coreUI.UpdateToList(dsData.Tables[DanhMucChungTuTrangThai.tableName], frmDanhMucChungTuTrangThaiUpdate.dtUpdate)));
+                    coreUI.clsDanhMucChungTuTrangThai.Update(ugChiTiet.ActiveRow.Cells["ID"].Value, new Action(() => coreUI.UpdateToList(dsData.Tables[DanhMucChungTuTrangThai.tableName], frmDanhMucChungTuTrangThaiUpdate.dtUpdate)), new Action(() => coreUI.InsertToList(dsData.Tables[DanhMucChungTuTrangThai.tableName], frmDanhMucChungTuTrangThaiUpdate.dtUpdate)));
                     break;
                 case "TABCHUNGTUIN":
                     if (coreCommon.coreCommon.IsNull(ugChungTuIn.ActiveRow) || !ugChungTuIn.ActiveRow.IsDataRow || coreCommon.coreCommon.IsNull(ugChungTuIn.ActiveRow.Cells["ID"].Value)) return;
-                    coreUI.clsDanhMucChungTuIn.Update(ugChungTuIn.ActiveRow.Cells["ID"].Value, new Action(() => coreUI.UpdateToList(dsData.Tables[DanhMucChungTuIn.tableName], frmDanhMucChungTuInUpdate.dtUpdate)));
+                    coreUI.clsDanhMucChungTuIn.Update(ugChungTuIn.ActiveRow.Cells["ID"].Value, new Action(() => coreUI.UpdateToList(dsData.Tables[DanhMucChungTuIn.tableName], frmDanhMucChungTuInUpdate.dtUpdate)), new Action(() => coreUI.InsertToList(dsData.Tables[DanhMucChungTuIn.tableName], frmDanhMucChungTuInUpdate.dtUpdate)));
                     break;
                 case "TABCHUNGTUQUYTRINH":
                     if (coreCommon.coreCommon.IsNull(ugChungTuQuyTrinh.ActiveRow) || !ugChungTuQuyTrinh.ActiveRow.IsDataRow || coreCommon.coreCommon.IsNull(ugChungTuQuyTrinh.ActiveRow.Cells["ID"].Value)) return;
-                    coreUI.clsDanhMucChungTuQuyTrinh.Update(ugChungTuQuyTrinh.ActiveRow.Cells["ID"].Value, new Action(() => coreUI.UpdateToList(dsData.Tables[DanhMucChungTuQuyTrinh.tableName], frmDanhMucChungTuQuyTrinhUpdate.dtUpdate)));
+                    coreUI.clsDanhMucChungTuQuyTrinh.Update(ugChungTuQuyTrinh.ActiveRow.Cells["ID"].Value, new Action(() => coreUI.UpdateToList(dsData.Tables[DanhMucChungTuQuyTrinh.tableName], frmDanhMucChungTuQuyTrinhUpdate.dtUpdate)), new Action(() => coreUI.InsertToList(dsData.Tables[DanhMucChungTuQuyTrinh.tableName], frmDanhMucChungTuQuyTrinhUpdate.dtUpdate)));
                     break;
             }
         }
         private void ugChungTuQuyTrinh_DoubleClickRow(object sender, Infragistics.Win.UltraWinGrid.DoubleClickRowEventArgs e)
         {
             if (coreCommon.coreCommon.IsNull(ugChungTuQuyTrinh.ActiveRow) || !ugChungTuQuyTrinh.ActiveRow.IsDataRow || coreCommon.coreCommon.IsNull(ugChungTuQuyTrinh.ActiveRow.Cells["ID"].Value)) return;
-            coreUI.clsDanhMucChungTuQuyTrinh.Update(ugChungTuQuyTrinh.ActiveRow.Cells["ID"].Value, new Action(() => coreUI.UpdateToList(dsData.Tables[DanhMucChungTuQuyTrinh.tableName], frmDanhMucChungTuQuyTrinhUpdate.dtUpdate)));
+            coreUI.clsDanhMucChungTuQuyTrinh.Update(ugChungTuQuyTrinh.ActiveRow.Cells["ID"].Value, new Action(() => coreUI.UpdateToList(dsData.Tables[DanhMucChungTuQuyTrinh.tableName], frmDanhMucChungTuQuyTrinhUpdate.dtUpdate)), new Action(() => coreUI.InsertToList(dsData.Tables[DanhMucChungTuQuyTrinh.tableName], frmDanhMucChungTuQuyTrinhUpdate.dtUpdate)));
         }
         private void ugChungTuIn_DoubleClickRow(object sender, Infragistics.Win.UltraWinGrid.DoubleClickRowEventArgs e)
         {
             if (coreCommon.coreCommon.IsNull(ugChungTuIn.ActiveRow) || !ugChungTuIn.ActiveRow.IsDataRow || coreCommon.coreCommon.IsNull(ugChungTuIn.ActiveRow.Cells["ID"].Value)) return;
-            coreUI.clsDanhMucChungTuIn.Update(ugChungTuIn.ActiveRow.Cells["ID"].Value, new Action(() => coreUI.UpdateToList(dsData.Tables[DanhMucChungTuIn.tableName], frmDanhMucChungTuInUpdate.dtUpdate)));
+            coreUI.clsDanhMucChungTuIn.Update(ugChungTuIn.ActiveRow.Cells["ID"].Value, new Action(() => coreUI.UpdateToList(dsData.Tables[DanhMucChungTuIn.tableName], frmDanhMucChungTuInUpdate.dtUpdate)), new Action(() => coreUI.InsertToList(dsData.Tables[DanhMucChungTuIn.tableName], frmDanhMucChungTuInUpdate.dtUpdate)));
         }
 
         protected override void DeleteChiTiet()
