@@ -17,7 +17,7 @@ create table DanhMucThamSoHeThong
 )
 go
 */
-create procedure List_DanhMucThamSoHeThong
+alter procedure List_DanhMucThamSoHeThong
 	@ID bigint = null,
 	@IDDanhMucDonVi bigint
 as
@@ -29,18 +29,63 @@ begin
 	order by Ma;
 end
 go
-create procedure Insert_DanhMucThamSoHeThong
+alter procedure Insert_DanhMucThamSoHeThong
 	@ID				bigint out,
-	@IDDanhMucDonVi bigint,
-	@Ma				nvarchar(128),
-	@Ten			nvarchar(255),
-	@GiaTri			nvarchar(max),
+	@IDDanhMucDonVi bigint = null,
+	@Ma				nvarchar(128) = null,
+	@Ten			nvarchar(255) = null,
+	@GiaTri			nvarchar(max) = null,
 	@GhiChu			nvarchar(255) = null,
 	@CreateDate		datetime = null out
 as
 begin
 	set nocount on;
-	declare @ErrMsg nvarchar(max);
+	
+	declare @ErrMsg nvarchar(max), @countID int;
+
+	if @Ma is null or LTRIM(RTRIM(@Ma)) = ''
+	begin
+		raiserror(N'Mã tham số hệ thống không được bỏ trống!', 16, 1);
+		return;
+	end;
+	if len(@Ma) > 128
+	begin
+		raiserror(N'Mã tham số hệ thống không được dài quá 128 ký tự!', 16, 1);
+		return;
+	end;
+
+	select @countID = count(ID) from DanhMucThamSoHeThong where Ma = @Ma;
+	if @countID > 0
+	begin
+		set @ErrMsg = N'Mã tham số hệ thống ' + @Ma +  N' đã tồn tại!'
+		raiserror(@ErrMsg, 16, 1);
+		return;
+	end;
+
+	if @Ten is null or LTRIM(RTRIM(@Ten)) = ''
+	begin
+		raiserror(N'Tên tham số hệ thống không được bỏ trống!', 16, 1);
+		return;
+	end;
+	if len(@Ten) > 255
+	begin
+		raiserror(N'Tên tham số hệ thống không được dài quá 255 ký tự!', 16, 1);
+		return;
+	end;
+
+	if @GiaTri is null or LTRIM(RTRIM(@GiaTri)) = ''
+	begin
+		raiserror(N'Giá trị tham số hệ thống không được bỏ trống!', 16, 1);
+		return;
+	end;
+
+	if @GhiChu is not null and len(@GhiChu) > 255
+	begin
+		raiserror(N'Ghi chú tham số hệ thống không được dài quá 255 kí tự!', 16, 1);
+		return;
+	end;
+
+
 	begin tran
 	begin try
 		exec Insert_AutoID @ID out, @TenBangDuLieu = N'DanhMucThamSoHeThong';
@@ -55,7 +100,7 @@ begin
 	end catch
 end
 go
-create procedure Update_DanhMucThamSoHeThong
+alter procedure Update_DanhMucThamSoHeThong
 	@ID				bigint,
 	@Ma				nvarchar(128),
 	@Ten			nvarchar(255),
@@ -65,7 +110,51 @@ create procedure Update_DanhMucThamSoHeThong
 as
 begin
 	set nocount on;
-	declare @ErrMsg nvarchar(max);
+	
+	declare @ErrMsg nvarchar(max), @countID int;
+
+	if @Ma is null or LTRIM(RTRIM(@Ma)) = ''
+	begin
+		raiserror(N'Mã tham số hệ thống không được bỏ trống!', 16, 1);
+		return;
+	end;
+	if len(@Ma) > 128
+	begin
+		raiserror(N'Mã tham số hệ thống không được dài quá 128 ký tự!', 16, 1);
+		return;
+	end;
+
+	select @countID = count(ID) from DanhMucThamSoHeThong where Ma = @Ma and ID <> @ID;
+	if @countID > 0
+	begin
+		set @ErrMsg = N'Mã tham số hệ thống ' + @Ma +  N' đã tồn tại!'
+		raiserror(@ErrMsg, 16, 1);
+		return;
+	end;
+
+	if @Ten is null or LTRIM(RTRIM(@Ten)) = ''
+	begin
+		raiserror(N'Tên tham số hệ thống không được bỏ trống!', 16, 1);
+		return;
+	end;
+	if len(@Ten) > 255
+	begin
+		raiserror(N'Tên tham số hệ thống không được dài quá 255 ký tự!', 16, 1);
+		return;
+	end;
+
+	if @GiaTri is null or LTRIM(RTRIM(@GiaTri)) = ''
+	begin
+		raiserror(N'Giá trị tham số hệ thống không được bỏ trống!', 16, 1);
+		return;
+	end;
+
+	if @GhiChu is not null and len(@GhiChu) > 255
+	begin
+		raiserror(N'Ghi chú tham số hệ thống không được dài quá 255 kí tự!', 16, 1);
+		return;
+	end;
+
 	begin tran
 	begin try
 		set @EditDate = GETDATE();
@@ -85,7 +174,7 @@ begin
 	end catch
 end
 go
-create procedure Delete_DanhMucThamSoHeThong
+alter procedure Delete_DanhMucThamSoHeThong
 	@ID			bigint
 as
 begin
@@ -104,7 +193,7 @@ begin
 	end catch
 end
 go
-create procedure Get_DanhMucThamSoHeThong_GiaTri
+alter procedure Get_DanhMucThamSoHeThong_GiaTri
 	@IDDanhMucDonVi bigint,
 	@Ma nvarchar(128),
 	@GiaTri nvarchar(4000) out

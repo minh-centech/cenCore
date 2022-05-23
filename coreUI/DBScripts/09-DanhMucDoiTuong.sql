@@ -21,7 +21,7 @@ create table DanhMucDoiTuong
 )
 go
 */
-create procedure List_DanhMucDoiTuong
+alter procedure List_DanhMucDoiTuong
 	@ID bigint = null,
 	@IDDanhMucDonVi bigint,
 	@IDDanhMucLoaiDoiTuong bigint,
@@ -73,7 +73,7 @@ begin
 	end;
 end
 go
-create procedure List_DanhMucDoiTuong_ValidMa
+alter procedure List_DanhMucDoiTuong_ValidMa
 	@IDDanhMucDonVi bigint,
 	@IDDanhMucLoaiDoiTuong bigint,
 	@Ma nvarchar(128) = null
@@ -93,7 +93,7 @@ begin
 	order by a.Ma;
 end
 go
-create procedure Insert_DanhMucDoiTuong
+alter procedure Insert_DanhMucDoiTuong
 	@ID							bigint out,
 	@IDDanhMucDonVi				bigint,
 	@IDDanhMucLoaiDoiTuong		bigint,
@@ -104,13 +104,54 @@ create procedure Insert_DanhMucDoiTuong
 as
 begin
 	set nocount on;
-	declare @ErrMsg nvarchar(max);
+	
+	declare @ErrMsg nvarchar(max), @CountID bigint;
+
+	if @Ma is null or LTRIM(RTRIM(@Ma)) = ''
+	begin
+		raiserror(N'Mã đối tượng không được bỏ trống!', 16, 1);
+		return;
+	end;
+	if len(@Ma) > 128
+	begin
+		raiserror(N'Mã đối tượng không được dài quá 128 ký tự!', 16, 1);
+		return;
+	end;
+
+	select @countID = count(ID) from DanhMucDoiTuong where IDDanhMucDonVi = @IDDanhMucDonVi and IDDanhMucLoaiDoiTuong = @IDDanhMucLoaiDoiTuong and Ma = @Ma;
+	if @countID > 0
+	begin
+		set @ErrMsg = N'Mã đối tượng ' + @Ma +  N' đã tồn tại!'
+		raiserror(@ErrMsg, 16, 1);
+		return;
+	end;
+
+	if @Ten is null or LTRIM(RTRIM(@Ten)) = ''
+	begin
+		raiserror(N'Tên đối tượng không được bỏ trống!', 16, 1);
+		return;
+	end;
+	if len(@Ten) > 255
+	begin
+		raiserror(N'Tên đối tượng không được dài quá 255 ký tự!', 16, 1);
+		return;
+	end;
+
+	if @IDDanhMucLoaiDoiTuong is null
+	begin
+		raiserror(N'Mã loại đối tượng không được bỏ trống!', 16, 1);
+		return;
+	end;
+	select @countID = count(ID) from DanhMucLoaiDoiTuong where ID = @IDDanhMucLoaiDoiTuong;
+	if @countID = 0
+	begin
+		set @ErrMsg = N'Mã loại đối tượng ' + @Ma +  N' không tồn tại!'
+		raiserror(@ErrMsg, 16, 1);
+		return;
+	end;
+
 	begin tran
 	begin try
-		declare @CountID bigint;
-		select @CountID = count(ID) from DanhMucDoiTuong where Ma = @Ma and IDDanhMucLoaiDoiTuong = @IDDanhMucLoaiDoiTuong and IDDanhMucDonVi = @IDDanhMucDonVi;
-		if @CountID > 0
-			raiserror(N'Mã đối tượng đã bị trùng !', 16, 1)
 		set @CreateDate = GETDATE();
 		exec Insert_AutoID @ID out, @TenBangDuLieu = N'DanhMucDoiTuong';
 		insert DanhMucDoiTuong (ID, IDDanhMucDonVi, IDDanhMucLoaiDoiTuong, Ma, Ten, IDDanhMucNguoiSuDungCreate, CreateDate) 
@@ -124,7 +165,7 @@ begin
 	end catch
 end
 go
-create procedure Update_DanhMucDoiTuong
+alter procedure Update_DanhMucDoiTuong
 	@ID							bigint,
 	@IDDanhMucDonVi				bigint,
 	@IDDanhMucLoaiDoiTuong		bigint,
@@ -135,13 +176,54 @@ create procedure Update_DanhMucDoiTuong
 as
 begin
 	set nocount on;
-	declare @ErrMsg nvarchar(max);
+	
+	declare @ErrMsg nvarchar(max), @CountID bigint;
+
+	if @Ma is null or LTRIM(RTRIM(@Ma)) = ''
+	begin
+		raiserror(N'Mã đối tượng không được bỏ trống!', 16, 1);
+		return;
+	end;
+	if len(@Ma) > 128
+	begin
+		raiserror(N'Mã đối tượng không được dài quá 128 ký tự!', 16, 1);
+		return;
+	end;
+
+	select @countID = count(ID) from DanhMucDoiTuong where IDDanhMucDonVi = @IDDanhMucDonVi and IDDanhMucLoaiDoiTuong = @IDDanhMucLoaiDoiTuong and Ma = @Ma and ID <> @ID;
+	if @countID > 0
+	begin
+		set @ErrMsg = N'Mã đối tượng ' + @Ma +  N' đã tồn tại!'
+		raiserror(@ErrMsg, 16, 1);
+		return;
+	end;
+
+	if @Ten is null or LTRIM(RTRIM(@Ten)) = ''
+	begin
+		raiserror(N'Tên đối tượng không được bỏ trống!', 16, 1);
+		return;
+	end;
+	if len(@Ten) > 255
+	begin
+		raiserror(N'Tên đối tượng không được dài quá 255 ký tự!', 16, 1);
+		return;
+	end;
+
+	if @IDDanhMucLoaiDoiTuong is null
+	begin
+		raiserror(N'Mã loại đối tượng không được bỏ trống!', 16, 1);
+		return;
+	end;
+	select @countID = count(ID) from DanhMucLoaiDoiTuong where ID = @IDDanhMucLoaiDoiTuong;
+	if @countID = 0
+	begin
+		set @ErrMsg = N'Mã loại đối tượng ' + @Ma +  N' không tồn tại!'
+		raiserror(@ErrMsg, 16, 1);
+		return;
+	end;
+
 	begin tran
 	begin try
-		declare @CountID bigint;
-		select @CountID = count(ID) from DanhMucDoiTuong where Ma = @Ma and IDDanhMucLoaiDoiTuong = @IDDanhMucLoaiDoiTuong and IDDanhMucDonVi = @IDDanhMucDonVi and ID <> @ID;
-		if @CountID > 0
-			raiserror(N'Mã đối tượng đã bị trùng !', 16, 1)
 		set @EditDate = GETDATE();
 		update DanhMucDoiTuong set
 			Ma = isnull(@Ma, @ID),
@@ -158,7 +240,7 @@ begin
 	end catch
 end
 go
-create procedure Delete_DanhMucDoiTuong
+alter procedure Delete_DanhMucDoiTuong
 	@ID			bigint
 as
 begin
@@ -177,7 +259,7 @@ begin
 	end catch
 end
 go
-create procedure Get_DanhMucDoiTuong_ID
+alter procedure Get_DanhMucDoiTuong_ID
 	@IDDanhMucLoaiDoiTuong bigint,
 	@Ma nvarchar(128),
 	@ID bigint out

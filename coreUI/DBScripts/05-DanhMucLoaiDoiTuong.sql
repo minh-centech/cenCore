@@ -14,7 +14,7 @@ create table DanhMucLoaiDoiTuong
 )
 go
 */
-create procedure List_DanhMucLoaiDoiTuong
+alter procedure List_DanhMucLoaiDoiTuong
 	@ID bigint = null
 as
 begin
@@ -22,7 +22,7 @@ begin
 	select ID, Ma, Ten, TenBangDuLieu, CreateDate, EditDate from DanhMucLoaiDoiTuong where case when @ID is not null then ID else 0 end = ISNULL(@ID, 0) order by Ma;
 end
 go
-create procedure List_DanhMucLoaiDoiTuong_ValidMa
+alter procedure List_DanhMucLoaiDoiTuong_ValidMa
 	@Ma nvarchar(128)
 as
 begin
@@ -31,7 +31,7 @@ begin
 	select ID, Ma, Ten, TenBangDuLieu, CreateDate, EditDate from DanhMucLoaiDoiTuong where Ma like @Ma order by Ma;
 end
 go
-create procedure Insert_DanhMucLoaiDoiTuong
+alter procedure Insert_DanhMucLoaiDoiTuong
 	@ID				bigint out,
 	@Ma				nvarchar(128),
 	@Ten			nvarchar(255),
@@ -40,7 +40,39 @@ create procedure Insert_DanhMucLoaiDoiTuong
 as
 begin
 	set nocount on;
-	declare @ErrMsg nvarchar(max);
+	
+	declare @ErrMsg nvarchar(max), @countID int;
+
+	if @Ma is null or LTRIM(RTRIM(@Ma)) = ''
+	begin
+		raiserror(N'Mã loại đối tượng không được bỏ trống!', 16, 1);
+		return;
+	end;
+	if len(@Ma) > 128
+	begin
+		raiserror(N'Mã loại đối tượng không được dài quá 128 ký tự!', 16, 1);
+		return;
+	end;
+
+	select @countID = count(ID) from DanhMucLoaiDoiTuong where Ma = @Ma;
+	if @countID > 0
+	begin
+		set @ErrMsg = N'Mã loại đối tượng ' + @Ma +  N' đã tồn tại!'
+		raiserror(@ErrMsg, 16, 1);
+		return;
+	end;
+
+	if @Ten is null or LTRIM(RTRIM(@Ten)) = ''
+	begin
+		raiserror(N'Tên loại đối tượng không được bỏ trống!', 16, 1);
+		return;
+	end;
+	if len(@Ten) > 255
+	begin
+		raiserror(N'Tên loại đối tượng không được dài quá 255 ký tự!', 16, 1);
+		return;
+	end;
+
 	begin tran
 	begin try
 		set @CreateDate = GETDATE();
@@ -66,7 +98,7 @@ begin
 	end catch
 end
 go
-create procedure Update_DanhMucLoaiDoiTuong
+alter procedure Update_DanhMucLoaiDoiTuong
 	@ID				bigint,
 	@Ma				nvarchar(128),
 	@Ten			nvarchar(255),
@@ -75,7 +107,38 @@ create procedure Update_DanhMucLoaiDoiTuong
 as
 begin
 	set nocount on;
-	declare @ErrMsg nvarchar(max);
+	declare @ErrMsg nvarchar(max), @countID int;
+
+	if @Ma is null or LTRIM(RTRIM(@Ma)) = ''
+	begin
+		raiserror(N'Mã loại đối tượng không được bỏ trống!', 16, 1);
+		return;
+	end;
+	if len(@Ma) > 128
+	begin
+		raiserror(N'Mã loại đối tượng không được dài quá 128 ký tự!', 16, 1);
+		return;
+	end;
+
+	select @countID = count(ID) from DanhMucLoaiDoiTuong where Ma = @Ma and ID <> @ID;
+	if @countID > 0
+	begin
+		set @ErrMsg = N'Mã loại đối tượng ' + @Ma +  N' đã tồn tại!'
+		raiserror(@ErrMsg, 16, 1);
+		return;
+	end;
+
+	if @Ten is null or LTRIM(RTRIM(@Ten)) = ''
+	begin
+		raiserror(N'Tên loại đối tượng không được bỏ trống!', 16, 1);
+		return;
+	end;
+	if len(@Ten) > 255
+	begin
+		raiserror(N'Tên loại đối tượng không được dài quá 255 ký tự!', 16, 1);
+		return;
+	end;
+
 	begin tran
 	begin try
 		set @EditDate = GETDATE();
@@ -94,7 +157,7 @@ begin
 	end catch
 end
 go
-create procedure Delete_DanhMucLoaiDoiTuong
+alter procedure Delete_DanhMucLoaiDoiTuong
 	@ID			bigint
 as
 begin
@@ -114,7 +177,7 @@ begin
 	end catch
 end
 go
-create procedure Get_DanhMucLoaiDoiTuong_TenBangDuLieu
+alter procedure Get_DanhMucLoaiDoiTuong_TenBangDuLieu
 	@ID bigint,
 	@TenBangDuLieu nvarchar(128) out
 as
@@ -123,7 +186,7 @@ begin
 	select @TenBangDuLieu = TenBangDuLieu from DanhMucLoaiDoiTuong where ID = @ID;
 end
 go
-create procedure Get_DanhMucLoaiDoiTuong_ID
+alter procedure Get_DanhMucLoaiDoiTuong_ID
 	@Ma nvarchar(128),
 	@ID bigint out
 as
@@ -132,7 +195,7 @@ begin
 	select @ID = ID from DanhMucLoaiDoiTuong where Ma = @Ma;
 end
 go
-create procedure Get_DanhMucLoaiDoiTuong_Ma
+alter procedure Get_DanhMucLoaiDoiTuong_Ma
 	@ID bigint,
 	@Ma nvarchar(128) out
 as

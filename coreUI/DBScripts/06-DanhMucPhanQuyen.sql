@@ -75,7 +75,7 @@ create table DanhMucPhanQuyenBaoCao
 )
 go
 */
-create procedure List_DanhMucPhanQuyen
+alter procedure List_DanhMucPhanQuyen
 	@ID	bigint = null
 as
 begin
@@ -120,15 +120,46 @@ begin
 	order by b.Ma;
 end
 go
-create procedure Insert_DanhMucPhanQuyen
+alter procedure Insert_DanhMucPhanQuyen
 	@ID			bigint out,
-	@Ma			nvarchar(128),
-	@Ten		nvarchar(255),
+	@Ma			nvarchar(128) = null,
+	@Ten		nvarchar(255) = null,
 	@CreateDate datetime out
 as
 begin
 	set nocount on;
-	declare @ErrMsg nvarchar(max);
+	declare @ErrMsg nvarchar(max), @countID int;
+	
+	if @Ma is null or LTRIM(RTRIM(@Ma)) = ''
+	begin
+		raiserror(N'Mã phân quyền không được bỏ trống!', 16, 1);
+		return;
+	end;
+	if len(@Ma) > 128
+	begin
+		raiserror(N'Mã phân quyền không được dài quá 128 ký tự!', 16, 1);
+		return;
+	end;
+
+	select @countID = count(ID) from DanhMucPhanQuyen where Ma = @Ma;
+	if @countID > 0
+	begin
+		set @ErrMsg = N'Mã phân quyền ' + @Ma +  N' đã tồn tại!'
+		raiserror(@ErrMsg, 16, 1);
+		return;
+	end;
+
+	if @Ten is null or LTRIM(RTRIM(@Ten)) = ''
+	begin
+		raiserror(N'Tên phân quyền không được bỏ trống!', 16, 1);
+		return;
+	end;
+	if len(@Ten) > 255
+	begin
+		raiserror(N'Tên phân quyền không được dài quá 255 ký tự!', 16, 1);
+		return;
+	end;
+
 	begin tran
 	begin try
 		set @CreateDate = GETDATE();
@@ -184,7 +215,7 @@ begin
 	end catch
 end
 go
-create procedure Update_DanhMucPhanQuyen
+alter procedure Update_DanhMucPhanQuyen
 	@ID			bigint,
 	@Ma			nvarchar(128),
 	@Ten		nvarchar(255),
@@ -192,7 +223,38 @@ create procedure Update_DanhMucPhanQuyen
 as
 begin
 	set nocount on;
-	declare @ErrMsg nvarchar(max);
+	declare @ErrMsg nvarchar(max), @countID int;
+
+	if @Ma is null or LTRIM(RTRIM(@Ma)) = ''
+	begin
+		raiserror(N'Mã phân quyền không được bỏ trống!', 16, 1);
+		return;
+	end;
+	if len(@Ma) > 128
+	begin
+		raiserror(N'Mã phân quyền không được dài quá 128 ký tự!', 16, 1);
+		return;
+	end;
+
+	select @countID = count(ID) from DanhMucPhanQuyen where Ma = @Ma and ID <> @ID;
+	if @countID > 0
+	begin
+		set @ErrMsg = N'Mã phân quyền ' + @Ma +  N' đã tồn tại!'
+		raiserror(@ErrMsg, 16, 1);
+		return;
+	end;
+
+	if @Ten is null or LTRIM(RTRIM(@Ten)) = ''
+	begin
+		raiserror(N'Tên phân quyền không được bỏ trống!', 16, 1);
+		return;
+	end;
+	if len(@Ten) > 255
+	begin
+		raiserror(N'Tên phân quyền không được dài quá 255 ký tự!', 16, 1);
+		return;
+	end;
+
 	begin tran
 	begin try
 		set @EditDate = GETDATE();
@@ -210,7 +272,7 @@ begin
 	end catch
 end
 go
-create procedure Delete_DanhMucPhanQuyen
+alter procedure Delete_DanhMucPhanQuyen
 	@ID			bigint
 as
 begin
@@ -233,7 +295,7 @@ begin
 	end catch
 end
 go
-create procedure List_DanhMucPhanQuyenDonVi
+alter procedure List_DanhMucPhanQuyenDonVi
 	@ID	bigint = null,
 	@IDDanhMucPhanQuyen	bigint = null
 as
@@ -250,7 +312,7 @@ begin
 			and case when @IDDanhMucPhanQuyen is not null then a.IDDanhMucPhanQuyen else 0 end = ISNULL(@IDDanhMucPhanQuyen, 0)
 end
 go
-create procedure Insert_DanhMucPhanQuyenDonVi
+alter procedure Insert_DanhMucPhanQuyenDonVi
 	@ID					bigint out,
 	@IDDanhMucPhanQuyen	bigint,
 	@IDDanhMucDonVi		bigint,
@@ -274,7 +336,7 @@ begin
 	end catch
 end
 go
-create procedure Update_DanhMucPhanQuyenDonVi
+alter procedure Update_DanhMucPhanQuyenDonVi
 	@ID			bigint,
 	@Xem		bit,
 	@EditDate	datetime out
@@ -298,7 +360,7 @@ begin
 	end catch
 end
 go
-create procedure Delete_DanhMucPhanQuyenDonVi
+alter procedure Delete_DanhMucPhanQuyenDonVi
 	@ID			bigint
 as
 begin
@@ -317,7 +379,7 @@ begin
 	end catch
 end
 go
-create procedure List_DanhMucPhanQuyenLoaiDoiTuong
+alter procedure List_DanhMucPhanQuyenLoaiDoiTuong
 	@ID	bigint = null,
 	@IDDanhMucPhanQuyen	bigint = null
 as
@@ -337,7 +399,7 @@ begin
 			and case when @IDDanhMucPhanQuyen is not null then a.IDDanhMucPhanQuyen else 0 end = ISNULL(@IDDanhMucPhanQuyen, 0)
 end
 go
-create procedure Insert_DanhMucPhanQuyenLoaiDoiTuong
+alter procedure Insert_DanhMucPhanQuyenLoaiDoiTuong
 	@ID						bigint out,
 	@IDDanhMucPhanQuyen		bigint,
 	@IDDanhMucLoaiDoiTuong	bigint,
@@ -364,7 +426,7 @@ begin
 	end catch
 end
 go
-create procedure Update_DanhMucPhanQuyenLoaiDoiTuong
+alter procedure Update_DanhMucPhanQuyenLoaiDoiTuong
 	@ID			bigint,
 	@Xem		bit,
 	@Them		bit,
@@ -394,7 +456,7 @@ begin
 	end catch
 end
 go
-create procedure Delete_DanhMucPhanQuyenLoaiDoiTuong
+alter procedure Delete_DanhMucPhanQuyenLoaiDoiTuong
 	@ID			bigint
 as
 begin
@@ -413,7 +475,7 @@ begin
 	end catch
 end
 go
-create procedure List_DanhMucPhanQuyenChungTu
+alter procedure List_DanhMucPhanQuyenChungTu
 	@ID	bigint = null,
 	@IDDanhMucPhanQuyen	bigint = null
 as
@@ -433,7 +495,7 @@ begin
 			and case when @IDDanhMucPhanQuyen is not null then a.IDDanhMucPhanQuyen else 0 end = ISNULL(@IDDanhMucPhanQuyen, 0)
 end
 go
-create procedure Insert_DanhMucPhanQuyenChungTu
+alter procedure Insert_DanhMucPhanQuyenChungTu
 	@ID					bigint out,
 	@IDDanhMucPhanQuyen	bigint,
 	@IDDanhMucChungTu	bigint,
@@ -460,7 +522,7 @@ begin
 	end catch
 end
 go
-create procedure Update_DanhMucPhanQuyenChungTu
+alter procedure Update_DanhMucPhanQuyenChungTu
 	@ID			bigint,
 	@Xem		bit,
 	@Them		bit,
@@ -490,7 +552,7 @@ begin
 	end catch
 end
 go
-create procedure Delete_DanhMucPhanQuyenChungTu
+alter procedure Delete_DanhMucPhanQuyenChungTu
 	@ID			bigint
 as
 begin
@@ -509,7 +571,7 @@ begin
 	end catch
 end
 go
-create procedure List_DanhMucPhanQuyenBaoCao
+alter procedure List_DanhMucPhanQuyenBaoCao
 	@ID	bigint = null,
 	@IDDanhMucPhanQuyen	bigint = null
 as
@@ -526,7 +588,7 @@ begin
 			and case when @IDDanhMucPhanQuyen is not null then a.IDDanhMucPhanQuyen else 0 end = ISNULL(@IDDanhMucPhanQuyen, 0)
 end
 go
-create procedure Insert_DanhMucPhanQuyenBaoCao
+alter procedure Insert_DanhMucPhanQuyenBaoCao
 	@ID					bigint out,
 	@IDDanhMucPhanQuyen	bigint,
 	@IDDanhMucBaoCao	bigint,
@@ -550,7 +612,7 @@ begin
 	end catch
 end
 go
-create procedure Update_DanhMucPhanQuyenBaoCao
+alter procedure Update_DanhMucPhanQuyenBaoCao
 	@ID			bigint,
 	@Xem		bit,
 	@EditDate	datetime out
@@ -574,7 +636,7 @@ begin
 	end catch
 end
 go
-create procedure Delete_DanhMucPhanQuyenBaoCao
+alter procedure Delete_DanhMucPhanQuyenBaoCao
 	@ID			bigint
 as
 begin
@@ -593,7 +655,7 @@ begin
 	end catch
 end
 go
-create procedure Get_DanhMucPhanQuyenLoaiDoiTuong
+alter procedure Get_DanhMucPhanQuyenLoaiDoiTuong
 	@IDDanhMucPhanQuyen		bigint,
 	@IDDanhMucLoaiDoiTuong	bigint,
 	@Xem					bit = 0 out,
@@ -617,7 +679,7 @@ begin
 	end catch
 end
 go
-create procedure Get_DanhMucPhanQuyenChungTu
+alter procedure Get_DanhMucPhanQuyenChungTu
 	@IDDanhMucPhanQuyen		bigint,
 	@IDDanhMucChungTu		bigint,
 	@Xem					bit = 0 out,
@@ -641,7 +703,7 @@ begin
 	end catch
 end
 go
-create procedure Get_DanhMucPhanQuyenBaoCao
+alter procedure Get_DanhMucPhanQuyenBaoCao
 	@IDDanhMucPhanQuyen		bigint,
 	@IDDanhMucBaoCao		bigint,
 	@Xem					bit = 0 out
@@ -661,7 +723,7 @@ begin
 	end catch
 end
 go
-create procedure Get_DanhMucPhanQuyenDonVi
+alter procedure Get_DanhMucPhanQuyenDonVi
 	@IDDanhMucPhanQuyen		bigint,
 	@IDDanhMucDonVi			bigint,
 	@Xem					bit = 0 out

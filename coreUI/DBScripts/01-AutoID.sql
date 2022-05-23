@@ -28,11 +28,11 @@ begin
 end
 go
 -----------------
-create procedure Check_ForeignKey
-	@TableName nvarchar(255) = null,
-	@ColumnName nvarchar(255) = null,
-	@ValueCheck bigint = null,
-	@ErrorMessage nvarchar(max) = null,
+alter procedure Check_ForeignKey
+	@TableName nvarchar(255),
+	@ColumnName nvarchar(255),
+	@ValueCheck bigint,
+	@ErrorMessage nvarchar(max),
 	@Count bigint = null output
 as
 begin
@@ -54,4 +54,3 @@ begin
 	drop table #Count;
 end;
 go
------------------

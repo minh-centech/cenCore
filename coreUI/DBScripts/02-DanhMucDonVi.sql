@@ -21,15 +21,47 @@ begin
 	select ID, Ma, Ten, CreateDate, EditDate from DanhMucDonVi where case when @ID is not null then ID else 0 end = ISNULL(@ID, 0) order by Ma;
 end
 go
-create procedure Insert_DanhMucDonVi
+alter procedure Insert_DanhMucDonVi
 	@ID			bigint out,
-	@Ma			nvarchar(128),
-	@Ten		nvarchar(255),
+	@Ma			nvarchar(128) = null,
+	@Ten		nvarchar(255) = null,
 	@CreateDate datetime = null out
 as
 begin
 	set nocount on;
-	declare @ErrMsg nvarchar(max);
+	
+	declare @ErrMsg nvarchar(max), @countID int;
+
+	if @Ma is null or LTRIM(RTRIM(@Ma)) = ''
+	begin
+		raiserror(N'Mã đơn vị không được bỏ trống!', 16, 1);
+		return;
+	end;
+	if len(@Ma) > 128
+	begin
+		raiserror(N'Mã đơn vị không được dài quá 128 ký tự!', 16, 1);
+		return;
+	end;
+
+	select @countID = count(ID) from DanhMucDonVi where Ma = @Ma;
+	if @countID > 0
+	begin
+		set @ErrMsg = N'Mã đơn vị ' + @Ma +  N' đã tồn tại!'
+		raiserror(@ErrMsg, 16, 1);
+		return;
+	end;
+
+	if @Ten is null or LTRIM(RTRIM(@Ten)) = ''
+	begin
+		raiserror(N'Tên đơn vị không được bỏ trống!', 16, 1);
+		return;
+	end;
+	if len(@Ten) > 255
+	begin
+		raiserror(N'Tên đơn vị không được dài quá 255 ký tự!', 16, 1);
+		return;
+	end;
+
 	begin tran
 	begin try
 		exec Insert_AutoID @ID out, @TenBangDuLieu = N'DanhMucDonVi';
@@ -52,18 +84,51 @@ begin
 		if @@TRANCOUNT > 0 rollback tran;
 		select @ErrMsg = ERROR_MESSAGE();
 		raiserror(@ErrMsg, 16, 1);
-	end catch
+	end catch;
 end
 go
-create procedure Update_DanhMucDonVi
+alter procedure Update_DanhMucDonVi
 	@ID			bigint,
-	@Ma			nvarchar(128),
-	@Ten		nvarchar(255),
+	@Ma			nvarchar(128) = null,
+	@Ten		nvarchar(255) = null,
 	@EditDate	datetime = null out
 as
 begin
 	set nocount on;
-	declare @ErrMsg nvarchar(max);
+	
+	declare @ErrMsg nvarchar(max), @countID int;
+
+	if @Ma is null or LTRIM(RTRIM(@Ma)) = ''
+	begin
+		raiserror(N'Mã đơn vị không được bỏ trống!', 16, 1);
+		return;
+	end;
+	if len(@Ma) > 128
+	begin
+		raiserror(N'Mã đơn vị không được dài quá 128 ký tự!', 16, 1);
+		return;
+	end;
+	select @countID = count(ID) from DanhMucDonVi where Ma = @Ma and ID <> @ID;
+	if @countID > 0
+	begin
+		set @ErrMsg = N'Mã đơn vị ' + @Ma +  N' đã tồn tại!'
+		raiserror(@ErrMsg, 16, 1);
+		return;
+	end;
+	
+
+	if @Ten is null or LTRIM(RTRIM(@Ten)) = ''
+	begin
+		raiserror(N'Tên đơn vị không được bỏ trống!', 16, 1);
+		return;
+	end;
+	if len(@Ten) > 255
+	begin
+		raiserror(N'Tên đơn vị không được dài quá 255 ký tự!', 16, 1);
+		return;
+	end;
+
+	
 	begin tran
 	begin try
 		set @EditDate = GETDATE();
@@ -81,6 +146,7 @@ begin
 	end catch
 end
 go
+
 create procedure Delete_DanhMucDonVi
 	@ID			bigint
 as

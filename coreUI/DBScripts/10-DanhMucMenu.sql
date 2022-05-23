@@ -1,11 +1,11 @@
-﻿---------------DANH MỤC PHÂN QUYỀN 2019=12-29 15:57:00
+﻿---------------DANH MỤC MENU 2019=12-29 15:57:00
 /*
 create table DanhMucMenu
 (
 	ID				bigint			not null,
 	Ma				nvarchar(128)	not null,
 	Ten				nvarchar(255)	not null,
-	ThuTuHienThi	int,
+	ThuTuHienThi	tinyint			not null,
 	CreateDate		datetime		not null,
 	EditDate		datetime,
 	constraint		PK_DanhMucMenu primary key (ID),
@@ -19,8 +19,8 @@ create table DanhMucMenuLoaiDoiTuong
 	IDDanhMucMenu			bigint			not null,
 	IDDanhMucLoaiDoiTuong	bigint			not null,
 	NoiDungHienThi			nvarchar(255)	not null,
-	PhanCachNhom			bit,
-	ThuTuHienThi			int,
+	PhanCachNhom			bit				not null,
+	ThuTuHienThi			tinyint			not null,
 	CreateDate				datetime		not null,
 	EditDate				datetime,
 	constraint	PK_DanhMucMenuLoaiDoiTuong primary key (ID),
@@ -35,8 +35,8 @@ create table DanhMucMenuChungTu
 	IDDanhMucMenu		bigint			not null,
 	IDDanhMucChungTu	bigint			not null,
 	NoiDungHienThi		nvarchar(255)	not null,
-	PhanCachNhom		bit,
-	ThuTuHienThi		int,
+	PhanCachNhom		bit				not null,
+	ThuTuHienThi		tinyint			not null,
 	CreateDate			datetime		not null,
 	EditDate			datetime,
 	constraint	PK_DanhMucMenuChungTu primary key (ID),
@@ -51,8 +51,8 @@ create table DanhMucMenuBaoCao
 	IDDanhMucMenu		bigint			not null,
 	IDDanhMucBaoCao		bigint			not null,
 	NoiDungHienThi		nvarchar(255)	not null,
-	PhanCachNhom		bit,
-	ThuTuHienThi		int,
+	PhanCachNhom		bit				not null,
+	ThuTuHienThi		tinyint			not null,
 	CreateDate			datetime		not null,
 	EditDate			datetime,
 	constraint	PK_DanhMucMenuBaoCao primary key (ID),
@@ -112,14 +112,53 @@ end
 go
 alter procedure Insert_DanhMucMenu
 	@ID				bigint out,
-	@Ma				nvarchar(128),
-	@Ten			nvarchar(255),
-	@ThuTuHienThi	int,
+	@Ma				nvarchar(128) = null,
+	@Ten			nvarchar(255) = null,
+	@ThuTuHienThi	tinyint = null,
 	@CreateDate		datetime out
 as
 begin
 	set nocount on;
-	declare @ErrMsg nvarchar(max);
+
+	declare @ErrMsg nvarchar(max), @countID int;
+
+	if @Ma is null or LTRIM(RTRIM(@Ma)) = ''
+	begin
+		raiserror(N'Mã menu không được bỏ trống!', 16, 1);
+		return;
+	end;
+	if len(@Ma) > 128
+	begin
+		raiserror(N'Mã menu không được dài quá 128 ký tự!', 16, 1);
+		return;
+	end;
+
+	select @countID = count(ID) from DanhMucMenu where Ma = @Ma;
+	if @countID > 0
+	begin
+		set @ErrMsg = N'Mã menu ' + @Ma +  N' đã tồn tại!'
+		raiserror(@ErrMsg, 16, 1);
+		return;
+	end;
+
+	if @Ten is null or LTRIM(RTRIM(@Ten)) = ''
+	begin
+		raiserror(N'Tên menu không được bỏ trống!', 16, 1);
+		return;
+	end;
+	if len(@Ten) > 255
+	begin
+		raiserror(N'Tên menu không được dài quá 255 ký tự!', 16, 1);
+		return;
+	end;
+
+	if @ThuTuHienThi is null or @ThuTuHienThi < 0 or @ThuTuHienThi > 255
+	begin
+		raiserror(N'Thứ tự hiển thị không được bỏ trống và phải nằm trong khoảng từ 0 đến 255!', 16, 1);
+		return;
+	end;
+
+	
 	begin tran
 	begin try
 		set @CreateDate = GETDATE();
@@ -129,21 +168,59 @@ begin
 	end try
 	begin catch
 		if @@TRANCOUNT > 0 rollback tran;
-		select @ErrMsg = ERROR_MESSAGE()
-		raiserror(@ErrMsg, 16, 1)
-	end catch
+		select @ErrMsg = ERROR_MESSAGE();
+		raiserror(@ErrMsg, 16, 1);
+	end catch;
 end
 go
 alter procedure Update_DanhMucMenu
 	@ID				bigint,
-	@Ma				nvarchar(128),
-	@Ten			nvarchar(255),
-	@ThuTuHienThi	int,
+	@Ma				nvarchar(128) = null,
+	@Ten			nvarchar(255) = null,
+	@ThuTuHienThi	tinyint = null,
 	@EditDate		datetime out
 as
 begin
 	set nocount on;
-	declare @ErrMsg nvarchar(max);
+	
+	declare @ErrMsg nvarchar(max), @countID int;
+
+	if @Ma is null or LTRIM(RTRIM(@Ma)) = ''
+	begin
+		raiserror(N'Mã menu không được bỏ trống!', 16, 1);
+		return;
+	end;
+	if len(@Ma) > 128
+	begin
+		raiserror(N'Mã menu không được dài quá 128 ký tự!', 16, 1);
+		return;
+	end;
+
+	select @countID = count(ID) from DanhMucMenu where Ma = @Ma and ID <> @ID;
+	if @countID > 0
+	begin
+		set @ErrMsg = N'Mã menu ' + @Ma +  N' đã tồn tại!'
+		raiserror(@ErrMsg, 16, 1);
+		return;
+	end;
+
+	if @Ten is null or LTRIM(RTRIM(@Ten)) = ''
+	begin
+		raiserror(N'Tên menu không được bỏ trống!', 16, 1);
+		return;
+	end;
+	if len(@Ten) > 255
+	begin
+		raiserror(N'Tên menu không được dài quá 255 ký tự!', 16, 1);
+		return;
+	end;
+
+	if @ThuTuHienThi is null or @ThuTuHienThi < 0 or @ThuTuHienThi > 255
+	begin
+		raiserror(N'Thứ tự hiển thị không được bỏ trống và phải nằm trong khoảng từ 0 đến 255!', 16, 1);
+		return;
+	end;
+
 	begin tran
 	begin try
 		set @EditDate = GETDATE();
@@ -206,16 +283,62 @@ end
 go
 alter procedure Insert_DanhMucMenuLoaiDoiTuong
 	@ID						bigint out,
-	@IDDanhMucMenu			bigint,
-	@IDDanhMucLoaiDoiTuong	bigint,
-	@NoiDungHienThi			nvarchar(255),
-	@PhanCachNhom			bit,
-	@ThuTuHienThi			int,
+	@IDDanhMucMenu			bigint = null,
+	@IDDanhMucLoaiDoiTuong	bigint = null,
+	@NoiDungHienThi			nvarchar(255) = null,
+	@PhanCachNhom			bit = null,
+	@ThuTuHienThi			int = null,
 	@CreateDate				datetime out
 as
 begin
 	set nocount on;
-	declare @ErrMsg nvarchar(max);
+	
+	declare @ErrMsg nvarchar(max), @countID int;
+
+	if @IDDanhMucMenu is null
+	begin
+		raiserror(N'Mã menu không được bỏ trống!', 16, 1);
+		return;
+	end;
+	select @countID = count(ID) from DanhMucMenu where ID = @IDDanhMucMenu;
+	if @countID = 0
+	begin
+		set @ErrMsg = N'Mã menu không tồn tại!'
+		raiserror(@ErrMsg, 16, 1);
+		return;
+	end;
+
+	if @IDDanhMucLoaiDoiTuong is null
+	begin
+		raiserror(N'Mã loại đối tượng không được bỏ trống!', 16, 1);
+		return;
+	end;
+	select @countID = count(ID) from DanhMucLoaiDoiTuong where ID = @IDDanhMucLoaiDoiTuong;
+	if @countID = 0
+	begin
+		set @ErrMsg = N'Mã loại đối tượng không tồn tại!'
+		raiserror(@ErrMsg, 16, 1);
+		return;
+	end;
+
+
+	if @NoiDungHienThi is null or LTRIM(RTRIM(@NoiDungHienThi)) = ''
+	begin
+		raiserror(N'Nội dung hiển thị không được bỏ trống!', 16, 1);
+		return;
+	end;
+	if len(@NoiDungHienThi) > 255
+	begin
+		raiserror(N'Nội dunng hiển thị không được dài quá 255 ký tự!', 16, 1);
+		return;
+	end;
+
+	if @ThuTuHienThi is null or @ThuTuHienThi < 0 or @ThuTuHienThi > 255
+	begin
+		raiserror(N'Thứ tự hiển thị không được bỏ trống và phải nằm trong khoảng từ 0 đến 255!', 16, 1);
+		return;
+	end;
+
 	begin tran
 	begin try
 		set @CreateDate = GETDATE();
@@ -240,7 +363,40 @@ alter procedure Update_DanhMucMenuLoaiDoiTuong
 as
 begin
 	set nocount on;
-	declare @ErrMsg nvarchar(max);
+	
+	declare @ErrMsg nvarchar(max), @countID int;
+
+	if @IDDanhMucLoaiDoiTuong is null
+	begin
+		raiserror(N'Mã loại đối tượng không được bỏ trống!', 16, 1);
+		return;
+	end;
+	select @countID = count(ID) from DanhMucLoaiDoiTuong where ID = @IDDanhMucLoaiDoiTuong;
+	if @countID = 0
+	begin
+		set @ErrMsg = N'Mã loại đối tượng không tồn tại!'
+		raiserror(@ErrMsg, 16, 1);
+		return;
+	end;
+
+
+	if @NoiDungHienThi is null or LTRIM(RTRIM(@NoiDungHienThi)) = ''
+	begin
+		raiserror(N'Nội dung hiển thị không được bỏ trống!', 16, 1);
+		return;
+	end;
+	if len(@NoiDungHienThi) > 255
+	begin
+		raiserror(N'Nội dunng hiển thị không được dài quá 255 ký tự!', 16, 1);
+		return;
+	end;
+
+	if @ThuTuHienThi is null or @ThuTuHienThi < 0 or @ThuTuHienThi > 255
+	begin
+		raiserror(N'Thứ tự hiển thị không được bỏ trống và phải nằm trong khoảng từ 0 đến 255!', 16, 1);
+		return;
+	end;
+
 	begin tran
 	begin try
 		set @EditDate = GETDATE();
@@ -310,7 +466,53 @@ alter procedure Insert_DanhMucMenuChungTu
 as
 begin
 	set nocount on;
-	declare @ErrMsg nvarchar(max);
+	
+	declare @ErrMsg nvarchar(max), @countID int;
+
+	if @IDDanhMucMenu is null
+	begin
+		raiserror(N'Mã menu không được bỏ trống!', 16, 1);
+		return;
+	end;
+	select @countID = count(ID) from DanhMucMenu where ID = @IDDanhMucMenu;
+	if @countID = 0
+	begin
+		set @ErrMsg = N'Mã menu không tồn tại!'
+		raiserror(@ErrMsg, 16, 1);
+		return;
+	end;
+
+	if @IDDanhMucChungTu is null
+	begin
+		raiserror(N'Mã loại chứng từ không được bỏ trống!', 16, 1);
+		return;
+	end;
+	select @countID = count(ID) from DanhMucChungTu where ID = @IDDanhMucChungTu;
+	if @countID = 0
+	begin
+		set @ErrMsg = N'Mã loại chứng từ không tồn tại!'
+		raiserror(@ErrMsg, 16, 1);
+		return;
+	end;
+
+
+	if @NoiDungHienThi is null or LTRIM(RTRIM(@NoiDungHienThi)) = ''
+	begin
+		raiserror(N'Nội dung hiển thị không được bỏ trống!', 16, 1);
+		return;
+	end;
+	if len(@NoiDungHienThi) > 255
+	begin
+		raiserror(N'Nội dunng hiển thị không được dài quá 255 ký tự!', 16, 1);
+		return;
+	end;
+
+	if @ThuTuHienThi is null or @ThuTuHienThi < 0 or @ThuTuHienThi > 255
+	begin
+		raiserror(N'Thứ tự hiển thị không được bỏ trống và phải nằm trong khoảng từ 0 đến 255!', 16, 1);
+		return;
+	end;
+
 	begin tran
 	begin try
 		set @CreateDate = GETDATE();
@@ -335,7 +537,40 @@ alter procedure Update_DanhMucMenuChungTu
 as
 begin
 	set nocount on;
-	declare @ErrMsg nvarchar(max);
+	
+	declare @ErrMsg nvarchar(max), @countID int;
+
+	if @IDDanhMucChungTu is null
+	begin
+		raiserror(N'Mã loại chứng từ không được bỏ trống!', 16, 1);
+		return;
+	end;
+	select @countID = count(ID) from DanhMucChungTu where ID = @IDDanhMucChungTu;
+	if @countID = 0
+	begin
+		set @ErrMsg = N'Mã loại chứng từ không tồn tại!'
+		raiserror(@ErrMsg, 16, 1);
+		return;
+	end;
+
+
+	if @NoiDungHienThi is null or LTRIM(RTRIM(@NoiDungHienThi)) = ''
+	begin
+		raiserror(N'Nội dung hiển thị không được bỏ trống!', 16, 1);
+		return;
+	end;
+	if len(@NoiDungHienThi) > 255
+	begin
+		raiserror(N'Nội dunng hiển thị không được dài quá 255 ký tự!', 16, 1);
+		return;
+	end;
+
+	if @ThuTuHienThi is null or @ThuTuHienThi < 0 or @ThuTuHienThi > 255
+	begin
+		raiserror(N'Thứ tự hiển thị không được bỏ trống và phải nằm trong khoảng từ 0 đến 255!', 16, 1);
+		return;
+	end;
+
 	begin tran
 	begin try
 		set @EditDate = GETDATE();
@@ -405,7 +640,53 @@ alter procedure Insert_DanhMucMenuBaoCao
 as
 begin
 	set nocount on;
-	declare @ErrMsg nvarchar(max);
+	
+	declare @ErrMsg nvarchar(max), @countID int;
+
+	if @IDDanhMucMenu is null
+	begin
+		raiserror(N'Mã menu không được bỏ trống!', 16, 1);
+		return;
+	end;
+	select @countID = count(ID) from DanhMucMenu where ID = @IDDanhMucMenu;
+	if @countID = 0
+	begin
+		set @ErrMsg = N'Mã menu không tồn tại!'
+		raiserror(@ErrMsg, 16, 1);
+		return;
+	end;
+
+	if @IDDanhMucBaoCao is null
+	begin
+		raiserror(N'Mã loại báo cáo không được bỏ trống!', 16, 1);
+		return;
+	end;
+	select @countID = count(ID) from DanhMucBaoCao where ID = @IDDanhMucBaoCao;
+	if @countID = 0
+	begin
+		set @ErrMsg = N'Mã loại báo cáo không tồn tại!'
+		raiserror(@ErrMsg, 16, 1);
+		return;
+	end;
+
+
+	if @NoiDungHienThi is null or LTRIM(RTRIM(@NoiDungHienThi)) = ''
+	begin
+		raiserror(N'Nội dung hiển thị không được bỏ trống!', 16, 1);
+		return;
+	end;
+	if len(@NoiDungHienThi) > 255
+	begin
+		raiserror(N'Nội dunng hiển thị không được dài quá 255 ký tự!', 16, 1);
+		return;
+	end;
+
+	if @ThuTuHienThi is null or @ThuTuHienThi < 0 or @ThuTuHienThi > 255
+	begin
+		raiserror(N'Thứ tự hiển thị không được bỏ trống và phải nằm trong khoảng từ 0 đến 255!', 16, 1);
+		return;
+	end;
+
 	begin tran
 	begin try
 		set @CreateDate = GETDATE();
@@ -430,7 +711,40 @@ alter procedure Update_DanhMucMenuBaoCao
 as
 begin
 	set nocount on;
-	declare @ErrMsg nvarchar(max);
+	
+	declare @ErrMsg nvarchar(max), @countID int;
+
+	if @IDDanhMucBaoCao is null
+	begin
+		raiserror(N'Mã loại báo cáo không được bỏ trống!', 16, 1);
+		return;
+	end;
+	select @countID = count(ID) from DanhMucBaoCao where ID = @IDDanhMucBaoCao;
+	if @countID = 0
+	begin
+		set @ErrMsg = N'Mã loại báo cáo không tồn tại!'
+		raiserror(@ErrMsg, 16, 1);
+		return;
+	end;
+
+
+	if @NoiDungHienThi is null or LTRIM(RTRIM(@NoiDungHienThi)) = ''
+	begin
+		raiserror(N'Nội dung hiển thị không được bỏ trống!', 16, 1);
+		return;
+	end;
+	if len(@NoiDungHienThi) > 255
+	begin
+		raiserror(N'Nội dunng hiển thị không được dài quá 255 ký tự!', 16, 1);
+		return;
+	end;
+
+	if @ThuTuHienThi is null or @ThuTuHienThi < 0 or @ThuTuHienThi > 255
+	begin
+		raiserror(N'Thứ tự hiển thị không được bỏ trống và phải nằm trong khoảng từ 0 đến 255!', 16, 1);
+		return;
+	end;
+
 	begin tran
 	begin try
 		set @EditDate = GETDATE();

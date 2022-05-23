@@ -77,15 +77,70 @@ end
 go
 create procedure Insert_DanhMucChungTu
 	@ID				bigint out,
-	@Ma				nvarchar(128),
-	@Ten			nvarchar(255),
-	@KiHieu			nvarchar(20),
-	@LoaiManHinh	nvarchar(128),
+	@Ma				nvarchar(128) = null,
+	@Ten			nvarchar(255) = null,
+	@KiHieu			nvarchar(20) = null,
+	@LoaiManHinh	nvarchar(128) = null,
 	@CreateDate		datetime out
 as
 begin
 	set nocount on;
-	declare @ErrMsg nvarchar(max);
+	
+	declare @ErrMsg nvarchar(max), @countID int;
+
+	if @Ma is null or LTRIM(RTRIM(@Ma)) = ''
+	begin
+		raiserror(N'Mã chứng từ không được bỏ trống!', 16, 1);
+		return;
+	end;
+	if len(@Ma) > 128
+	begin
+		raiserror(N'Mã chứng từ không được dài quá 128 ký tự!', 16, 1);
+		return;
+	end;
+
+	select @countID = count(ID) from DanhMucChungTu where Ma = @Ma;
+	if @countID > 0
+	begin
+		set @ErrMsg = N'Mã chứng từ ' + @Ma +  N' đã tồn tại!'
+		raiserror(@ErrMsg, 16, 1);
+		return;
+	end;
+
+	if @Ten is null or LTRIM(RTRIM(@Ten)) = ''
+	begin
+		raiserror(N'Tên chứng từ không được bỏ trống!', 16, 1);
+		return;
+	end;
+	if len(@Ten) > 255
+	begin
+		raiserror(N'Tên chứng từ không được dài quá 255 ký tự!', 16, 1);
+		return;
+	end;
+
+	if @KiHieu is null or LTRIM(RTRIM(@KiHieu)) = ''
+	begin
+		raiserror(N'Kí hiệu chứng từ không được bỏ trống!', 16, 1);
+		return;
+	end;
+	if len(@KiHieu) > 20
+	begin
+		raiserror(N'Kí hiệu chứng từ không được dài quá 20 ký tự!', 16, 1);
+		return;
+	end;
+
+	if @LoaiManHinh is null or LTRIM(RTRIM(@LoaiManHinh)) = ''
+	begin
+		raiserror(N'Loại màn hình không được bỏ trống!', 16, 1);
+		return;
+	end;
+	if len(@LoaiManHinh) > 255
+	begin
+		raiserror(N'Loại màn hình không được dài quá 255 ký tự!', 16, 1);
+		return;
+	end;
+
+
 	begin tran
 	begin try
 		select @CreateDate = GETDATE();
@@ -106,9 +161,9 @@ begin
 	end try
 	begin catch
 		if @@TRANCOUNT > 0 rollback tran;
-		select @ErrMsg = ERROR_MESSAGE()
-		raiserror(@ErrMsg, 16, 1)
-	end catch
+		select @ErrMsg = ERROR_MESSAGE();
+		raiserror(@ErrMsg, 16, 1);
+	end catch;
 end
 go
 create procedure Update_DanhMucChungTu
@@ -121,7 +176,62 @@ create procedure Update_DanhMucChungTu
 as
 begin
 	set nocount on;
-	declare @ErrMsg nvarchar(max);
+	
+	declare @ErrMsg nvarchar(max), @countID int;
+
+	if @Ma is null or LTRIM(RTRIM(@Ma)) = ''
+	begin
+		raiserror(N'Mã chứng từ không được bỏ trống!', 16, 1);
+		return;
+	end;
+	if len(@Ma) > 128
+	begin
+		raiserror(N'Mã chứng từ không được dài quá 128 ký tự!', 16, 1);
+		return;
+	end;
+
+	select @countID = count(ID) from DanhMucChungTu where Ma = @Ma and ID <> @ID;
+	if @countID > 0
+	begin
+		set @ErrMsg = N'Mã chứng từ ' + @Ma +  N' đã tồn tại!'
+		raiserror(@ErrMsg, 16, 1);
+		return;
+	end;
+
+	if @Ten is null or LTRIM(RTRIM(@Ten)) = ''
+	begin
+		raiserror(N'Tên chứng từ không được bỏ trống!', 16, 1);
+		return;
+	end;
+	if len(@Ten) > 255
+	begin
+		raiserror(N'Tên chứng từ không được dài quá 255 ký tự!', 16, 1);
+		return;
+	end;
+
+	if @KiHieu is null or LTRIM(RTRIM(@KiHieu)) = ''
+	begin
+		raiserror(N'Kí hiệu chứng từ không được bỏ trống!', 16, 1);
+		return;
+	end;
+	if len(@KiHieu) > 20
+	begin
+		raiserror(N'Kí hiệu chứng từ không được dài quá 20 ký tự!', 16, 1);
+		return;
+	end;
+
+	if @LoaiManHinh is null or LTRIM(RTRIM(@LoaiManHinh)) = ''
+	begin
+		raiserror(N'Loại màn hình không được bỏ trống!', 16, 1);
+		return;
+	end;
+	if len(@LoaiManHinh) > 255
+	begin
+		raiserror(N'Loại màn hình không được dài quá 255 ký tự!', 16, 1);
+		return;
+	end;
+
+
 	begin tran
 	begin try
 		select @EditDate = GETDATE();
@@ -136,9 +246,9 @@ begin
 	end try
 	begin catch
 		if @@TRANCOUNT > 0 rollback tran;
-		select @ErrMsg = ERROR_MESSAGE()
-		raiserror(@ErrMsg, 16, 1)
-	end catch
+		select @ErrMsg = ERROR_MESSAGE();
+		raiserror(@ErrMsg, 16, 1);
+	end catch;
 end
 go
 create procedure Delete_DanhMucChungTu
@@ -177,62 +287,141 @@ end
 go
 create procedure Insert_DanhMucChungTuTrangThai
 	@ID					bigint out,
-	@IDDanhMucChungTu	bigint,
-	@Ma					nvarchar(128),
-	@Ten				nvarchar(255),
-	@HachToan			bit,
-	@Sua				bit,
-	@Xoa				bit,
+	@IDDanhMucChungTu	bigint = null,
+	@Ma					nvarchar(128) = null,
+	@Ten				nvarchar(255) = null,
+	@HachToan			bit = null,
+	@Sua				bit = null,
+	@Xoa				bit = null,
 	@CreateDate			datetime out
 as
 begin
 	set nocount on;
-	declare @ErrMsg nvarchar(max);
+	
+	declare @ErrMsg nvarchar(max), @countID int;
+
+	if @IDDanhMucChungTu is null
+	begin
+		raiserror(N'Loại chứng từ không được bỏ trống!', 16, 1);
+		return;
+	end;
+
+	select @countID = count(ID) from DanhMucChungTu where ID = @IDDanhMucChungTu;
+	if @countID = 0
+	begin
+		set @ErrMsg = N'Loại chứng từ không tồn tại!'
+		raiserror(@ErrMsg, 16, 1);
+		return;
+	end;
+
+	if @Ma is null or LTRIM(RTRIM(@Ma)) = ''
+	begin
+		raiserror(N'Mã trạng thái chứng từ không được bỏ trống!', 16, 1);
+		return;
+	end;
+	if len(@Ma) > 128
+	begin
+		raiserror(N'Mã trạng thái chứng từ không được dài quá 128 ký tự!', 16, 1);
+		return;
+	end;
+
+	select @countID = count(ID) from DanhMucChungTuTrangThai where Ma = @Ma;
+	if @countID > 0
+	begin
+		set @ErrMsg = N'Mã trạng thái chứng từ ' + @Ma +  N' đã tồn tại!'
+		raiserror(@ErrMsg, 16, 1);
+		return;
+	end;
+
+	if @Ten is null or LTRIM(RTRIM(@Ten)) = ''
+	begin
+		raiserror(N'Tên trạng thái chứng từ không được bỏ trống!', 16, 1);
+		return;
+	end;
+	if len(@Ten) > 255
+	begin
+		raiserror(N'Tên trạng thái chứng từ không được dài quá 255 ký tự!', 16, 1);
+		return;
+	end;
+
 	begin tran
 	begin try
 		select @CreateDate = GETDATE();
 		exec Insert_AutoID @ID out, @TenBangDuLieu = N'DanhMucChungTuTrangThai';
 		insert DanhMucChungTuTrangThai (ID, IDDanhMucChungTu, Ma, Ten, HachToan, Sua, Xoa, CreateDate) 
-		values (@ID, @IDDanhMucChungTu, @Ma, @Ten, @HachToan, @Sua, @Xoa, @CreateDate);
+		values (@ID, @IDDanhMucChungTu, @Ma, @Ten, isnull(@HachToan, 0), isnull(@Sua, 0), isnull(@Xoa, 0), @CreateDate);
 	commit tran
 	end try
 	begin catch
 		if @@TRANCOUNT > 0 rollback tran;
-		select @ErrMsg = ERROR_MESSAGE()
-		raiserror(@ErrMsg, 16, 1)
-	end catch
+		select @ErrMsg = ERROR_MESSAGE();
+		raiserror(@ErrMsg, 16, 1);
+	end catch;
 end
 go
 create procedure Update_DanhMucChungTuTrangThai
 	@ID			bigint,
-	@Ma			nvarchar(128),
-	@Ten		nvarchar(255),
-	@HachToan	bit,
-	@Sua		bit,
-	@Xoa		bit,
+	@Ma			nvarchar(128) = null,
+	@Ten		nvarchar(255) = null,
+	@HachToan	bit = null,
+	@Sua		bit = null,
+	@Xoa		bit = null,
 	@EditDate	datetime out
 as
 begin
 	set nocount on;
-	declare @ErrMsg nvarchar(max);
+	
+	declare @ErrMsg nvarchar(max), @countID int;
+
+
+	if @Ma is null or LTRIM(RTRIM(@Ma)) = ''
+	begin
+		raiserror(N'Mã trạng thái chứng từ không được bỏ trống!', 16, 1);
+		return;
+	end;
+	if len(@Ma) > 128
+	begin
+		raiserror(N'Mã trạng thái chứng từ không được dài quá 128 ký tự!', 16, 1);
+		return;
+	end;
+
+	select @countID = count(ID) from DanhMucChungTuTrangThai where Ma = @Ma and ID <> @ID;
+	if @countID > 0
+	begin
+		set @ErrMsg = N'Mã trạng thái chứng từ ' + @Ma +  N' đã tồn tại!'
+		raiserror(@ErrMsg, 16, 1);
+		return;
+	end;
+
+	if @Ten is null or LTRIM(RTRIM(@Ten)) = ''
+	begin
+		raiserror(N'Tên trạng thái chứng từ không được bỏ trống!', 16, 1);
+		return;
+	end;
+	if len(@Ten) > 255
+	begin
+		raiserror(N'Tên trạng thái chứng từ không được dài quá 255 ký tự!', 16, 1);
+		return;
+	end;
+
 	begin tran
 	begin try
 		select @EditDate = GETDATE();
 		update DanhMucChungTuTrangThai set
 			Ma = @Ma,
 			Ten = @Ten,
-			HachToan = @HachToan,
-			Sua = @Sua,
-			Xoa = @Xoa,
+			HachToan = isnull(@HachToan, 0),
+			Sua = isnull(@Sua, 0),
+			Xoa = isnull(@Xoa, 0),
 			EditDate = @EditDate
 		where ID = @ID;
 	commit tran
 	end try
 	begin catch
 		if @@TRANCOUNT > 0 rollback tran;
-		select @ErrMsg = ERROR_MESSAGE()
-		raiserror(@ErrMsg, 16, 1)
-	end catch
+		select @ErrMsg = ERROR_MESSAGE();
+		raiserror(@ErrMsg, 16, 1);
+	end catch;
 end
 go
 create procedure Delete_DanhMucChungTuTrangThai
@@ -260,6 +449,7 @@ create procedure List_DanhMucChungTuIn
 as
 begin
 	set nocount on;
+
 	select ID, IDDanhMucChungTu, Ma, Ten, ListProcedureName, FileMauIn, SoLien, PrintPreview, CreateDate, EditDate from DanhMucChungTuIn
 	where	case when @ID is not null then ID else 0 end = ISNULL(@ID, 0)
 			and case when @IDDanhMucChungTu is not null then IDDanhMucChungTu else 0 end = ISNULL(@IDDanhMucChungTu, 0)
@@ -267,24 +457,98 @@ end
 go
 create procedure Insert_DanhMucChungTuIn
 	@ID					bigint out,
-	@IDDanhMucChungTu	bigint,
-	@Ma					nvarchar(128),
-	@Ten				nvarchar(255),
-	@ListProcedureName	nvarchar(255),
-	@FileMauIn			nvarchar(255),
-	@SoLien				tinyint,
-	@PrintPreview		bit,
+	@IDDanhMucChungTu	bigint = null,
+	@Ma					nvarchar(128) = null,
+	@Ten				nvarchar(255) = null,
+	@ListProcedureName	nvarchar(255) = null,
+	@FileMauIn			nvarchar(255) = null,
+	@SoLien				tinyint = null,
+	@PrintPreview		bit = null,
 	@CreateDate			datetime out
 as
 begin
 	set nocount on;
-	declare @ErrMsg nvarchar(max);
+	
+	declare @ErrMsg nvarchar(max), @countID int;
+
+	if @IDDanhMucChungTu is null
+	begin
+		raiserror(N'Loại chứng từ không được bỏ trống!', 16, 1);
+		return;
+	end;
+
+	select @countID = count(ID) from DanhMucChungTu where ID = @IDDanhMucChungTu;
+	if @countID = 0
+	begin
+		set @ErrMsg = N'Loại chứng từ không tồn tại!'
+		raiserror(@ErrMsg, 16, 1);
+		return;
+	end;
+
+	if @Ma is null or LTRIM(RTRIM(@Ma)) = ''
+	begin
+		raiserror(N'Mã mẫu in chứng từ không được bỏ trống!', 16, 1);
+		return;
+	end;
+	if len(@Ma) > 128
+	begin
+		raiserror(N'Mã mẫu in chứng từ không được dài quá 128 ký tự!', 16, 1);
+		return;
+	end;
+
+	select @countID = count(ID) from DanhMucChungTuIn where Ma = @Ma;
+	if @countID > 0
+	begin
+		set @ErrMsg = N'Mã mẫu in chứng từ ' + @Ma +  N' đã tồn tại!'
+		raiserror(@ErrMsg, 16, 1);
+		return;
+	end;
+
+	if @Ten is null or LTRIM(RTRIM(@Ten)) = ''
+	begin
+		raiserror(N'Tên mẫu in chứng từ không được bỏ trống!', 16, 1);
+		return;
+	end;
+	if len(@Ten) > 255
+	begin
+		raiserror(N'Tên mẫu in chứng từ không được dài quá 255 ký tự!', 16, 1);
+		return;
+	end;
+
+	if @ListProcedureName is null or LTRIM(RTRIM(@ListProcedureName)) = ''
+	begin
+		raiserror(N'Tên store in chứng từ không được bỏ trống!', 16, 1);
+		return;
+	end;
+	if len(@ListProcedureName) > 255
+	begin
+		raiserror(N'Tên store in chứng từ không được dài quá 255 ký tự!', 16, 1);
+		return;
+	end;
+
+	if @FileMauIn is null or LTRIM(RTRIM(@FileMauIn)) = ''
+	begin
+		raiserror(N'File mẫu in chứng từ không được bỏ trống!', 16, 1);
+		return;
+	end;
+	if len(@FileMauIn) > 255
+	begin
+		raiserror(N'File mẫu in chứng từ không được dài quá 255 ký tự!', 16, 1);
+		return;
+	end;
+
+	if @SoLien is null or @SoLien < 0 or @SoLien > 255
+	begin
+		raiserror(N'Số liên in chứng từ không được bỏ trống và phải nằm trong khoảng từ 0 đến 255!', 16, 1);
+		return;
+	end;
+
 	begin tran
 	begin try
 		select @CreateDate = GETDATE();
 		exec Insert_AutoID @ID out, @TenBangDuLieu = N'DanhMucChungTuIn';
 		insert DanhMucChungTuIn (ID, IDDanhMucChungTu, Ma, Ten, ListProcedureName, FileMauIn, SoLien, PrintPreview, CreateDate) 
-		values (@ID, @IDDanhMucChungTu, @Ma, @Ten, @ListProcedureName, @FileMauIn, @SoLien, @PrintPreview, @CreateDate);
+		values (@ID, @IDDanhMucChungTu, @Ma, @Ten, @ListProcedureName, @FileMauIn, @SoLien, isnull(@PrintPreview, 0), @CreateDate);
 	commit tran
 	end try
 	begin catch
@@ -306,7 +570,67 @@ create procedure Update_DanhMucChungTuIn
 as
 begin
 	set nocount on;
-	declare @ErrMsg nvarchar(max);
+	
+	declare @ErrMsg nvarchar(max), @countID int;
+
+	if @Ma is null or LTRIM(RTRIM(@Ma)) = ''
+	begin
+		raiserror(N'Mã mẫu in chứng từ không được bỏ trống!', 16, 1);
+		return;
+	end;
+	if len(@Ma) > 128
+	begin
+		raiserror(N'Mã mẫu in chứng từ không được dài quá 128 ký tự!', 16, 1);
+		return;
+	end;
+
+	select @countID = count(ID) from DanhMucChungTuIn where Ma = @Ma and ID <> @ID;
+	if @countID > 0
+	begin
+		set @ErrMsg = N'Mã mẫu in chứng từ ' + @Ma +  N' đã tồn tại!'
+		raiserror(@ErrMsg, 16, 1);
+		return;
+	end;
+
+	if @Ten is null or LTRIM(RTRIM(@Ten)) = ''
+	begin
+		raiserror(N'Tên mẫu in chứng từ không được bỏ trống!', 16, 1);
+		return;
+	end;
+	if len(@Ten) > 255
+	begin
+		raiserror(N'Tên mẫu in chứng từ không được dài quá 255 ký tự!', 16, 1);
+		return;
+	end;
+
+	if @ListProcedureName is null or LTRIM(RTRIM(@ListProcedureName)) = ''
+	begin
+		raiserror(N'Tên store in chứng từ không được bỏ trống!', 16, 1);
+		return;
+	end;
+	if len(@ListProcedureName) > 255
+	begin
+		raiserror(N'Tên store in chứng từ không được dài quá 255 ký tự!', 16, 1);
+		return;
+	end;
+
+	if @FileMauIn is null or LTRIM(RTRIM(@FileMauIn)) = ''
+	begin
+		raiserror(N'File mẫu in chứng từ không được bỏ trống!', 16, 1);
+		return;
+	end;
+	if len(@FileMauIn) > 255
+	begin
+		raiserror(N'File mẫu in chứng từ không được dài quá 255 ký tự!', 16, 1);
+		return;
+	end;
+
+	if @SoLien is null or @SoLien < 0 or @SoLien > 255
+	begin
+		raiserror(N'Số liên in chứng từ không được bỏ trống và phải nằm trong khoảng từ 0 đến 255!', 16, 1);
+		return;
+	end;
+
 	begin tran
 	begin try
 		select @EditDate = GETDATE();
@@ -360,13 +684,43 @@ end
 go
 create procedure Insert_DanhMucChungTuQuyTrinh
 	@ID							bigint out,
-	@IDDanhMucChungTu			bigint,
-	@IDDanhMucChungTuQuyTrinh	bigint,
+	@IDDanhMucChungTu			bigint = null,
+	@IDDanhMucChungTuQuyTrinh	bigint = null,
 	@CreateDate					datetime out
 as
 begin
 	set nocount on;
-	declare @ErrMsg nvarchar(max);
+	
+	declare @ErrMsg nvarchar(max), @countID int;
+
+	if @IDDanhMucChungTu is null
+	begin
+		raiserror(N'Loại chứng từ 1 không được bỏ trống!', 16, 1);
+		return;
+	end;
+
+	select @countID = count(ID) from DanhMucChungTu where ID = @IDDanhMucChungTu;
+	if @countID = 0
+	begin
+		set @ErrMsg = N'Loại chứng từ 1 không tồn tại!'
+		raiserror(@ErrMsg, 16, 1);
+		return;
+	end;
+
+	if @IDDanhMucChungTuQuyTrinh is null
+	begin
+		raiserror(N'Loại chứng từ 2 không được bỏ trống!', 16, 1);
+		return;
+	end;
+
+	select @countID = count(ID) from DanhMucChungTu where ID = @IDDanhMucChungTuQuyTrinh;
+	if @countID = 0
+	begin
+		set @ErrMsg = N'Loại chứng từ 2 không tồn tại!'
+		raiserror(@ErrMsg, 16, 1);
+		return;
+	end;
+
 	begin tran
 	begin try
 		select @CreateDate = GETDATE();
@@ -377,9 +731,9 @@ begin
 	end try
 	begin catch
 		if @@TRANCOUNT > 0 rollback tran;
-		select @ErrMsg = ERROR_MESSAGE()
-		raiserror(@ErrMsg, 16, 1)
-	end catch
+		select @ErrMsg = ERROR_MESSAGE();
+		raiserror(@ErrMsg, 16, 1);
+	end catch;
 end
 go
 create procedure Update_DanhMucChungTuQuyTrinh
@@ -389,7 +743,23 @@ create procedure Update_DanhMucChungTuQuyTrinh
 as
 begin
 	set nocount on;
-	declare @ErrMsg nvarchar(max);
+	
+	declare @ErrMsg nvarchar(max), @countID int;
+
+	if @IDDanhMucChungTuQuyTrinh is null
+	begin
+		raiserror(N'Loại chứng từ 2 không được bỏ trống!', 16, 1);
+		return;
+	end;
+
+	select @countID = count(ID) from DanhMucChungTu where ID = @IDDanhMucChungTuQuyTrinh;
+	if @countID = 0
+	begin
+		set @ErrMsg = N'Loại chứng từ 2 không tồn tại!'
+		raiserror(@ErrMsg, 16, 1);
+		return;
+	end;
+
 	begin tran
 	begin try
 		select @EditDate = GETDATE();
@@ -401,9 +771,9 @@ begin
 	end try
 	begin catch
 		if @@TRANCOUNT > 0 rollback tran;
-		select @ErrMsg = ERROR_MESSAGE()
-		raiserror(@ErrMsg, 16, 1)
-	end catch
+		select @ErrMsg = ERROR_MESSAGE();
+		raiserror(@ErrMsg, 16, 1);
+	end catch;
 end
 go
 create procedure Delete_DanhMucChungTuQuyTrinh

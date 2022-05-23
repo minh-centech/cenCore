@@ -24,14 +24,13 @@ create table DanhMucBaoCao
 	ChucDanhKy					nvarchar(255),
 	DienGiaiKy					nvarchar(255),
 	TenNguoiKy					nvarchar(255),
-	FileInMau					nvarchar(max), --File crystal report
-	FileExcelMau				nvarchar(max), --File Excel export
+	FileInMau					nvarchar(255), --File crystal report
+	FileExcelMau				nvarchar(255), --File Excel export
 	SheetExcelMau				nvarchar(255), --Sheet Excel export
-	SoDongBatDau				int, -- Số dòng bắt đầu export trong file excel
+	SoDongBatDau				tinyint, -- Số dòng bắt đầu export trong file excel
 	ThamChieuChungTu			bit,
 	IDDanhMucBaoCaoThamChieu	bigint,
 	IDDanhMucNhomBaoCao			bigint			not null,
-
 	CreateDate					datetime		not null,
 	EditDate					datetime,
 	constraint	PK_DanhMucBaoCao primary key (ID),
@@ -62,7 +61,7 @@ create table DanhMucBaoCaoCot
 go
 */
 ------------
-create procedure List_DanhMucNhomBaoCao
+alter procedure List_DanhMucNhomBaoCao
 	@ID bigint = null
 as
 begin
@@ -70,15 +69,47 @@ begin
 	select ID, Ma, Ten, CreateDate, EditDate from DanhMucNhomBaoCao where case when @ID is not null then ID else 0 end = ISNULL(@ID, 0) order by Ma;
 end
 go
-create procedure Insert_DanhMucNhomBaoCao
+alter procedure Insert_DanhMucNhomBaoCao
 	@ID			bigint out,
-	@Ma			nvarchar(128),
-	@Ten		nvarchar(255),
+	@Ma			nvarchar(128) = null,
+	@Ten		nvarchar(255) = null,
 	@CreateDate datetime out
 as
 begin
 	set nocount on;
-	declare @ErrMsg nvarchar(max);
+	
+	declare @ErrMsg nvarchar(max), @countID int;
+
+	if @Ma is null or LTRIM(RTRIM(@Ma)) = ''
+	begin
+		raiserror(N'Mã nhóm báo cáo không được bỏ trống!', 16, 1);
+		return;
+	end;
+	if len(@Ma) > 128
+	begin
+		raiserror(N'Mã nhóm báo cáo không được dài quá 128 ký tự!', 16, 1);
+		return;
+	end;
+
+	select @countID = count(ID) from DanhMucNhomBaoCao where Ma = @Ma;
+	if @countID > 0
+	begin
+		set @ErrMsg = N'Mã nhóm báo cáo ' + @Ma +  N' đã tồn tại!'
+		raiserror(@ErrMsg, 16, 1);
+		return;
+	end;
+
+	if @Ten is null or LTRIM(RTRIM(@Ten)) = ''
+	begin
+		raiserror(N'Tên nhóm báo cáo không được bỏ trống!', 16, 1);
+		return;
+	end;
+	if len(@Ten) > 255
+	begin
+		raiserror(N'Tên nhóm báo cáo không được dài quá 255 ký tự!', 16, 1);
+		return;
+	end;
+
 	begin tran
 	begin try
 		set @CreateDate = GETDATE();
@@ -88,12 +119,12 @@ begin
 	end try
 	begin catch
 		if @@TRANCOUNT > 0 rollback tran;
-		select @ErrMsg = ERROR_MESSAGE()
-		raiserror(@ErrMsg, 16, 1)
-	end catch
+		select @ErrMsg = ERROR_MESSAGE();
+		raiserror(@ErrMsg, 16, 1);
+	end catch;
 end
 go
-create procedure Update_DanhMucNhomBaoCao
+alter procedure Update_DanhMucNhomBaoCao
 	@ID			bigint,
 	@Ma			nvarchar(128),
 	@Ten		nvarchar(255),
@@ -101,7 +132,39 @@ create procedure Update_DanhMucNhomBaoCao
 as
 begin
 	set nocount on;
-	declare @ErrMsg nvarchar(max);
+	
+	declare @ErrMsg nvarchar(max), @countID int;
+
+	if @Ma is null or LTRIM(RTRIM(@Ma)) = ''
+	begin
+		raiserror(N'Mã nhóm báo cáo không được bỏ trống!', 16, 1);
+		return;
+	end;
+	if len(@Ma) > 128
+	begin
+		raiserror(N'Mã nhóm báo cáo không được dài quá 128 ký tự!', 16, 1);
+		return;
+	end;
+
+	select @countID = count(ID) from DanhMucNhomBaoCao where Ma = @Ma and ID <> @ID;
+	if @countID > 0
+	begin
+		set @ErrMsg = N'Mã nhóm báo cáo ' + @Ma +  N' đã tồn tại!'
+		raiserror(@ErrMsg, 16, 1);
+		return;
+	end;
+
+	if @Ten is null or LTRIM(RTRIM(@Ten)) = ''
+	begin
+		raiserror(N'Tên nhóm báo cáo không được bỏ trống!', 16, 1);
+		return;
+	end;
+	if len(@Ten) > 255
+	begin
+		raiserror(N'Tên nhóm báo cáo không được dài quá 255 ký tự!', 16, 1);
+		return;
+	end;
+
 	begin tran
 	begin try
 		set @EditDate = GETDATE();
@@ -119,7 +182,7 @@ begin
 	end catch
 end
 go
-create procedure Delete_DanhMucNhomBaoCao
+alter procedure Delete_DanhMucNhomBaoCao
 	@ID			bigint
 as
 begin
@@ -185,34 +248,185 @@ end
 go
 alter procedure Insert_DanhMucBaoCao
 	@ID							bigint out,
-	@Ma							nvarchar(128),
-	@Ten						nvarchar(255),
-	@ReportProcedureName		nvarchar(255),
+	@Ma							nvarchar(128) = null,
+	@Ten						nvarchar(255) = null,
+	@ReportProcedureName		nvarchar(255) = null,
 	@FixedColumnList			nvarchar(255) = null,
-	@KhoGiay					smallint,
-	@HuongIn					smallint,
+	@KhoGiay					smallint = null,
+	@HuongIn					smallint = null,
 	@ChucDanhKy					nvarchar(255) = null,
 	@DienGiaiKy					nvarchar(255) = null,
 	@TenNguoiKy					nvarchar(255) = null,
-	@FileInMau					nvarchar(max) = null,
-	@FileExcelMau				nvarchar(max) = null,
+	@FileInMau					nvarchar(255) = null,
+	@FileExcelMau				nvarchar(255) = null,
 	@SheetExcelMau				nvarchar(255) = null,
-	@SoDongBatDau				int = null,
-	@ThamChieuChungTu			bit,
+	@SoDongBatDau				tinyint = null,
+	@ThamChieuChungTu			bit = null,
 	@IDDanhMucBaoCaoThamChieu	bigint = null,
 	@IDDanhMucBaoCaoCopyCot		bigint = null,
-	@IDDanhMucNhomBaoCao		bigint,
+	@IDDanhMucNhomBaoCao		bigint = null,
 	@CreateDate					datetime out
 as
 begin
 	set nocount on;
-	declare @ErrMsg nvarchar(max);
+	
+	declare @ErrMsg nvarchar(max), @countID int;
+
+	if @Ma is null or LTRIM(RTRIM(@Ma)) = ''
+	begin
+		raiserror(N'Mã báo cáo không được bỏ trống!', 16, 1);
+		return;
+	end;
+	if len(@Ma) > 128
+	begin
+		raiserror(N'Mã báo cáo không được dài quá 128 ký tự!', 16, 1);
+		return;
+	end;
+
+	select @countID = count(ID) from DanhMucBaoCao where Ma = @Ma;
+	if @countID > 0
+	begin
+		set @ErrMsg = N'Mã báo cáo ' + @Ma +  N' đã tồn tại!'
+		raiserror(@ErrMsg, 16, 1);
+		return;
+	end;
+
+	if @Ten is null or LTRIM(RTRIM(@Ten)) = ''
+	begin
+		raiserror(N'Tên báo cáo không được bỏ trống!', 16, 1);
+		return;
+	end;
+	if len(@Ten) > 255
+	begin
+		raiserror(N'Tên báo cáo không được dài quá 255 ký tự!', 16, 1);
+		return;
+	end;
+
+	if @ReportProcedureName is null or LTRIM(RTRIM(@ReportProcedureName)) = ''
+	begin
+		raiserror(N'Tên store báo cáo không được bỏ trống!', 16, 1);
+		return;
+	end;
+	if len(@ReportProcedureName) > 255
+	begin
+		raiserror(N'Tên store báo cáo không được dài quá 255 ký tự!', 16, 1);
+		return;
+	end;
+
+	if @FixedColumnList is not null and LTRIM(RTRIM(@FixedColumnList)) > 255
+	begin
+		raiserror(N'Danh sách cột fixed không được dài hơn 255 kí tự!', 16, 1);
+		return;
+	end;
+	
+	if @KhoGiay is null
+	begin
+		raiserror(N'Khổ giấy in báo cáo không được bỏ trống!', 16, 1);
+		return;
+	end;
+	if @KhoGiay < 1 or @KhoGiay > 2
+	begin
+		raiserror(N'Khổ giấy in báo cáo chỉ nhận giá trị 1 (A4) hoặc 2 (A3)!', 16, 1);
+		return;
+	end;
+
+	if @KhoGiay is null
+	begin
+		raiserror(N'Khổ giấy in báo cáo không được bỏ trống!', 16, 1);
+		return;
+	end;
+	if @KhoGiay < 1 or @KhoGiay > 2
+	begin
+		raiserror(N'Khổ giấy in báo cáo chỉ nhận giá trị 1 (A4) hoặc 2 (A3)!', 16, 1);
+		return;
+	end;
+
+	if @HuongIn is null
+	begin
+		raiserror(N'Hướng in báo cáo không được bỏ trống!', 16, 1);
+		return;
+	end;
+	if @HuongIn < 1 or @HuongIn > 2
+	begin
+		raiserror(N'Hướng in báo cáo chỉ nhận giá trị 1 (Dọc) hoặc 2 (Ngang)!', 16, 1);
+		return;
+	end;
+
+	if @ChucDanhKy is not null and LTRIM(RTRIM(@ChucDanhKy)) > 255
+	begin
+		raiserror(N'Chức danh kí không được dài hơn 255 kí tự!', 16, 1);
+		return;
+	end;
+
+	if @DienGiaiKy is not null and LTRIM(RTRIM(@DienGiaiKy)) > 255
+	begin
+		raiserror(N'Diễn giải kí không được dài hơn 255 kí tự!', 16, 1);
+		return;
+	end;
+
+	if @TenNguoiKy is not null and LTRIM(RTRIM(@TenNguoiKy)) > 255
+	begin
+		raiserror(N'Tên người kí không được dài hơn 255 kí tự!', 16, 1);
+		return;
+	end;
+
+	if @FileInMau is not null and LTRIM(RTRIM(@FileInMau)) > 255
+	begin
+		raiserror(N'Tên file mẫu in không được dài hơn 255 kí tự!', 16, 1);
+		return;
+	end;
+
+	if @FileExcelMau is not null and LTRIM(RTRIM(@FileExcelMau)) > 255
+	begin
+		raiserror(N'Tên file excel mẫu không được dài hơn 255 kí tự!', 16, 1);
+		return;
+	end;
+
+	if @SheetExcelMau is not null and LTRIM(RTRIM(@SheetExcelMau)) > 255
+	begin
+		raiserror(N'Tên sheet excel mẫu không được dài hơn 255 kí tự!', 16, 1);
+		return;
+	end;
+
+	if @SoDongBatDau is not null and (@SoDongBatDau < 0 or @SoDongBatDau > 255)
+	begin
+		raiserror(N'Số dòng bắt đầu phải nằm trong khoảng từ 0 đến 255!', 16, 1);
+		return;
+	end;
+
+	if @IDDanhMucBaoCaoThamChieu is not null
+	begin
+		select @countID = count(ID) from DanhMucBaoCao where ID = @IDDanhMucBaoCaoThamChieu;
+		if @countID = 0
+		begin
+			set @ErrMsg = N'Mã báo cáo tham chiếu không tồn tại!'
+			raiserror(@ErrMsg, 16, 1);
+			return;
+		end;
+	end;
+
+	if @IDDanhMucNhomBaoCao is null
+	begin
+		set @ErrMsg = N'Mã nhóm báo cáo không được bỏ trống!'
+		raiserror(@ErrMsg, 16, 1);
+		return;
+	end;
+
+	select @countID = count(ID) from DanhMucNhomBaoCao where ID = @IDDanhMucNhomBaoCao;
+	if @countID = 0
+	begin
+		set @ErrMsg = N'Mã nhóm báo cáo không tồn tại!'
+		raiserror(@ErrMsg, 16, 1);
+		return;
+	end;
+
+
 	begin tran
 	begin try
 		exec Insert_AutoID @ID out, @TenBangDuLieu = N'DanhMucBaoCao';
 		set @CreateDate = GETDATE();
 		insert DanhMucBaoCao (ID, Ma, Ten, ReportProcedureName, FixedColumnList, KhoGiay, HuongIn, ChucDanhKy, DienGiaiKy, TenNguoiKy, FileInMau, FileExcelMau, SheetExcelMau, SoDongBatDau, ThamChieuChungTu, IDDanhMucBaoCaoThamChieu, IDDanhMucNhomBaoCao, CreateDate) 
-			values (@ID, @Ma, @Ten, @ReportProcedureName, @FixedColumnList, @KhoGiay, @HuongIn, @ChucDanhKy, @DienGiaiKy, @TenNguoiKy, @FileInMau, @FileExcelMau, @SheetExcelMau, @SoDongBatDau, @ThamChieuChungTu, @IDDanhMucBaoCaoThamChieu, @IDDanhMucNhomBaoCao, @CreateDate);
+			values (@ID, @Ma, @Ten, @ReportProcedureName, @FixedColumnList, @KhoGiay, @HuongIn, @ChucDanhKy, @DienGiaiKy, @TenNguoiKy, @FileInMau, @FileExcelMau, @SheetExcelMau, @SoDongBatDau, isnull(@ThamChieuChungTu, 0), @IDDanhMucBaoCaoThamChieu, @IDDanhMucNhomBaoCao, @CreateDate);
 		--Thêm vào danh mục phân quyền
 		declare @IDChiTiet bigint;
 		declare curPhanQuyenChiTiet cursor for select ID from DanhMucPhanQuyen;
@@ -249,27 +463,178 @@ end
 go
 alter procedure Update_DanhMucBaoCao
 	@ID							bigint,
-	@Ma							nvarchar(128),
-	@Ten						nvarchar(255),
-	@ReportProcedureName		nvarchar(255),
+	@Ma							nvarchar(128) = null,
+	@Ten						nvarchar(255) = null,
+	@ReportProcedureName		nvarchar(255) = null,
 	@FixedColumnList			nvarchar(255) = null,
-	@KhoGiay					smallint,
-	@HuongIn					smallint,
+	@KhoGiay					smallint = null,
+	@HuongIn					smallint = null,
 	@ChucDanhKy					nvarchar(255) = null,
 	@DienGiaiKy					nvarchar(255) = null,
 	@TenNguoiKy					nvarchar(255) = null,
-	@FileInMau					nvarchar(max) = null,
-	@FileExcelMau				nvarchar(max) = null,
+	@FileInMau					nvarchar(255) = null,
+	@FileExcelMau				nvarchar(255) = null,
 	@SheetExcelMau				nvarchar(255) = null,
-	@SoDongBatDau				int = null,
-	@ThamChieuChungTu			bit,
+	@SoDongBatDau				tinyint = null,
+	@ThamChieuChungTu			bit = null,
 	@IDDanhMucBaoCaoThamChieu	bigint = null,
-	@IDDanhMucNhomBaoCao		bigint,
+	@IDDanhMucBaoCaoCopyCot		bigint = null,
+	@IDDanhMucNhomBaoCao		bigint = null,
 	@EditDate					datetime out
 as
 begin
 	set nocount on;
-	declare @ErrMsg nvarchar(max);
+	
+	declare @ErrMsg nvarchar(max), @countID int;
+
+	if @Ma is null or LTRIM(RTRIM(@Ma)) = ''
+	begin
+		raiserror(N'Mã báo cáo không được bỏ trống!', 16, 1);
+		return;
+	end;
+	if len(@Ma) > 128
+	begin
+		raiserror(N'Mã báo cáo không được dài quá 128 ký tự!', 16, 1);
+		return;
+	end;
+
+	select @countID = count(ID) from DanhMucBaoCao where Ma = @Ma and ID <> @ID;
+	if @countID > 0
+	begin
+		set @ErrMsg = N'Mã báo cáo ' + @Ma +  N' đã tồn tại!'
+		raiserror(@ErrMsg, 16, 1);
+		return;
+	end;
+
+	if @Ten is null or LTRIM(RTRIM(@Ten)) = ''
+	begin
+		raiserror(N'Tên báo cáo không được bỏ trống!', 16, 1);
+		return;
+	end;
+	if len(@Ten) > 255
+	begin
+		raiserror(N'Tên báo cáo không được dài quá 255 ký tự!', 16, 1);
+		return;
+	end;
+
+	if @ReportProcedureName is null or LTRIM(RTRIM(@ReportProcedureName)) = ''
+	begin
+		raiserror(N'Tên store báo cáo không được bỏ trống!', 16, 1);
+		return;
+	end;
+	if len(@ReportProcedureName) > 255
+	begin
+		raiserror(N'Tên store báo cáo không được dài quá 255 ký tự!', 16, 1);
+		return;
+	end;
+
+	if @FixedColumnList is not null and LTRIM(RTRIM(@FixedColumnList)) > 255
+	begin
+		raiserror(N'Danh sách cột fixed không được dài hơn 255 kí tự!', 16, 1);
+		return;
+	end;
+	
+	if @KhoGiay is null
+	begin
+		raiserror(N'Khổ giấy in báo cáo không được bỏ trống!', 16, 1);
+		return;
+	end;
+	if @KhoGiay < 1 or @KhoGiay > 2
+	begin
+		raiserror(N'Khổ giấy in báo cáo chỉ nhận giá trị 1 (A4) hoặc 2 (A3)!', 16, 1);
+		return;
+	end;
+
+	if @KhoGiay is null
+	begin
+		raiserror(N'Khổ giấy in báo cáo không được bỏ trống!', 16, 1);
+		return;
+	end;
+	if @KhoGiay < 1 or @KhoGiay > 2
+	begin
+		raiserror(N'Khổ giấy in báo cáo chỉ nhận giá trị 1 (A4) hoặc 2 (A3)!', 16, 1);
+		return;
+	end;
+
+	if @HuongIn is null
+	begin
+		raiserror(N'Hướng in báo cáo không được bỏ trống!', 16, 1);
+		return;
+	end;
+	if @HuongIn < 1 or @HuongIn > 2
+	begin
+		raiserror(N'Hướng in báo cáo chỉ nhận giá trị 1 (Dọc) hoặc 2 (Ngang)!', 16, 1);
+		return;
+	end;
+
+	if @ChucDanhKy is not null and LTRIM(RTRIM(@ChucDanhKy)) > 255
+	begin
+		raiserror(N'Chức danh kí không được dài hơn 255 kí tự!', 16, 1);
+		return;
+	end;
+
+	if @DienGiaiKy is not null and LTRIM(RTRIM(@DienGiaiKy)) > 255
+	begin
+		raiserror(N'Diễn giải kí không được dài hơn 255 kí tự!', 16, 1);
+		return;
+	end;
+
+	if @TenNguoiKy is not null and LTRIM(RTRIM(@TenNguoiKy)) > 255
+	begin
+		raiserror(N'Tên người kí không được dài hơn 255 kí tự!', 16, 1);
+		return;
+	end;
+
+	if @FileInMau is not null and LTRIM(RTRIM(@FileInMau)) > 255
+	begin
+		raiserror(N'Tên file mẫu in không được dài hơn 255 kí tự!', 16, 1);
+		return;
+	end;
+
+	if @FileExcelMau is not null and LTRIM(RTRIM(@FileExcelMau)) > 255
+	begin
+		raiserror(N'Tên file excel mẫu không được dài hơn 255 kí tự!', 16, 1);
+		return;
+	end;
+
+	if @SheetExcelMau is not null and LTRIM(RTRIM(@SheetExcelMau)) > 255
+	begin
+		raiserror(N'Tên sheet excel mẫu không được dài hơn 255 kí tự!', 16, 1);
+		return;
+	end;
+
+	if @SoDongBatDau is not null and (@SoDongBatDau < 0 or @SoDongBatDau > 255)
+	begin
+		raiserror(N'Số dòng bắt đầu phải nằm trong khoảng từ 0 đến 255!', 16, 1);
+		return;
+	end;
+
+	if @IDDanhMucBaoCaoThamChieu is not null
+	begin
+		select @countID = count(ID) from DanhMucBaoCao where ID = @IDDanhMucBaoCaoThamChieu;
+		if @countID = 0
+		begin
+			set @ErrMsg = N'Mã báo cáo tham chiếu không tồn tại!'
+			raiserror(@ErrMsg, 16, 1);
+			return;
+		end;
+	end;
+
+	if @IDDanhMucNhomBaoCao is null
+	begin
+		set @ErrMsg = N'Mã nhóm báo cáo không được bỏ trống!'
+		raiserror(@ErrMsg, 16, 1);
+		return;
+	end;
+
+	select @countID = count(ID) from DanhMucNhomBaoCao where ID = @IDDanhMucNhomBaoCao;
+	if @countID = 0
+	begin
+		set @ErrMsg = N'Mã nhóm báo cáo không tồn tại!'
+		raiserror(@ErrMsg, 16, 1);
+		return;
+	end;
+
 	begin tran
 	begin try
 		set @EditDate = GETDATE();
@@ -300,7 +665,7 @@ begin
 	end catch
 end
 go
-create procedure Delete_DanhMucBaoCao
+alter procedure Delete_DanhMucBaoCao
 	@ID			bigint
 as
 begin
@@ -321,7 +686,7 @@ begin
 	end catch
 end
 go
-create procedure List_DanhMucBaoCaoCot
+alter procedure List_DanhMucBaoCaoCot
 	@ID bigint = null,
 	@IDDanhMucBaoCao bigint = null
 as
@@ -345,22 +710,110 @@ begin
 			and case when @IDDanhMucBaoCao is not null then IDDanhMucBaoCao else 0 end = ISNULL(@IDDanhMucBaoCao, 0);
 end
 go
-create procedure Insert_DanhMucBaoCaoCot
+alter procedure Insert_DanhMucBaoCaoCot
 	@ID					bigint out,
-	@IDDanhMucBaoCao	bigint,
-	@Ma					nvarchar(128),
-	@Ten				nvarchar(255),
-	@ColumnWidth		float,
-	@HeaderHeight		float,
+	@IDDanhMucBaoCao	bigint = null,
+	@Ma					nvarchar(128) = null,
+	@Ten				nvarchar(255) = null,
+	@ColumnWidth		float = null,
+	@HeaderHeight		float = null,
 	@TenNhomCot			nvarchar(255) = null,
-	@ThuTu				tinyint,
-	@TenCotExcel		nvarchar(2),
-	@KieuDuLieu			tinyint,
+	@ThuTu				tinyint = null,
+	@TenCotExcel		nvarchar(2) = null,
+	@KieuDuLieu			tinyint = null,
 	@CreateDate			datetime out
 as
 begin
 	set nocount on;
-	declare @ErrMsg nvarchar(max);
+
+	declare @ErrMsg nvarchar(max), @countID int;
+
+	if @IDDanhMucBaoCao is null
+	begin
+		set @ErrMsg = N'Mã báo cáo không được phép bỏ trống!'
+		raiserror(@ErrMsg, 16, 1);
+		return;
+	end;
+	select @countID = count(ID) from DanhMucBaoCao where ID = @IDDanhMucBaoCao;
+	if @countID = 0
+	begin
+		set @ErrMsg = N'Mã báo cáo ' + @Ma +  N' không tồn tại!'
+		raiserror(@ErrMsg, 16, 1);
+		return;
+	end;
+	
+	if @Ma is null or LTRIM(RTRIM(@Ma)) = ''
+	begin
+		raiserror(N'Mã cột báo cáo không được bỏ trống!', 16, 1);
+		return;
+	end;
+	if len(@Ma) > 128
+	begin
+		raiserror(N'Mã cột báo cáo không được dài quá 128 ký tự!', 16, 1);
+		return;
+	end;
+
+	select @countID = count(ID) from DanhMucBaoCaoCot where Ma = @Ma;
+	if @countID > 0
+	begin
+		set @ErrMsg = N'Mã cột báo cáo ' + @Ma +  N' đã tồn tại!'
+		raiserror(@ErrMsg, 16, 1);
+		return;
+	end;
+
+	if @Ten is null or LTRIM(RTRIM(@Ten)) = ''
+	begin
+		raiserror(N'Tên cột báo cáo không được bỏ trống!', 16, 1);
+		return;
+	end;
+	if len(@Ten) > 255
+	begin
+		raiserror(N'Tên cột báo cáo không được dài quá 255 ký tự!', 16, 1);
+		return;
+	end;
+
+	if (@ColumnWidth is null) or @ColumnWidth = 0
+	begin
+		raiserror(N'Độ rộng cột báo cáo không được bỏ trống hoặc bằng 0!', 16, 1);
+		return;
+	end;
+
+	if (@HeaderHeight is null) or @HeaderHeight = 0
+	begin
+		raiserror(N'Chiều cao tiêu đề cột báo cáo không được bỏ trống hoặc bằng 0!', 16, 1);
+		return;
+	end;
+
+	if (@TenNhomCot is null) or len(@TenNhomCot) > 255
+	begin
+		raiserror(N'Tên nhóm cột báo cáo không được dài quá 255 kí tự!', 16, 1);
+		return;
+	end;
+
+	if (@ThuTu is null) or @ThuTu < 0 or @ThuTu > 255
+	begin
+		raiserror(N'Thứ tự cột báo cáo phải nằm trong khoảng từ 0 đến 255!', 16, 1);
+		return;
+	end;
+
+	if (@TenCotExcel is null) or len(@TenCotExcel) > 255
+	begin
+		raiserror(N'Tên cột excel không được dài quá 255 kí tự!', 16, 1);
+		return;
+	end;
+
+	if (@ThuTu is null) or @ThuTu < 0 or @ThuTu > 5
+	begin
+		raiserror(N'Thứ tự cột báo cáo phải nằm trong khoảng từ 0 đến 255!', 16, 1);
+		return;
+	end;
+
+	if (@KieuDuLieu is null) or @KieuDuLieu < 1 or @KieuDuLieu > 5
+	begin
+		raiserror(N'Kiểu dữ liệu cột chỉ được nhận các giá trị: 1 (Text), 2 (Ngày tháng), 3: (Số nguyên), 4: (Số thực), 5: (Check)!', 16, 1);
+		return;
+	end;
+
 	begin tran
 	begin try
 		exec Insert_AutoID @ID out, @TenBangDuLieu = N'DanhMucBaoCaoCot';
@@ -376,21 +829,94 @@ begin
 	end catch
 end
 go
-create procedure Update_DanhMucBaoCaoCot
+alter procedure Update_DanhMucBaoCaoCot
 	@ID				bigint,
-	@Ma				nvarchar(128),
-	@Ten			nvarchar(255),
-	@ColumnWidth	float,
-	@HeaderHeight	float,
+	@Ma				nvarchar(128) = null,
+	@Ten			nvarchar(255) = null,
+	@ColumnWidth	float = null,
+	@HeaderHeight	float = null,
 	@TenNhomCot		nvarchar(255) = null,
-	@ThuTu			tinyint,
-	@TenCotExcel	nvarchar(2),
-	@KieuDuLieu		tinyint,
+	@ThuTu			tinyint = null,
+	@TenCotExcel	nvarchar(2) = null,
+	@KieuDuLieu		tinyint = null,
 	@EditDate		datetime out
 as
 begin
 	set nocount on;
-	declare @ErrMsg nvarchar(max);
+
+	declare @ErrMsg nvarchar(max), @countID int;
+
+	if @Ma is null or LTRIM(RTRIM(@Ma)) = ''
+	begin
+		raiserror(N'Mã cột báo cáo không được bỏ trống!', 16, 1);
+		return;
+	end;
+	if len(@Ma) > 128
+	begin
+		raiserror(N'Mã cột báo cáo không được dài quá 128 ký tự!', 16, 1);
+		return;
+	end;
+
+	select @countID = count(ID) from DanhMucBaoCaoCot where Ma = @Ma;
+	if @countID > 0
+	begin
+		set @ErrMsg = N'Mã cột báo cáo ' + @Ma +  N' đã tồn tại!'
+		raiserror(@ErrMsg, 16, 1);
+		return;
+	end;
+
+	if @Ten is null or LTRIM(RTRIM(@Ten)) = ''
+	begin
+		raiserror(N'Tên cột báo cáo không được bỏ trống!', 16, 1);
+		return;
+	end;
+	if len(@Ten) > 255
+	begin
+		raiserror(N'Tên cột báo cáo không được dài quá 255 ký tự!', 16, 1);
+		return;
+	end;
+
+	if (@ColumnWidth is null) or @ColumnWidth = 0
+	begin
+		raiserror(N'Độ rộng cột báo cáo không được bỏ trống hoặc bằng 0!', 16, 1);
+		return;
+	end;
+
+	if (@HeaderHeight is null) or @HeaderHeight = 0
+	begin
+		raiserror(N'Chiều cao tiêu đề cột báo cáo không được bỏ trống hoặc bằng 0!', 16, 1);
+		return;
+	end;
+
+	if (@TenNhomCot is null) or len(@TenNhomCot) > 255
+	begin
+		raiserror(N'Tên nhóm cột báo cáo không được dài quá 255 kí tự!', 16, 1);
+		return;
+	end;
+
+	if (@ThuTu is null) or @ThuTu < 0 or @ThuTu > 255
+	begin
+		raiserror(N'Thứ tự cột báo cáo phải nằm trong khoảng từ 0 đến 255!', 16, 1);
+		return;
+	end;
+
+	if (@TenCotExcel is null) or len(@TenCotExcel) > 255
+	begin
+		raiserror(N'Tên cột excel không được dài quá 255 kí tự!', 16, 1);
+		return;
+	end;
+
+	if (@ThuTu is null) or @ThuTu < 0 or @ThuTu > 5
+	begin
+		raiserror(N'Thứ tự cột báo cáo phải nằm trong khoảng từ 0 đến 255!', 16, 1);
+		return;
+	end;
+
+	if (@KieuDuLieu is null) or @KieuDuLieu < 1 or @KieuDuLieu > 5
+	begin
+		raiserror(N'Kiểu dữ liệu cột chỉ được nhận các giá trị: 1 (Text), 2 (Ngày tháng), 3: (Số nguyên), 4: (Số thực), 5: (Check)!', 16, 1);
+		return;
+	end;
 	begin tran
 	begin try
 		set @EditDate = GETDATE();
@@ -414,7 +940,7 @@ begin
 	end catch
 end
 go
-create procedure Delete_DanhMucBaoCaoCot
+alter procedure Delete_DanhMucBaoCaoCot
 	@ID			bigint
 as
 begin
@@ -433,7 +959,7 @@ begin
 	end catch
 end
 go
-create procedure GetMa_DanhMucBaoCao_ByID
+alter procedure GetMa_DanhMucBaoCao_ByID
 	@ID bigint,
 	@Ma nvarchar(128) = null out
 as
