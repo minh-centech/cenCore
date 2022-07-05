@@ -14,7 +14,7 @@ create table DanhMucLoaiDoiTuong
 )
 go
 */
-alter procedure List_DanhMucLoaiDoiTuong
+create procedure List_DanhMucLoaiDoiTuong
 	@ID bigint = null
 as
 begin
@@ -22,7 +22,7 @@ begin
 	select ID, Ma, Ten, TenBangDuLieu, CreateDate, EditDate from DanhMucLoaiDoiTuong where case when @ID is not null then ID else 0 end = ISNULL(@ID, 0) order by Ma;
 end
 go
-alter procedure List_DanhMucLoaiDoiTuong_ValidMa
+create procedure List_DanhMucLoaiDoiTuong_ValidMa
 	@Ma nvarchar(128)
 as
 begin
@@ -31,7 +31,7 @@ begin
 	select ID, Ma, Ten, TenBangDuLieu, CreateDate, EditDate from DanhMucLoaiDoiTuong where Ma like @Ma order by Ma;
 end
 go
-alter procedure Insert_DanhMucLoaiDoiTuong
+create procedure Insert_DanhMucLoaiDoiTuong
 	@ID				bigint out,
 	@Ma				nvarchar(128),
 	@Ten			nvarchar(255),
@@ -98,7 +98,7 @@ begin
 	end catch
 end
 go
-alter procedure Update_DanhMucLoaiDoiTuong
+create procedure Update_DanhMucLoaiDoiTuong
 	@ID				bigint,
 	@Ma				nvarchar(128),
 	@Ten			nvarchar(255),
@@ -157,7 +157,7 @@ begin
 	end catch
 end
 go
-alter procedure Delete_DanhMucLoaiDoiTuong
+create procedure Delete_DanhMucLoaiDoiTuong
 	@ID			bigint
 as
 begin
@@ -177,7 +177,7 @@ begin
 	end catch
 end
 go
-alter procedure Get_DanhMucLoaiDoiTuong_TenBangDuLieu
+create procedure Get_DanhMucLoaiDoiTuong_TenBangDuLieu
 	@ID bigint,
 	@TenBangDuLieu nvarchar(128) out
 as
@@ -186,7 +186,7 @@ begin
 	select @TenBangDuLieu = TenBangDuLieu from DanhMucLoaiDoiTuong where ID = @ID;
 end
 go
-alter procedure Get_DanhMucLoaiDoiTuong_ID
+create procedure Get_DanhMucLoaiDoiTuong_ID
 	@Ma nvarchar(128),
 	@ID bigint out
 as
@@ -195,7 +195,7 @@ begin
 	select @ID = ID from DanhMucLoaiDoiTuong where Ma = @Ma;
 end
 go
-alter procedure Get_DanhMucLoaiDoiTuong_Ma
+create procedure Get_DanhMucLoaiDoiTuong_Ma
 	@ID bigint,
 	@Ma nvarchar(128) out
 as

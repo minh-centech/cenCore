@@ -83,7 +83,7 @@ namespace coreUI.Forms
         {
             if (CapNhat >= coreCommon.ThaoTacDuLieu.Sua)
             {
-                dataRow = coreBUS.DanhMucTuDienBUS.List(obj.ID).Rows[0];
+                dataRow = coreBUS.DanhMucTuDienBUS.List(ID).Rows[0];
                 if (coreCommon.coreCommon.IsNull(dataRow)) { coreCommon.coreCommon.ErrorMessageOkOnly("Không lấy được dữ liệu!"); this.DialogResult = DialogResult.Cancel; }
                 txtMa.Value = dataRow["Ma"];
                 txtTen.Value = dataRow["Ten"];

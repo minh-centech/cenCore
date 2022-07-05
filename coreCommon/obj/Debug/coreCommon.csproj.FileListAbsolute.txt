@@ -64,3 +64,25 @@ D:\cenCORE\coreCommon\obj\Debug\coreCommon.csproj.CoreCompileInputs.cache
 D:\cenCORE\coreCommon\obj\Debug\coreCommon.csproj.CopyComplete
 D:\cenCORE\coreCommon\obj\Debug\coreCommon.dll
 D:\cenCORE\coreCommon\obj\Debug\coreCommon.pdb
+D:\cenCORE\coreCommon\obj\Debug\coreCommon.csproj.AssemblyReference.cache
+D:\OneDrive\Data\cenCore\Outputs\coreCommon.dll
+D:\OneDrive\Data\cenCore\Outputs\coreCommon.pdb
+D:\OneDrive\Data\cenCore\coreCommon\obj\Debug\coreCommon.csproj.CoreCompileInputs.cache
+D:\OneDrive\Data\cenCore\coreCommon\obj\Debug\coreCommon.csproj.CopyComplete
+D:\OneDrive\Data\cenCore\coreCommon\obj\Debug\coreCommon.dll
+D:\OneDrive\Data\cenCore\coreCommon\obj\Debug\coreCommon.pdb
+D:\OneDrive\Data\cenCore\coreCommon\obj\Debug\coreCommon.csproj.AssemblyReference.cache
+C:\Users\minhc\OneDrive\Data\cenCore\Outputs\coreCommon.dll
+C:\Users\minhc\OneDrive\Data\cenCore\Outputs\coreCommon.pdb
+C:\Users\minhc\OneDrive\Data\cenCore\coreCommon\obj\Debug\coreCommon.csproj.AssemblyReference.cache
+C:\Users\minhc\OneDrive\Data\cenCore\coreCommon\obj\Debug\coreCommon.csproj.CoreCompileInputs.cache
+C:\Users\minhc\OneDrive\Data\cenCore\coreCommon\obj\Debug\coreCommon.csproj.CopyComplete
+C:\Users\minhc\OneDrive\Data\cenCore\coreCommon\obj\Debug\coreCommon.dll
+C:\Users\minhc\OneDrive\Data\cenCore\coreCommon\obj\Debug\coreCommon.pdb
+C:\Users\minhc\OneDrive - EVERLINK\Data\cenCore\Outputs\coreCommon.dll
+C:\Users\minhc\OneDrive - EVERLINK\Data\cenCore\Outputs\coreCommon.pdb
+C:\Users\minhc\OneDrive - EVERLINK\Data\cenCore\coreCommon\obj\Debug\coreCommon.csproj.AssemblyReference.cache
+C:\Users\minhc\OneDrive - EVERLINK\Data\cenCore\coreCommon\obj\Debug\coreCommon.csproj.CoreCompileInputs.cache
+C:\Users\minhc\OneDrive - EVERLINK\Data\cenCore\coreCommon\obj\Debug\coreCommon.csproj.CopyComplete
+C:\Users\minhc\OneDrive - EVERLINK\Data\cenCore\coreCommon\obj\Debug\coreCommon.dll
+C:\Users\minhc\OneDrive - EVERLINK\Data\cenCore\coreCommon\obj\Debug\coreCommon.pdb

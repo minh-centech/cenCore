@@ -90,3 +90,78 @@ D:\cenCORE\coreBase\obj\Debug\coreBase.csproj.CoreCompileInputs.cache
 D:\cenCORE\coreBase\obj\Debug\coreBase.csproj.CopyComplete
 D:\cenCORE\coreBase\obj\Debug\coreBase.dll
 D:\cenCORE\coreBase\obj\Debug\coreBase.pdb
+D:\OneDrive\Data\cenCore\Outputs\coreBase.dll
+D:\OneDrive\Data\cenCore\Outputs\coreBase.pdb
+D:\OneDrive\Data\cenCore\coreBase\obj\Debug\coreBase.csproj.AssemblyReference.cache
+D:\OneDrive\Data\cenCore\coreBase\obj\Debug\coreBase.BaseForms.frmBaseChungTuMasterDetail2.resources
+D:\OneDrive\Data\cenCore\coreBase\obj\Debug\coreBase.BaseForms.frmBaseChungTuMasterDetail.resources
+D:\OneDrive\Data\cenCore\coreBase\obj\Debug\coreBase.BaseForms.frmBaseChungTuSingleUpdate.resources
+D:\OneDrive\Data\cenCore\coreBase\obj\Debug\coreBase.BaseForms.frmBaseChungTuSingleList.resources
+D:\OneDrive\Data\cenCore\coreBase\obj\Debug\coreBase.BaseForms.frmBaseChungTuMasterDetailList.resources
+D:\OneDrive\Data\cenCore\coreBase\obj\Debug\coreBase.BaseForms.frmBaseDanhMucChiTiet.resources
+D:\OneDrive\Data\cenCore\coreBase\obj\Debug\coreBase.BaseForms.frmBaseDanhMuc.resources
+D:\OneDrive\Data\cenCore\coreBase\obj\Debug\coreBase.BaseForms.frmBaseDanhMucUpdate.resources
+D:\OneDrive\Data\cenCore\coreBase\obj\Debug\coreBase.BaseForms.frmBaseGridUpdate.resources
+D:\OneDrive\Data\cenCore\coreBase\obj\Debug\coreBase.Forms.frmChangePassword.resources
+D:\OneDrive\Data\cenCore\coreBase\obj\Debug\coreBase.Forms.frmChungTuPrintPreview.resources
+D:\OneDrive\Data\cenCore\coreBase\obj\Debug\coreBase.Forms.frmLogin.resources
+D:\OneDrive\Data\cenCore\coreBase\obj\Debug\coreBase.Forms.frmLoginExtended.resources
+D:\OneDrive\Data\cenCore\coreBase\obj\Debug\coreBase.Forms.frmSQLConnect.resources
+D:\OneDrive\Data\cenCore\coreBase\obj\Debug\coreBase.Forms.frmSQLConnectUpdate.resources
+D:\OneDrive\Data\cenCore\coreBase\obj\Debug\coreBase.Properties.Resources.resources
+D:\OneDrive\Data\cenCore\coreBase\obj\Debug\coreBase.csproj.GenerateResource.cache
+D:\OneDrive\Data\cenCore\coreBase\obj\Debug\coreBase.dll.licenses
+D:\OneDrive\Data\cenCore\coreBase\obj\Debug\coreBase.csproj.CoreCompileInputs.cache
+D:\OneDrive\Data\cenCore\coreBase\obj\Debug\coreBase.csproj.CopyComplete
+D:\OneDrive\Data\cenCore\coreBase\obj\Debug\coreBase.dll
+D:\OneDrive\Data\cenCore\coreBase\obj\Debug\coreBase.pdb
+C:\Users\minhc\OneDrive\Data\cenCore\Outputs\coreBase.dll
+C:\Users\minhc\OneDrive\Data\cenCore\Outputs\coreBase.pdb
+C:\Users\minhc\OneDrive\Data\cenCore\coreBase\obj\Debug\coreBase.csproj.AssemblyReference.cache
+C:\Users\minhc\OneDrive\Data\cenCore\coreBase\obj\Debug\coreBase.BaseForms.frmBaseChungTuMasterDetail2.resources
+C:\Users\minhc\OneDrive\Data\cenCore\coreBase\obj\Debug\coreBase.BaseForms.frmBaseChungTuMasterDetail.resources
+C:\Users\minhc\OneDrive\Data\cenCore\coreBase\obj\Debug\coreBase.BaseForms.frmBaseChungTuSingleUpdate.resources
+C:\Users\minhc\OneDrive\Data\cenCore\coreBase\obj\Debug\coreBase.BaseForms.frmBaseChungTuSingleList.resources
+C:\Users\minhc\OneDrive\Data\cenCore\coreBase\obj\Debug\coreBase.BaseForms.frmBaseChungTuMasterDetailList.resources
+C:\Users\minhc\OneDrive\Data\cenCore\coreBase\obj\Debug\coreBase.BaseForms.frmBaseDanhMucChiTiet.resources
+C:\Users\minhc\OneDrive\Data\cenCore\coreBase\obj\Debug\coreBase.BaseForms.frmBaseDanhMuc.resources
+C:\Users\minhc\OneDrive\Data\cenCore\coreBase\obj\Debug\coreBase.BaseForms.frmBaseDanhMucUpdate.resources
+C:\Users\minhc\OneDrive\Data\cenCore\coreBase\obj\Debug\coreBase.BaseForms.frmBaseGridUpdate.resources
+C:\Users\minhc\OneDrive\Data\cenCore\coreBase\obj\Debug\coreBase.Forms.frmChangePassword.resources
+C:\Users\minhc\OneDrive\Data\cenCore\coreBase\obj\Debug\coreBase.Forms.frmChungTuPrintPreview.resources
+C:\Users\minhc\OneDrive\Data\cenCore\coreBase\obj\Debug\coreBase.Forms.frmLogin.resources
+C:\Users\minhc\OneDrive\Data\cenCore\coreBase\obj\Debug\coreBase.Forms.frmLoginExtended.resources
+C:\Users\minhc\OneDrive\Data\cenCore\coreBase\obj\Debug\coreBase.Forms.frmSQLConnect.resources
+C:\Users\minhc\OneDrive\Data\cenCore\coreBase\obj\Debug\coreBase.Forms.frmSQLConnectUpdate.resources
+C:\Users\minhc\OneDrive\Data\cenCore\coreBase\obj\Debug\coreBase.Properties.Resources.resources
+C:\Users\minhc\OneDrive\Data\cenCore\coreBase\obj\Debug\coreBase.csproj.GenerateResource.cache
+C:\Users\minhc\OneDrive\Data\cenCore\coreBase\obj\Debug\coreBase.dll.licenses
+C:\Users\minhc\OneDrive\Data\cenCore\coreBase\obj\Debug\coreBase.csproj.CoreCompileInputs.cache
+C:\Users\minhc\OneDrive\Data\cenCore\coreBase\obj\Debug\coreBase.csproj.CopyComplete
+C:\Users\minhc\OneDrive\Data\cenCore\coreBase\obj\Debug\coreBase.dll
+C:\Users\minhc\OneDrive\Data\cenCore\coreBase\obj\Debug\coreBase.pdb
+C:\Users\minhc\OneDrive - EVERLINK\Data\cenCore\Outputs\coreBase.dll
+C:\Users\minhc\OneDrive - EVERLINK\Data\cenCore\Outputs\coreBase.pdb
+C:\Users\minhc\OneDrive - EVERLINK\Data\cenCore\coreBase\obj\Debug\coreBase.csproj.AssemblyReference.cache
+C:\Users\minhc\OneDrive - EVERLINK\Data\cenCore\coreBase\obj\Debug\coreBase.BaseForms.frmBaseChungTuMasterDetail2.resources
+C:\Users\minhc\OneDrive - EVERLINK\Data\cenCore\coreBase\obj\Debug\coreBase.BaseForms.frmBaseChungTuMasterDetail.resources
+C:\Users\minhc\OneDrive - EVERLINK\Data\cenCore\coreBase\obj\Debug\coreBase.BaseForms.frmBaseChungTuSingleUpdate.resources
+C:\Users\minhc\OneDrive - EVERLINK\Data\cenCore\coreBase\obj\Debug\coreBase.BaseForms.frmBaseChungTuSingleList.resources
+C:\Users\minhc\OneDrive - EVERLINK\Data\cenCore\coreBase\obj\Debug\coreBase.BaseForms.frmBaseChungTuMasterDetailList.resources
+C:\Users\minhc\OneDrive - EVERLINK\Data\cenCore\coreBase\obj\Debug\coreBase.BaseForms.frmBaseDanhMucChiTiet.resources
+C:\Users\minhc\OneDrive - EVERLINK\Data\cenCore\coreBase\obj\Debug\coreBase.BaseForms.frmBaseDanhMuc.resources
+C:\Users\minhc\OneDrive - EVERLINK\Data\cenCore\coreBase\obj\Debug\coreBase.BaseForms.frmBaseDanhMucUpdate.resources
+C:\Users\minhc\OneDrive - EVERLINK\Data\cenCore\coreBase\obj\Debug\coreBase.BaseForms.frmBaseGridUpdate.resources
+C:\Users\minhc\OneDrive - EVERLINK\Data\cenCore\coreBase\obj\Debug\coreBase.Forms.frmChangePassword.resources
+C:\Users\minhc\OneDrive - EVERLINK\Data\cenCore\coreBase\obj\Debug\coreBase.Forms.frmChungTuPrintPreview.resources
+C:\Users\minhc\OneDrive - EVERLINK\Data\cenCore\coreBase\obj\Debug\coreBase.Forms.frmLogin.resources
+C:\Users\minhc\OneDrive - EVERLINK\Data\cenCore\coreBase\obj\Debug\coreBase.Forms.frmLoginExtended.resources
+C:\Users\minhc\OneDrive - EVERLINK\Data\cenCore\coreBase\obj\Debug\coreBase.Forms.frmSQLConnect.resources
+C:\Users\minhc\OneDrive - EVERLINK\Data\cenCore\coreBase\obj\Debug\coreBase.Forms.frmSQLConnectUpdate.resources
+C:\Users\minhc\OneDrive - EVERLINK\Data\cenCore\coreBase\obj\Debug\coreBase.Properties.Resources.resources
+C:\Users\minhc\OneDrive - EVERLINK\Data\cenCore\coreBase\obj\Debug\coreBase.csproj.GenerateResource.cache
+C:\Users\minhc\OneDrive - EVERLINK\Data\cenCore\coreBase\obj\Debug\coreBase.dll.licenses
+C:\Users\minhc\OneDrive - EVERLINK\Data\cenCore\coreBase\obj\Debug\coreBase.csproj.CoreCompileInputs.cache
+C:\Users\minhc\OneDrive - EVERLINK\Data\cenCore\coreBase\obj\Debug\coreBase.csproj.CopyComplete
+C:\Users\minhc\OneDrive - EVERLINK\Data\cenCore\coreBase\obj\Debug\coreBase.dll
+C:\Users\minhc\OneDrive - EVERLINK\Data\cenCore\coreBase\obj\Debug\coreBase.pdb

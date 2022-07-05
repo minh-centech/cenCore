@@ -38,10 +38,8 @@
             Infragistics.Win.Appearance appearance2 = new Infragistics.Win.Appearance();
             Infragistics.Win.UltraWinToolbars.ButtonTool buttonTool9 = new Infragistics.Win.UltraWinToolbars.ButtonTool("btExcel");
             Infragistics.Win.Appearance appearance3 = new Infragistics.Win.Appearance();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmReportViewer));
             Infragistics.Win.Appearance appearance1 = new Infragistics.Win.Appearance();
             this.ultraTabPageControl1 = new Infragistics.Win.UltraWinTabControl.UltraTabPageControl();
-            this.ugBaoCao = new coreControls.saNonUpdateGrid();
             this.ultraCalcManager1 = new Infragistics.Win.UltraWinCalcManager.UltraCalcManager(this.components);
             this.ultraTabPageControl2 = new Infragistics.Win.UltraWinTabControl.UltraTabPageControl();
             this.crystalReportViewer = new CrystalDecisions.Windows.Forms.CrystalReportViewer();
@@ -52,36 +50,24 @@
             this._frmReportViewer_Toolbars_Dock_Area_Right = new Infragistics.Win.UltraWinToolbars.UltraToolbarsDockArea();
             this._frmReportViewer_Toolbars_Dock_Area_Top = new Infragistics.Win.UltraWinToolbars.UltraToolbarsDockArea();
             this._frmReportViewer_Toolbars_Dock_Area_Bottom = new Infragistics.Win.UltraWinToolbars.UltraToolbarsDockArea();
+            this.ugBaoCao = new coreControls.saNonUpdateGrid();
             this.txtDieuKien = new coreControls.saTextBox();
             this.ultraTabPageControl1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.ugBaoCao)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ultraCalcManager1)).BeginInit();
             this.ultraTabPageControl2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ultraTabControl1)).BeginInit();
             this.ultraTabControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ultraToolbarsManager1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ugBaoCao)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtDieuKien)).BeginInit();
             this.SuspendLayout();
             // 
             // ultraTabPageControl1
             // 
             this.ultraTabPageControl1.Controls.Add(this.ugBaoCao);
-            this.ultraTabPageControl1.Location = new System.Drawing.Point(-10000, -10000);
+            this.ultraTabPageControl1.Location = new System.Drawing.Point(1, 23);
             this.ultraTabPageControl1.Name = "ultraTabPageControl1";
             this.ultraTabPageControl1.Size = new System.Drawing.Size(681, 497);
-            // 
-            // ugBaoCao
-            // 
-            this.ugBaoCao.CalcManager = this.ultraCalcManager1;
-            this.ugBaoCao.DisplayLayout.LoadStyle = Infragistics.Win.UltraWinGrid.LoadStyle.LoadOnDemand;
-            this.ugBaoCao.DisplayLayout.TabNavigation = Infragistics.Win.UltraWinGrid.TabNavigation.NextControl;
-            this.ugBaoCao.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ugBaoCao.Location = new System.Drawing.Point(0, 0);
-            this.ugBaoCao.Name = "ugBaoCao";
-            this.ugBaoCao.Size = new System.Drawing.Size(681, 497);
-            this.ugBaoCao.TabIndex = 0;
-            this.ugBaoCao.InitializeRow += new Infragistics.Win.UltraWinGrid.InitializeRowEventHandler(this.ugBaoCao_InitializeRow);
-            this.ugBaoCao.DoubleClickRow += new Infragistics.Win.UltraWinGrid.DoubleClickRowEventHandler(this.ugBaoCao_DoubleClickRow);
             // 
             // ultraCalcManager1
             // 
@@ -90,7 +76,7 @@
             // ultraTabPageControl2
             // 
             this.ultraTabPageControl2.Controls.Add(this.crystalReportViewer);
-            this.ultraTabPageControl2.Location = new System.Drawing.Point(1, 23);
+            this.ultraTabPageControl2.Location = new System.Drawing.Point(-10000, -10000);
             this.ultraTabPageControl2.Name = "ultraTabPageControl2";
             this.ultraTabPageControl2.Size = new System.Drawing.Size(681, 497);
             // 
@@ -167,7 +153,7 @@
             buttonTool8.SharedPropsInternal.AppearancesSmall.Appearance = appearance2;
             buttonTool8.SharedPropsInternal.Caption = "Tải lại";
             buttonTool8.SharedPropsInternal.DisplayStyle = Infragistics.Win.UltraWinToolbars.ToolDisplayStyle.ImageAndText;
-            appearance3.Image = ((object)(resources.GetObject("appearance3.Image")));
+            appearance3.Image = global::coreReportController.Properties.Resources.excel;
             buttonTool9.SharedPropsInternal.AppearancesSmall.Appearance = appearance3;
             buttonTool9.SharedPropsInternal.Caption = "Excel";
             buttonTool9.SharedPropsInternal.DisplayStyle = Infragistics.Win.UltraWinToolbars.ToolDisplayStyle.ImageAndText;
@@ -209,6 +195,19 @@
             this._frmReportViewer_Toolbars_Dock_Area_Bottom.Size = new System.Drawing.Size(685, 0);
             this._frmReportViewer_Toolbars_Dock_Area_Bottom.ToolbarsManager = this.ultraToolbarsManager1;
             // 
+            // ugBaoCao
+            // 
+            this.ugBaoCao.CalcManager = this.ultraCalcManager1;
+            this.ugBaoCao.DisplayLayout.LoadStyle = Infragistics.Win.UltraWinGrid.LoadStyle.LoadOnDemand;
+            this.ugBaoCao.DisplayLayout.TabNavigation = Infragistics.Win.UltraWinGrid.TabNavigation.NextControl;
+            this.ugBaoCao.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ugBaoCao.Location = new System.Drawing.Point(0, 0);
+            this.ugBaoCao.Name = "ugBaoCao";
+            this.ugBaoCao.Size = new System.Drawing.Size(681, 497);
+            this.ugBaoCao.TabIndex = 0;
+            this.ugBaoCao.InitializeRow += new Infragistics.Win.UltraWinGrid.InitializeRowEventHandler(this.ugBaoCao_InitializeRow);
+            this.ugBaoCao.DoubleClickRow += new Infragistics.Win.UltraWinGrid.DoubleClickRowEventHandler(this.ugBaoCao_DoubleClickRow);
+            // 
             // txtDieuKien
             // 
             appearance1.ForeColorDisabled = System.Drawing.Color.Black;
@@ -238,12 +237,12 @@
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.frmReportViewer_Load);
             this.ultraTabPageControl1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.ugBaoCao)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ultraCalcManager1)).EndInit();
             this.ultraTabPageControl2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.ultraTabControl1)).EndInit();
             this.ultraTabControl1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.ultraToolbarsManager1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ugBaoCao)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtDieuKien)).EndInit();
             this.ResumeLayout(false);
 

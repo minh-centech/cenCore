@@ -26,7 +26,7 @@ namespace coreReportController
             dtParameters.Columns.Add(new DataColumn("KieuDuLieu", typeof(string))); //Kiểu dữ liệu
             dtParameters.Columns.Add(new DataColumn("GhiChu", typeof(string)));
             SqlParameterCollection sqlParameterCollection;
-            using(SqlConnection sqlConnection = new SqlConnection(coreCommon.GlobalVariables.ConnectionString))
+            using (SqlConnection sqlConnection = new SqlConnection(coreCommon.GlobalVariables.ConnectionString))
             {
                 sqlConnection.Open();
                 SqlCommand sqlCommand = new SqlCommand
@@ -112,7 +112,7 @@ namespace coreReportController
                     dsData.Tables[1].TableName = coreCommon.GlobalVariables.tblReportHeaderName;
                 if (dsData.Tables.Count == 3)
                     dsData.Tables[2].TableName = coreCommon.GlobalVariables.tblReportDataName;
-            }    
+            }
             System.Windows.Forms.Cursor.Current = Cursors.Default;
 
             frmReportViewer frmReportViewer = new frmReportViewer();
@@ -127,11 +127,5 @@ namespace coreReportController
             frmReportViewer.MDIParent = MDIParent;
             frmReportViewer.Show();
         }
-
-
-
-        
-        
-
     }
 }

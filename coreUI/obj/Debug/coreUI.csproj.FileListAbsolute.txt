@@ -256,3 +256,162 @@ D:\cenCORE\Outputs\coreUI.pdb
 D:\cenCORE\coreUI\obj\Debug\coreUI.csproj.CopyComplete
 D:\cenCORE\coreUI\obj\Debug\coreUI.dll
 D:\cenCORE\coreUI\obj\Debug\coreUI.pdb
+D:\OneDrive\Data\cenCore\Outputs\coreUI.dll.config
+D:\OneDrive\Data\cenCore\Outputs\coreUI.dll
+D:\OneDrive\Data\cenCore\Outputs\coreUI.pdb
+D:\OneDrive\Data\cenCore\coreUI\obj\Debug\coreUI.csproj.AssemblyReference.cache
+D:\OneDrive\Data\cenCore\coreUI\obj\Debug\coreUI.Forms.frm_dtList.resources
+D:\OneDrive\Data\cenCore\coreUI\obj\Debug\coreUI.Forms.frmDataValidMultiSelect.resources
+D:\OneDrive\Data\cenCore\coreUI\obj\Debug\coreUI.Forms.frmDataValid.resources
+D:\OneDrive\Data\cenCore\coreUI\obj\Debug\coreUI.Forms.frmDanhMucBaoCao.resources
+D:\OneDrive\Data\cenCore\coreUI\obj\Debug\coreUI.Forms.frmDanhMucThamSoNguoiSuDung.resources
+D:\OneDrive\Data\cenCore\coreUI\obj\Debug\coreUI.Forms.frmDanhMucThamSoNguoiSuDungUpdate.resources
+D:\OneDrive\Data\cenCore\coreUI\obj\Debug\coreUI.Forms.frmDesktop.resources
+D:\OneDrive\Data\cenCore\coreUI\obj\Debug\coreUI.Forms.frmMain.resources
+D:\OneDrive\Data\cenCore\coreUI\obj\Debug\coreUI.Forms.frmNhatKyDuLieu.resources
+D:\OneDrive\Data\cenCore\coreUI\obj\Debug\coreUI.Forms.frmDanhMucNguoiSuDung.resources
+D:\OneDrive\Data\cenCore\coreUI\obj\Debug\coreUI.Forms.frmDanhMucNguoiSuDungUpdate.resources
+D:\OneDrive\Data\cenCore\coreUI\obj\Debug\coreUI.Forms.frmDanhMucThamSoHeThong.resources
+D:\OneDrive\Data\cenCore\coreUI\obj\Debug\coreUI.Forms.frmDanhMucThamSoHeThongUpdate.resources
+D:\OneDrive\Data\cenCore\coreUI\obj\Debug\coreUI.Forms.frmDanhMucTuDien.resources
+D:\OneDrive\Data\cenCore\coreUI\obj\Debug\coreUI.Forms.frmDanhMucTuDienUpdate.resources
+D:\OneDrive\Data\cenCore\coreUI\obj\Debug\coreUI.Forms.frmDanhMucMenu.resources
+D:\OneDrive\Data\cenCore\coreUI\obj\Debug\coreUI.Forms.frmDanhMucPhanQuyen.resources
+D:\OneDrive\Data\cenCore\coreUI\obj\Debug\coreUI.Forms.frmDanhMucChungTu.resources
+D:\OneDrive\Data\cenCore\coreUI\obj\Debug\coreUI.Forms.frmDanhMucBaoCaoCotUpdate.resources
+D:\OneDrive\Data\cenCore\coreUI\obj\Debug\coreUI.Forms.frmDanhMucChungTuInUpdate.resources
+D:\OneDrive\Data\cenCore\coreUI\obj\Debug\coreUI.Forms.frmDanhMucMenuBaoCaoUpdate.resources
+D:\OneDrive\Data\cenCore\coreUI\obj\Debug\coreUI.Forms.frmDanhMucMenuChungTuUpdate.resources
+D:\OneDrive\Data\cenCore\coreUI\obj\Debug\coreUI.Forms.frmDanhMucPhanQuyenChungTuUpdate.resources
+D:\OneDrive\Data\cenCore\coreUI\obj\Debug\coreUI.Forms.frmDanhMucMenuLoaiDoiTuongUpdate.resources
+D:\OneDrive\Data\cenCore\coreUI\obj\Debug\coreUI.Forms.frmDanhMucPhanQuyenLoaiDoiTuongUpdate.resources
+D:\OneDrive\Data\cenCore\coreUI\obj\Debug\coreUI.Forms.frmDanhMucPhanQuyenBaoCaoUpdate.resources
+D:\OneDrive\Data\cenCore\coreUI\obj\Debug\coreUI.Forms.frmDanhMucMenuUpdate.resources
+D:\OneDrive\Data\cenCore\coreUI\obj\Debug\coreUI.Forms.frmDanhMucPhanQuyenUpdate.resources
+D:\OneDrive\Data\cenCore\coreUI\obj\Debug\coreUI.Forms.frmDanhMucPhanQuyenDonViUpdate.resources
+D:\OneDrive\Data\cenCore\coreUI\obj\Debug\coreUI.Forms.frmDanhMucChungTuQuyTrinhUpdate.resources
+D:\OneDrive\Data\cenCore\coreUI\obj\Debug\coreUI.Forms.frmDanhMucChungTuTrangThaiUpdate.resources
+D:\OneDrive\Data\cenCore\coreUI\obj\Debug\coreUI.Forms.frmDanhMucBaoCaoUpdate.resources
+D:\OneDrive\Data\cenCore\coreUI\obj\Debug\coreUI.Forms.frmDanhMucDoiTuong.resources
+D:\OneDrive\Data\cenCore\coreUI\obj\Debug\coreUI.Forms.frmDanhMucDoiTuongUpdate.resources
+D:\OneDrive\Data\cenCore\coreUI\obj\Debug\coreUI.Forms.frmDanhMucNhomBaoCaoUpdate.resources
+D:\OneDrive\Data\cenCore\coreUI\obj\Debug\coreUI.Forms.frmDanhMucNhomBaoCao.resources
+D:\OneDrive\Data\cenCore\coreUI\obj\Debug\coreUI.Forms.frmDanhMucLoaiDoiTuongUpdate.resources
+D:\OneDrive\Data\cenCore\coreUI\obj\Debug\coreUI.Forms.frmDanhMucLoaiDoiTuong.resources
+D:\OneDrive\Data\cenCore\coreUI\obj\Debug\coreUI.Forms.frmDanhMucDonVi.resources
+D:\OneDrive\Data\cenCore\coreUI\obj\Debug\coreUI.Forms.frmDanhMucChungTuUpdate.resources
+D:\OneDrive\Data\cenCore\coreUI\obj\Debug\coreUI.Forms.frmDanhMucDonViUpdate.resources
+D:\OneDrive\Data\cenCore\coreUI\obj\Debug\coreUI.Forms.frm_ctList.resources
+D:\OneDrive\Data\cenCore\coreUI\obj\Debug\coreUI.Properties.Resources.resources
+D:\OneDrive\Data\cenCore\coreUI\obj\Debug\coreUI.csproj.GenerateResource.cache
+D:\OneDrive\Data\cenCore\coreUI\obj\Debug\coreUI.dll.licenses
+D:\OneDrive\Data\cenCore\coreUI\obj\Debug\coreUI.csproj.CoreCompileInputs.cache
+D:\OneDrive\Data\cenCore\coreUI\obj\Debug\coreUI.csproj.CopyComplete
+D:\OneDrive\Data\cenCore\coreUI\obj\Debug\coreUI.dll
+D:\OneDrive\Data\cenCore\coreUI\obj\Debug\coreUI.pdb
+C:\Users\minhc\OneDrive\Data\cenCore\Outputs\coreUI.dll.config
+C:\Users\minhc\OneDrive\Data\cenCore\Outputs\coreUI.dll
+C:\Users\minhc\OneDrive\Data\cenCore\Outputs\coreUI.pdb
+C:\Users\minhc\OneDrive\Data\cenCore\coreUI\obj\Debug\coreUI.csproj.AssemblyReference.cache
+C:\Users\minhc\OneDrive\Data\cenCore\coreUI\obj\Debug\coreUI.Forms.frm_dtList.resources
+C:\Users\minhc\OneDrive\Data\cenCore\coreUI\obj\Debug\coreUI.Forms.frmDataValidMultiSelect.resources
+C:\Users\minhc\OneDrive\Data\cenCore\coreUI\obj\Debug\coreUI.Forms.frmDataValid.resources
+C:\Users\minhc\OneDrive\Data\cenCore\coreUI\obj\Debug\coreUI.Forms.frmDanhMucBaoCao.resources
+C:\Users\minhc\OneDrive\Data\cenCore\coreUI\obj\Debug\coreUI.Forms.frmDanhMucThamSoNguoiSuDung.resources
+C:\Users\minhc\OneDrive\Data\cenCore\coreUI\obj\Debug\coreUI.Forms.frmDanhMucThamSoNguoiSuDungUpdate.resources
+C:\Users\minhc\OneDrive\Data\cenCore\coreUI\obj\Debug\coreUI.Forms.frmDesktop.resources
+C:\Users\minhc\OneDrive\Data\cenCore\coreUI\obj\Debug\coreUI.Forms.frmMain.resources
+C:\Users\minhc\OneDrive\Data\cenCore\coreUI\obj\Debug\coreUI.Forms.frmNhatKyDuLieu.resources
+C:\Users\minhc\OneDrive\Data\cenCore\coreUI\obj\Debug\coreUI.Forms.frmDanhMucNguoiSuDung.resources
+C:\Users\minhc\OneDrive\Data\cenCore\coreUI\obj\Debug\coreUI.Forms.frmDanhMucNguoiSuDungUpdate.resources
+C:\Users\minhc\OneDrive\Data\cenCore\coreUI\obj\Debug\coreUI.Forms.frmDanhMucThamSoHeThong.resources
+C:\Users\minhc\OneDrive\Data\cenCore\coreUI\obj\Debug\coreUI.Forms.frmDanhMucThamSoHeThongUpdate.resources
+C:\Users\minhc\OneDrive\Data\cenCore\coreUI\obj\Debug\coreUI.Forms.frmDanhMucTuDien.resources
+C:\Users\minhc\OneDrive\Data\cenCore\coreUI\obj\Debug\coreUI.Forms.frmDanhMucTuDienUpdate.resources
+C:\Users\minhc\OneDrive\Data\cenCore\coreUI\obj\Debug\coreUI.Forms.frmDanhMucMenu.resources
+C:\Users\minhc\OneDrive\Data\cenCore\coreUI\obj\Debug\coreUI.Forms.frmDanhMucPhanQuyen.resources
+C:\Users\minhc\OneDrive\Data\cenCore\coreUI\obj\Debug\coreUI.Forms.frmDanhMucChungTu.resources
+C:\Users\minhc\OneDrive\Data\cenCore\coreUI\obj\Debug\coreUI.Forms.frmDanhMucBaoCaoCotUpdate.resources
+C:\Users\minhc\OneDrive\Data\cenCore\coreUI\obj\Debug\coreUI.Forms.frmDanhMucChungTuInUpdate.resources
+C:\Users\minhc\OneDrive\Data\cenCore\coreUI\obj\Debug\coreUI.Forms.frmDanhMucMenuBaoCaoUpdate.resources
+C:\Users\minhc\OneDrive\Data\cenCore\coreUI\obj\Debug\coreUI.Forms.frmDanhMucMenuChungTuUpdate.resources
+C:\Users\minhc\OneDrive\Data\cenCore\coreUI\obj\Debug\coreUI.Forms.frmDanhMucPhanQuyenChungTuUpdate.resources
+C:\Users\minhc\OneDrive\Data\cenCore\coreUI\obj\Debug\coreUI.Forms.frmDanhMucMenuLoaiDoiTuongUpdate.resources
+C:\Users\minhc\OneDrive\Data\cenCore\coreUI\obj\Debug\coreUI.Forms.frmDanhMucPhanQuyenLoaiDoiTuongUpdate.resources
+C:\Users\minhc\OneDrive\Data\cenCore\coreUI\obj\Debug\coreUI.Forms.frmDanhMucPhanQuyenBaoCaoUpdate.resources
+C:\Users\minhc\OneDrive\Data\cenCore\coreUI\obj\Debug\coreUI.Forms.frmDanhMucMenuUpdate.resources
+C:\Users\minhc\OneDrive\Data\cenCore\coreUI\obj\Debug\coreUI.Forms.frmDanhMucPhanQuyenUpdate.resources
+C:\Users\minhc\OneDrive\Data\cenCore\coreUI\obj\Debug\coreUI.Forms.frmDanhMucPhanQuyenDonViUpdate.resources
+C:\Users\minhc\OneDrive\Data\cenCore\coreUI\obj\Debug\coreUI.Forms.frmDanhMucChungTuQuyTrinhUpdate.resources
+C:\Users\minhc\OneDrive\Data\cenCore\coreUI\obj\Debug\coreUI.Forms.frmDanhMucChungTuTrangThaiUpdate.resources
+C:\Users\minhc\OneDrive\Data\cenCore\coreUI\obj\Debug\coreUI.Forms.frmDanhMucBaoCaoUpdate.resources
+C:\Users\minhc\OneDrive\Data\cenCore\coreUI\obj\Debug\coreUI.Forms.frmDanhMucDoiTuong.resources
+C:\Users\minhc\OneDrive\Data\cenCore\coreUI\obj\Debug\coreUI.Forms.frmDanhMucDoiTuongUpdate.resources
+C:\Users\minhc\OneDrive\Data\cenCore\coreUI\obj\Debug\coreUI.Forms.frmDanhMucNhomBaoCaoUpdate.resources
+C:\Users\minhc\OneDrive\Data\cenCore\coreUI\obj\Debug\coreUI.Forms.frmDanhMucNhomBaoCao.resources
+C:\Users\minhc\OneDrive\Data\cenCore\coreUI\obj\Debug\coreUI.Forms.frmDanhMucLoaiDoiTuongUpdate.resources
+C:\Users\minhc\OneDrive\Data\cenCore\coreUI\obj\Debug\coreUI.Forms.frmDanhMucLoaiDoiTuong.resources
+C:\Users\minhc\OneDrive\Data\cenCore\coreUI\obj\Debug\coreUI.Forms.frmDanhMucDonVi.resources
+C:\Users\minhc\OneDrive\Data\cenCore\coreUI\obj\Debug\coreUI.Forms.frmDanhMucChungTuUpdate.resources
+C:\Users\minhc\OneDrive\Data\cenCore\coreUI\obj\Debug\coreUI.Forms.frmDanhMucDonViUpdate.resources
+C:\Users\minhc\OneDrive\Data\cenCore\coreUI\obj\Debug\coreUI.Forms.frm_ctList.resources
+C:\Users\minhc\OneDrive\Data\cenCore\coreUI\obj\Debug\coreUI.Properties.Resources.resources
+C:\Users\minhc\OneDrive\Data\cenCore\coreUI\obj\Debug\coreUI.csproj.GenerateResource.cache
+C:\Users\minhc\OneDrive\Data\cenCore\coreUI\obj\Debug\coreUI.dll.licenses
+C:\Users\minhc\OneDrive\Data\cenCore\coreUI\obj\Debug\coreUI.csproj.CoreCompileInputs.cache
+C:\Users\minhc\OneDrive\Data\cenCore\coreUI\obj\Debug\coreUI.csproj.CopyComplete
+C:\Users\minhc\OneDrive\Data\cenCore\coreUI\obj\Debug\coreUI.dll
+C:\Users\minhc\OneDrive\Data\cenCore\coreUI\obj\Debug\coreUI.pdb
+C:\Users\minhc\OneDrive - EVERLINK\Data\cenCore\Outputs\coreUI.dll.config
+C:\Users\minhc\OneDrive - EVERLINK\Data\cenCore\Outputs\coreUI.dll
+C:\Users\minhc\OneDrive - EVERLINK\Data\cenCore\Outputs\coreUI.pdb
+C:\Users\minhc\OneDrive - EVERLINK\Data\cenCore\coreUI\obj\Debug\coreUI.csproj.AssemblyReference.cache
+C:\Users\minhc\OneDrive - EVERLINK\Data\cenCore\coreUI\obj\Debug\coreUI.Forms.frm_dtList.resources
+C:\Users\minhc\OneDrive - EVERLINK\Data\cenCore\coreUI\obj\Debug\coreUI.Forms.frmDataValidMultiSelect.resources
+C:\Users\minhc\OneDrive - EVERLINK\Data\cenCore\coreUI\obj\Debug\coreUI.Forms.frmDataValid.resources
+C:\Users\minhc\OneDrive - EVERLINK\Data\cenCore\coreUI\obj\Debug\coreUI.Forms.frmDanhMucBaoCao.resources
+C:\Users\minhc\OneDrive - EVERLINK\Data\cenCore\coreUI\obj\Debug\coreUI.Forms.frmDanhMucThamSoNguoiSuDung.resources
+C:\Users\minhc\OneDrive - EVERLINK\Data\cenCore\coreUI\obj\Debug\coreUI.Forms.frmDanhMucThamSoNguoiSuDungUpdate.resources
+C:\Users\minhc\OneDrive - EVERLINK\Data\cenCore\coreUI\obj\Debug\coreUI.Forms.frmDesktop.resources
+C:\Users\minhc\OneDrive - EVERLINK\Data\cenCore\coreUI\obj\Debug\coreUI.Forms.frmMain.resources
+C:\Users\minhc\OneDrive - EVERLINK\Data\cenCore\coreUI\obj\Debug\coreUI.Forms.frmNhatKyDuLieu.resources
+C:\Users\minhc\OneDrive - EVERLINK\Data\cenCore\coreUI\obj\Debug\coreUI.Forms.frmDanhMucNguoiSuDung.resources
+C:\Users\minhc\OneDrive - EVERLINK\Data\cenCore\coreUI\obj\Debug\coreUI.Forms.frmDanhMucNguoiSuDungUpdate.resources
+C:\Users\minhc\OneDrive - EVERLINK\Data\cenCore\coreUI\obj\Debug\coreUI.Forms.frmDanhMucThamSoHeThong.resources
+C:\Users\minhc\OneDrive - EVERLINK\Data\cenCore\coreUI\obj\Debug\coreUI.Forms.frmDanhMucThamSoHeThongUpdate.resources
+C:\Users\minhc\OneDrive - EVERLINK\Data\cenCore\coreUI\obj\Debug\coreUI.Forms.frmDanhMucTuDien.resources
+C:\Users\minhc\OneDrive - EVERLINK\Data\cenCore\coreUI\obj\Debug\coreUI.Forms.frmDanhMucTuDienUpdate.resources
+C:\Users\minhc\OneDrive - EVERLINK\Data\cenCore\coreUI\obj\Debug\coreUI.Forms.frmDanhMucMenu.resources
+C:\Users\minhc\OneDrive - EVERLINK\Data\cenCore\coreUI\obj\Debug\coreUI.Forms.frmDanhMucPhanQuyen.resources
+C:\Users\minhc\OneDrive - EVERLINK\Data\cenCore\coreUI\obj\Debug\coreUI.Forms.frmDanhMucChungTu.resources
+C:\Users\minhc\OneDrive - EVERLINK\Data\cenCore\coreUI\obj\Debug\coreUI.Forms.frmDanhMucBaoCaoCotUpdate.resources
+C:\Users\minhc\OneDrive - EVERLINK\Data\cenCore\coreUI\obj\Debug\coreUI.Forms.frmDanhMucChungTuInUpdate.resources
+C:\Users\minhc\OneDrive - EVERLINK\Data\cenCore\coreUI\obj\Debug\coreUI.Forms.frmDanhMucMenuBaoCaoUpdate.resources
+C:\Users\minhc\OneDrive - EVERLINK\Data\cenCore\coreUI\obj\Debug\coreUI.Forms.frmDanhMucMenuChungTuUpdate.resources
+C:\Users\minhc\OneDrive - EVERLINK\Data\cenCore\coreUI\obj\Debug\coreUI.Forms.frmDanhMucPhanQuyenChungTuUpdate.resources
+C:\Users\minhc\OneDrive - EVERLINK\Data\cenCore\coreUI\obj\Debug\coreUI.Forms.frmDanhMucMenuLoaiDoiTuongUpdate.resources
+C:\Users\minhc\OneDrive - EVERLINK\Data\cenCore\coreUI\obj\Debug\coreUI.Forms.frmDanhMucPhanQuyenLoaiDoiTuongUpdate.resources
+C:\Users\minhc\OneDrive - EVERLINK\Data\cenCore\coreUI\obj\Debug\coreUI.Forms.frmDanhMucPhanQuyenBaoCaoUpdate.resources
+C:\Users\minhc\OneDrive - EVERLINK\Data\cenCore\coreUI\obj\Debug\coreUI.Forms.frmDanhMucMenuUpdate.resources
+C:\Users\minhc\OneDrive - EVERLINK\Data\cenCore\coreUI\obj\Debug\coreUI.Forms.frmDanhMucPhanQuyenUpdate.resources
+C:\Users\minhc\OneDrive - EVERLINK\Data\cenCore\coreUI\obj\Debug\coreUI.Forms.frmDanhMucPhanQuyenDonViUpdate.resources
+C:\Users\minhc\OneDrive - EVERLINK\Data\cenCore\coreUI\obj\Debug\coreUI.Forms.frmDanhMucChungTuQuyTrinhUpdate.resources
+C:\Users\minhc\OneDrive - EVERLINK\Data\cenCore\coreUI\obj\Debug\coreUI.Forms.frmDanhMucChungTuTrangThaiUpdate.resources
+C:\Users\minhc\OneDrive - EVERLINK\Data\cenCore\coreUI\obj\Debug\coreUI.Forms.frmDanhMucBaoCaoUpdate.resources
+C:\Users\minhc\OneDrive - EVERLINK\Data\cenCore\coreUI\obj\Debug\coreUI.Forms.frmDanhMucDoiTuong.resources
+C:\Users\minhc\OneDrive - EVERLINK\Data\cenCore\coreUI\obj\Debug\coreUI.Forms.frmDanhMucDoiTuongUpdate.resources
+C:\Users\minhc\OneDrive - EVERLINK\Data\cenCore\coreUI\obj\Debug\coreUI.Forms.frmDanhMucNhomBaoCaoUpdate.resources
+C:\Users\minhc\OneDrive - EVERLINK\Data\cenCore\coreUI\obj\Debug\coreUI.Forms.frmDanhMucNhomBaoCao.resources
+C:\Users\minhc\OneDrive - EVERLINK\Data\cenCore\coreUI\obj\Debug\coreUI.Forms.frmDanhMucLoaiDoiTuongUpdate.resources
+C:\Users\minhc\OneDrive - EVERLINK\Data\cenCore\coreUI\obj\Debug\coreUI.Forms.frmDanhMucLoaiDoiTuong.resources
+C:\Users\minhc\OneDrive - EVERLINK\Data\cenCore\coreUI\obj\Debug\coreUI.Forms.frmDanhMucDonVi.resources
+C:\Users\minhc\OneDrive - EVERLINK\Data\cenCore\coreUI\obj\Debug\coreUI.Forms.frmDanhMucChungTuUpdate.resources
+C:\Users\minhc\OneDrive - EVERLINK\Data\cenCore\coreUI\obj\Debug\coreUI.Forms.frmDanhMucDonViUpdate.resources
+C:\Users\minhc\OneDrive - EVERLINK\Data\cenCore\coreUI\obj\Debug\coreUI.Forms.frm_ctList.resources
+C:\Users\minhc\OneDrive - EVERLINK\Data\cenCore\coreUI\obj\Debug\coreUI.Properties.Resources.resources
+C:\Users\minhc\OneDrive - EVERLINK\Data\cenCore\coreUI\obj\Debug\coreUI.csproj.GenerateResource.cache
+C:\Users\minhc\OneDrive - EVERLINK\Data\cenCore\coreUI\obj\Debug\coreUI.dll.licenses
+C:\Users\minhc\OneDrive - EVERLINK\Data\cenCore\coreUI\obj\Debug\coreUI.csproj.CoreCompileInputs.cache
+C:\Users\minhc\OneDrive - EVERLINK\Data\cenCore\coreUI\obj\Debug\coreUI.csproj.CopyComplete
+C:\Users\minhc\OneDrive - EVERLINK\Data\cenCore\coreUI\obj\Debug\coreUI.dll
+C:\Users\minhc\OneDrive - EVERLINK\Data\cenCore\coreUI\obj\Debug\coreUI.pdb

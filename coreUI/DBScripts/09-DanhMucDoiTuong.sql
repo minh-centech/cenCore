@@ -21,7 +21,7 @@ create table DanhMucDoiTuong
 )
 go
 */
-alter procedure List_DanhMucDoiTuong
+create procedure List_DanhMucDoiTuong
 	@ID bigint = null,
 	@IDDanhMucDonVi bigint,
 	@IDDanhMucLoaiDoiTuong bigint,
@@ -73,7 +73,7 @@ begin
 	end;
 end
 go
-alter procedure List_DanhMucDoiTuong_ValidMa
+create procedure List_DanhMucDoiTuong_ValidMa
 	@IDDanhMucDonVi bigint,
 	@IDDanhMucLoaiDoiTuong bigint,
 	@Ma nvarchar(128) = null
@@ -93,7 +93,7 @@ begin
 	order by a.Ma;
 end
 go
-alter procedure Insert_DanhMucDoiTuong
+create procedure Insert_DanhMucDoiTuong
 	@ID							bigint out,
 	@IDDanhMucDonVi				bigint,
 	@IDDanhMucLoaiDoiTuong		bigint,
@@ -165,7 +165,7 @@ begin
 	end catch
 end
 go
-alter procedure Update_DanhMucDoiTuong
+create procedure Update_DanhMucDoiTuong
 	@ID							bigint,
 	@IDDanhMucDonVi				bigint,
 	@IDDanhMucLoaiDoiTuong		bigint,
@@ -240,7 +240,7 @@ begin
 	end catch
 end
 go
-alter procedure Delete_DanhMucDoiTuong
+create procedure Delete_DanhMucDoiTuong
 	@ID			bigint
 as
 begin
@@ -259,7 +259,7 @@ begin
 	end catch
 end
 go
-alter procedure Get_DanhMucDoiTuong_ID
+create procedure Get_DanhMucDoiTuong_ID
 	@IDDanhMucLoaiDoiTuong bigint,
 	@Ma nvarchar(128),
 	@ID bigint out

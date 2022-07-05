@@ -17,7 +17,7 @@ create table DanhMucNguoiSuDung
 )
 go
 */
-alter procedure List_DanhMucNguoiSuDung
+create procedure List_DanhMucNguoiSuDung
 	@ID bigint = null
 as
 begin
@@ -26,7 +26,7 @@ begin
 	from DanhMucNguoiSuDung a inner join DanhMucPhanQuyen b on a.IDDanhMucPhanQuyen = b.ID where case when @ID is not null then a.ID else 0 end = ISNULL(@ID, 0) order by a.Ma;
 end
 go
-alter procedure List_DanhMucNguoiSuDung_ValidMa
+create procedure List_DanhMucNguoiSuDung_ValidMa
 	@Ma nvarchar(128) = null
 as
 begin
@@ -39,7 +39,7 @@ begin
 	from DanhMucNguoiSuDung a where a.Ma like @Ma;
 end
 go
-alter procedure Insert_DanhMucNguoiSuDung
+create procedure Insert_DanhMucNguoiSuDung
 	@ID					bigint out,
 	@IDDanhMucPhanQuyen	bigint = null,
 	@Ma					nvarchar(128) = null,
@@ -116,7 +116,7 @@ begin
 	end catch
 end
 go
-alter procedure Update_DanhMucNguoiSuDung
+create procedure Update_DanhMucNguoiSuDung
 	@ID					bigint,
 	@IDDanhMucPhanQuyen	bigint = null,
 	@Ma					nvarchar(128) = null,
@@ -198,7 +198,7 @@ begin
 	end catch
 end
 go
-alter procedure Delete_DanhMucNguoiSuDung
+create procedure Delete_DanhMucNguoiSuDung
 	@ID			bigint
 as
 begin
@@ -217,7 +217,7 @@ begin
 	end catch
 end
 go
-alter procedure Get_DanhMucNguoiSuDung_ID
+create procedure Get_DanhMucNguoiSuDung_ID
 	@Ma					nvarchar(128),
 	@Password			nvarchar(128),
 	@ID					bigint = null out,
@@ -239,7 +239,7 @@ begin
 	end catch
 end
 go
-alter procedure Update_DanhMucNguoiSuDung_Password
+create procedure Update_DanhMucNguoiSuDung_Password
 	@ID					bigint,
 	@Password			nvarchar(128)
 as
@@ -263,7 +263,7 @@ go
 
 --KHỞI TẠO ĐƠN VỊ VÀ NGƯỜI SỬ DỤNG
 /*
-exec Insert_DanhMucDonVi null, '001', N'PAN HAI AN - Dia diem kiem tra tap trung', null
+exec Insert_DanhMucDonVi null, '001', N'001', null
 go
 exec Insert_DanhMucPhanQuyen null, '001', N'Quản trị hệ thống', null
 go

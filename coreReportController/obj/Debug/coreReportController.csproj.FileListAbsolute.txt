@@ -52,3 +52,39 @@ D:\cenCORE\coreReportController\obj\Debug\coreReportController.csproj.AssemblyRe
 D:\cenCORE\coreReportController\obj\Debug\coreReportController.csproj.CopyComplete
 D:\cenCORE\coreReportController\obj\Debug\coreReportController.dll
 D:\cenCORE\coreReportController\obj\Debug\coreReportController.pdb
+D:\OneDrive\Data\cenCore\coreReportController\obj\Debug\coreReportController.csproj.AssemblyReference.cache
+D:\OneDrive\Data\cenCore\coreReportController\obj\Debug\coreReportController.dll
+D:\OneDrive\Data\cenCore\coreReportController\obj\Debug\coreReportController.pdb
+D:\OneDrive\Data\cenCore\Outputs\coreReportController.dll
+D:\OneDrive\Data\cenCore\Outputs\coreReportController.pdb
+D:\OneDrive\Data\cenCore\coreReportController\obj\Debug\coreReportController.frmReportParameters.resources
+D:\OneDrive\Data\cenCore\coreReportController\obj\Debug\coreReportController.frmReportViewer.resources
+D:\OneDrive\Data\cenCore\coreReportController\obj\Debug\coreReportController.Properties.Resources.resources
+D:\OneDrive\Data\cenCore\coreReportController\obj\Debug\coreReportController.csproj.GenerateResource.cache
+D:\OneDrive\Data\cenCore\coreReportController\obj\Debug\coreReportController.dll.licenses
+D:\OneDrive\Data\cenCore\coreReportController\obj\Debug\coreReportController.csproj.CoreCompileInputs.cache
+D:\OneDrive\Data\cenCore\coreReportController\obj\Debug\coreReportController.csproj.CopyComplete
+C:\Users\minhc\OneDrive\Data\cenCore\Outputs\coreReportController.dll
+C:\Users\minhc\OneDrive\Data\cenCore\Outputs\coreReportController.pdb
+C:\Users\minhc\OneDrive\Data\cenCore\coreReportController\obj\Debug\coreReportController.csproj.AssemblyReference.cache
+C:\Users\minhc\OneDrive\Data\cenCore\coreReportController\obj\Debug\coreReportController.frmReportParameters.resources
+C:\Users\minhc\OneDrive\Data\cenCore\coreReportController\obj\Debug\coreReportController.frmReportViewer.resources
+C:\Users\minhc\OneDrive\Data\cenCore\coreReportController\obj\Debug\coreReportController.Properties.Resources.resources
+C:\Users\minhc\OneDrive\Data\cenCore\coreReportController\obj\Debug\coreReportController.csproj.GenerateResource.cache
+C:\Users\minhc\OneDrive\Data\cenCore\coreReportController\obj\Debug\coreReportController.dll.licenses
+C:\Users\minhc\OneDrive\Data\cenCore\coreReportController\obj\Debug\coreReportController.csproj.CoreCompileInputs.cache
+C:\Users\minhc\OneDrive\Data\cenCore\coreReportController\obj\Debug\coreReportController.csproj.CopyComplete
+C:\Users\minhc\OneDrive\Data\cenCore\coreReportController\obj\Debug\coreReportController.dll
+C:\Users\minhc\OneDrive\Data\cenCore\coreReportController\obj\Debug\coreReportController.pdb
+C:\Users\minhc\OneDrive - EVERLINK\Data\cenCore\Outputs\coreReportController.dll
+C:\Users\minhc\OneDrive - EVERLINK\Data\cenCore\Outputs\coreReportController.pdb
+C:\Users\minhc\OneDrive - EVERLINK\Data\cenCore\coreReportController\obj\Debug\coreReportController.csproj.AssemblyReference.cache
+C:\Users\minhc\OneDrive - EVERLINK\Data\cenCore\coreReportController\obj\Debug\coreReportController.frmReportParameters.resources
+C:\Users\minhc\OneDrive - EVERLINK\Data\cenCore\coreReportController\obj\Debug\coreReportController.frmReportViewer.resources
+C:\Users\minhc\OneDrive - EVERLINK\Data\cenCore\coreReportController\obj\Debug\coreReportController.Properties.Resources.resources
+C:\Users\minhc\OneDrive - EVERLINK\Data\cenCore\coreReportController\obj\Debug\coreReportController.csproj.GenerateResource.cache
+C:\Users\minhc\OneDrive - EVERLINK\Data\cenCore\coreReportController\obj\Debug\coreReportController.dll.licenses
+C:\Users\minhc\OneDrive - EVERLINK\Data\cenCore\coreReportController\obj\Debug\coreReportController.csproj.CoreCompileInputs.cache
+C:\Users\minhc\OneDrive - EVERLINK\Data\cenCore\coreReportController\obj\Debug\coreReportController.csproj.CopyComplete
+C:\Users\minhc\OneDrive - EVERLINK\Data\cenCore\coreReportController\obj\Debug\coreReportController.dll
+C:\Users\minhc\OneDrive - EVERLINK\Data\cenCore\coreReportController\obj\Debug\coreReportController.pdb

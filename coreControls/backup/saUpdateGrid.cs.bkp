@@ -1,17 +1,9 @@
 ﻿
-using System;
-using System.Globalization;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Drawing;
-using System.Data;
-using System.Linq;
-using System.Text;
-using System.Windows.Forms;
-using Infragistics.Win.UltraWinGrid;
 using Infragistics.Win;
-using cenCommon;
-namespace cenControls
+using Infragistics.Win.UltraWinGrid;
+using System;
+using System.Windows.Forms;
+namespace coreControls
 {
     public partial class saUpdateGrid : UltraGrid
     {
@@ -28,7 +20,7 @@ namespace cenControls
 
         public Boolean ReadOnly = false;
 
-        
+
         public saUpdateGrid()
         {
             InitializeComponent();
@@ -37,7 +29,7 @@ namespace cenControls
         }
         protected override void OnInitializeLayout(InitializeLayoutEventArgs e)
         {
-            if (CustomizeColumns==0)
+            if (CustomizeColumns == 0)
             {
                 //Vì Layout của Grid được tự động lưu lại sau khi khởi tạo lần đầu tiên,
                 //ên không cần thiết phải tùy biến lại sau mỗi lần đổi datasource để tăng tốc độ hiển thị
@@ -46,8 +38,11 @@ namespace cenControls
                 this.DisplayLayout.Reset();
                 this.Text = "";
                 this.DisplayLayout.TabNavigation = TabNavigation.NextControlOnLastCell;
+
                 this.DisplayLayout.UseFixedHeaders = true;
-                
+
+                this.DisplayLayout.Override.WrapHeaderText = DefaultableBoolean.True;
+
                 this.UpdateMode = UpdateMode.OnUpdate;
 
                 this.UseAppStyling = true;
@@ -67,7 +62,7 @@ namespace cenControls
                 this.DisplayLayout.EmptyRowSettings.ShowEmptyRows = true; //Hiển thị cả những dòng trống
                 //this.DisplayLayout.Override.CellMultiLine = Infragistics.Win.DefaultableBoolean.True; //WrapText
                 //Kiểm tra xem có được phép lọc trên lưới cập nhật hay không?
-                this.DisplayLayout.Override.FilterUIType = Infragistics.Win.UltraWinGrid.FilterUIType.Default; //Biểu tượng lọc đặt trên tiêu đề cột
+                this.DisplayLayout.Override.FilterUIType = Infragistics.Win.UltraWinGrid.FilterUIType.FilterRow; //Biểu tượng lọc đặt trên tiêu đề cột
                 //Thay đổi định dạng ActiveCell
                 this.DisplayLayout.Override.AllowColMoving = AllowColMoving.NotAllowed;
                 this.DisplayLayout.Override.AllowColSwapping = AllowColSwapping.NotAllowed;
@@ -86,12 +81,12 @@ namespace cenControls
                 if (e.Layout.Bands.Count > 0)
                 {
                     UltraGridBand saBand = e.Layout.Bands[0]; //Chỉ lấy band 0 vì grid được đặt ở chế độ view single band
-                    
+
                     saBand.Override.CellClickAction = Infragistics.Win.UltraWinGrid.CellClickAction.EditAndSelectText;//Khi click cell thì select text và cho phép sửa
-                    //saBand.Override.RowAlternateAppearance.BorderColor = System.Drawing.Color.LightGray; //Tô màu đường viền
-                    //saBand.Override.RowAppearance.BorderColor = System.Drawing.Color.LightGray; //Tô màu đường viền
-                    //Row selector
-                    
+                                                                                                                      //saBand.Override.RowAlternateAppearance.BorderColor = System.Drawing.Color.LightGray; //Tô màu đường viền
+                                                                                                                      //saBand.Override.RowAppearance.BorderColor = System.Drawing.Color.LightGray; //Tô màu đường viền
+                                                                                                                      //Row selector
+
                     this.DisplayLayout.Override.RowSelectorAppearance.TextHAlign = Infragistics.Win.HAlign.Right;
                     this.DisplayLayout.Override.RowSelectorAppearance.TextVAlign = Infragistics.Win.VAlign.Middle;
                     this.DisplayLayout.Override.RowSelectorHeaderStyle = Infragistics.Win.UltraWinGrid.RowSelectorHeaderStyle.SeparateElement;
@@ -118,24 +113,34 @@ namespace cenControls
                             ugcol.Hidden = true;
                         }
                         //Lấy chuỗi tương ứng với mã ngôn ngữ để hiển thị
-                        ugcol.Header.Caption = cenCommon.cenCommon.TraTuDien(ugcol.Key);
+                        ugcol.Header.Caption = coreCommon.coreCommon.TraTuDien(ugcol.Key);
                         if (ugcol.Key.Contains("$$"))
-                            ugcol.Header.Caption = cenCommon.cenCommon.TraTuDien(ugcol.Key.Substring(ugcol.Key.IndexOf("$$")+2));
+                            ugcol.Header.Caption = coreCommon.coreCommon.TraTuDien(ugcol.Key.Substring(ugcol.Key.IndexOf("$$") + 2));
                         //Nếu là cột chứa số tiền hoặc số lượng thì thêm tổng cộng
-                        if (cenCommon.GlobalVariables.TenCotSoLuong.ToUpper().IndexOf("(" + ColumnKey + ")") >= 0 || cenCommon.GlobalVariables.TenCotTrongLuong.ToUpper().IndexOf("(" + ColumnKey + ")") >= 0 || cenCommon.GlobalVariables.TenCotKhoiLuong.ToUpper().IndexOf("(" + ColumnKey + ")") >= 0 || cenCommon.GlobalVariables.TenCotTien.ToUpper().IndexOf("(" + ColumnKey + ")") >= 0)
+                        if (SummaryColumnsList.ToUpper().IndexOf("[" + ColumnKey + "]") >= 0)
                         {
-                            saBand.Summaries.Add(ugcol.Key.ToString(),Infragistics.Win.UltraWinGrid.SummaryType.Sum, saBand.Columns[ugcol.Key]);
+                            saBand.Summaries.Add(ugcol.Key.ToString(), Infragistics.Win.UltraWinGrid.SummaryType.Sum, saBand.Columns[ugcol.Key]);
                         }
 
                         if (FixedColumnsList.ToUpper().IndexOf("[" + ColumnKey + "]") >= 0)
                         {
                             ugcol.Header.Fixed = true;
                         }
-                        cenCommon.cenCommon.SetGridColumnWidth(ugcol);
-                        cenCommon.cenCommon.SetGridColumnMask(ugcol);
+
+                        if (ReadOnlyColumnsList.ToUpper().IndexOf("[" + ugcol.Key.ToUpper() + "]") >= 0)
+                        {
+                            ugcol.TabStop = false;
+                            ugcol.CellActivation = Activation.NoEdit;
+                            ugcol.CellClickAction = CellClickAction.CellSelect;
+                        }
+                        if (!coreCommon.coreCommon.IsNull(coreBUS.DanhMucThamSoHeThongBUS.GetGiaTri("DoRongCot_" + ColumnKey)))
+                            ugcol.Width = coreCommon.coreCommon.intParse(coreBUS.DanhMucThamSoHeThongBUS.GetGiaTri("DoRongCot_" + ColumnKey).ToString());
+                        else
+                            coreCommon.coreCommon.SetGridColumnWidth(ugcol);
+                        coreCommon.coreCommon.SetGridColumnMask(ugcol);
 
                     }
-                    
+
                     saBand.SummaryFooterCaption = ""; //Xóa caption mặc định dòng tổng cộng
                     //saBand.Summaries.Add(Infragistics.Win.UltraWinGrid.SummaryType.Count, saBand.Columns[CountPos]); //Hiển thị số lượng dòng trong lưới
                     //Định dạng dòng tổng cộng
@@ -144,21 +149,17 @@ namespace cenControls
                         if (ugsum.SummaryType != Infragistics.Win.UltraWinGrid.SummaryType.Count) ugsum.Appearance.TextHAlign = Infragistics.Win.HAlign.Right;
                         if (ugsum.SummaryType == SummaryType.Count)
                             ugsum.DisplayFormat = "Count: {0:##,###;(##,###);-;-}";
-                        if (cenCommon.GlobalVariables.TenCotSoLuong.ToUpper().IndexOf("(" + ugsum.Key.ToUpper() + ")") >= 0)
-                            ugsum.DisplayFormat = "{0:" + cenCommon.GlobalVariables.FormatSoLuong + ";(" + cenCommon.GlobalVariables.FormatSoLuong + ");-;-}";
-                        if (cenCommon.GlobalVariables.TenCotTrongLuong.ToUpper().IndexOf("(" + ugsum.Key.ToUpper() + ")") >= 0)
-                            ugsum.DisplayFormat = "{0:" + cenCommon.GlobalVariables.FormatTrongLuong + ";(" + cenCommon.GlobalVariables.FormatTrongLuong + ");-;-}";
-                        if (cenCommon.GlobalVariables.TenCotKhoiLuong.ToUpper().IndexOf("(" + ugsum.Key.ToUpper() + ")") >= 0)
-                            ugsum.DisplayFormat = "{0:" + cenCommon.GlobalVariables.FormatKhoiLuong + ";(" + cenCommon.GlobalVariables.FormatKhoiLuong + ");-;-}";
-                        if (cenCommon.GlobalVariables.TenCotTien.ToUpper().IndexOf("(" + ugsum.Key.ToUpper() + ")") >= 0)
-                            ugsum.DisplayFormat = "{0:" + cenCommon.GlobalVariables.FormatTien + ";(" + cenCommon.GlobalVariables.FormatTien + ");-;-}";
+
+                        if (ugsum.Key.StartsWith("SOTIEN"))
+                            ugsum.DisplayFormat = "{0:" + coreCommon.GlobalVariables.FormatInteger + ";(" + coreCommon.GlobalVariables.FormatInteger + ");-;-}";
+                        else
+                            ugsum.DisplayFormat = "{0:" + coreCommon.GlobalVariables.FormatReal + ";(" + coreCommon.GlobalVariables.FormatReal + ");-;-}";
                         ugsum.SummaryDisplayArea = Infragistics.Win.UltraWinGrid.SummaryDisplayAreas.BottomFixed;
                         ugsum.Appearance.FontData.Bold = Infragistics.Win.DefaultableBoolean.True;
                         ugsum.SummaryPosition = Infragistics.Win.UltraWinGrid.SummaryPosition.UseSummaryPositionColumn;
                         if (ugsum.SummaryType != Infragistics.Win.UltraWinGrid.SummaryType.Count) ugsum.SummaryPositionColumn = ugsum.SourceColumn;
                         if (ugsum.SummaryType != Infragistics.Win.UltraWinGrid.SummaryType.Count) ugsum.SummaryType = Infragistics.Win.UltraWinGrid.SummaryType.Sum;
                     }
-                    
                 }
             }
         }
@@ -180,11 +181,11 @@ namespace cenControls
 
             saBand.Override.SelectTypeCell = Infragistics.Win.UltraWinGrid.SelectType.Extended;
             saBand.Override.SelectTypeCol = Infragistics.Win.UltraWinGrid.SelectType.None;
-            saBand.Override.SelectTypeRow = Infragistics.Win.UltraWinGrid.SelectType.None;  
+            saBand.Override.SelectTypeRow = Infragistics.Win.UltraWinGrid.SelectType.None;
 
             foreach (Infragistics.Win.UltraWinGrid.UltraGridColumn ugcol in saBand.Columns)
             {
-                if (!ugcol.Hidden && ReadOnlyColumnsList.ToUpper().IndexOf(ugcol.Key.ToUpper()) < 0)
+                if (!ugcol.Hidden && ReadOnlyColumnsList.ToUpper().IndexOf("[" + ugcol.Key.ToUpper() + "]") < 0)
                 {
                     ugcol.TabStop = true;
                     ugcol.CellActivation = (!ReadOnly) ? Activation.AllowEdit : Activation.NoEdit;
@@ -330,11 +331,12 @@ namespace cenControls
         }
         protected override void OnEnter(EventArgs e)
         {
+            UltraGridCell cell = ActiveCell;
             if (ActiveRow != null)
                 ActiveRow.Activate();
             else if (Rows.Count > 0) Rows[0].Activate();
-            if (ActiveCell != null)
-                ActiveCell.Activate();
+            if (cell != null)
+                 cell.Activate();
             else if (ActiveRow != null) ActiveRow.Cells[FirstVisibleColumn().Key].Activate();
             base.OnEnter(e);
         }

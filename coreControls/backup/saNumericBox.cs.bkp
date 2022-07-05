@@ -1,14 +1,9 @@
-﻿using System;
-using System.Globalization;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Drawing;
-using System.Data;
-using System.Linq;
-using System.Text;
-using System.Windows.Forms;
+﻿using Infragistics.Win;
 using Infragistics.Win.UltraWinEditors;
-namespace cenControls
+using System;
+using System.Drawing;
+using System.Windows.Forms;
+namespace coreControls
 {
     public partial class saNumericBox : Infragistics.Win.UltraWinEditors.UltraNumericEditor
     {
@@ -22,6 +17,13 @@ namespace cenControls
             this.Nullable = true;
             this.TabNavigation = Infragistics.Win.UltraWinMaskedEdit.MaskedEditTabNavigation.NextControl;
             this.Appearance.ForeColorDisabled = Color.Black;
+            this.PromptChar = char.MinValue;
+            this.NumericType = NumericType.Decimal;
+            this.FormatString = coreCommon.GlobalVariables.FormatReal;
+            this.MaskInput = coreCommon.GlobalVariables.DinhDangNhapReal;
+            this.MinValue = "-999999999999999999";
+            this.MaxValue = "999999999999999999";
+            this.Value = null;
         }
         protected override void OnEnter(EventArgs e)
         {
@@ -32,7 +34,7 @@ namespace cenControls
         protected override void OnValueChanged(EventArgs args)
         {
             IsModified = true;
-            
+
             base.OnValueChanged(args);
         }
         protected override void OnValidated(EventArgs e)

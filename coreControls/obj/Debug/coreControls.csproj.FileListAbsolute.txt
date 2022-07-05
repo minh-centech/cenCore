@@ -96,3 +96,51 @@ D:\cenCORE\coreControls\obj\Debug\coreControls.csproj.CoreCompileInputs.cache
 D:\cenCORE\coreControls\obj\Debug\coreControls.csproj.CopyComplete
 D:\cenCORE\coreControls\obj\Debug\coreControls.dll
 D:\cenCORE\coreControls\obj\Debug\coreControls.pdb
+D:\OneDrive\Data\cenCore\Outputs\coreControls.dll
+D:\OneDrive\Data\cenCore\Outputs\coreControls.pdb
+D:\OneDrive\Data\cenCore\coreControls\obj\Debug\coreControls.csproj.AssemblyReference.cache
+D:\OneDrive\Data\cenCore\coreControls\obj\Debug\coreControls.saCheckBox.resources
+D:\OneDrive\Data\cenCore\coreControls\obj\Debug\coreControls.saDateTimeBox.resources
+D:\OneDrive\Data\cenCore\coreControls\obj\Debug\coreControls.saNonUpdateGrid.resources
+D:\OneDrive\Data\cenCore\coreControls\obj\Debug\coreControls.saIntNumericBox.resources
+D:\OneDrive\Data\cenCore\coreControls\obj\Debug\coreControls.saNumericBox.resources
+D:\OneDrive\Data\cenCore\coreControls\obj\Debug\coreControls.saTextBox.resources
+D:\OneDrive\Data\cenCore\coreControls\obj\Debug\coreControls.saUpdateGrid.resources
+D:\OneDrive\Data\cenCore\coreControls\obj\Debug\coreControls.csproj.GenerateResource.cache
+D:\OneDrive\Data\cenCore\coreControls\obj\Debug\coreControls.dll.licenses
+D:\OneDrive\Data\cenCore\coreControls\obj\Debug\coreControls.csproj.CoreCompileInputs.cache
+D:\OneDrive\Data\cenCore\coreControls\obj\Debug\coreControls.csproj.CopyComplete
+D:\OneDrive\Data\cenCore\coreControls\obj\Debug\coreControls.dll
+D:\OneDrive\Data\cenCore\coreControls\obj\Debug\coreControls.pdb
+C:\Users\minhc\OneDrive\Data\cenCore\Outputs\coreControls.dll
+C:\Users\minhc\OneDrive\Data\cenCore\Outputs\coreControls.pdb
+C:\Users\minhc\OneDrive\Data\cenCore\coreControls\obj\Debug\coreControls.csproj.AssemblyReference.cache
+C:\Users\minhc\OneDrive\Data\cenCore\coreControls\obj\Debug\coreControls.saCheckBox.resources
+C:\Users\minhc\OneDrive\Data\cenCore\coreControls\obj\Debug\coreControls.saDateTimeBox.resources
+C:\Users\minhc\OneDrive\Data\cenCore\coreControls\obj\Debug\coreControls.saNonUpdateGrid.resources
+C:\Users\minhc\OneDrive\Data\cenCore\coreControls\obj\Debug\coreControls.saIntNumericBox.resources
+C:\Users\minhc\OneDrive\Data\cenCore\coreControls\obj\Debug\coreControls.saNumericBox.resources
+C:\Users\minhc\OneDrive\Data\cenCore\coreControls\obj\Debug\coreControls.saTextBox.resources
+C:\Users\minhc\OneDrive\Data\cenCore\coreControls\obj\Debug\coreControls.saUpdateGrid.resources
+C:\Users\minhc\OneDrive\Data\cenCore\coreControls\obj\Debug\coreControls.csproj.GenerateResource.cache
+C:\Users\minhc\OneDrive\Data\cenCore\coreControls\obj\Debug\coreControls.dll.licenses
+C:\Users\minhc\OneDrive\Data\cenCore\coreControls\obj\Debug\coreControls.csproj.CoreCompileInputs.cache
+C:\Users\minhc\OneDrive\Data\cenCore\coreControls\obj\Debug\coreControls.csproj.CopyComplete
+C:\Users\minhc\OneDrive\Data\cenCore\coreControls\obj\Debug\coreControls.dll
+C:\Users\minhc\OneDrive\Data\cenCore\coreControls\obj\Debug\coreControls.pdb
+C:\Users\minhc\OneDrive - EVERLINK\Data\cenCore\Outputs\coreControls.dll
+C:\Users\minhc\OneDrive - EVERLINK\Data\cenCore\Outputs\coreControls.pdb
+C:\Users\minhc\OneDrive - EVERLINK\Data\cenCore\coreControls\obj\Debug\coreControls.csproj.AssemblyReference.cache
+C:\Users\minhc\OneDrive - EVERLINK\Data\cenCore\coreControls\obj\Debug\coreControls.saCheckBox.resources
+C:\Users\minhc\OneDrive - EVERLINK\Data\cenCore\coreControls\obj\Debug\coreControls.saDateTimeBox.resources
+C:\Users\minhc\OneDrive - EVERLINK\Data\cenCore\coreControls\obj\Debug\coreControls.saNonUpdateGrid.resources
+C:\Users\minhc\OneDrive - EVERLINK\Data\cenCore\coreControls\obj\Debug\coreControls.saIntNumericBox.resources
+C:\Users\minhc\OneDrive - EVERLINK\Data\cenCore\coreControls\obj\Debug\coreControls.saNumericBox.resources
+C:\Users\minhc\OneDrive - EVERLINK\Data\cenCore\coreControls\obj\Debug\coreControls.saTextBox.resources
+C:\Users\minhc\OneDrive - EVERLINK\Data\cenCore\coreControls\obj\Debug\coreControls.saUpdateGrid.resources
+C:\Users\minhc\OneDrive - EVERLINK\Data\cenCore\coreControls\obj\Debug\coreControls.csproj.GenerateResource.cache
+C:\Users\minhc\OneDrive - EVERLINK\Data\cenCore\coreControls\obj\Debug\coreControls.dll.licenses
+C:\Users\minhc\OneDrive - EVERLINK\Data\cenCore\coreControls\obj\Debug\coreControls.csproj.CoreCompileInputs.cache
+C:\Users\minhc\OneDrive - EVERLINK\Data\cenCore\coreControls\obj\Debug\coreControls.csproj.CopyComplete
+C:\Users\minhc\OneDrive - EVERLINK\Data\cenCore\coreControls\obj\Debug\coreControls.dll
+C:\Users\minhc\OneDrive - EVERLINK\Data\cenCore\coreControls\obj\Debug\coreControls.pdb

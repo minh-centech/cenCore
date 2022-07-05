@@ -55,3 +55,24 @@ D:\cenCORE\coreDTO\obj\Debug\coreDTO.csproj.CoreCompileInputs.cache
 D:\cenCORE\coreDTO\obj\Debug\coreDTO.csproj.CopyComplete
 D:\cenCORE\coreDTO\obj\Debug\coreDTO.dll
 D:\cenCORE\coreDTO\obj\Debug\coreDTO.pdb
+D:\OneDrive\Data\cenCore\Outputs\coreDTO.dll
+D:\OneDrive\Data\cenCore\Outputs\coreDTO.pdb
+D:\OneDrive\Data\cenCore\coreDTO\obj\Debug\coreDTO.csproj.AssemblyReference.cache
+D:\OneDrive\Data\cenCore\coreDTO\obj\Debug\coreDTO.csproj.CoreCompileInputs.cache
+D:\OneDrive\Data\cenCore\coreDTO\obj\Debug\coreDTO.csproj.CopyComplete
+D:\OneDrive\Data\cenCore\coreDTO\obj\Debug\coreDTO.dll
+D:\OneDrive\Data\cenCore\coreDTO\obj\Debug\coreDTO.pdb
+C:\Users\minhc\OneDrive\Data\cenCore\Outputs\coreDTO.dll
+C:\Users\minhc\OneDrive\Data\cenCore\Outputs\coreDTO.pdb
+C:\Users\minhc\OneDrive\Data\cenCore\coreDTO\obj\Debug\coreDTO.csproj.AssemblyReference.cache
+C:\Users\minhc\OneDrive\Data\cenCore\coreDTO\obj\Debug\coreDTO.csproj.CoreCompileInputs.cache
+C:\Users\minhc\OneDrive\Data\cenCore\coreDTO\obj\Debug\coreDTO.csproj.CopyComplete
+C:\Users\minhc\OneDrive\Data\cenCore\coreDTO\obj\Debug\coreDTO.dll
+C:\Users\minhc\OneDrive\Data\cenCore\coreDTO\obj\Debug\coreDTO.pdb
+C:\Users\minhc\OneDrive - EVERLINK\Data\cenCore\Outputs\coreDTO.dll
+C:\Users\minhc\OneDrive - EVERLINK\Data\cenCore\Outputs\coreDTO.pdb
+C:\Users\minhc\OneDrive - EVERLINK\Data\cenCore\coreDTO\obj\Debug\coreDTO.csproj.AssemblyReference.cache
+C:\Users\minhc\OneDrive - EVERLINK\Data\cenCore\coreDTO\obj\Debug\coreDTO.csproj.CoreCompileInputs.cache
+C:\Users\minhc\OneDrive - EVERLINK\Data\cenCore\coreDTO\obj\Debug\coreDTO.csproj.CopyComplete
+C:\Users\minhc\OneDrive - EVERLINK\Data\cenCore\coreDTO\obj\Debug\coreDTO.dll
+C:\Users\minhc\OneDrive - EVERLINK\Data\cenCore\coreDTO\obj\Debug\coreDTO.pdb

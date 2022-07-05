@@ -28,7 +28,7 @@ begin
 end
 go
 -----------------
-alter procedure Check_ForeignKey
+create procedure Check_ForeignKey
 	@TableName nvarchar(255),
 	@ColumnName nvarchar(255),
 	@ValueCheck bigint,

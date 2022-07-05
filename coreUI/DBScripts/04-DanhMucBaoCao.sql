@@ -61,7 +61,7 @@ create table DanhMucBaoCaoCot
 go
 */
 ------------
-alter procedure List_DanhMucNhomBaoCao
+create procedure List_DanhMucNhomBaoCao
 	@ID bigint = null
 as
 begin
@@ -69,7 +69,7 @@ begin
 	select ID, Ma, Ten, CreateDate, EditDate from DanhMucNhomBaoCao where case when @ID is not null then ID else 0 end = ISNULL(@ID, 0) order by Ma;
 end
 go
-alter procedure Insert_DanhMucNhomBaoCao
+create procedure Insert_DanhMucNhomBaoCao
 	@ID			bigint out,
 	@Ma			nvarchar(128) = null,
 	@Ten		nvarchar(255) = null,
@@ -124,7 +124,7 @@ begin
 	end catch;
 end
 go
-alter procedure Update_DanhMucNhomBaoCao
+create procedure Update_DanhMucNhomBaoCao
 	@ID			bigint,
 	@Ma			nvarchar(128),
 	@Ten		nvarchar(255),
@@ -182,7 +182,7 @@ begin
 	end catch
 end
 go
-alter procedure Delete_DanhMucNhomBaoCao
+create procedure Delete_DanhMucNhomBaoCao
 	@ID			bigint
 as
 begin
@@ -201,7 +201,7 @@ begin
 	end catch
 end
 go
-alter procedure List_DanhMucBaoCao
+create procedure List_DanhMucBaoCao
 	@ID bigint = null
 as
 begin
@@ -246,7 +246,7 @@ begin
 	from DanhMucBaoCaoCot where	case when @ID is not null then IDDanhMucBaoCao else 0 end = ISNULL(@ID, 0) order by ThuTu;
 end
 go
-alter procedure Insert_DanhMucBaoCao
+create procedure Insert_DanhMucBaoCao
 	@ID							bigint out,
 	@Ma							nvarchar(128) = null,
 	@Ten						nvarchar(255) = null,
@@ -461,7 +461,7 @@ begin
 	end catch
 end
 go
-alter procedure Update_DanhMucBaoCao
+create procedure Update_DanhMucBaoCao
 	@ID							bigint,
 	@Ma							nvarchar(128) = null,
 	@Ten						nvarchar(255) = null,
@@ -665,7 +665,7 @@ begin
 	end catch
 end
 go
-alter procedure Delete_DanhMucBaoCao
+create procedure Delete_DanhMucBaoCao
 	@ID			bigint
 as
 begin
@@ -686,7 +686,7 @@ begin
 	end catch
 end
 go
-alter procedure List_DanhMucBaoCaoCot
+create procedure List_DanhMucBaoCaoCot
 	@ID bigint = null,
 	@IDDanhMucBaoCao bigint = null
 as
@@ -710,7 +710,7 @@ begin
 			and case when @IDDanhMucBaoCao is not null then IDDanhMucBaoCao else 0 end = ISNULL(@IDDanhMucBaoCao, 0);
 end
 go
-alter procedure Insert_DanhMucBaoCaoCot
+create procedure Insert_DanhMucBaoCaoCot
 	@ID					bigint out,
 	@IDDanhMucBaoCao	bigint = null,
 	@Ma					nvarchar(128) = null,
@@ -829,7 +829,7 @@ begin
 	end catch
 end
 go
-alter procedure Update_DanhMucBaoCaoCot
+create procedure Update_DanhMucBaoCaoCot
 	@ID				bigint,
 	@Ma				nvarchar(128) = null,
 	@Ten			nvarchar(255) = null,
@@ -940,7 +940,7 @@ begin
 	end catch
 end
 go
-alter procedure Delete_DanhMucBaoCaoCot
+create procedure Delete_DanhMucBaoCaoCot
 	@ID			bigint
 as
 begin
@@ -959,7 +959,7 @@ begin
 	end catch
 end
 go
-alter procedure GetMa_DanhMucBaoCao_ByID
+create procedure GetMa_DanhMucBaoCao_ByID
 	@ID bigint,
 	@Ma nvarchar(128) = null out
 as

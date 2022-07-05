@@ -1,15 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Windows.Forms;
+﻿using coreControls;
 using Infragistics.Win.UltraWinGrid;
-using cenControls;
+using System;
+using System.Data;
+using System.Windows.Forms;
 
-namespace cenBase.BaseForms
+namespace coreBase.BaseForms
 {
     public partial class frmBaseGridUpdate : Form
     {
@@ -17,7 +12,8 @@ namespace cenBase.BaseForms
         public String TableName;
         public Boolean Saved = false, GridValidation = true;
         public Int32 RowID = 0;
-        BindingSource bs;
+        public Func<long> checkForeignKey;
+        public BindingSource bs;
         public frmBaseGridUpdate()
         {
             InitializeComponent();
@@ -27,20 +23,20 @@ namespace cenBase.BaseForms
         {
             saUpdateGrid.AfterCellUpdate += new CellEventHandler(ugChiTiet_AfterCellUpdate);
             saUpdateGrid.AfterRowInsert += new RowEventHandler(ugChiTiet_AfterRowInsert);
-
-            bs = new BindingSource
+            if (dt != null)
             {
-                DataSource = dt
-            };
-
-            saUpdateGrid.DataSource = bs;
-            //saUpdateGrid.DisplayLayout.Bands[0].Columns["ID"].Hidden = false;
-            saUpdateGrid.SetEditableState(false);
-            if (dt.Rows.Count == 0)
-            {
-                bs.AddNew();
-                saUpdateGrid.Rows[0].Activate();
-                saUpdateGrid.ActiveRow.Cells["ID"].Value = RowID + dt.Rows.Count + 1;
+                bs = new BindingSource
+                {
+                    DataSource = dt
+                };
+                saUpdateGrid.DataSource = bs;
+                saUpdateGrid.SetEditableState(false);
+                if (dt.Rows.Count == 0)
+                {
+                    bs.AddNew();
+                    saUpdateGrid.Rows[0].Activate();
+                    saUpdateGrid.ActiveRow.Cells["ID"].Value = coreCommon.coreCommon.MaxTempID(dt);
+                }
             }
         }
         private void UltraToolbarsManager1_ToolClick(object sender, Infragistics.Win.UltraWinToolbars.ToolClickEventArgs e)
@@ -54,41 +50,55 @@ namespace cenBase.BaseForms
                     this.Close();
                     break;
                 case "BTXOADONG":
-                    if (saUpdateGrid.ActiveRow == null) return;
-                    saUpdateGrid.ActiveRow.Delete();
+                    XoaChungTuChiTiet();
                     break;
                 case "BTTHEMDONG":
-                    GridValidation = false;
-                    bs.AddNew();
-                    saUpdateGrid.Focus();
-                    saUpdateGrid.DisplayLayout.Rows[saUpdateGrid.DisplayLayout.Rows.Count - 1].Activate();
-                    saUpdateGrid.ActiveRow.Cells["ID"].Value = RowID + cenBase.Classes.ChungTu.MaxTempID(dt);
-                    foreach (UltraGridColumn ugCol in saUpdateGrid.DisplayLayout.Bands[0].Columns)
-                    {
-                        if (!ugCol.Hidden)
-                        {
-                            saUpdateGrid.ActiveCell = saUpdateGrid.ActiveRow.Cells[ugCol.Key];
-                            saUpdateGrid.ActiveCell.Activate();
-                            break;
-                        }
-                    }
-                    GridValidation = true;
+                    ThemChungTuChiTiet();
                     break;
             }
         }
-       
         protected virtual void List()
         {
         }
         protected virtual void UpdateData()
         {
         }
-
+        protected virtual void ThemChungTuChiTiet()
+        {
+            GridValidation = false;
+            bs.AddNew();
+            saUpdateGrid.Focus();
+            saUpdateGrid.DisplayLayout.Rows[saUpdateGrid.DisplayLayout.Rows.Count - 1].Activate();
+            saUpdateGrid.ActiveRow.Cells["ID"].Value = RowID + coreCommon.coreCommon.MaxTempID(dt);
+            foreach (UltraGridColumn ugCol in saUpdateGrid.DisplayLayout.Bands[0].Columns)
+            {
+                if (!ugCol.Hidden)
+                {
+                    saUpdateGrid.ActiveCell = saUpdateGrid.ActiveRow.Cells[ugCol.Key];
+                    saUpdateGrid.ActiveCell.Activate();
+                    break;
+                }
+            }
+            GridValidation = true;
+        }
+        protected virtual void XoaChungTuChiTiet()
+        {
+            if (saUpdateGrid.ActiveRow == null) return;
+            if (checkForeignKey != null && checkForeignKey() > 0) return;
+            int i = saUpdateGrid.ActiveRow.Index;
+            bs.RemoveCurrent();
+            while (i > saUpdateGrid.Rows.Count - 1) i -= 1;
+            if (i <= saUpdateGrid.Rows.Count - 1 && i >= 0)
+            {
+                saUpdateGrid.Focus();
+                saUpdateGrid.Rows[i].Activate();
+            }
+        }
         private void frmBaseGridUpdate_FormClosing(object sender, FormClosingEventArgs e)
         {
             if (!Saved)
             {
-                DialogResult dlg = cenCommon.cenCommon.QuestionMessage("Bạn có muốn lưu lại dữ liệu trước khi thoát?", 1);
+                DialogResult dlg = coreCommon.coreCommon.QuestionMessage("Bạn có muốn lưu lại dữ liệu trước khi thoát?", 1);
                 switch (dlg)
                 {
                     case System.Windows.Forms.DialogResult.Cancel:
@@ -101,12 +111,11 @@ namespace cenBase.BaseForms
                     case System.Windows.Forms.DialogResult.Yes:
                         bs.EndEdit();
                         UpdateData();
-                        if (!Saved) e.Cancel= true;
+                        if (!Saved) e.Cancel = true;
                         break;
                 }
             }
         }
-
         private void ugChiTiet_AfterCellUpdate(object sender, CellEventArgs e)
         {
             if (e.Cell == null) return;
@@ -115,14 +124,14 @@ namespace cenBase.BaseForms
         }
         private void ugChiTiet_AfterRowInsert(object sender, RowEventArgs e)
         {
-            e.Row.Cells["ID"].Value = RowID + cenBase.Classes.ChungTu.MaxTempID(dt);
+            if (coreCommon.coreCommon.IsNull(e.Row.Cells["ID"].Value))
+                e.Row.Cells["ID"].Value = RowID + coreCommon.coreCommon.MaxTempID(dt);
         }
         //Valid các ô nhập dữ liệu trên lưới
         protected virtual void gridColumnDataProcess(UltraGrid ug, UltraGridCell uCell, out Boolean GridValidation, Boolean ShowLookUp)
         {
             GridValidation = true;
         }
-
         private void frmBaseGridUpdate_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Escape)

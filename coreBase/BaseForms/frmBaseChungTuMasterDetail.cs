@@ -94,6 +94,9 @@ namespace coreBase.BaseForms
                 }
             }
         }
+        protected virtual void refresh()
+        {
+        }
         //Tìm kiếm chứng từ
         protected virtual void filter()
         {
@@ -179,8 +182,10 @@ namespace coreBase.BaseForms
         {
             if (UpdateMode != coreCommon.ThaoTacDuLieu.Xem)
             {
-                coreCommon.coreCommon.ErrorMessageOkOnly("Bạn phải kết thúc cập nhật chứng từ trước khi đóng cửa sổ!");
-                e.Cancel = true;
+                if (coreCommon.coreCommon.QuestionMessage("Dữ liệu thay đổi sẽ KHÔNG ĐƯỢC LƯU LẠI, bạn có muốn đóng lại không?", 0) == DialogResult.No)
+                {
+                    e.Cancel = true;
+                }
             }
             else
             {
@@ -214,6 +219,9 @@ namespace coreBase.BaseForms
                     break;
                 case "BTTHEMDONG":
                     themChungTuChiTiet();
+                    break;
+                case "BTREFRESH":
+                    refresh();
                     break;
                 case "BTIMPORT":
                     import();

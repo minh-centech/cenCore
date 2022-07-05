@@ -13,7 +13,7 @@ create table DanhMucTuDien
 )
 go
 */
-alter procedure List_DanhMucTuDien
+create procedure List_DanhMucTuDien
 	@ID bigint = null
 as
 begin
@@ -21,7 +21,7 @@ begin
 	select ID, Ma, Ten, CreateDate, EditDate from DanhMucTuDien where case when @ID is not null then ID else 0 end = ISNULL(@ID, 0) order by Ma;
 end
 go
-alter procedure Insert_DanhMucTuDien
+create procedure Insert_DanhMucTuDien
 	@ID			bigint out,
 	@Ma			nvarchar(128),
 	@Ten		nvarchar(255),
@@ -76,7 +76,7 @@ begin
 	end catch
 end
 go
-alter procedure Update_DanhMucTuDien
+create procedure Update_DanhMucTuDien
 	@ID			bigint,
 	@Ma			nvarchar(128),
 	@Ten		nvarchar(255),
@@ -134,7 +134,7 @@ begin
 	end catch
 end
 go
-alter procedure Delete_DanhMucTuDien
+create procedure Delete_DanhMucTuDien
 	@ID			bigint
 as
 begin
@@ -151,4 +151,4 @@ begin
 		select @ErrMsg = ERROR_MESSAGE()
 		raiserror(@ErrMsg, 16, 1)
 	end catch
-end
+end;

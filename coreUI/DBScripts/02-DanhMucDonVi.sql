@@ -21,7 +21,7 @@ begin
 	select ID, Ma, Ten, CreateDate, EditDate from DanhMucDonVi where case when @ID is not null then ID else 0 end = ISNULL(@ID, 0) order by Ma;
 end
 go
-alter procedure Insert_DanhMucDonVi
+create procedure Insert_DanhMucDonVi
 	@ID			bigint out,
 	@Ma			nvarchar(128) = null,
 	@Ten		nvarchar(255) = null,
@@ -87,7 +87,7 @@ begin
 	end catch;
 end
 go
-alter procedure Update_DanhMucDonVi
+create procedure Update_DanhMucDonVi
 	@ID			bigint,
 	@Ma			nvarchar(128) = null,
 	@Ten		nvarchar(255) = null,
@@ -141,10 +141,10 @@ begin
 	end try
 	begin catch
 		if @@TRANCOUNT > 0 rollback tran;
-		select @ErrMsg = ERROR_MESSAGE()
-		raiserror(@ErrMsg, 16, 1)
-	end catch
-end
+		select @ErrMsg = ERROR_MESSAGE();
+		raiserror(@ErrMsg, 16, 1);
+	end catch;
+end;
 go
 
 create procedure Delete_DanhMucDonVi
@@ -162,7 +162,8 @@ begin
 	end try
 	begin catch
 		if @@TRANCOUNT > 0 rollback tran;
-		select @ErrMsg = ERROR_MESSAGE()
-		raiserror(@ErrMsg, 16, 1)
-	end catch
-end
+		select @ErrMsg = ERROR_MESSAGE();
+		raiserror(@ErrMsg, 16, 1);
+	end catch;
+end;
+go

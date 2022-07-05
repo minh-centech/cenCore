@@ -1,31 +1,26 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
+﻿using Infragistics.Win.UltraWinGrid;
+using System;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
 using System.Windows.Forms;
-using Infragistics.Win.UltraWinGrid;
-namespace cenBase.BaseForms
+namespace coreBase.BaseForms
 {
     public partial class frmBaseDanhMucChiTiet : Form
     {
-        public DataSet dsData = null, dsValid = null;
-        public BindingSource bsDanhMuc = null;
-        protected BindingSource bsDanhMucChiTiet = null;
-        protected UltraGrid ugDanhMucChiTiet = null;
-        protected String tableNameDanhMucChiTiet = String.Empty;
-        protected Boolean bContinue = true;
+        public object IDDanhMucDoiTuong;
+        public object IDDanhMucLoaiDoiTuong;
+        public string TenDanhMucLoaiDoiTuong;
+
+        protected DataSet dsData = null;
+        protected BindingSource bsData = null, bsDataChiTiet = null;
+
         public frmBaseDanhMucChiTiet()
         {
             InitializeComponent();
         }
-
         private void frmQuanLy_Load(object sender, EventArgs e)
         {
+            UltraToolbarsManager1.Tools["btTimKiem"].SharedProps.Visible = false;
             List();
-            txtFilterBox.ValueChanged +=new EventHandler(txtfilterBox_ValueChanged);
         }
 
         private void UltraToolbarsManager1_ToolClick(object sender, Infragistics.Win.UltraWinToolbars.ToolClickEventArgs e)
@@ -33,81 +28,75 @@ namespace cenBase.BaseForms
             switch (e.Tool.Key.ToString().ToUpper())
             {
                 case "BTXOA":
-                    DeleteDanhMuc();
+                    Delete();
                     break;
                 case "BTTHEM":
-                    InsertDanhMuc();
+                    Insert();
                     break;
                 case "BTCOPY":
-                    CopyDanhMuc();
+                    Copy();
                     break;
                 case "BTSUA":
-                    UpdateDanhMuc();
+                    Update();
                     break;
                 case "BTTAILAI":
                     List();
                     break;
+                case "BTIN":
+                    In();
+                    break;
                 case "BTEXCEL":
-                    cenCommon.cenCommon.ExportGrid2Excel(ug);
+                    coreCommon.coreCommon.ExportGrid2Excel(ug);
                     break;
             }
-        }
-        private void txtfilterBox_ValueChanged(object sender, EventArgs e)
-        {
-            cenCommon.cenCommon.filterGrid(ug, txtFilterBox.Text);
-        }
-
-        private void frmDanhMuc_FormClosed(object sender, FormClosedEventArgs e)
-        {
-            this.Dispose();
         }
 
         protected virtual void List()
         {
         }
-        protected virtual void InsertDanhMuc()
+        protected virtual void In()
         {
-            bContinue = (bsDanhMuc != null);
         }
-        protected virtual void CopyDanhMuc()
+        protected virtual void Insert()
         {
-            bContinue = (bsDanhMuc != null && bsDanhMuc.Current != null && ug.ActiveRow != null);
         }
-        protected virtual void UpdateDanhMuc()
+        protected virtual void Copy()
         {
-            bContinue = (bsDanhMuc != null && bsDanhMuc.Current != null && ug.ActiveRow != null);
         }
-        protected virtual void DeleteDanhMuc()
+        protected new virtual void Update()
         {
-            bContinue = (bsDanhMuc != null && bsDanhMuc.Current != null && ug.ActiveRow != null && cenCommon.cenCommon.QuestionMessage("Bạn có chắc chắn muốn xóa mục dữ liệu này?", 0) != DialogResult.No);
         }
-        protected virtual void InsertDanhMucChiTiet()
+
+        protected virtual void Delete()
         {
-            bContinue = (bsDanhMuc != null && bsDanhMuc.Current != null && ug.ActiveRow != null);
         }
-        protected virtual void UpdateDanhMucChiTiet()
+
+
+        protected virtual void InsertChiTiet()
         {
-            bContinue = (bsDanhMucChiTiet != null && bsDanhMucChiTiet.Current != null && ugDanhMucChiTiet.ActiveRow != null);
         }
-        protected virtual void DeleteDanhMucChiTiet()
+        protected virtual void UpdateChiTiet()
         {
-            bContinue = (bsDanhMucChiTiet != null && bsDanhMucChiTiet.Current != null && ugDanhMucChiTiet.ActiveRow != null && cenCommon.cenCommon.QuestionMessage("Bạn có chắc chắn muốn xóa mục dữ liệu này?", 0) != DialogResult.No);
+        }
+        protected virtual void DeleteChiTiet()
+        {
+            Delete();
         }
         private void frmBaseDanhMuc_KeyDown(object sender, KeyEventArgs e)
         {
             //Chi tiết danh mục
-            if (e.Control)
+            if (e.Modifiers == Keys.Control)
             {
                 switch (e.KeyCode)
                 {
                     case Keys.Insert:
-                        InsertDanhMucChiTiet();
+                        InsertChiTiet();
                         break;
                     case Keys.Enter:
-                        UpdateDanhMucChiTiet();
+                        UpdateChiTiet();
                         break;
                     case Keys.Delete:
-                        DeleteDanhMucChiTiet();
+                        DeleteChiTiet();
                         break;
                 }
             }
@@ -115,7 +104,7 @@ namespace cenBase.BaseForms
 
         private void ug_DoubleClickRow(object sender, DoubleClickRowEventArgs e)
         {
-            UpdateDanhMuc();
+            Update();
         }
 
         private void txtChiTietfilterBox_EditorButtonClick(object sender, Infragistics.Win.UltraWinEditors.EditorButtonEventArgs e)
@@ -123,18 +112,21 @@ namespace cenBase.BaseForms
             switch (e.Button.Key.ToUpper())
             {
                 case "BTTHEMCHITIET":
-                    InsertDanhMucChiTiet();
+                    InsertChiTiet();
                     break;
                 case "BTSUACHITIET":
-                    UpdateDanhMucChiTiet();
+                    UpdateChiTiet();
                     break;
                 case "BTXOACHITIET":
-                    DeleteDanhMucChiTiet();
+                    DeleteChiTiet();
                     break;
             }
         }
 
-        
+        private void ugChiTiet_DoubleClickRow(object sender, DoubleClickRowEventArgs e)
+        {
+            UpdateChiTiet();
+        }
         
     }
 }

@@ -41,3 +41,24 @@ D:\cenCORE\coreBUS\obj\Debug\coreBUS.csproj.CoreCompileInputs.cache
 D:\cenCORE\coreBUS\obj\Debug\coreBUS.csproj.CopyComplete
 D:\cenCORE\coreBUS\obj\Debug\coreBUS.dll
 D:\cenCORE\coreBUS\obj\Debug\coreBUS.pdb
+D:\OneDrive\Data\cenCore\Outputs\coreBUS.dll
+D:\OneDrive\Data\cenCore\Outputs\coreBUS.pdb
+D:\OneDrive\Data\cenCore\coreBUS\obj\Debug\coreBUS.csproj.AssemblyReference.cache
+D:\OneDrive\Data\cenCore\coreBUS\obj\Debug\coreBUS.csproj.CoreCompileInputs.cache
+D:\OneDrive\Data\cenCore\coreBUS\obj\Debug\coreBUS.csproj.CopyComplete
+D:\OneDrive\Data\cenCore\coreBUS\obj\Debug\coreBUS.dll
+D:\OneDrive\Data\cenCore\coreBUS\obj\Debug\coreBUS.pdb
+C:\Users\minhc\OneDrive\Data\cenCore\Outputs\coreBUS.dll
+C:\Users\minhc\OneDrive\Data\cenCore\Outputs\coreBUS.pdb
+C:\Users\minhc\OneDrive\Data\cenCore\coreBUS\obj\Debug\coreBUS.csproj.AssemblyReference.cache
+C:\Users\minhc\OneDrive\Data\cenCore\coreBUS\obj\Debug\coreBUS.csproj.CoreCompileInputs.cache
+C:\Users\minhc\OneDrive\Data\cenCore\coreBUS\obj\Debug\coreBUS.csproj.CopyComplete
+C:\Users\minhc\OneDrive\Data\cenCore\coreBUS\obj\Debug\coreBUS.dll
+C:\Users\minhc\OneDrive\Data\cenCore\coreBUS\obj\Debug\coreBUS.pdb
+C:\Users\minhc\OneDrive - EVERLINK\Data\cenCore\Outputs\coreBUS.dll
+C:\Users\minhc\OneDrive - EVERLINK\Data\cenCore\Outputs\coreBUS.pdb
+C:\Users\minhc\OneDrive - EVERLINK\Data\cenCore\coreBUS\obj\Debug\coreBUS.csproj.AssemblyReference.cache
+C:\Users\minhc\OneDrive - EVERLINK\Data\cenCore\coreBUS\obj\Debug\coreBUS.csproj.CoreCompileInputs.cache
+C:\Users\minhc\OneDrive - EVERLINK\Data\cenCore\coreBUS\obj\Debug\coreBUS.csproj.CopyComplete
+C:\Users\minhc\OneDrive - EVERLINK\Data\cenCore\coreBUS\obj\Debug\coreBUS.dll
+C:\Users\minhc\OneDrive - EVERLINK\Data\cenCore\coreBUS\obj\Debug\coreBUS.pdb

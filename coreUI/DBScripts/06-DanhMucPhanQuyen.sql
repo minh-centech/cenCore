@@ -75,7 +75,7 @@ create table DanhMucPhanQuyenBaoCao
 )
 go
 */
-alter procedure List_DanhMucPhanQuyen
+create procedure List_DanhMucPhanQuyen
 	@ID	bigint = null
 as
 begin
@@ -120,7 +120,7 @@ begin
 	order by b.Ma;
 end
 go
-alter procedure Insert_DanhMucPhanQuyen
+create procedure Insert_DanhMucPhanQuyen
 	@ID			bigint out,
 	@Ma			nvarchar(128) = null,
 	@Ten		nvarchar(255) = null,
@@ -215,7 +215,7 @@ begin
 	end catch
 end
 go
-alter procedure Update_DanhMucPhanQuyen
+create procedure Update_DanhMucPhanQuyen
 	@ID			bigint,
 	@Ma			nvarchar(128),
 	@Ten		nvarchar(255),
@@ -272,7 +272,7 @@ begin
 	end catch
 end
 go
-alter procedure Delete_DanhMucPhanQuyen
+create procedure Delete_DanhMucPhanQuyen
 	@ID			bigint
 as
 begin
@@ -295,7 +295,7 @@ begin
 	end catch
 end
 go
-alter procedure List_DanhMucPhanQuyenDonVi
+create procedure List_DanhMucPhanQuyenDonVi
 	@ID	bigint = null,
 	@IDDanhMucPhanQuyen	bigint = null
 as
@@ -312,7 +312,7 @@ begin
 			and case when @IDDanhMucPhanQuyen is not null then a.IDDanhMucPhanQuyen else 0 end = ISNULL(@IDDanhMucPhanQuyen, 0)
 end
 go
-alter procedure Insert_DanhMucPhanQuyenDonVi
+create procedure Insert_DanhMucPhanQuyenDonVi
 	@ID					bigint out,
 	@IDDanhMucPhanQuyen	bigint,
 	@IDDanhMucDonVi		bigint,
@@ -336,7 +336,7 @@ begin
 	end catch
 end
 go
-alter procedure Update_DanhMucPhanQuyenDonVi
+create procedure Update_DanhMucPhanQuyenDonVi
 	@ID			bigint,
 	@Xem		bit,
 	@EditDate	datetime out
@@ -360,7 +360,7 @@ begin
 	end catch
 end
 go
-alter procedure Delete_DanhMucPhanQuyenDonVi
+create procedure Delete_DanhMucPhanQuyenDonVi
 	@ID			bigint
 as
 begin
@@ -379,7 +379,7 @@ begin
 	end catch
 end
 go
-alter procedure List_DanhMucPhanQuyenLoaiDoiTuong
+create procedure List_DanhMucPhanQuyenLoaiDoiTuong
 	@ID	bigint = null,
 	@IDDanhMucPhanQuyen	bigint = null
 as
@@ -399,7 +399,7 @@ begin
 			and case when @IDDanhMucPhanQuyen is not null then a.IDDanhMucPhanQuyen else 0 end = ISNULL(@IDDanhMucPhanQuyen, 0)
 end
 go
-alter procedure Insert_DanhMucPhanQuyenLoaiDoiTuong
+create procedure Insert_DanhMucPhanQuyenLoaiDoiTuong
 	@ID						bigint out,
 	@IDDanhMucPhanQuyen		bigint,
 	@IDDanhMucLoaiDoiTuong	bigint,
@@ -426,7 +426,7 @@ begin
 	end catch
 end
 go
-alter procedure Update_DanhMucPhanQuyenLoaiDoiTuong
+create procedure Update_DanhMucPhanQuyenLoaiDoiTuong
 	@ID			bigint,
 	@Xem		bit,
 	@Them		bit,
@@ -456,7 +456,7 @@ begin
 	end catch
 end
 go
-alter procedure Delete_DanhMucPhanQuyenLoaiDoiTuong
+create procedure Delete_DanhMucPhanQuyenLoaiDoiTuong
 	@ID			bigint
 as
 begin
@@ -475,7 +475,7 @@ begin
 	end catch
 end
 go
-alter procedure List_DanhMucPhanQuyenChungTu
+create procedure List_DanhMucPhanQuyenChungTu
 	@ID	bigint = null,
 	@IDDanhMucPhanQuyen	bigint = null
 as
@@ -495,7 +495,7 @@ begin
 			and case when @IDDanhMucPhanQuyen is not null then a.IDDanhMucPhanQuyen else 0 end = ISNULL(@IDDanhMucPhanQuyen, 0)
 end
 go
-alter procedure Insert_DanhMucPhanQuyenChungTu
+create procedure Insert_DanhMucPhanQuyenChungTu
 	@ID					bigint out,
 	@IDDanhMucPhanQuyen	bigint,
 	@IDDanhMucChungTu	bigint,
@@ -522,7 +522,7 @@ begin
 	end catch
 end
 go
-alter procedure Update_DanhMucPhanQuyenChungTu
+create procedure Update_DanhMucPhanQuyenChungTu
 	@ID			bigint,
 	@Xem		bit,
 	@Them		bit,
@@ -552,7 +552,7 @@ begin
 	end catch
 end
 go
-alter procedure Delete_DanhMucPhanQuyenChungTu
+create procedure Delete_DanhMucPhanQuyenChungTu
 	@ID			bigint
 as
 begin
@@ -571,7 +571,7 @@ begin
 	end catch
 end
 go
-alter procedure List_DanhMucPhanQuyenBaoCao
+create procedure List_DanhMucPhanQuyenBaoCao
 	@ID	bigint = null,
 	@IDDanhMucPhanQuyen	bigint = null
 as
@@ -588,7 +588,7 @@ begin
 			and case when @IDDanhMucPhanQuyen is not null then a.IDDanhMucPhanQuyen else 0 end = ISNULL(@IDDanhMucPhanQuyen, 0)
 end
 go
-alter procedure Insert_DanhMucPhanQuyenBaoCao
+create procedure Insert_DanhMucPhanQuyenBaoCao
 	@ID					bigint out,
 	@IDDanhMucPhanQuyen	bigint,
 	@IDDanhMucBaoCao	bigint,
@@ -612,7 +612,7 @@ begin
 	end catch
 end
 go
-alter procedure Update_DanhMucPhanQuyenBaoCao
+create procedure Update_DanhMucPhanQuyenBaoCao
 	@ID			bigint,
 	@Xem		bit,
 	@EditDate	datetime out
@@ -636,7 +636,7 @@ begin
 	end catch
 end
 go
-alter procedure Delete_DanhMucPhanQuyenBaoCao
+create procedure Delete_DanhMucPhanQuyenBaoCao
 	@ID			bigint
 as
 begin
@@ -655,7 +655,7 @@ begin
 	end catch
 end
 go
-alter procedure Get_DanhMucPhanQuyenLoaiDoiTuong
+create procedure Get_DanhMucPhanQuyenLoaiDoiTuong
 	@IDDanhMucPhanQuyen		bigint,
 	@IDDanhMucLoaiDoiTuong	bigint,
 	@Xem					bit = 0 out,
@@ -679,7 +679,7 @@ begin
 	end catch
 end
 go
-alter procedure Get_DanhMucPhanQuyenChungTu
+create procedure Get_DanhMucPhanQuyenChungTu
 	@IDDanhMucPhanQuyen		bigint,
 	@IDDanhMucChungTu		bigint,
 	@Xem					bit = 0 out,
@@ -703,7 +703,7 @@ begin
 	end catch
 end
 go
-alter procedure Get_DanhMucPhanQuyenBaoCao
+create procedure Get_DanhMucPhanQuyenBaoCao
 	@IDDanhMucPhanQuyen		bigint,
 	@IDDanhMucBaoCao		bigint,
 	@Xem					bit = 0 out
@@ -723,7 +723,7 @@ begin
 	end catch
 end
 go
-alter procedure Get_DanhMucPhanQuyenDonVi
+create procedure Get_DanhMucPhanQuyenDonVi
 	@IDDanhMucPhanQuyen		bigint,
 	@IDDanhMucDonVi			bigint,
 	@Xem					bit = 0 out

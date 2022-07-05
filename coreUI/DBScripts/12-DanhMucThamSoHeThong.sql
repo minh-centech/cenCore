@@ -1,4 +1,4 @@
-﻿---------------DANH MỤC ĐƠN VỊ 2019-12-29 16:12
+﻿---------------DANH MỤC THAM SỐ HỆ THỐNG 2019-12-29 16:12
 /*
 create table DanhMucThamSoHeThong
 (
@@ -17,7 +17,7 @@ create table DanhMucThamSoHeThong
 )
 go
 */
-alter procedure List_DanhMucThamSoHeThong
+create procedure List_DanhMucThamSoHeThong
 	@ID bigint = null,
 	@IDDanhMucDonVi bigint
 as
@@ -29,7 +29,7 @@ begin
 	order by Ma;
 end
 go
-alter procedure Insert_DanhMucThamSoHeThong
+create procedure Insert_DanhMucThamSoHeThong
 	@ID				bigint out,
 	@IDDanhMucDonVi bigint = null,
 	@Ma				nvarchar(128) = null,
@@ -100,7 +100,7 @@ begin
 	end catch
 end
 go
-alter procedure Update_DanhMucThamSoHeThong
+create procedure Update_DanhMucThamSoHeThong
 	@ID				bigint,
 	@Ma				nvarchar(128),
 	@Ten			nvarchar(255),
@@ -174,7 +174,7 @@ begin
 	end catch
 end
 go
-alter procedure Delete_DanhMucThamSoHeThong
+create procedure Delete_DanhMucThamSoHeThong
 	@ID			bigint
 as
 begin
@@ -193,7 +193,7 @@ begin
 	end catch
 end
 go
-alter procedure Get_DanhMucThamSoHeThong_GiaTri
+create procedure Get_DanhMucThamSoHeThong_GiaTri
 	@IDDanhMucDonVi bigint,
 	@Ma nvarchar(128),
 	@GiaTri nvarchar(4000) out

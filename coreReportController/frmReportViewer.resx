@@ -123,13 +123,4 @@
   <metadata name="ultraToolbarsManager1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
   </metadata>
-  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="appearance3.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
-        vwAADr8BOAVTJAAAAJJJREFUOE+dkYENwCAIBN3JndzJFVzBFZjFFVq/SmIVxPjNRYrln6SOiJ4YbUIH
-        tRuFho9hAZL6IUTZoA345fTU7qCtwW9oqqk+rb7YgIVNzA1sFAOolHKEaoDfaWEasPAhDzA5Z9tgx5HB
-        mDi/X22AoRHTQEpkUkrfKRrgQkvHIKMaQJxksRggDc1TENhHq5x7AdXJg5mMePt2AAAAAElFTkSuQmCC
-</value>
-  </data>
 </root>

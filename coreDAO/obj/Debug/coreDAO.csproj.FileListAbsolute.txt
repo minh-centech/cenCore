@@ -43,3 +43,24 @@ D:\cenCORE\coreDAO\obj\Debug\coreDAO.csproj.CoreCompileInputs.cache
 D:\cenCORE\coreDAO\obj\Debug\coreDAO.csproj.CopyComplete
 D:\cenCORE\coreDAO\obj\Debug\coreDAO.dll
 D:\cenCORE\coreDAO\obj\Debug\coreDAO.pdb
+D:\OneDrive\Data\cenCore\Outputs\coreDAO.dll
+D:\OneDrive\Data\cenCore\Outputs\coreDAO.pdb
+D:\OneDrive\Data\cenCore\coreDAO\obj\Debug\coreDAO.csproj.AssemblyReference.cache
+D:\OneDrive\Data\cenCore\coreDAO\obj\Debug\coreDAO.csproj.CoreCompileInputs.cache
+D:\OneDrive\Data\cenCore\coreDAO\obj\Debug\coreDAO.csproj.CopyComplete
+D:\OneDrive\Data\cenCore\coreDAO\obj\Debug\coreDAO.dll
+D:\OneDrive\Data\cenCore\coreDAO\obj\Debug\coreDAO.pdb
+C:\Users\minhc\OneDrive\Data\cenCore\Outputs\coreDAO.dll
+C:\Users\minhc\OneDrive\Data\cenCore\Outputs\coreDAO.pdb
+C:\Users\minhc\OneDrive\Data\cenCore\coreDAO\obj\Debug\coreDAO.csproj.AssemblyReference.cache
+C:\Users\minhc\OneDrive\Data\cenCore\coreDAO\obj\Debug\coreDAO.csproj.CoreCompileInputs.cache
+C:\Users\minhc\OneDrive\Data\cenCore\coreDAO\obj\Debug\coreDAO.csproj.CopyComplete
+C:\Users\minhc\OneDrive\Data\cenCore\coreDAO\obj\Debug\coreDAO.dll
+C:\Users\minhc\OneDrive\Data\cenCore\coreDAO\obj\Debug\coreDAO.pdb
+C:\Users\minhc\OneDrive - EVERLINK\Data\cenCore\Outputs\coreDAO.dll
+C:\Users\minhc\OneDrive - EVERLINK\Data\cenCore\Outputs\coreDAO.pdb
+C:\Users\minhc\OneDrive - EVERLINK\Data\cenCore\coreDAO\obj\Debug\coreDAO.csproj.AssemblyReference.cache
+C:\Users\minhc\OneDrive - EVERLINK\Data\cenCore\coreDAO\obj\Debug\coreDAO.csproj.CoreCompileInputs.cache
+C:\Users\minhc\OneDrive - EVERLINK\Data\cenCore\coreDAO\obj\Debug\coreDAO.csproj.CopyComplete
+C:\Users\minhc\OneDrive - EVERLINK\Data\cenCore\coreDAO\obj\Debug\coreDAO.dll
+C:\Users\minhc\OneDrive - EVERLINK\Data\cenCore\coreDAO\obj\Debug\coreDAO.pdb
