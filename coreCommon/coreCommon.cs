@@ -853,6 +853,8 @@ namespace coreCommon
         public const string tblReportHeaderName = "tblReportHeader";
         public const string tblReportDataName = "tblReportData";
         public const string tblReportDataGridName = "tblReportDataGrid";
+        //
+        public static string ErrMsg = string.Empty;
     }
 
 }
