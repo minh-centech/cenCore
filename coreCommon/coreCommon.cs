@@ -740,7 +740,7 @@ namespace coreCommon
         public const byte Xoa = 4;
         public const string DienGiaiXoa = "Xóa";
     }
-    public static class DataRowState
+    public static class drState
     {
         public const byte Add = 4;
         public const byte Deleted = 8;
