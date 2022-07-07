@@ -740,6 +740,14 @@ namespace coreCommon
         public const byte Xoa = 4;
         public const string DienGiaiXoa = "Xóa";
     }
+    public static class DataRowState
+    {
+        public const byte Add = 4;
+        public const byte Deleted = 8;
+        public const byte Detached = 1;
+        public const byte Modified = 16;
+        public const byte Unchanged = 2;
+    }
     public static class GlobalVariables
     {
         public static string SolutionName = "";
