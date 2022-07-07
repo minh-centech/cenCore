@@ -742,7 +742,7 @@ namespace coreCommon
     }
     public static class drState
     {
-        public const byte Add = 4;
+        public const byte Added = 4;
         public const byte Deleted = 8;
         public const byte Detached = 1;
         public const byte Modified = 16;
