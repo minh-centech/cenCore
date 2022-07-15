@@ -29,18 +29,18 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            Infragistics.Win.Appearance appearance1 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance2 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance3 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance4 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance5 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance6 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance7 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance8 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance9 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance10 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance11 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance12 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance13 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance14 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance15 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance16 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance17 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance18 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance19 = new Infragistics.Win.Appearance();
             Infragistics.Win.UltraWinToolbars.UltraToolbar ultraToolbar1 = new Infragistics.Win.UltraWinToolbars.UltraToolbar("UltraToolbar1");
             Infragistics.Win.UltraWinToolbars.ButtonTool ButtonTool1 = new Infragistics.Win.UltraWinToolbars.ButtonTool("btThem");
             Infragistics.Win.UltraWinToolbars.ButtonTool ButtonTool2 = new Infragistics.Win.UltraWinToolbars.ButtonTool("btSua");
@@ -49,20 +49,29 @@
             Infragistics.Win.UltraWinToolbars.ButtonTool ButtonTool4 = new Infragistics.Win.UltraWinToolbars.ButtonTool("btTaiLai");
             Infragistics.Win.UltraWinToolbars.ButtonTool ButtonTool5 = new Infragistics.Win.UltraWinToolbars.ButtonTool("btIn");
             Infragistics.Win.UltraWinToolbars.ButtonTool buttonTool2 = new Infragistics.Win.UltraWinToolbars.ButtonTool("btExcel");
+            Infragistics.Win.UltraWinToolbars.PopupMenuTool popupMenuTool1 = new Infragistics.Win.UltraWinToolbars.PopupMenuTool("mnuThaoTac");
             Infragistics.Win.UltraWinToolbars.ButtonTool ButtonTool7 = new Infragistics.Win.UltraWinToolbars.ButtonTool("btThem");
-            Infragistics.Win.Appearance appearance13 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance1 = new Infragistics.Win.Appearance();
             Infragistics.Win.UltraWinToolbars.ButtonTool ButtonTool8 = new Infragistics.Win.UltraWinToolbars.ButtonTool("btSua");
-            Infragistics.Win.Appearance appearance14 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance2 = new Infragistics.Win.Appearance();
             Infragistics.Win.UltraWinToolbars.ButtonTool ButtonTool9 = new Infragistics.Win.UltraWinToolbars.ButtonTool("btXoa");
-            Infragistics.Win.Appearance appearance15 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance3 = new Infragistics.Win.Appearance();
             Infragistics.Win.UltraWinToolbars.ButtonTool ButtonTool10 = new Infragistics.Win.UltraWinToolbars.ButtonTool("btTaiLai");
-            Infragistics.Win.Appearance appearance16 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance4 = new Infragistics.Win.Appearance();
             Infragistics.Win.UltraWinToolbars.ButtonTool ButtonTool11 = new Infragistics.Win.UltraWinToolbars.ButtonTool("btIn");
-            Infragistics.Win.Appearance appearance17 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance5 = new Infragistics.Win.Appearance();
             Infragistics.Win.UltraWinToolbars.ButtonTool buttonTool1 = new Infragistics.Win.UltraWinToolbars.ButtonTool("btExcel");
-            Infragistics.Win.Appearance appearance18 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance6 = new Infragistics.Win.Appearance();
             Infragistics.Win.UltraWinToolbars.ButtonTool buttonTool4 = new Infragistics.Win.UltraWinToolbars.ButtonTool("btCopy");
-            Infragistics.Win.Appearance appearance19 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance7 = new Infragistics.Win.Appearance();
+            Infragistics.Win.UltraWinToolbars.PopupMenuTool popupMenuTool2 = new Infragistics.Win.UltraWinToolbars.PopupMenuTool("mnuThaoTac");
+            Infragistics.Win.UltraWinToolbars.ButtonTool buttonTool5 = new Infragistics.Win.UltraWinToolbars.ButtonTool("btThem");
+            Infragistics.Win.UltraWinToolbars.ButtonTool buttonTool6 = new Infragistics.Win.UltraWinToolbars.ButtonTool("btSua");
+            Infragistics.Win.UltraWinToolbars.ButtonTool buttonTool11 = new Infragistics.Win.UltraWinToolbars.ButtonTool("btCopy");
+            Infragistics.Win.UltraWinToolbars.ButtonTool buttonTool7 = new Infragistics.Win.UltraWinToolbars.ButtonTool("btXoa");
+            Infragistics.Win.UltraWinToolbars.ButtonTool buttonTool8 = new Infragistics.Win.UltraWinToolbars.ButtonTool("btTaiLai");
+            Infragistics.Win.UltraWinToolbars.ButtonTool buttonTool9 = new Infragistics.Win.UltraWinToolbars.ButtonTool("btIn");
+            Infragistics.Win.UltraWinToolbars.ButtonTool buttonTool10 = new Infragistics.Win.UltraWinToolbars.ButtonTool("btExcel");
             this.ug = new coreControls.saNonUpdateGrid();
             this._frm_quanly_nguoisudung_Toolbars_Dock_Area_Top = new Infragistics.Win.UltraWinToolbars.UltraToolbarsDockArea();
             this.UltraToolbarsManager1 = new Infragistics.Win.UltraWinToolbars.UltraToolbarsManager(this.components);
@@ -75,58 +84,59 @@
             // 
             // ug
             // 
-            appearance1.BackColor = System.Drawing.SystemColors.Window;
-            appearance1.BorderColor = System.Drawing.SystemColors.InactiveCaption;
-            this.ug.DisplayLayout.Appearance = appearance1;
+            this.UltraToolbarsManager1.SetContextMenuUltra(this.ug, "mnuThaoTac");
+            appearance8.BackColor = System.Drawing.SystemColors.Window;
+            appearance8.BorderColor = System.Drawing.SystemColors.InactiveCaption;
+            this.ug.DisplayLayout.Appearance = appearance8;
             this.ug.DisplayLayout.BorderStyle = Infragistics.Win.UIElementBorderStyle.Solid;
             this.ug.DisplayLayout.CaptionVisible = Infragistics.Win.DefaultableBoolean.False;
-            appearance2.BackColor = System.Drawing.SystemColors.ActiveBorder;
-            appearance2.BackColor2 = System.Drawing.SystemColors.ControlDark;
-            appearance2.BackGradientStyle = Infragistics.Win.GradientStyle.Vertical;
-            appearance2.BorderColor = System.Drawing.SystemColors.Window;
-            this.ug.DisplayLayout.GroupByBox.Appearance = appearance2;
-            appearance3.ForeColor = System.Drawing.SystemColors.GrayText;
-            this.ug.DisplayLayout.GroupByBox.BandLabelAppearance = appearance3;
+            appearance9.BackColor = System.Drawing.SystemColors.ActiveBorder;
+            appearance9.BackColor2 = System.Drawing.SystemColors.ControlDark;
+            appearance9.BackGradientStyle = Infragistics.Win.GradientStyle.Vertical;
+            appearance9.BorderColor = System.Drawing.SystemColors.Window;
+            this.ug.DisplayLayout.GroupByBox.Appearance = appearance9;
+            appearance10.ForeColor = System.Drawing.SystemColors.GrayText;
+            this.ug.DisplayLayout.GroupByBox.BandLabelAppearance = appearance10;
             this.ug.DisplayLayout.GroupByBox.BorderStyle = Infragistics.Win.UIElementBorderStyle.Solid;
-            appearance4.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            appearance4.BackColor2 = System.Drawing.SystemColors.Control;
-            appearance4.BackGradientStyle = Infragistics.Win.GradientStyle.Horizontal;
-            appearance4.ForeColor = System.Drawing.SystemColors.GrayText;
-            this.ug.DisplayLayout.GroupByBox.PromptAppearance = appearance4;
+            appearance11.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            appearance11.BackColor2 = System.Drawing.SystemColors.Control;
+            appearance11.BackGradientStyle = Infragistics.Win.GradientStyle.Horizontal;
+            appearance11.ForeColor = System.Drawing.SystemColors.GrayText;
+            this.ug.DisplayLayout.GroupByBox.PromptAppearance = appearance11;
             this.ug.DisplayLayout.LoadStyle = Infragistics.Win.UltraWinGrid.LoadStyle.LoadOnDemand;
             this.ug.DisplayLayout.MaxColScrollRegions = 1;
             this.ug.DisplayLayout.MaxRowScrollRegions = 1;
-            appearance5.BackColor = System.Drawing.SystemColors.Window;
-            appearance5.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.ug.DisplayLayout.Override.ActiveCellAppearance = appearance5;
-            appearance6.BackColor = System.Drawing.SystemColors.Highlight;
-            appearance6.ForeColor = System.Drawing.SystemColors.HighlightText;
-            this.ug.DisplayLayout.Override.ActiveRowAppearance = appearance6;
+            appearance12.BackColor = System.Drawing.SystemColors.Window;
+            appearance12.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.ug.DisplayLayout.Override.ActiveCellAppearance = appearance12;
+            appearance13.BackColor = System.Drawing.SystemColors.Highlight;
+            appearance13.ForeColor = System.Drawing.SystemColors.HighlightText;
+            this.ug.DisplayLayout.Override.ActiveRowAppearance = appearance13;
             this.ug.DisplayLayout.Override.BorderStyleCell = Infragistics.Win.UIElementBorderStyle.Dotted;
             this.ug.DisplayLayout.Override.BorderStyleRow = Infragistics.Win.UIElementBorderStyle.Dotted;
-            appearance7.BackColor = System.Drawing.SystemColors.Window;
-            this.ug.DisplayLayout.Override.CardAreaAppearance = appearance7;
-            appearance8.BorderColor = System.Drawing.Color.Silver;
-            appearance8.TextTrimming = Infragistics.Win.TextTrimming.EllipsisCharacter;
-            this.ug.DisplayLayout.Override.CellAppearance = appearance8;
+            appearance14.BackColor = System.Drawing.SystemColors.Window;
+            this.ug.DisplayLayout.Override.CardAreaAppearance = appearance14;
+            appearance15.BorderColor = System.Drawing.Color.Silver;
+            appearance15.TextTrimming = Infragistics.Win.TextTrimming.EllipsisCharacter;
+            this.ug.DisplayLayout.Override.CellAppearance = appearance15;
             this.ug.DisplayLayout.Override.CellClickAction = Infragistics.Win.UltraWinGrid.CellClickAction.EditAndSelectText;
             this.ug.DisplayLayout.Override.CellPadding = 0;
-            appearance9.BackColor = System.Drawing.SystemColors.Control;
-            appearance9.BackColor2 = System.Drawing.SystemColors.ControlDark;
-            appearance9.BackGradientAlignment = Infragistics.Win.GradientAlignment.Element;
-            appearance9.BackGradientStyle = Infragistics.Win.GradientStyle.Horizontal;
-            appearance9.BorderColor = System.Drawing.SystemColors.Window;
-            this.ug.DisplayLayout.Override.GroupByRowAppearance = appearance9;
-            appearance10.TextHAlignAsString = "Left";
-            this.ug.DisplayLayout.Override.HeaderAppearance = appearance10;
+            appearance16.BackColor = System.Drawing.SystemColors.Control;
+            appearance16.BackColor2 = System.Drawing.SystemColors.ControlDark;
+            appearance16.BackGradientAlignment = Infragistics.Win.GradientAlignment.Element;
+            appearance16.BackGradientStyle = Infragistics.Win.GradientStyle.Horizontal;
+            appearance16.BorderColor = System.Drawing.SystemColors.Window;
+            this.ug.DisplayLayout.Override.GroupByRowAppearance = appearance16;
+            appearance17.TextHAlignAsString = "Left";
+            this.ug.DisplayLayout.Override.HeaderAppearance = appearance17;
             this.ug.DisplayLayout.Override.HeaderClickAction = Infragistics.Win.UltraWinGrid.HeaderClickAction.SortMulti;
             this.ug.DisplayLayout.Override.HeaderStyle = Infragistics.Win.HeaderStyle.WindowsXPCommand;
-            appearance11.BackColor = System.Drawing.SystemColors.Window;
-            appearance11.BorderColor = System.Drawing.Color.Silver;
-            this.ug.DisplayLayout.Override.RowAppearance = appearance11;
+            appearance18.BackColor = System.Drawing.SystemColors.Window;
+            appearance18.BorderColor = System.Drawing.Color.Silver;
+            this.ug.DisplayLayout.Override.RowAppearance = appearance18;
             this.ug.DisplayLayout.Override.RowSelectors = Infragistics.Win.DefaultableBoolean.False;
-            appearance12.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.ug.DisplayLayout.Override.TemplateAddRowAppearance = appearance12;
+            appearance19.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.ug.DisplayLayout.Override.TemplateAddRowAppearance = appearance19;
             this.ug.DisplayLayout.ScrollBounds = Infragistics.Win.UltraWinGrid.ScrollBounds.ScrollToFill;
             this.ug.DisplayLayout.ScrollStyle = Infragistics.Win.UltraWinGrid.ScrollStyle.Immediate;
             this.ug.DisplayLayout.TabNavigation = Infragistics.Win.UltraWinGrid.TabNavigation.NextControl;
@@ -156,6 +166,7 @@
             this.UltraToolbarsManager1.DockWithinContainerBaseType = typeof(System.Windows.Forms.Form);
             this.UltraToolbarsManager1.MdiMergeable = false;
             this.UltraToolbarsManager1.ShowFullMenusDelay = 500;
+            this.UltraToolbarsManager1.ShowShortcutsInToolTips = true;
             ultraToolbar1.DockedColumn = 0;
             ultraToolbar1.DockedRow = 0;
             buttonTool3.InstanceProps.IsFirstInGroup = true;
@@ -170,45 +181,60 @@
             ButtonTool3,
             ButtonTool4,
             ButtonTool5,
-            buttonTool2});
+            buttonTool2,
+            popupMenuTool1});
             ultraToolbar1.Text = "UltraToolbar1";
             this.UltraToolbarsManager1.Toolbars.AddRange(new Infragistics.Win.UltraWinToolbars.UltraToolbar[] {
             ultraToolbar1});
-            appearance13.Image = global::coreBase.Properties.Resources.them;
-            ButtonTool7.SharedPropsInternal.AppearancesSmall.Appearance = appearance13;
-            ButtonTool7.SharedPropsInternal.Caption = "&Thêm (Ctrl+N)";
+            appearance1.Image = global::coreBase.Properties.Resources.them;
+            ButtonTool7.SharedPropsInternal.AppearancesSmall.Appearance = appearance1;
+            ButtonTool7.SharedPropsInternal.Caption = "&Thêm";
             ButtonTool7.SharedPropsInternal.DisplayStyle = Infragistics.Win.UltraWinToolbars.ToolDisplayStyle.ImageAndText;
             ButtonTool7.SharedPropsInternal.Shortcut = System.Windows.Forms.Shortcut.CtrlN;
-            appearance14.Image = global::coreBase.Properties.Resources.sua;
-            ButtonTool8.SharedPropsInternal.AppearancesSmall.Appearance = appearance14;
-            ButtonTool8.SharedPropsInternal.Caption = "&Sửa (Ctrl+E)";
+            appearance2.Image = global::coreBase.Properties.Resources.sua;
+            ButtonTool8.SharedPropsInternal.AppearancesSmall.Appearance = appearance2;
+            ButtonTool8.SharedPropsInternal.Caption = "&Sửa";
             ButtonTool8.SharedPropsInternal.DisplayStyle = Infragistics.Win.UltraWinToolbars.ToolDisplayStyle.ImageAndText;
             ButtonTool8.SharedPropsInternal.Shortcut = System.Windows.Forms.Shortcut.CtrlE;
-            appearance15.Image = global::coreBase.Properties.Resources.xoa;
-            ButtonTool9.SharedPropsInternal.AppearancesSmall.Appearance = appearance15;
-            ButtonTool9.SharedPropsInternal.Caption = "&Xóa (Ctrl+D)";
+            appearance3.Image = global::coreBase.Properties.Resources.xoa;
+            ButtonTool9.SharedPropsInternal.AppearancesSmall.Appearance = appearance3;
+            ButtonTool9.SharedPropsInternal.Caption = "&Xóa";
             ButtonTool9.SharedPropsInternal.DisplayStyle = Infragistics.Win.UltraWinToolbars.ToolDisplayStyle.ImageAndText;
             ButtonTool9.SharedPropsInternal.Shortcut = System.Windows.Forms.Shortcut.CtrlD;
-            appearance16.Image = global::coreBase.Properties.Resources.tailai;
-            ButtonTool10.SharedPropsInternal.AppearancesSmall.Appearance = appearance16;
-            ButtonTool10.SharedPropsInternal.Caption = "Tải lại (Ctrl+R)";
+            appearance4.Image = global::coreBase.Properties.Resources.tailai;
+            ButtonTool10.SharedPropsInternal.AppearancesSmall.Appearance = appearance4;
+            ButtonTool10.SharedPropsInternal.Caption = "Tải lại";
             ButtonTool10.SharedPropsInternal.DisplayStyle = Infragistics.Win.UltraWinToolbars.ToolDisplayStyle.ImageAndText;
             ButtonTool10.SharedPropsInternal.Shortcut = System.Windows.Forms.Shortcut.CtrlR;
-            appearance17.Image = global::coreBase.Properties.Resources._in;
-            ButtonTool11.SharedPropsInternal.AppearancesSmall.Appearance = appearance17;
-            ButtonTool11.SharedPropsInternal.Caption = "&In (Ctrl+P)";
+            appearance5.Image = global::coreBase.Properties.Resources._in;
+            ButtonTool11.SharedPropsInternal.AppearancesSmall.Appearance = appearance5;
+            ButtonTool11.SharedPropsInternal.Caption = "&In";
             ButtonTool11.SharedPropsInternal.DisplayStyle = Infragistics.Win.UltraWinToolbars.ToolDisplayStyle.ImageAndText;
             ButtonTool11.SharedPropsInternal.Shortcut = System.Windows.Forms.Shortcut.CtrlP;
-            appearance18.Image = global::coreBase.Properties.Resources.excel;
-            buttonTool1.SharedPropsInternal.AppearancesSmall.Appearance = appearance18;
-            buttonTool1.SharedPropsInternal.Caption = "&Excel (Ctrl+L)";
+            appearance6.Image = global::coreBase.Properties.Resources.excel;
+            buttonTool1.SharedPropsInternal.AppearancesSmall.Appearance = appearance6;
+            buttonTool1.SharedPropsInternal.Caption = "&Excel";
             buttonTool1.SharedPropsInternal.DisplayStyle = Infragistics.Win.UltraWinToolbars.ToolDisplayStyle.ImageAndText;
             buttonTool1.SharedPropsInternal.Shortcut = System.Windows.Forms.Shortcut.CtrlL;
-            appearance19.Image = global::coreBase.Properties.Resources.Copy;
-            buttonTool4.SharedPropsInternal.AppearancesSmall.Appearance = appearance19;
-            buttonTool4.SharedPropsInternal.Caption = "Sao &chép (Ctrl+C)";
+            appearance7.Image = global::coreBase.Properties.Resources.Copy;
+            buttonTool4.SharedPropsInternal.AppearancesSmall.Appearance = appearance7;
+            buttonTool4.SharedPropsInternal.Caption = "Sao &chép";
             buttonTool4.SharedPropsInternal.DisplayStyle = Infragistics.Win.UltraWinToolbars.ToolDisplayStyle.ImageAndText;
             buttonTool4.SharedPropsInternal.Shortcut = System.Windows.Forms.Shortcut.CtrlC;
+            popupMenuTool2.SharedPropsInternal.Caption = "mnuThaoTac";
+            popupMenuTool2.SharedPropsInternal.Visible = false;
+            buttonTool11.InstanceProps.IsFirstInGroup = true;
+            buttonTool7.InstanceProps.IsFirstInGroup = true;
+            buttonTool8.InstanceProps.IsFirstInGroup = true;
+            buttonTool9.InstanceProps.IsFirstInGroup = true;
+            popupMenuTool2.Tools.AddRange(new Infragistics.Win.UltraWinToolbars.ToolBase[] {
+            buttonTool5,
+            buttonTool6,
+            buttonTool11,
+            buttonTool7,
+            buttonTool8,
+            buttonTool9,
+            buttonTool10});
             this.UltraToolbarsManager1.Tools.AddRange(new Infragistics.Win.UltraWinToolbars.ToolBase[] {
             ButtonTool7,
             ButtonTool8,
@@ -216,7 +242,8 @@
             ButtonTool10,
             ButtonTool11,
             buttonTool1,
-            buttonTool4});
+            buttonTool4,
+            popupMenuTool2});
             this.UltraToolbarsManager1.ToolClick += new Infragistics.Win.UltraWinToolbars.ToolClickEventHandler(this.UltraToolbarsManager1_ToolClick);
             // 
             // _frm_quanly_nguoisudung_Toolbars_Dock_Area_Bottom

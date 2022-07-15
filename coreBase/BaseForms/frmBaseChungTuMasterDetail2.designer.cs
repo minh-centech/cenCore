@@ -339,7 +339,7 @@
             this.cboIDDanhMucTrangThaiChungTu.Location = new System.Drawing.Point(83, 60);
             this.cboIDDanhMucTrangThaiChungTu.Name = "cboIDDanhMucTrangThaiChungTu";
             this.cboIDDanhMucTrangThaiChungTu.Size = new System.Drawing.Size(114, 21);
-            this.cboIDDanhMucTrangThaiChungTu.TabIndex = 4;
+            this.cboIDDanhMucTrangThaiChungTu.TabIndex = 103;
             // 
             // txtNgayLap
             // 
@@ -350,14 +350,13 @@
             this.txtNgayLap.AutoSize = false;
             this.txtNgayLap.BorderStyle = Infragistics.Win.UIElementBorderStyle.Solid;
             this.txtNgayLap.DateTime = new System.DateTime(1753, 1, 1, 0, 0, 0, 0);
-            this.txtNgayLap.Enabled = false;
             this.txtNgayLap.FormatString = "";
             this.txtNgayLap.Location = new System.Drawing.Point(83, 33);
             this.txtNgayLap.MaskInput = "dd/mm/yyyy";
             this.txtNgayLap.Name = "txtNgayLap";
             this.txtNgayLap.PromptChar = ' ';
             this.txtNgayLap.Size = new System.Drawing.Size(114, 21);
-            this.txtNgayLap.TabIndex = 2;
+            this.txtNgayLap.TabIndex = 102;
             this.txtNgayLap.Tag = "NgayLap";
             this.txtNgayLap.Value = null;
             // 
@@ -388,12 +387,11 @@
             appearance31.ForeColorDisabled = System.Drawing.Color.Black;
             this.txtSo.Appearance = appearance31;
             this.txtSo.AutoSize = false;
-            this.txtSo.Enabled = false;
             this.txtSo.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtSo.Location = new System.Drawing.Point(83, 6);
             this.txtSo.Name = "txtSo";
             this.txtSo.Size = new System.Drawing.Size(114, 21);
-            this.txtSo.TabIndex = 1;
+            this.txtSo.TabIndex = 101;
             // 
             // lblTenDoiTuong
             // 

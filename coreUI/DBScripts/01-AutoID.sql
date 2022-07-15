@@ -28,12 +28,13 @@ begin
 end
 go
 -----------------
-create procedure Check_ForeignKey
+alter procedure Check_ForeignKey
 	@TableName nvarchar(255),
-	@ColumnName nvarchar(255),
-	@ValueCheck bigint,
-	@ErrorMessage nvarchar(max),
-	@Count bigint = null output
+	@ColumnName		nvarchar(255),
+	@ValueCheck		bigint,
+	@Exist			bit = 1, --nếu bằng 1 thì check tồn tại, = null/0 thì check không tồn tại
+	@ErrorMessage	nvarchar(max),
+	@Count			bigint = null output
 as
 begin
 	create table #Count
@@ -46,11 +47,18 @@ begin
 
 	select @Count = (select top 1 Count from #Count);
 
-	if (@Count > 0)
+	drop table #Count;
+
+	if (@Exist = 1 and @Count > 0)
 	begin
 		raiserror(@ErrorMessage, 16, 1);
+		return;
 	end;
 
-	drop table #Count;
+	if (@Exist is null or @Exist = 0) and @Count = 0
+	begin
+		raiserror(@ErrorMessage, 16, 1);
+		return;
+	end;
 end;
 go

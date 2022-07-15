@@ -117,6 +117,9 @@ namespace coreBase.BaseForms
             toolBar.Toolbars[0].Tools["btQuyTrinh"].SharedProps.Enabled = ReadOnly;
             toolBar.Toolbars[0].Tools["btIn"].SharedProps.Enabled = true;
             //Header
+            txtSo.ReadOnly = true;
+            txtNgayLap.ReadOnly = true;
+
             foreach (Control ctl in groupHeader.Controls)
             {
 
@@ -133,6 +136,11 @@ namespace coreBase.BaseForms
                 if (ctl is saNumericBox)
                 {
                     saNumericBox txtBox = (saNumericBox)ctl;
+                    txtBox.ReadOnly = ReadOnly;
+                }
+                if (ctl is saIntNumericBox)
+                {
+                    saIntNumericBox txtBox = (saIntNumericBox)ctl;
                     txtBox.ReadOnly = ReadOnly;
                 }
                 if (ctl is saComboDanhMuc)

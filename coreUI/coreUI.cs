@@ -32,7 +32,7 @@ namespace coreUI
         }
         public static void UpdateToList(DataTable dtData, DataTable dtUpdate)
         {
-            if (!coreCommon.coreCommon.IsNull(dtUpdate))
+            if (dtUpdate != null)
             {
                 bool Found = false;
                 for (int i = dtData.Rows.Count - 1; i >= 0; i--)

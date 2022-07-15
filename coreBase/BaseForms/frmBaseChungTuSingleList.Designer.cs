@@ -36,6 +36,7 @@
             Infragistics.Win.UltraWinToolbars.ButtonTool ButtonTool3 = new Infragistics.Win.UltraWinToolbars.ButtonTool("btXoa");
             Infragistics.Win.UltraWinToolbars.PopupMenuTool popupMenuTool1 = new Infragistics.Win.UltraWinToolbars.PopupMenuTool("btIn");
             Infragistics.Win.UltraWinToolbars.ButtonTool buttonTool2 = new Infragistics.Win.UltraWinToolbars.ButtonTool("btExcel");
+            Infragistics.Win.UltraWinToolbars.PopupMenuTool popupMenuTool3 = new Infragistics.Win.UltraWinToolbars.PopupMenuTool("mnuThaoTac");
             Infragistics.Win.UltraWinToolbars.ButtonTool ButtonTool7 = new Infragistics.Win.UltraWinToolbars.ButtonTool("btThem");
             Infragistics.Win.Appearance appearance18 = new Infragistics.Win.Appearance();
             Infragistics.Win.UltraWinToolbars.ButtonTool ButtonTool8 = new Infragistics.Win.UltraWinToolbars.ButtonTool("btSua");
@@ -48,11 +49,13 @@
             Infragistics.Win.Appearance appearance22 = new Infragistics.Win.Appearance();
             Infragistics.Win.UltraWinToolbars.PopupMenuTool popupMenuTool2 = new Infragistics.Win.UltraWinToolbars.PopupMenuTool("btIn");
             Infragistics.Win.Appearance appearance23 = new Infragistics.Win.Appearance();
+            Infragistics.Win.UltraWinToolbars.PopupMenuTool popupMenuTool4 = new Infragistics.Win.UltraWinToolbars.PopupMenuTool("mnuThaoTac");
+            Infragistics.Win.UltraWinToolbars.ButtonTool buttonTool6 = new Infragistics.Win.UltraWinToolbars.ButtonTool("btThem");
+            Infragistics.Win.UltraWinToolbars.ButtonTool buttonTool7 = new Infragistics.Win.UltraWinToolbars.ButtonTool("btSua");
+            Infragistics.Win.UltraWinToolbars.ButtonTool buttonTool8 = new Infragistics.Win.UltraWinToolbars.ButtonTool("btXoa");
+            Infragistics.Win.UltraWinToolbars.PopupMenuTool popupMenuTool5 = new Infragistics.Win.UltraWinToolbars.PopupMenuTool("btIn");
+            Infragistics.Win.UltraWinToolbars.ButtonTool buttonTool9 = new Infragistics.Win.UltraWinToolbars.ButtonTool("btExcel");
             Infragistics.Win.Appearance appearance13 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance14 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance15 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance16 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance17 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance1 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance2 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance3 = new Infragistics.Win.Appearance();
@@ -65,6 +68,10 @@
             Infragistics.Win.Appearance appearance10 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance11 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance12 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance14 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance15 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance16 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance17 = new Infragistics.Win.Appearance();
             this._frm_quanly_nguoisudung_Toolbars_Dock_Area_Top = new Infragistics.Win.UltraWinToolbars.UltraToolbarsDockArea();
             this.UltraToolbarsManager1 = new Infragistics.Win.UltraWinToolbars.UltraToolbarsManager(this.components);
             this._frm_quanly_nguoisudung_Toolbars_Dock_Area_Bottom = new Infragistics.Win.UltraWinToolbars.UltraToolbarsDockArea();
@@ -72,20 +79,20 @@
             this._frm_quanly_nguoisudung_Toolbars_Dock_Area_Right = new Infragistics.Win.UltraWinToolbars.UltraToolbarsDockArea();
             this.ultraGroupBox2 = new Infragistics.Win.Misc.UltraGroupBox();
             this.ultraGroupBox1 = new Infragistics.Win.Misc.UltraGroupBox();
+            this.ultraButton1 = new Infragistics.Win.Misc.UltraButton();
+            this.ug = new coreControls.saNonUpdateGrid();
             this.txtTuNgay = new coreControls.saDateTimeBox();
             this.saLabel1 = new coreControls.saLabel();
             this.txtDenNgay = new coreControls.saDateTimeBox();
-            this.ultraButton1 = new Infragistics.Win.Misc.UltraButton();
             this.saLabel2 = new coreControls.saLabel();
-            this.ug = new coreControls.saNonUpdateGrid();
             ((System.ComponentModel.ISupportInitialize)(this.UltraToolbarsManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ultraGroupBox2)).BeginInit();
             this.ultraGroupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ultraGroupBox1)).BeginInit();
             this.ultraGroupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ug)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtTuNgay)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtDenNgay)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ug)).BeginInit();
             this.SuspendLayout();
             // 
             // _frm_quanly_nguoisudung_Toolbars_Dock_Area_Top
@@ -106,6 +113,7 @@
             this.UltraToolbarsManager1.DockWithinContainerBaseType = typeof(System.Windows.Forms.Form);
             this.UltraToolbarsManager1.MdiMergeable = false;
             this.UltraToolbarsManager1.ShowFullMenusDelay = 500;
+            this.UltraToolbarsManager1.ShowShortcutsInToolTips = true;
             ultraToolbar1.DockedColumn = 0;
             ultraToolbar1.DockedRow = 0;
             buttonTool3.InstanceProps.IsFirstInGroup = true;
@@ -118,46 +126,58 @@
             buttonTool3,
             ButtonTool3,
             popupMenuTool1,
-            buttonTool2});
+            buttonTool2,
+            popupMenuTool3});
             ultraToolbar1.Text = "UltraToolbar1";
             this.UltraToolbarsManager1.Toolbars.AddRange(new Infragistics.Win.UltraWinToolbars.UltraToolbar[] {
             ultraToolbar1});
             appearance18.Image = global::coreBase.Properties.Resources.them;
             ButtonTool7.SharedPropsInternal.AppearancesSmall.Appearance = appearance18;
-            ButtonTool7.SharedPropsInternal.Caption = "&Thêm (Ctrl+N)";
+            ButtonTool7.SharedPropsInternal.Caption = "&Thêm";
             ButtonTool7.SharedPropsInternal.DisplayStyle = Infragistics.Win.UltraWinToolbars.ToolDisplayStyle.ImageAndText;
             ButtonTool7.SharedPropsInternal.Shortcut = System.Windows.Forms.Shortcut.CtrlN;
             appearance19.Image = global::coreBase.Properties.Resources.sua;
             ButtonTool8.SharedPropsInternal.AppearancesSmall.Appearance = appearance19;
-            ButtonTool8.SharedPropsInternal.Caption = "&Sửa (Ctrl+E)";
+            ButtonTool8.SharedPropsInternal.Caption = "&Sửa";
             ButtonTool8.SharedPropsInternal.DisplayStyle = Infragistics.Win.UltraWinToolbars.ToolDisplayStyle.ImageAndText;
             ButtonTool8.SharedPropsInternal.Shortcut = System.Windows.Forms.Shortcut.CtrlE;
             appearance20.Image = global::coreBase.Properties.Resources.xoa;
             ButtonTool9.SharedPropsInternal.AppearancesSmall.Appearance = appearance20;
-            ButtonTool9.SharedPropsInternal.Caption = "&Xóa (Ctrl+D)";
+            ButtonTool9.SharedPropsInternal.Caption = "&Xóa";
             ButtonTool9.SharedPropsInternal.DisplayStyle = Infragistics.Win.UltraWinToolbars.ToolDisplayStyle.ImageAndText;
             ButtonTool9.SharedPropsInternal.Shortcut = System.Windows.Forms.Shortcut.CtrlD;
             appearance21.Image = global::coreBase.Properties.Resources.excel;
             buttonTool1.SharedPropsInternal.AppearancesSmall.Appearance = appearance21;
-            buttonTool1.SharedPropsInternal.Caption = "&Excel (Ctrl+L)";
+            buttonTool1.SharedPropsInternal.Caption = "&Excel";
             buttonTool1.SharedPropsInternal.DisplayStyle = Infragistics.Win.UltraWinToolbars.ToolDisplayStyle.ImageAndText;
             buttonTool1.SharedPropsInternal.Shortcut = System.Windows.Forms.Shortcut.CtrlL;
             appearance22.Image = global::coreBase.Properties.Resources.Copy;
             buttonTool4.SharedPropsInternal.AppearancesSmall.Appearance = appearance22;
-            buttonTool4.SharedPropsInternal.Caption = "Sao &chép (Ctrl+C)";
+            buttonTool4.SharedPropsInternal.Caption = "Sao &chép";
             buttonTool4.SharedPropsInternal.DisplayStyle = Infragistics.Win.UltraWinToolbars.ToolDisplayStyle.ImageAndText;
             buttonTool4.SharedPropsInternal.Shortcut = System.Windows.Forms.Shortcut.CtrlC;
             appearance23.Image = global::coreBase.Properties.Resources._in;
             popupMenuTool2.SharedPropsInternal.AppearancesSmall.Appearance = appearance23;
             popupMenuTool2.SharedPropsInternal.Caption = "&In";
             popupMenuTool2.SharedPropsInternal.DisplayStyle = Infragistics.Win.UltraWinToolbars.ToolDisplayStyle.ImageAndText;
+            popupMenuTool4.SharedPropsInternal.Caption = "mnuThaoTac";
+            buttonTool8.InstanceProps.IsFirstInGroup = true;
+            popupMenuTool5.InstanceProps.IsFirstInGroup = true;
+            popupMenuTool4.Tools.AddRange(new Infragistics.Win.UltraWinToolbars.ToolBase[] {
+            buttonTool6,
+            buttonTool7,
+            buttonTool8,
+            popupMenuTool5,
+            buttonTool9});
             this.UltraToolbarsManager1.Tools.AddRange(new Infragistics.Win.UltraWinToolbars.ToolBase[] {
             ButtonTool7,
             ButtonTool8,
             ButtonTool9,
             buttonTool1,
             buttonTool4,
-            popupMenuTool2});
+            popupMenuTool2,
+            popupMenuTool4});
+            this.UltraToolbarsManager1.Visible = false;
             this.UltraToolbarsManager1.ToolClick += new Infragistics.Win.UltraWinToolbars.ToolClickEventHandler(this.UltraToolbarsManager1_ToolClick);
             // 
             // _frm_quanly_nguoisudung_Toolbars_Dock_Area_Bottom
@@ -205,9 +225,6 @@
             // 
             // ultraGroupBox1
             // 
-            this.ultraGroupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             appearance13.BackColorAlpha = Infragistics.Win.Alpha.Transparent;
             this.ultraGroupBox1.Appearance = appearance13;
             this.ultraGroupBox1.BorderStyle = Infragistics.Win.Misc.GroupBoxBorderStyle.Rectangular3D;
@@ -216,52 +233,12 @@
             this.ultraGroupBox1.Controls.Add(this.txtDenNgay);
             this.ultraGroupBox1.Controls.Add(this.ultraButton1);
             this.ultraGroupBox1.Controls.Add(this.saLabel2);
-            this.ultraGroupBox1.Location = new System.Drawing.Point(3, 0);
+            this.ultraGroupBox1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.ultraGroupBox1.Location = new System.Drawing.Point(0, 0);
             this.ultraGroupBox1.Name = "ultraGroupBox1";
-            this.ultraGroupBox1.Size = new System.Drawing.Size(868, 51);
+            this.ultraGroupBox1.Size = new System.Drawing.Size(873, 51);
             this.ultraGroupBox1.TabIndex = 8;
             this.ultraGroupBox1.UseAppStyling = false;
-            // 
-            // txtTuNgay
-            // 
-            appearance14.ForeColorDisabled = System.Drawing.Color.Black;
-            this.txtTuNgay.Appearance = appearance14;
-            this.txtTuNgay.AutoFillDate = Infragistics.Win.UltraWinMaskedEdit.AutoFillDate.MonthAndYear;
-            this.txtTuNgay.AutoFillTime = Infragistics.Win.UltraWinMaskedEdit.AutoFillTime.CurrentTime;
-            this.txtTuNgay.AutoSize = false;
-            this.txtTuNgay.Location = new System.Drawing.Point(59, 14);
-            this.txtTuNgay.MaskInput = "dd/mm/yyyy";
-            this.txtTuNgay.Name = "txtTuNgay";
-            this.txtTuNgay.PromptChar = ' ';
-            this.txtTuNgay.Size = new System.Drawing.Size(100, 21);
-            this.txtTuNgay.TabIndex = 5;
-            this.txtTuNgay.Value = null;
-            // 
-            // saLabel1
-            // 
-            appearance15.BackColorAlpha = Infragistics.Win.Alpha.Transparent;
-            this.saLabel1.Appearance = appearance15;
-            this.saLabel1.AutoSize = true;
-            this.saLabel1.Location = new System.Drawing.Point(8, 14);
-            this.saLabel1.Name = "saLabel1";
-            this.saLabel1.Size = new System.Drawing.Size(45, 14);
-            this.saLabel1.TabIndex = 3;
-            this.saLabel1.Text = "Từ ngày";
-            // 
-            // txtDenNgay
-            // 
-            appearance16.ForeColorDisabled = System.Drawing.Color.Black;
-            this.txtDenNgay.Appearance = appearance16;
-            this.txtDenNgay.AutoFillDate = Infragistics.Win.UltraWinMaskedEdit.AutoFillDate.MonthAndYear;
-            this.txtDenNgay.AutoFillTime = Infragistics.Win.UltraWinMaskedEdit.AutoFillTime.CurrentTime;
-            this.txtDenNgay.AutoSize = false;
-            this.txtDenNgay.Location = new System.Drawing.Point(224, 14);
-            this.txtDenNgay.MaskInput = "dd/mm/yyyy";
-            this.txtDenNgay.Name = "txtDenNgay";
-            this.txtDenNgay.PromptChar = ' ';
-            this.txtDenNgay.Size = new System.Drawing.Size(100, 21);
-            this.txtDenNgay.TabIndex = 6;
-            this.txtDenNgay.Value = null;
             // 
             // ultraButton1
             // 
@@ -272,19 +249,9 @@
             this.ultraButton1.Text = "Tải dữ liệu";
             this.ultraButton1.Click += new System.EventHandler(this.ultraButton1_Click);
             // 
-            // saLabel2
-            // 
-            appearance17.BackColorAlpha = Infragistics.Win.Alpha.Transparent;
-            this.saLabel2.Appearance = appearance17;
-            this.saLabel2.AutoSize = true;
-            this.saLabel2.Location = new System.Drawing.Point(165, 14);
-            this.saLabel2.Name = "saLabel2";
-            this.saLabel2.Size = new System.Drawing.Size(53, 14);
-            this.saLabel2.TabIndex = 4;
-            this.saLabel2.Text = "Đến ngày";
-            // 
             // ug
             // 
+            this.UltraToolbarsManager1.SetContextMenuUltra(this.ug, "mnuThaoTac");
             appearance1.BackColor = System.Drawing.SystemColors.Window;
             appearance1.BorderColor = System.Drawing.SystemColors.InactiveCaption;
             this.ug.DisplayLayout.Appearance = appearance1;
@@ -348,6 +315,58 @@
             this.ug.TabIndex = 1;
             this.ug.DoubleClickRow += new Infragistics.Win.UltraWinGrid.DoubleClickRowEventHandler(this.ug_DoubleClickRow);
             // 
+            // txtTuNgay
+            // 
+            appearance14.ForeColorDisabled = System.Drawing.Color.Black;
+            this.txtTuNgay.Appearance = appearance14;
+            this.txtTuNgay.AutoFillDate = Infragistics.Win.UltraWinMaskedEdit.AutoFillDate.MonthAndYear;
+            this.txtTuNgay.AutoFillTime = Infragistics.Win.UltraWinMaskedEdit.AutoFillTime.CurrentTime;
+            this.txtTuNgay.AutoSize = false;
+            this.txtTuNgay.Location = new System.Drawing.Point(59, 14);
+            this.txtTuNgay.MaskInput = "dd/mm/yyyy";
+            this.txtTuNgay.Name = "txtTuNgay";
+            this.txtTuNgay.PromptChar = ' ';
+            this.txtTuNgay.Size = new System.Drawing.Size(100, 21);
+            this.txtTuNgay.TabIndex = 5;
+            this.txtTuNgay.Value = null;
+            // 
+            // saLabel1
+            // 
+            appearance15.BackColorAlpha = Infragistics.Win.Alpha.Transparent;
+            this.saLabel1.Appearance = appearance15;
+            this.saLabel1.AutoSize = true;
+            this.saLabel1.Location = new System.Drawing.Point(8, 14);
+            this.saLabel1.Name = "saLabel1";
+            this.saLabel1.Size = new System.Drawing.Size(45, 14);
+            this.saLabel1.TabIndex = 3;
+            this.saLabel1.Text = "Từ ngày";
+            // 
+            // txtDenNgay
+            // 
+            appearance16.ForeColorDisabled = System.Drawing.Color.Black;
+            this.txtDenNgay.Appearance = appearance16;
+            this.txtDenNgay.AutoFillDate = Infragistics.Win.UltraWinMaskedEdit.AutoFillDate.MonthAndYear;
+            this.txtDenNgay.AutoFillTime = Infragistics.Win.UltraWinMaskedEdit.AutoFillTime.CurrentTime;
+            this.txtDenNgay.AutoSize = false;
+            this.txtDenNgay.Location = new System.Drawing.Point(224, 14);
+            this.txtDenNgay.MaskInput = "dd/mm/yyyy";
+            this.txtDenNgay.Name = "txtDenNgay";
+            this.txtDenNgay.PromptChar = ' ';
+            this.txtDenNgay.Size = new System.Drawing.Size(100, 21);
+            this.txtDenNgay.TabIndex = 6;
+            this.txtDenNgay.Value = null;
+            // 
+            // saLabel2
+            // 
+            appearance17.BackColorAlpha = Infragistics.Win.Alpha.Transparent;
+            this.saLabel2.Appearance = appearance17;
+            this.saLabel2.AutoSize = true;
+            this.saLabel2.Location = new System.Drawing.Point(165, 14);
+            this.saLabel2.Name = "saLabel2";
+            this.saLabel2.Size = new System.Drawing.Size(53, 14);
+            this.saLabel2.TabIndex = 4;
+            this.saLabel2.Text = "Đến ngày";
+            // 
             // frmBaseChungTuSingleList
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -368,9 +387,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.ultraGroupBox1)).EndInit();
             this.ultraGroupBox1.ResumeLayout(false);
             this.ultraGroupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ug)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtTuNgay)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtDenNgay)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ug)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -388,6 +407,6 @@
         public coreControls.saLabel saLabel2;
         public coreControls.saDateTimeBox txtDenNgay;
         public coreControls.saDateTimeBox txtTuNgay;
-        private Infragistics.Win.Misc.UltraGroupBox ultraGroupBox1;
+        public Infragistics.Win.Misc.UltraGroupBox ultraGroupBox1;
     }
 }

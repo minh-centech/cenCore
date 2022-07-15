@@ -54,7 +54,7 @@ namespace coreUI.Forms
         }
         public void UpdateToList(DataTable dtUpdate)
         {
-            if (!coreCommon.coreCommon.IsNull(dtUpdate))
+            if (dtUpdate != null)
             {
                 bool Found = false;
                 for (int i = dtData.Rows.Count - 1; i >= 0; i--)
@@ -68,6 +68,11 @@ namespace coreUI.Forms
                             dtData.Rows[i].ItemArray = drUpdate.ItemArray;
                             Found = true;
                         }
+                    }
+                    //Nếu không tìm thấy thì phải cùng IDChungTu mới xóa
+                    if (!Found && bsData.Current != null && dtData.Columns.Contains("IDChungTu") && dtUpdate.Columns.Contains("IDChungTu")&& dtData.Rows[i]["IDChungTu"].ToString() == ((DataRowView)bsData.Current).Row["IDChungTu"].ToString()) //
+                    {
+                        dtData.Rows[i].Delete();
                     }
                 }
                 //Thêm mới những dòng được thêm

@@ -742,11 +742,11 @@ namespace coreCommon
     }
     public static class drState
     {
-        public const byte Added = 4;
-        public const byte Deleted = 8;
-        public const byte Detached = 1;
-        public const byte Modified = 16;
-        public const byte Unchanged = 2;
+        public const string Added = "4";
+        public const string Deleted = "8";
+        public const string Detached = "1";
+        public const string Modified = "16";
+        public const string Unchanged = "2";
     }
     public static class GlobalVariables
     {
